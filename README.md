@@ -1,8 +1,12 @@
 # Wiki Engine
 
-This wiki engine needs to work this way:
-- The content is stored in markdown in subfolders who indicate the hierarchy and url
-- A script goes through all files, parses the markdown to html and populate a json file
-- the json is used to fill the website
+This wiki engine uses markdown files for content.
+A script in `/bin/generate` browse the files and extract the content in a JSON format. The JSON is then put inside a template literal in `database.js` and picked by the website who use it to hydrate pages.
 
-Basically the markdown files are useless once the json is generated. But
+## Commands
+
+Regenerate the website database: `node /bin/generate.js`
+
+## Server
+
+The website does not need any server once database is created and can be run by double clicking on `index.html`.
