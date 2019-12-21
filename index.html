@@ -1,63 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Wiki engine</title>
-    <script>const DATA = {};</script>
-    <script src="database.js"></script>
-</head>
-<body>
-    <h1 class="title"></h1>
-    <main class="content"></main>
-    <a href="#test">To test</a>
-    <a href="/">To home</a>
-    <a href="#sdgopijsd">To 404</a>
-
-
+    <link rel="stylesheet" href="index.css" />
     <script>
-        //Parsing database
-        const database = JSON.parse(DATA.content);
-
-        //Hash
-        const currentHash = getCurrentHash();
-        setHashContent();
-
-        //Detect current page
-        function getCurrentHash() {
-            return window.location.hash.slice(1);
-        }
-        
-       
-
-        //Get hash, check if empty, return 
-        function setHashContent() {
-            let hash = getCurrentHash();
-            console.log({hash})
-            if(database.content[hash]) {
-                addContentToPage(database.content[hash]);
-            } else if(hash.length === 0 || hash === "#") {
-                addContentToPage(database.content["home"]);
-            } else {
-                addContentToPage(database.content["404"]);
-            }
-        }
-
-         //Writing content into page
-         function addContentToPage(pageContent) {
-             console.log({pageContent})
-            let titleEl = document.querySelector('.title');
-            let contentEl = document.querySelector('.content');
-            titleEl.textContent = pageContent['title'];
-            contentEl.textContent = pageContent['text'];
-        }
-
-        window.onhashchange = function() {
-            setHashContent();
-        };
-
-
+      const DATA = {};
     </script>
-</body>
+    <script src="database.js"></script>
+  </head>
+  <body>
+    <main class="content"></main>
+    <footer>
+      <nav id="menu"></nav>
+    </footer>
+    <script>
+      //Parsing database
+      const database = JSON.parse(DATA.content);
+
+      //Hash
+      const currentHash = getCurrentHash();
+      setHashContent();
+      createMenu();
+
+      //Detect current page
+      function getCurrentHash() {
+        return window.location.hash.slice(1);
+      }
+
+      //Get hash, check if empty, return
+      function setHashContent() {
+        let hash = getCurrentHash();
+        console.log({ hash });
+        if (database.content[hash]) {
+          addContentToPage(database.content[hash]);
+        } else if (hash.length === 0 || hash === "#") {
+          addContentToPage(database.content["home"]);
+        } else {
+          addContentToPage(database.content["404"]);
+        }
+      }
+
+      //Writing content into page
+      function addContentToPage(pageContent) {
+        console.log({ pageContent });
+        let contentEl = document.querySelector(".content");
+        contentEl.innerHTML = pageContent["text"];
+      }
+
+      //Create menu from pages
+      function createMenu() {
+        const ul = document.createElement("ul");
+        document.querySelector("#menu").appendChild(ul);
+
+        for (var i in database.content) {
+          let link = `<a href="#${i}">${i}</a>`;
+          let li = document.createElement("li");
+          ul.appendChild(li);
+          li.innerHTML += link;
+        }
+      }
+
+      //Watch for url change
+      window.onhashchange = function() {
+        setHashContent();
+      };
+    </script>
+  </body>
 </html>
