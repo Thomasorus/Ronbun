@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Wiki engine</title>
-    <link rel="stylesheet" href="index.css" />
-    <script>
-      const DATA = {};
-    </script>
-    <script src="database.js"></script>
-  </head>
-  <body>
-    <main class="content"></main>
-    <footer>
-      <nav id="menu"></nav>
-    </footer>
-    <script>
-      //Parsing database
-      const database = JSON.parse(DATA.content);
 
-      //Hash
-      const currentHash = getCurrentHash();
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Wiki engine</title>
+  <link rel="stylesheet" href="index.css" />
+  <script>
+    const DATA = {};
+  </script>
+  <script src="database.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>This is the nav</nav>
+  </header>
+  <main>
+    <section class="content__intro">
+      <img class="content__intro-image" src="/media/blame.png" alt="cover image"
+        style="shape-outside: url(/media/blame.png);">
+      <p>Title</p>
+
+    </section>
+    <section class="content">
+
+    </section>
+  </main>
+  <footer>
+    <nav id="menu"></nav>
+  </footer>
+  <script>
+    //Parsing database
+    const database = JSON.parse(DATA.content);
+
+    //Hash
+    const currentHash = getCurrentHash();
+    setHashContent();
+    createMenu();
+
+    //Detect current page
+    function getCurrentHash() {
+      return window.location.hash.slice(1);
+    }
+
+    //Get hash, check if empty, return
+    function setHashContent() {
+      let hash = getCurrentHash();
+      console.log({
+        hash
+      });
+      if (database.content[hash]) {
+        addContentToPage(database.content[hash]);
+      } else if (hash.length === 0 || hash === "#") {
+        addContentToPage(database.content["home"]);
+      } else {
+        addContentToPage(database.content["404"]);
+      }
+    }
+
+    //Writing content into page
+    function addContentToPage(pageContent) {
+      console.log({
+        pageContent
+      });
+      let contentEl = document.querySelector(".content");
+      contentEl.innerHTML = pageContent["text"];
+    }
+
+    //Create menu from pages
+    function createMenu() {
+      const ul = document.createElement("ul");
+      document.querySelector("#menu").appendChild(ul);
+
+      for (var i in database.content) {
+        let link = `<a href="#${i}">${i}</a>`;
+        let li = document.createElement("li");
+        ul.appendChild(li);
+        li.innerHTML += link;
+      }
+    }
+
+    //Watch for url change
+    window.onhashchange = function () {
       setHashContent();
-      createMenu();
+    };
+  </script>
+</body>
 
-      //Detect current page
-      function getCurrentHash() {
-        return window.location.hash.slice(1);
-      }
-
-      //Get hash, check if empty, return
-      function setHashContent() {
-        let hash = getCurrentHash();
-        console.log({ hash });
-        if (database.content[hash]) {
-          addContentToPage(database.content[hash]);
-        } else if (hash.length === 0 || hash === "#") {
-          addContentToPage(database.content["home"]);
-        } else {
-          addContentToPage(database.content["404"]);
-        }
-      }
-
-      //Writing content into page
-      function addContentToPage(pageContent) {
-        console.log({ pageContent });
-        let contentEl = document.querySelector(".content");
-        contentEl.innerHTML = pageContent["text"];
-      }
-
-      //Create menu from pages
-      function createMenu() {
-        const ul = document.createElement("ul");
-        document.querySelector("#menu").appendChild(ul);
-
-        for (var i in database.content) {
-          let link = `<a href="#${i}">${i}</a>`;
-          let li = document.createElement("li");
-          ul.appendChild(li);
-          li.innerHTML += link;
-        }
-      }
-
-      //Watch for url change
-      window.onhashchange = function() {
-        setHashContent();
-      };
-    </script>
-  </body>
 </html>

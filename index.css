@@ -14,7 +14,30 @@ img {
   max-width: 100%;
 }
 
-#menu {
-  max-width: 1080px;
+
+
+.content__intro {
+  height: 80vh;
   margin: auto;
+}
+
+.content__intro p {
+  margin: auto;
+}
+
+
+
+.content__intro-image {
+  height: 100%;
+  float: right;
+  shape-margin: 20px;
+  object-fit: contain;
+  max-width: 70%;
+  max-height: 100%;
+  position: relative;
+}
+
+header {
+  position: absolute;
+  top: 0;
 }
