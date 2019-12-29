@@ -56,16 +56,15 @@ All the things I read in 2019.
 
 ### Notable articles
 
-- How William Gibson Keeps His Science Fiction Real
-- http://paulgraham.com/genius.html
-- http://www.slate.fr/story/184164/boulangeries-guerre-culturelle-pain-adieu-baguette-disparition-petit-commerce
-- https://www.nytimes.com/interactive/2019/11/16/world/asia/china-xinjiang-documents.html?smtyp=cur&smid=tw-nytimes
-- https://www.forbes.com/sites/johnkoetsier/2019/09/02/hong-kong-protestors-using-mesh-messaging-app-china-cant-block-usage-up-3685/
-- https://matthiasott.com/articles/into-the-personal-website-verse
-- https://www.gamekult.com/actualite/une-petite-histoire-du-jeu-de-baston-en-dix-morceaux-3050819125.html
-- https://www.newyorker.com/magazine/2019/04/08/the-day-the-dinosaurs-died
-- https://kotaku.com/how-biowares-anthem-went-wrong-1833731964
-- http://www.scam.fr/detail/ArticleId/6004/Enquete-exclusive-sur-les-journalistes
+- [How William Gibson Keeps His Science Fiction Real](https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real)
+- [The Bus Ticket Theory of Genius](http://paulgraham.com/genius.html)
+- [La France du pain est coupée en deux](http://www.slate.fr/story/184164/boulangeries-guerre-culturelle-pain-adieu-baguette-disparition-petit-commerce)
+- [Absolutely No Mercy’: Leaked Files Expose How China Organized Mass Detentions of Muslims](https://www.nytimes.com/interactive/2019/11/16/world/asia/china-xinjiang-documents.html?smtyp=cur&smid=tw-nytimes)
+- [Hong Kong Protestors Using Mesh Messaging App China Can't Block](https://www.forbes.com/sites/johnkoetsier/2019/09/02/hong-kong-protestors-using-mesh-messaging-app-china-cant-block-usage-up-3685/)
+- [Into the Personal-Website-Verse](https://matthiasott.com/articles/into-the-personal-website-verse)
+- [Une petite histoire du jeu de baston en dix morceaux](https://www.gamekult.com/actualite/une-petite-histoire-du-jeu-de-baston-en-dix-morceaux-3050819125.html)
+- [The Day the Dinosaurs Died](https://www.newyorker.com/magazine/2019/04/08/the-day-the-dinosaurs-died)
+- [How BioWare's Anthem Went Wrong](https://kotaku.com/how-biowares-anthem-went-wrong-1833731964)
 
 ## Writings of 2019
 
@@ -73,25 +72,37 @@ All the things I wrote in 2019.
 
 ### Wrote
 
-- https://www.redbull.com/fr-fr/evo-2019-tournois-esport-infos
-- https://www.redbull.com/fr-fr/lethal-league-blaze-esport
-- https://www.redbull.com/fr-fr/samurai-shodown-esport-jeu-combat
-- https://twitter.com/Thomasorus/status/1144623832587821056
-- https://basgrospoing.fr/fr/articles/la-schizophrenie-street-fighter-iii-third-strike
-- https://www.redbull.com/fr-fr/mortal-kombat-pro-kompetition
-- https://www.redbull.com/fr-fr/rza-mortal-kombat?linkId=65552039
+- [L’EVO 2019, le plus gros tournoi esport du monde](https://www.redbull.com/fr-fr/evo-2019-tournois-esport-infos)
+- [Lethal League Blaze, l’autre jeu de combat qui ne dit pas son nom](https://www.redbull.com/fr-fr/lethal-league-blaze-esport)
+- [Samurai Shodown, l’original outsider de l’esport baston](https://www.redbull.com/fr-fr/samurai-shodown-esport-jeu-combat)
+- [Embrasser, étendre, étouffer le podcast](https://twitter.com/Thomasorus/status/1144623832587821056)
+- [La schizophrénie Street Fighter III: Third Strike](https://basgrospoing.fr/fr/articles/la-schizophrenie-street-fighter-iii-third-strike)
+- [Premières fatalities sur Mortal Kombat XI](https://www.redbull.com/fr-fr/mortal-kombat-pro-kompetition)
+- [RZA : une main de velours dans un gant de ninja](https://www.redbull.com/fr-fr/rza-mortal-kombat?linkId=65552039)
 
 ### interviewed
 
-- https://twitter.com/Vincent_Jule/status/1144341580771409921
+- [«Samurai Shodown»: Le retour d'une franchise culte... et un nouvel âge d'or du jeu de combat?](https://twitter.com/Vincent_Jule/status/1144341580771409921)
 
 ### Published
 
-- https://basgrospoing.fr/fr/articles/theorie-ruissellement-jeu-de-combat-esport
+- [Trickle-Down Economics in the FGC and E-Sports](https://basgrospoing.fr/fr/articles/theorie-ruissellement-jeu-de-combat-esport)
 
 ### Played
 
 - Flappy Fighter
+- Untitled Goose Game
+- Mortal Kombat XI
+- Samurai Shodown 2019
+- Apex Legends
+- Furi
+- Thumper
+- Céleste
+- Hollow Knight
+- The Red Strings Club
+- Tekken 7
+- Disco Elysium
+- A Plague Tale: Innocence
 
 ### Coded
 
