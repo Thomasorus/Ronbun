@@ -14,35 +14,23 @@
 
   <body>
     <header>
-      <nav>This is the nav</nav>
+      <nav class="uppernav">
+        <div class="uppernav__logo">
+          <img src="#" alt="Logo" />
+        </div>
+        <ul class="uppernav__menu">
+          <li>Elem 1</li>
+          <li>Elem 2</li>
+        </ul>
+      </nav>
     </header>
     <main>
-      <section class="content__intro">
-        <img
-          class="content__intro-image"
-          src="/media/blame.png"
-          alt="cover image"
-          style="shape-outside: url(/media/blame.png);"
-        />
-        <h1>BLAME!</h1>
-        <p>
-          BLAME! is a manga by Tsutomu Nihei depicting the never ending quest of
-          android Killy in the megastructure.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          inventore voluptates delectus, eum voluptatem qui, placeat dolorem
-          quos quis nulla officia commodi error praesentium id. Temporibus
-          facere accusamus perspiciatis distinctio.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          inventore voluptates delectus, eum voluptatem qui, placeat dolorem
-          quos quis nulla officia commodi error praesentium id. Temporibus
-          facere accusamus perspiciatis distinctio.
-        </p>
+      <img class="content__image" src="#" alt="" />
+      <section class="entry">
+        <nav class="mainnav"></nav>
+        <article class="content__text"></article>
+        <aside class="sidenav"></aside>
       </section>
-      <section class="content"></section>
     </main>
     <footer>
       <nav id="menu"></nav>
@@ -81,14 +69,17 @@
         console.log({
           pageContent
         });
-        let contentEl = document.querySelector(".content");
+        let contentEl = document.querySelector(".content__text");
         contentEl.innerHTML = pageContent["text"];
+
+        let imageEl = document.querySelector(".content__image");
+        imageEl.setAttribute("src", pageContent["img"]);
       }
 
       //Create menu from pages
       function createMenu() {
         const ul = document.createElement("ul");
-        document.querySelector("#menu").appendChild(ul);
+        document.querySelector(".mainnav").appendChild(ul);
 
         for (var i in database.content) {
           let link = `<a href="#${i}">${i}</a>`;

@@ -1,54 +1,55 @@
+html {
+  font-size: 10px;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-variant-numeric: oldstyle-nums;
-}
-
-.content {
-  max-width: 1080px;
-  margin: auto;
+  font-size: 1.6rem;
 }
 
 img {
   max-width: 100%;
 }
 
-.content__intro {
-  height: 80vh;
-  margin: auto;
+h1 {
+  font-size: 6rem;
 }
 
-.content__intro h1 {
-  font-size: 14vw;
-  display: inline;
-  margin: 0 0 0 30px;
+.content__text p {
+  margin: 10px 0;
+  font-size: 2rem;
+  line-height: 2.2rem;
 }
 
-.content__intro p {
-  margin: 0 0 0 30px;
-  text-align: justify;
-  padding: 10px 0;
-  font-size: 22px;
-  line-height: 1.2;
+.content__image {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  height: 70vh;
 }
 
-.content__intro img {
-  filter: contrast(3);
+.uppernav {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  display: flex;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.content__intro-image {
-  height: 100%;
-  float: right;
-  shape-margin: 20px;
-  object-fit: contain;
-  max-width: 70%;
-  max-height: 100%;
-  position: relative;
+.uppernav__logo {
 }
 
-header {
-  position: absolute;
-  top: 0;
+.uppernav__menu {
+  margin-left: auto;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
