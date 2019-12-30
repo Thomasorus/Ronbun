@@ -14,6 +14,19 @@
 
   <body>
     <header>
+      <div class="black-filter header-fullgrid">
+        <img class="header-image" src="#" alt="" />
+      </div>
+      <span class="header-parentgrid">Influences</span>
+      <h1 class="header-titlegrid">Pierre Soulages</h1>
+    </header>
+    <main></main>
+    <article class="content__text"></article>
+    <nav class="mainnav"></nav>
+  </body>
+
+  <!-- <body>
+    <header>
       <nav class="uppernav">
         <div class="uppernav__logo">
           <img src="#" alt="Logo" />
@@ -25,7 +38,6 @@
       </nav>
     </header>
     <main>
-      <img class="content__image" src="#" alt="" />
       <section class="entry">
         <nav class="mainnav"></nav>
         <article class="content__text"></article>
@@ -35,64 +47,65 @@
     <footer>
       <nav id="menu"></nav>
     </footer>
-    <script>
-      //Parsing database
-      const database = JSON.parse(DATA.content);
+  </body> -->
 
-      //Hash
-      const currentHash = getCurrentHash();
+  <script>
+    //Parsing database
+    const database = JSON.parse(DATA.content);
+
+    //Hash
+    const currentHash = getCurrentHash();
+    setHashContent();
+    createMenu();
+
+    //Detect current page
+    function getCurrentHash() {
+      return window.location.hash.slice(1);
+    }
+
+    //Get hash, check if empty, return
+    function setHashContent() {
+      let hash = getCurrentHash();
+      console.log({
+        hash
+      });
+      if (database.content[hash]) {
+        addContentToPage(database.content[hash]);
+      } else if (hash.length === 0 || hash === "#") {
+        addContentToPage(database.content["home"]);
+      } else {
+        addContentToPage(database.content["404"]);
+      }
+    }
+
+    //Writing content into page
+    function addContentToPage(pageContent) {
+      console.log({
+        pageContent
+      });
+      let contentEl = document.querySelector(".content__text");
+      contentEl.innerHTML = pageContent["text"];
+
+      let imageEl = document.querySelector(".header-image");
+      imageEl.setAttribute("src", pageContent["img"]);
+    }
+
+    //Create menu from pages
+    function createMenu() {
+      const ul = document.createElement("ul");
+      document.querySelector(".mainnav").appendChild(ul);
+
+      for (var i in database.content) {
+        let link = `<a href="#${i}">${i}</a>`;
+        let li = document.createElement("li");
+        ul.appendChild(li);
+        li.innerHTML += link;
+      }
+    }
+
+    //Watch for url change
+    window.onhashchange = function() {
       setHashContent();
-      createMenu();
-
-      //Detect current page
-      function getCurrentHash() {
-        return window.location.hash.slice(1);
-      }
-
-      //Get hash, check if empty, return
-      function setHashContent() {
-        let hash = getCurrentHash();
-        console.log({
-          hash
-        });
-        if (database.content[hash]) {
-          addContentToPage(database.content[hash]);
-        } else if (hash.length === 0 || hash === "#") {
-          addContentToPage(database.content["home"]);
-        } else {
-          addContentToPage(database.content["404"]);
-        }
-      }
-
-      //Writing content into page
-      function addContentToPage(pageContent) {
-        console.log({
-          pageContent
-        });
-        let contentEl = document.querySelector(".content__text");
-        contentEl.innerHTML = pageContent["text"];
-
-        let imageEl = document.querySelector(".content__image");
-        imageEl.setAttribute("src", pageContent["img"]);
-      }
-
-      //Create menu from pages
-      function createMenu() {
-        const ul = document.createElement("ul");
-        document.querySelector(".mainnav").appendChild(ul);
-
-        for (var i in database.content) {
-          let link = `<a href="#${i}">${i}</a>`;
-          let li = document.createElement("li");
-          ul.appendChild(li);
-          li.innerHTML += link;
-        }
-      }
-
-      //Watch for url change
-      window.onhashchange = function() {
-        setHashContent();
-      };
-    </script>
-  </body>
+    };
+  </script>
 </html>
