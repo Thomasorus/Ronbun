@@ -17,8 +17,8 @@
       <div class="black-filter header-fullgrid">
         <img class="header-image" src="#" alt="" />
       </div>
-      <span class="header-parentgrid">Influences</span>
-      <h1 class="header-titlegrid">Pierre Soulages</h1>
+      <span class="header-parentgrid"></span>
+      <h1 class="header-titlegrid"></h1>
     </header>
     <main></main>
     <article class="content__text"></article>
@@ -88,6 +88,14 @@
 
       let imageEl = document.querySelector(".header-image");
       imageEl.setAttribute("src", pageContent["img"]);
+
+      let titleEl = document.querySelector(".header-titlegrid");
+      titleEl.innerHTML = pageContent["title"];
+
+      let parentEl = document.querySelector(".header-parentgrid");
+      parentEl.innerHTML = pageContent["parent"];
+
+      window.scrollTo(0, 0);
     }
 
     //Create menu from pages
