@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        background: lightblue;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .grid-container {
+        width: 100%;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-areas:
+          "preintro . intro . ."
+          "subtitle . title title title"
+          ". . . . ."
+          ". . outro outro outro";
+        background: lightgreen;
+      }
+
+      .preintro {
+        grid-area: preintro;
+      }
+      .intro {
+        grid-area: intro;
+      }
+      .subtitle {
+        grid-area: subtitle;
+      }
+      .title {
+        grid-area: title;
+      }
+      .outro {
+        grid-area: outro;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="grid-container">
+        <div class="preintro">Swiss</div>
+        <div class="intro">19</div>
+        <div class="subtitle">Intro</div>
+        <div class="title">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime enim
+          quasi aut explicabo, unde ipsum sequi earum, architecto eligendi
+          aperiam accusamus incidunt dicta voluptatem laborum at doloribus
+          minima quisquam accusantium!
+        </div>
+        <div class="outro">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores quos
+          dolore quidem neque labore similique sint, eos repellendus omnis
+          placeat dolor voluptatum, nulla numquam, fuga quas ex totam vel
+          nostrum?
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

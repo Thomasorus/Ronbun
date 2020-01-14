@@ -52,9 +52,10 @@ async function listFiles(folderPath) {
 
 async function createEntries(index, data, imgList) {
   console.log("Creating entries...");
-  let pattern = /(.*\/)+(.*\.md)/;
+  let filePattern = /(.*\/)+(.*\.md)/;
+
   data.forEach(p => {
-    let match = p.match(pattern);
+    let match = p.match(filePattern);
     if (!match || match.length < 1 || match[1] === "/") return;
 
     //Cleaning strings and define subject + parent
@@ -68,20 +69,18 @@ async function createEntries(index, data, imgList) {
 
     //Get content
     let textContent = fs.readFileSync(p, "utf8");
+    let noTitleContent = textContent.replace(/.*#.*\n\n/m, "");
 
     //Set Title
     var title = "Maze";
     var tempTitle = textContent.match(".*#*.\n");
-    console.log(tempTitle);
     if (tempTitle) {
       let cleanedTitle = tempTitle[0].substr(2).replace(/\n/g, "");
-      console.log(cleanedTitle);
-
       title = cleanedTitle;
     }
 
     //Parsing markdown and converting to html
-    let parsed = reader.parse(textContent);
+    let parsed = reader.parse(noTitleContent);
     let result = writer.render(parsed);
     let cleanedText = result.replace(/\n/g, "");
 
@@ -95,18 +94,8 @@ async function createEntries(index, data, imgList) {
       var testImg = obj.match(subject);
       if (testImg) {
         index.content[subject].img = obj || {};
-      } else {
-        index.content[subject].img = "media/cover.jpg" || {};
       }
     });
-    console.log(
-      "Created " +
-        subject +
-        " with parent  " +
-        index.content[subject].parent +
-        " and image " +
-        index.content[subject].img
-    );
   });
 }
 
@@ -127,6 +116,7 @@ function generateDB(index) {
 async function generateAll() {
   let index = { content: {} };
   const imgList = await listFiles("./media");
+  console.log(imgList);
   const data = await listFiles("./content");
   await createEntries(index, data, imgList);
   generateDB(index);
