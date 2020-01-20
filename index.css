@@ -9,13 +9,19 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-variant-numeric: oldstyle-nums;
   font-size: 1.6rem;
+  background-color: whitesmoke;
 }
 
 img {
   max-width: 100%;
 }
 
-h1 {
+main {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* h1 {
   font-size: 10rem;
 }
 
@@ -27,17 +33,17 @@ p {
 
 a {
   color: inherit;
-}
+} */
 
-header {
+/* header {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(5, 1fr);
   height: 90vh;
   color: white;
-}
+} */
 
-.header-fullgrid {
+/* .header-fullgrid {
   grid-column-start: 1;
   grid-column-end: 11;
   grid-row-start: 1;
@@ -63,11 +69,11 @@ header {
   color: white;
   filter: contrast(1);
   font-size: 3rem;
-}
+} */
 
 .header-image {
   width: 100%;
-  height: 100%;
+  height: 60vh;
   object-fit: cover;
   display: block;
   transition: all ease-in-out 0.5s;

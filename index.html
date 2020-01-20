@@ -13,41 +13,17 @@
   </head>
 
   <body>
-    <header>
-      <div class="black-filter header-fullgrid">
-        <img class="header-image" src="#" alt="" />
-      </div>
+    <header></header>
+    <div class="black-filter header-fullgrid">
+      <img class="header-image" src="#" alt="" />
+    </div>
+    <main>
       <span class="header-parentgrid"></span>
       <h1 class="header-titlegrid"></h1>
-    </header>
-    <main></main>
-    <article class="content__text"></article>
+      <div class="content__text"></div>
+    </main>
     <nav class="mainnav"></nav>
   </body>
-
-  <!-- <body>
-    <header>
-      <nav class="uppernav">
-        <div class="uppernav__logo">
-          <img src="#" alt="Logo" />
-        </div>
-        <ul class="uppernav__menu">
-          <li>Elem 1</li>
-          <li>Elem 2</li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="entry">
-        <nav class="mainnav"></nav>
-        <article class="content__text"></article>
-        <aside class="sidenav"></aside>
-      </section>
-    </main>
-    <footer>
-      <nav id="menu"></nav>
-    </footer>
-  </body> -->
 
   <script>
     //Parsing database
@@ -93,7 +69,7 @@
       titleEl.innerHTML = pageContent["title"];
 
       let parentEl = document.querySelector(".header-parentgrid");
-      parentEl.innerHTML = pageContent["parent"];
+      parentEl.innerHTML = `This page is part of the <a href="#${pageContent["parent"]}">${pageContent["parent"]}</a> group`;
 
       window.scrollTo(0, 0);
     }
