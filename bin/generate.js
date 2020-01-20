@@ -50,7 +50,7 @@ async function listFiles(folderPath) {
   return data;
 }
 
-async function createEntries(index, data, imgList) {
+async function createEntries(index, navigation, data, imgList) {
   console.log("Creating entries...");
   let filePattern = /(.*\/)+(.*\.md)/;
 
@@ -59,12 +59,18 @@ async function createEntries(index, data, imgList) {
     if (!match || match.length < 1 || match[1] === "/") return;
 
     //Cleaning strings and define subject + parent
+
     let subject = match[2].replace(/\//g, "").replace(".md", "");
-    let parent = match[1].replace("content", "").replace(/\//g, "");
-    if (parent === "") {
-      parent = "root";
-    } else {
-      parent = parent;
+    let parents = match[1]
+      .replace("content/", "")
+      .slice(0, -1)
+      .split("/");
+    let parent = parents[parents.length - 1];
+
+    if (parent === "" || parent === subject) {
+      parent = "home";
+    } else if (parent === "home") {
+      parent = null;
     }
 
     //Get content
@@ -89,6 +95,9 @@ async function createEntries(index, data, imgList) {
     index.content[subject].text = cleanedText || {};
     index.content[subject].title = title || {};
 
+    // navigation.menu[parent] = navigation.menu[parent] || {};
+    // navigation.menu[subject].parents = parents || {};
+
     //Define image name and url
     imgList.forEach(obj => {
       var testImg = obj.match(subject);
@@ -99,7 +108,19 @@ async function createEntries(index, data, imgList) {
   });
 }
 
-function generateDB(index) {
+function generateDB(index, navigation) {
+  let menusContent = JSON.stringify(navigation);
+  fs.writeFileSync(
+    "./navigation.json",
+    menusContent.replace(/\\\"/g, "'"),
+    err => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+    }
+  );
+
   let jsonContent = JSON.stringify(index);
   fs.writeFileSync(
     "./database.js",
@@ -113,13 +134,17 @@ function generateDB(index) {
   );
 }
 
+function generatePages(index) {
+  let jsonContent = JSON.stringify(index);
+}
+
 async function generateAll() {
   let index = { content: {} };
+  let navigation = { menu: {} };
   const imgList = await listFiles("./media");
-  console.log(imgList);
   const data = await listFiles("./content");
-  await createEntries(index, data, imgList);
-  generateDB(index);
+  await createEntries(index, navigation, data, imgList);
+  generateDB(index, navigation);
 }
 
 generateAll();
