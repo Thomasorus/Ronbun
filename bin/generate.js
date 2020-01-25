@@ -2,10 +2,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const commonmark = require("./commonmark.min.js");
-
-const reader = new commonmark.Parser();
-const writer = new commonmark.HtmlRenderer();
+const MarkdownIt = require("./markdown-it.min.js");
+const md = new MarkdownIt({
+  typographer: true
+});
 
 // https://gist.github.com/lovasoa/8691344#gistcomment-2631947
 function walk(dir) {
@@ -86,14 +86,14 @@ async function createEntries(index, navigation, data, imgList) {
     }
 
     //Parsing markdown and converting to html
-    let parsed = reader.parse(noTitleContent);
-    let result = writer.render(parsed);
+    let result = md.render(noTitleContent);
     let cleanedText = result.replace(/\n/g, "");
 
     index.content[subject] = index.content[subject] || {};
     index.content[subject].parent = parent || {};
     index.content[subject].text = cleanedText || {};
     index.content[subject].title = title || {};
+    // index.content[subject].url = url || {};
 
     // navigation.menu[parent] = navigation.menu[parent] || {};
     // navigation.menu[subject].parents = parents || {};
