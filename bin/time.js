@@ -19,24 +19,23 @@ const help = `# Time Tracking
 // let p = "../content/tracking/2020/2020-time.md";
 // let textContent = fs.readFileSync(p, "utf8");
 
-function parseTime(timeToParse) {
-  let splitted = timeToParse.split(/\r?\n/);
-  let week = [];
-
-  for (let i = 0; i < splitted.length; i++) {
-    let line = parseLine(splitted[i]);
-    if (line !== null) {
-      week.push(line);
+async function parseTime(timeToParse) {
+  let cleanedEntries = [];
+  let splittedEntries = timeToParse.split(/\r?\n/);
+  for (let i = 0; i < splittedEntries.length; i++) {
+    let entry = await cleanEntry(splittedEntries[i]);
+    if (entry !== null) {
+      cleanedEntries.push(entry);
     }
   }
-  regroupWeeks(week);
+  return cleanedEntries;
 }
 
-function parseLine(lineToParse) {
-  let split = lineToParse.split("|");
-  split.shift();
-  split.pop();
-  let result = split.map(s => s.trim());
+async function cleanEntry(entry) {
+  let newEntry = entry.split("|");
+  newEntry.shift();
+  newEntry.pop();
+  let result = newEntry.map(s => s.trim());
   let weekNum = result[0];
   if (!isNaN(weekNum)) {
     return result;
@@ -45,18 +44,38 @@ function parseLine(lineToParse) {
   }
 }
 
-function regroupWeeks(allWeeks) {
+async function createWeeks(allWeeks) {
   let year = [];
+  allWeeks.forEach(week => {
+    let weekNumber = week[0];
+    let entries = [
+      { activity: week[1] },
+      { project: week[2] },
+      { hours: week[3] }
+    ];
+    let weekObj = { week: weekNumber, entries: [entries] };
 
-  // Trouver un moyen de créer un array pour toutes les semaines de l'année et d'itérer dessus.
+    if (year.length <= 0) {
+      year.push(weekObj);
+    }
 
-  for (let i = 0; i < allWeeks.length; i++) {
-    let element = allWeeks[i];
-    let weekNumber = parseInt(element[0]);
-    let activities = element.splice(1);
-    year.push(element);
-  }
-  console.log(allWeeks);
+    const result = year.find(({ week }) => week === weekNumber);
+
+    if (result === undefined) {
+      year.push(weekObj);
+    } else if (result.week === weekNumber) {
+      result.entries.push(entries);
+    }
+  });
+
+  return year;
 }
 
-parseTime(help);
+async function generateTime(help) {
+  const allEntries = await parseTime(help);
+  console.log({ allEntries });
+  const yearData = await createWeeks(allEntries);
+  console.log({ yearData });
+}
+
+generateTime(help);
