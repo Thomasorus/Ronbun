@@ -45,29 +45,26 @@ async function cleanEntry(entry) {
 }
 
 async function createWeeks(allWeeks) {
-  let year = [];
+  const year = [];
   allWeeks.forEach(week => {
-    let weekNumber = week[0];
-    let entries = [
+    const weekNumber = week[0];
+    const entries = [
       { activity: week[1] },
       { project: week[2] },
       { hours: week[3] }
     ];
-    let weekObj = { week: weekNumber, entries: [entries] };
-
-    if (year.length <= 0) {
-      year.push(weekObj);
-    }
-
-    const result = year.find(({ week }) => week === weekNumber);
-
-    if (result === undefined) {
-      year.push(weekObj);
-    } else if (result.week === weekNumber) {
-      result.entries.push(entries);
+    const weekObj = { week: weekNumber, entries: [entries] };
+    if (!year.length) {
+         year.push(weekObj);
+    } else {
+        const result = year.find(({ week }) => week === weekNumber);
+        if (!result) {
+            year.push(weekObj);
+        } else if (result.week === weekNumber) {
+            result.entries.push(entries);
+        }
     }
   });
-
   return year;
 }
 
