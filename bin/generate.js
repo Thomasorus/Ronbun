@@ -2,9 +2,10 @@
 
 const fs = require("fs");
 const path = require("path");
+var rimraf = require("rimraf");
 const MarkdownIt = require("./markdown-it.min.js");
 const md = new MarkdownIt({
-  typographer: true
+  typographer: false
 });
 
 // https://gist.github.com/lovasoa/8691344#gistcomment-2631947
@@ -86,7 +87,7 @@ async function createEntries(index, navigation, data, imgList) {
     }
 
     //Parsing markdown and converting to html
-    let result = md.render(noTitleContent);
+    let result = md.render(textContent);
     let cleanedText = result.replace(/\n/g, "");
 
     index.content[subject] = index.content[subject] || {};
@@ -134,17 +135,59 @@ function generateDB(index, navigation) {
   );
 }
 
-function generatePages(index) {
-  let jsonContent = JSON.stringify(index);
+async function generateHtml(index) {
+  const content = index.content;
+  let template = fs.readFileSync("./partials/main.html", "utf8");
+
+  for (const key of Object.keys(content)) {
+    let obj = content[key];
+    let menus = createMenu(content, key);
+    const body = await templatingPage(template, obj.title, obj.text, menus);
+
+    fs.writeFileSync(`./dist/${key}.html`, body, err => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+    });
+  }
 }
 
+async function templatingPage(template, title, body, menus) {
+  console.log(title);
+  const head = "{{HEADTITLE}}";
+  template.replace(head, title);
+  template.replace("{{NAV}}", menus);
+  template.replace("{{BODY}}", body);
+  return template;
+}
+
+//Create menu from pages
+function createMenu(content, key) {
+  let listItems = "";
+  for (const i of Object.keys(content)) {
+    let link = `
+    <li><a class="${
+      i === key ? `active` : ""
+    }" href="/${i}.html">${i}</a></li>`;
+    listItems += link;
+  }
+  const menus = "<ul>" + listItems + "</ul>";
+  return menus;
+}
+
+function generatePages(index) {}
+
 async function generateAll() {
+  rimraf.sync("./dist");
+  fs.mkdirSync("./dist");
   let index = { content: {} };
   let navigation = { menu: {} };
   const imgList = await listFiles("./media");
   const data = await listFiles("./content");
   await createEntries(index, navigation, data, imgList);
-  generateDB(index, navigation);
+  await generateHtml(index);
+  // generateDB(index, navigation);
 }
 
 generateAll();
