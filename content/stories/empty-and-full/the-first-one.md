@@ -1,6 +1,6 @@
 # The First One
 
-**This First One** is the main protagonist of (link: empty-and-full text: Empty and Full).
+**This First One** is the main protagonist of [Empty and Full](empty-and-full.html).
 
 ## Eat The World
 
