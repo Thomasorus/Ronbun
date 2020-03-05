@@ -137,12 +137,11 @@ function generateDB(index, navigation) {
 
 async function generateHtml(index) {
   const content = index.content;
-  let template = fs.readFileSync("./partials/main.html", "utf8");
 
   for (const key of Object.keys(content)) {
     let obj = content[key];
-    let menus = createMenu(content, key);
-    const body = await templatingPage(template, obj.title, obj.text, menus);
+    let menus = createMenu(content, key, obj.parent);
+    const body = templatingPage(obj.title, obj.text, menus);
 
     fs.writeFileSync(`./dist/${key}.html`, body, err => {
       if (err) {
@@ -153,23 +152,23 @@ async function generateHtml(index) {
   }
 }
 
-async function templatingPage(template, title, body, menus) {
-  console.log(title);
-  const head = "{{HEADTITLE}}";
-  template.replace(head, title);
-  template.replace("{{NAV}}", menus);
-  template.replace("{{BODY}}", body);
+function templatingPage(title, body, menus, header, footer) {
+  let pageTitle = title ? title : "";
+  let pageBody = body ? body : "";
+  let pageMenus = menus ? menus : "";
+  let pageHeader = header ? pageHeader : "";
+  let pageFooter = footer ? pageFooter : "";
+  let template = `<!DOCTYPEhtml><htmllang="en"><head><metacharset="UTF-8"/><metaname="viewport"content="width=device-width,initial-scale=1.0"/><metahttp-equiv="X-UA-Compatible"content="ie=edge"/><title>${pageTitle}</title><style>html{font-size:10px;}body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"SegoeUI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"HelveticaNeue",sans-serif;font-variant-numeric:oldstyle-nums;font-size:1.6rem;background-color:whitesmoke;}img{max-width:100%;}main{max-width:600px;margin:auto;}.active{color:red;}</style></head><body>${pageHeader}${pageMenus}${pageBody}${pageFooter}</body></html>`;
+
   return template;
 }
 
 //Create menu from pages
-function createMenu(content, key) {
+function createMenu(content, key, parent) {
   let listItems = "";
   for (const i of Object.keys(content)) {
     let link = `
-    <li><a class="${
-      i === key ? `active` : ""
-    }" href="/${i}.html">${i}</a></li>`;
+    <li><a class="${i === key ? `active` : ""}" href="${i}.html">${i}</a></li>`;
     listItems += link;
   }
   const menus = "<ul>" + listItems + "</ul>";
