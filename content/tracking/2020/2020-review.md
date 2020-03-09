@@ -12,6 +12,7 @@ All the things I read in 2020.
 
 - Dorohedoro
 - Oroka na Tenshi wa Akuma to Odoru ~
+- Demon Slayer ~
 
 ### Comics
 
@@ -34,6 +35,8 @@ All the things I wrote in 2019.
 ### Played
 
 - Tekken 7
+- What remains of Edith Finch
+- Apex Legends
 
 ### Coded
 
@@ -46,8 +49,13 @@ All the things I watched in 2020.
 ### Anime
 
 - Steins gate 0
+- Keep Your Hands Off Eizouken!
+- Dorohedoro
 
 ### Movies
+
+- Porco Rosso
+- Mononoke Princess
 
 ### Documentaries
 
@@ -58,5 +66,6 @@ All the things I watched in 2020.
 ### Tv shows
 
 - Terrace House
+- Next in Fashion
 
 ### Notable videos
