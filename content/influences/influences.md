@@ -1,3 +1,0 @@
-# List of influences
-
-Make a list...
