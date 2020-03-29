@@ -2,8 +2,62 @@ import os
 import shutil
 import glob
 import re
-# import importlib
 mistune = __import__('mistune')
+
+def createMainMenu(slug, title, parent, entries):
+    print ("Creating main menu for " + title + "...")
+   
+    return "null"
+
+def createSiblingsMenu(slug, title, parent, entries):
+    print ("Creating siblings menu for " + parent + "...")
+    siblings = ""
+    for entry in entries:
+        if entry[2] == parent and entry[0] != parent:
+            if(entry[0] == slug):
+                siblings = siblings + "<li><a class='active' href='" + entry[0] + ".html'>" + entry[1] + "</a></li>"
+            else:
+                siblings = siblings + "<li><a href='" + entry[0] + ".html'>" + entry[1] + "</a></li>"
+    siblings = siblings + '</ul>'
+    print ("> Done!")
+    return siblings
+
+def createParentLink(parent, entries):
+    print ("Creating parent title for " + parent + "...")
+    title = "Root"
+    for entry in entries:
+        if entry[0] == parent:
+             title = entry[1]
+    parentLink = "<h3>This page is part of <a href='" + parent + ".html'>" + title + "</a></h3><ul>"
+    print ("> Done!")
+    return parentLink
+
+def generateHtmlPages(siteFolder, entries, template):
+    print ("Creating html pages...")
+    for entry in entries:
+        parentLink = createParentLink(entry[2], entries)
+        siblingsMenu = createSiblingsMenu(entry[0], entry[1], entry[2], entries)
+        mainMenu = createMainMenu(entry[0], entry[1], entry[2], entries)
+        pageTemplate = re.sub('pageTitle', entry[1], template)
+        pageTemplate = re.sub('pageBody', entry[3], pageTemplate)
+        pageTemplate = re.sub('parentLink', parentLink, pageTemplate)
+        pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
+        pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
+        print ("Generating file for " + entry[4] + "...")
+        pageFile = open(siteFolder + entry[0] + ".html", "w")
+        pageFile.write(pageTemplate)
+        pageFile.close()
+        print ("> Done!")
+        print (" ")
+    print ("All pages created!")
+
+
+def getHtmlTemplate(templatePath):
+    print ("Getting template file...")
+    template = open(templatePath,'r')
+    html = template.read()
+    print ("> Done!")
+    return html
 
 def getPageContent(page):
     print ('Starting conversion from Markdown to HTML...')
@@ -20,7 +74,7 @@ def getEntryTitle(page):
     textContent = textContent[0]
     textContent = textContent.replace('# ', '')
     print ('> Title is: "' + textContent + '"!')
-    pass
+    return textContent
 
 def getEntrySlug(page):
     print ("Getting page slug...")
@@ -44,6 +98,7 @@ def createEntries(pages, media):
         tempPage.append(getEntryTitle(page))
         tempPage.append(getEntryParent(page))
         tempPage.append(getPageContent(page))
+        tempPage.append(page)
         fullContent.append(tempPage)
         print (' ')
     return fullContent
@@ -70,13 +125,15 @@ def deleteWebsite(siteFolder):
     os.mkdir(siteFolder)
     print ('> Done!')
 
-def generateWebsite(siteFolder, mediaFolder, contentFolder):
+def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile):
     print (' ')
     print ('Welcome to the builder!')
     deleteWebsite(siteFolder)
     medias = listFiles(mediaFolder)
     pages = listPages(contentFolder)
     entries = createEntries(pages, medias)
+    template = getHtmlTemplate(templateFile)
+    generateHtmlPages(siteFolder, entries, template)
 
 
-generateWebsite('dist/', 'media/', 'content/')
+generateWebsite('dist/', 'media/', 'content/', 'partials/main.html')
