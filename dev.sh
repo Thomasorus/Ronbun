@@ -1,0 +1,1 @@
+python -m SimpleHTTPServer 8000 & ls bin/*.py | entr -r python3 bin/generate.py
