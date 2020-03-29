@@ -125,7 +125,6 @@ function templatingPage(title, body, parent, siblings, mainMenu) {
   </head>
   <body>
     <header></header>
-
     <main>
       <div>${mainMenu}</div>
       <article>
@@ -208,9 +207,8 @@ async function generateAll() {
   const imgList = await listFiles('./media');
   const data = await listFiles('./content');
   await createEntries(index, data, imgList);
-  console.log(index);
-  // await generateHtml(index);
-  // await getCss('./style.css', './dist/style.css');
+  await generateHtml(index);
+  await getCss('./style.css', './dist/style.css');
 
   // Todo : move all files into dist/media and compress them
 }
