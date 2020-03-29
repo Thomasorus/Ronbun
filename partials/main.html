@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./style.css" />
-    <title>${pageTitle}</title>
+    <title>pageTitle</title>
+    <style>
+      .active {
+        color:red;
+      }
+    </style>
   </head>
   <body>
-    <header>${pageMenus}</header>
+    <header>
+      <nav>
+        mainMenu
+      </nav>
+    </header>
     <main>
       <article>
-        ${pageBody}
+        pageBody
       </article>
       <aside>
-        <h3>${pageParent}</h3>
+        parentLink
         <nav>
-          ${pageMenuAlt}
+          pageMenuAlt
         </nav>
       </aside>
     </main>
