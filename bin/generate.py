@@ -4,6 +4,11 @@ import glob
 import re
 mistune = __import__('mistune')
 
+def recreateTitle(slug):
+    title = re.sub('-', ' ', slug);
+    title = title.title()
+    return title
+
 def createMainMenu(slug, title, parent, entries):
     print ("Creating main menu for " + title + "...")
     menu = "<ul><li><a href='./'>Home</a></li>"
@@ -34,26 +39,52 @@ def createSiblingsMenu(slug, title, parent, entries):
     print ("> Done!")
     return siblings
 
-def createParentLink(slug, title, parent, entries):
-    print ("Creating parent title for " + parent + "...")
 
-    parentTitle = ""
-    for entry in entries:
-        if entry[0] == parent:
-            parentTitle = "<h3>This page is the child of <a href='" + parent + ".html'>" + entry[1] + "</a></h3>"
+
+# def createParentLink(path):
+#     print ("Creating parent title for " + parent + "...")
+
+#     parentTitle = ""
+#     for entry in entries:
+#         if entry[0] == parent:
+#             parentTitle = "<h3>This page is the child of <a href='" + parent + ".html'>" + entry[1] + "</a></h3>"
   
-    print ("> Done!")
-    return parentTitle
+#     print ("> Done!")
+#     return parentTitle
+
+def createBreadcrumb(slug, title, path):
+    print ("Creating breadcrumb for page " + slug + "...")
+    path = re.sub('\.md$', '', path)
+    pathItems = path.split('/')
+    del pathItems[0]
+    breadCrumbItems = ""    
+
+    if len(pathItems) > 1:
+        for i, item in enumerate(pathItems):
+            print (i, len(pathItems))
+            if i < len(pathItems):
+                print (i, len(pathItems))
+
+                breadCrumbItems = breadCrumbItems + "<li><a href='" + item + ".html'>" + recreateTitle(item) + "</a></li>"
+            else:
+                breadCrumbItems = breadCrumbItems + "<li>" + recreateTitle(item) + "</li>"
+
+    breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
+    breadCrumbEnd = '</ol></nav>'
+    breadCrumb = breadCrumbStart + breadCrumbItems + breadCrumbEnd
+    return breadCrumb
+
 
 def generateHtmlPages(siteFolder, entries, template):
     print ("Creating html pages...")
     for entry in entries:
-        parentLink = createParentLink(entry[0], entry[1], entry[2], entries)
+        # parentLink = createParentLink(entry[0], entry[1], entry[2], entries)
+        breadcrumb = createBreadcrumb(entry[0], entry[1], entry[4])
         siblingsMenu = createSiblingsMenu(entry[0], entry[1], entry[2], entries)
         mainMenu = createMainMenu(entry[0], entry[1], entry[2], entries)
         pageTemplate = re.sub('pageTitle', entry[1], template)
         pageTemplate = re.sub('pageBody', entry[3], pageTemplate)
-        pageTemplate = re.sub('parentLink', parentLink, pageTemplate)
+        pageTemplate = re.sub('parentLink', breadcrumb, pageTemplate)
         pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
         pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
 
