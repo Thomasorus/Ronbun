@@ -6,36 +6,49 @@ mistune = __import__('mistune')
 
 def createMainMenu(slug, title, parent, entries):
     print ("Creating main menu for " + title + "...")
-   
-    return "null"
+    menu = "<ul><li><a href='./'>Home</a></li>"
+    menuItems = dict()
+    for entry in entries:
+        entryMenu = entry[4].split('/', 2)
+        entryMenu = entryMenu[1:-1]
+        entryMenu = "".join(entryMenu)
+        if entryMenu == entry[0]:
+            menuItems[entry[1]] = entryMenu
+    for key, value in menuItems.items():
+        menu = menu + "<li><a href='" + value + ".html'>" + key + "</a></li>"
+    menu = menu + '</ul>'
+    print ("> Done!")
+    return menu
 
 def createSiblingsMenu(slug, title, parent, entries):
     print ("Creating siblings menu for " + parent + "...")
     siblings = ""
     for entry in entries:
-        if entry[2] == parent and entry[0] != parent:
-            if(entry[0] == slug):
-                siblings = siblings + "<li><a class='active' href='" + entry[0] + ".html'>" + entry[1] + "</a></li>"
-            else:
+        if entry[2] == slug:
+            if(entry[0] != slug):
                 siblings = siblings + "<li><a href='" + entry[0] + ".html'>" + entry[1] + "</a></li>"
-    siblings = siblings + '</ul>'
+    
+    if siblings != "":
+        siblings = "<h3>This page has these children:</h3><ul>" + siblings + '</ul>'
+
     print ("> Done!")
     return siblings
 
-def createParentLink(parent, entries):
+def createParentLink(slug, title, parent, entries):
     print ("Creating parent title for " + parent + "...")
-    title = "Root"
+
+    parentTitle = ""
     for entry in entries:
         if entry[0] == parent:
-             title = entry[1]
-    parentLink = "<h3>This page is part of <a href='" + parent + ".html'>" + title + "</a></h3><ul>"
+            parentTitle = "<h3>This page is the child of <a href='" + parent + ".html'>" + entry[1] + "</a></h3>"
+  
     print ("> Done!")
-    return parentLink
+    return parentTitle
 
 def generateHtmlPages(siteFolder, entries, template):
     print ("Creating html pages...")
     for entry in entries:
-        parentLink = createParentLink(entry[2], entries)
+        parentLink = createParentLink(entry[0], entry[1], entry[2], entries)
         siblingsMenu = createSiblingsMenu(entry[0], entry[1], entry[2], entries)
         mainMenu = createMainMenu(entry[0], entry[1], entry[2], entries)
         pageTemplate = re.sub('pageTitle', entry[1], template)
@@ -43,14 +56,14 @@ def generateHtmlPages(siteFolder, entries, template):
         pageTemplate = re.sub('parentLink', parentLink, pageTemplate)
         pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
         pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
-        print ("Generating file for " + entry[4] + "...")
+
+        print ("Generating file for " + entry[1] + "...")
         pageFile = open(siteFolder + entry[0] + ".html", "w")
         pageFile.write(pageTemplate)
         pageFile.close()
         print ("> Done!")
         print (" ")
     print ("All pages created!")
-
 
 def getHtmlTemplate(templatePath):
     print ("Getting template file...")
@@ -83,9 +96,16 @@ def getEntrySlug(page):
     print ('> Slug is: "' + slug + '"!')
     return slug
 
-def getEntryParent(page):
+def getEntryParent(slug, page):
     print ("Getting page parent...")
-    parent = page.split("/")[-2]
+    menuLevel = -2
+    parent = page.split("/")[menuLevel]
+    if parent == slug:
+        while parent == slug:
+            menuLevel = menuLevel - 1
+            parent = page.split("/")[menuLevel]
+    if parent == "content":
+        parent = "Home"
     print ('> Parent is: "' + parent + '"!')
     return parent
 
@@ -94,9 +114,11 @@ def createEntries(pages, media):
     print ('Starting entries creation...')
     for page in pages:
         tempPage = []
-        tempPage.append(getEntrySlug(page))
+        slug = getEntrySlug(page)
+        tempPage.append(slug)
         tempPage.append(getEntryTitle(page))
-        tempPage.append(getEntryParent(page))
+        parent = getEntryParent(slug, page)
+        tempPage.append(parent)
         tempPage.append(getPageContent(page))
         tempPage.append(page)
         fullContent.append(tempPage)
