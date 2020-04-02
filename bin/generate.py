@@ -3,6 +3,7 @@ import shutil
 import glob
 import re
 mistune = __import__('mistune')
+import subprocess
 
 def recreateTitle(slug):
     title = re.sub('-', ' ', slug);
@@ -159,6 +160,7 @@ def deleteWebsite(siteFolder):
         shutil.rmtree(siteFolder)
     print ('Creating the new dist folder...')
     os.mkdir(siteFolder)
+    os.mkdir(siteFolder+"media")
     print ('> Done!')
 
 def generateCss(siteFolder, path):
@@ -171,6 +173,11 @@ def generateCss(siteFolder, path):
     else:
         print ("No css file found!")
 
+def convertImages():
+    print ("Converting images...")
+    subprocess.run('mogrify -path dist/media -filter Triangle -define filter:support=2 -thumbnail 1200 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB media/*', shell=True) 
+    print ('Done.')
+
 def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPath):
     print (' ')
     print ('Welcome to the builder!')
@@ -181,5 +188,7 @@ def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPat
     template = getHtmlTemplate(templateFile)
     generateHtmlPages(siteFolder, entries, template)
     generateCss(siteFolder, cssPath)
+    #Convert images only if you need it during development
+    # convertImages()
 
 generateWebsite('dist/', 'media/', 'content/', 'partials/main.html', 'partials/style.css')
