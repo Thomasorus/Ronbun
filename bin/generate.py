@@ -39,35 +39,18 @@ def createSiblingsMenu(slug, title, parent, entries):
     print ("> Done!")
     return siblings
 
-
-
-# def createParentLink(path):
-#     print ("Creating parent title for " + parent + "...")
-
-#     parentTitle = ""
-#     for entry in entries:
-#         if entry[0] == parent:
-#             parentTitle = "<h3>This page is the child of <a href='" + parent + ".html'>" + entry[1] + "</a></h3>"
-  
-#     print ("> Done!")
-#     return parentTitle
-
 def createBreadcrumb(slug, title, path):
     print ("Creating breadcrumb for page " + slug + "...")
     path = re.sub('\.md$', '', path)
     pathItems = path.split('/')
-    del pathItems[0]
+    pathItems = pathItems[1:-1]
+    print (pathItems)
     breadCrumbItems = ""    
-
-    if len(pathItems) > 1:
+    pathItemsLen = len(pathItems) - 1
+    if len(pathItems) >= 1:
         for i, item in enumerate(pathItems):
-            print (i, len(pathItems))
-            if i < len(pathItems):
-                print (i, len(pathItems))
-
+            if slug != item:
                 breadCrumbItems = breadCrumbItems + "<li><a href='" + item + ".html'>" + recreateTitle(item) + "</a></li>"
-            else:
-                breadCrumbItems = breadCrumbItems + "<li>" + recreateTitle(item) + "</li>"
 
     breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
     breadCrumbEnd = '</ol></nav>'
@@ -178,7 +161,17 @@ def deleteWebsite(siteFolder):
     os.mkdir(siteFolder)
     print ('> Done!')
 
-def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile):
+def generateCss(siteFolder, path):
+    print ('Generating CSS...')
+    cssFile = os.path.exists(path)
+    if cssFile:
+        print ("Found CSS!")
+        shutil.copy(path, siteFolder)
+        print ("Css copied!")
+    else:
+        print ("No css file found!")
+
+def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPath):
     print (' ')
     print ('Welcome to the builder!')
     deleteWebsite(siteFolder)
@@ -187,6 +180,6 @@ def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile):
     entries = createEntries(pages, medias)
     template = getHtmlTemplate(templateFile)
     generateHtmlPages(siteFolder, entries, template)
+    generateCss(siteFolder, cssPath)
 
-
-generateWebsite('dist/', 'media/', 'content/', 'partials/main.html')
+generateWebsite('dist/', 'media/', 'content/', 'partials/main.html', 'partials/style.css')
