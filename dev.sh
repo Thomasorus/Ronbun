@@ -1,1 +1,1 @@
-python3 -m http.server 8000 & ls */*.* | entr -r python3 bin/generate.py
+python3 -m http.server 8000 & find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "dist/" | entr -r python3 bin/generate.py
