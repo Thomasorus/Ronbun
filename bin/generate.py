@@ -11,33 +11,37 @@ def recreateTitle(slug):
     return title
 
 def createMainMenu(entries):
-    print ("Creating main menu...")
+    # print ("Creating main menu...")
     menu = "<h3>Main menu:</h3><ul>"
     for key, val in entries.items():
         if len(val['path']) == 1:
             menu = menu + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
         
     menu = menu + '</ul>'
-    print ("> Done!")
+    # print ("> Done!")
     return menu
 
-def createSubMenu(entry, entries):
-    print ("Creating siblings menu for " + entry['title'] + "...")
+def createSubMenu(entry):
+    # print ("Creating siblings menu for " + entry['title'] + "...")
     string = ''
-    for key, val in entries.items():
-        if entry['parent'] == key:
-            print ("We are treating " + key)
-            print(val)
-            if val['slug'] != entry['slug']:
-                string = string + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
-    if string != "":
-        string = "<h3>This page has these siblings:</h3><ul>" + string + '</ul>'
+    if "siblings" in entry:
+        for item in entry['siblings']:
+            string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
+        if string != "":
+           string = "<h3>This page has these siblings:</h3><ul>" + string + '</ul>'
 
-    print ("> Done!")
+
+    elif 'children' in entry:
+        for item in entry['children']:
+            string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
+        if string != "":
+            string = "<h3>This page has these children:</h3><ul>" + string + '</ul>'
+
+    # print ("> Done!")
     return string
 
 def createBreadcrumb(slug, path):
-    print ("Creating breadcrumb for page " + slug + "...")
+    # print ("Creating breadcrumb for page " + slug + "...")
     breadCrumbItems = ""    
     pathItemsLen = len(path) - 1
     if len(path) >= 1:
@@ -49,21 +53,19 @@ def createBreadcrumb(slug, path):
         breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
         breadCrumbEnd = '</ol></nav>'
         breadCrumb = breadCrumbStart + breadCrumbItems + breadCrumbEnd
-        print ("> Breadcrumb done!")
+        # print ("> Breadcrumb done!")
         return breadCrumb
     else:
-        print ('Noting in breadcrumb')
+        # print ('Nothing in breadcrumb')
         return ""
 
-
 def generateHtmlPages(siteFolder, entries, mainMenu,  template):
-    print ("Creating html pages...")
-    print(entries)
+    # print ("Creating html pages...")
     for key, val in entries.items():
-        print(val)
         breadcrumb = createBreadcrumb(val['slug'], val['path'])
 
-        siblingsMenu = createSubMenu(val, entries)
+        siblingsMenu = createSubMenu(val)
+
         pageTemplate = re.sub('pageTitle', val['parent'], template)
         pageTemplate = re.sub('pageBody', val['pageContent'], pageTemplate)
         pageTemplate = re.sub('parentLink', breadcrumb, pageTemplate)
@@ -71,19 +73,19 @@ def generateHtmlPages(siteFolder, entries, mainMenu,  template):
         pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
 
 
-        print ("Generating file for " + val['parent'] + "...")
+        # print ("Generating file for " + val['parent'] + "...")
         pageFile = open(siteFolder + val['slug'] + ".html", "w")
         pageFile.write(pageTemplate)
         pageFile.close()
-        print ("> Done!")
-        print (" ")
+        # print ("> Done!")
+        # print (" ")
     print ("All pages created!")
 
 def getHtmlTemplate(templatePath):
-    print ("Getting template file...")
+    # print ("Getting template file...")
     template = open(templatePath,'r')
     html = template.read()
-    print ("> Done!")
+    # print ("> Done!")
     return html
 
 def getPageContent(page):
@@ -123,24 +125,32 @@ def getSiblings(entries):
         childrenEntries = []
 
         for entry2 in entries:
-            #Creation des pages jumelles
-            if entry['parent'] == entry2['parent'] and entry['slug'] != entry2['slug'] and entry['slug'] != entry['parent']:
+            if entry['parent'] == entry2['parent'] and entry['slug'] != entry2['slug'] and entry2['slug'] != entry2['parent']:
                 tempEntries = {}
                 tempEntries['title'] = entry2['title']
                 tempEntries['slug'] = entry2['slug']
                 siblingEntries.append(tempEntries)
             
-            if entry['slug'] == entry2['parent'] and entry2['slug'] != entry2['parent']:
+            if entry['slug'] == entry2['parent'] and entry['slug'] != entry2['slug'] and entry2['slug'] != entry2['parent']:
                 tempChild = {}
                 tempChild['title'] = entry2['title']
                 tempChild['slug'] = entry2['slug']
                 childrenEntries.append(tempChild)
+            
+            if 'grandParent' in entry2 and entry['slug'] == entry2['grandParent']:
+                print(entry)
+                tempChild = {}
+                tempChild['title'] = entry2['title']
+                tempChild['slug'] = entry2['slug']
+                childrenEntries.append(tempChild)
+            
 
         if len(siblingEntries) >= 1:
             entry['siblings'] =  siblingEntries               
         if len(childrenEntries) >= 1:
             entry['children'] =  childrenEntries
-        
+        # print(entry)
+        print(' ')
         complete[entry['slug']] = entry
     return complete
 
@@ -170,7 +180,9 @@ def createEntries(pages, media):
                 slug = path[-1]
                 print ("slug is... " + slug)
         
-        # if slug == 
+        if slug == '':
+            slug = 'index'
+            
         title = getEntryTitle(page)
         pageContent = getPageContent(page)
 
@@ -210,12 +222,9 @@ def deleteWebsite(siteFolder):
     print ('> Done!')
 
 def generateCss(siteFolder, path):
-    print ('Generating CSS...')
     cssFile = os.path.exists(path)
     if cssFile:
-        print ("Found CSS!")
         shutil.copy(path, siteFolder)
-        print ("Css copied!")
     else:
         print ("No css file found!")
 
@@ -245,7 +254,7 @@ def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPat
     mainMenu = createMainMenu(siblings)
     generateHtmlPages(siteFolder, siblings, mainMenu, template)
     generateCss(siteFolder, cssPath)
-    #Convert images only if you need it during development
+    # Convert images only if you need it during development
     convertImages()
 
 generateWebsite('dist/', 'media/', 'content/', 'partials/main.html', 'partials/style.css')
