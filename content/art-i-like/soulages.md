@@ -1,6 +1,6 @@
 # Pierre Soulages
 
-![Pierre Soulages](/media/soulages.jpg)
+![Pierre Soulages](media/soulages.jpg)
 
 Pierre Soulages is an artist born in 1919 and known as the **master of black**. As a seeker of shapes, he took inspiration in threes during sunset, broken windows fixed with tar and abstract geometries.
 
