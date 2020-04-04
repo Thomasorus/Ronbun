@@ -28,4 +28,4 @@
 | 12   | DIY         | Arcade stick   | 10    |
 | 13   | Development | Art Eater      | 4     |
 | 13   | Development | Wiki           | 6     |
-| 14   | Development | Wiki           | 10    |
+| 14   | Development | Wiki           | 12    |
