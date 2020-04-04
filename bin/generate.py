@@ -10,70 +10,69 @@ def recreateTitle(slug):
     title = title.title()
     return title
 
-def createMainMenu(slug, title, parent, entries):
-    print ("Creating main menu for " + title + "...")
-    menu = "<ul><li><a href='./'>Home</a></li>"
-    menuItems = dict()
-    for entry in entries:
-        entryMenu = entry[4].split('/', 2)
-        entryMenu = entryMenu[1:-1]
-        entryMenu = "".join(entryMenu)
-        if entryMenu == entry[0]:
-            menuItems[entry[1]] = entryMenu
-    for key, value in menuItems.items():
-        menu = menu + "<li><a href='" + value + ".html'>" + key + "</a></li>"
+def createMainMenu(entries):
+    print ("Creating main menu...")
+    menu = "<h3>Main menu:</h3><ul>"
+    for key, val in entries.items():
+        if len(val['path']) == 1:
+            menu = menu + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
+        
     menu = menu + '</ul>'
     print ("> Done!")
     return menu
 
-def createSiblingsMenu(slug, title, parent, entries):
-    print ("Creating siblings menu for " + parent + "...")
-    siblings = ""
-    for entry in entries:
-        if entry[2] == slug:
-            if(entry[0] != slug):
-                siblings = siblings + "<li><a href='" + entry[0] + ".html'>" + entry[1] + "</a></li>"
-    
-    if siblings != "":
-        siblings = "<h3>This page has these children:</h3><ul>" + siblings + '</ul>'
+def createSubMenu(entry, entries):
+    print ("Creating siblings menu for " + entry['title'] + "...")
+    string = ''
+    for key, val in entries.items():
+        if entry['parent'] == key:
+            print ("We are treating " + key)
+            print(val)
+            if val['slug'] != entry['slug']:
+                string = string + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
+    if string != "":
+        string = "<h3>This page has these siblings:</h3><ul>" + string + '</ul>'
 
     print ("> Done!")
-    return siblings
+    return string
 
-def createBreadcrumb(slug, title, path):
+def createBreadcrumb(slug, path):
     print ("Creating breadcrumb for page " + slug + "...")
-    path = re.sub('\.md$', '', path)
-    pathItems = path.split('/')
-    pathItems = pathItems[1:-1]
-    print (pathItems)
     breadCrumbItems = ""    
-    pathItemsLen = len(pathItems) - 1
-    if len(pathItems) >= 1:
-        for i, item in enumerate(pathItems):
+    pathItemsLen = len(path) - 1
+    if len(path) >= 1:
+        for i, item in enumerate(path):
             if slug != item:
-                breadCrumbItems = breadCrumbItems + "<li><a href='" + item + ".html'>" + recreateTitle(item) + "</a></li>"
+                breadCrumbItems = breadCrumbItems + "<li><a href='" + item + ".html'>" + recreateTitle(item) + "</a><span aria-hidden='true'>&nbsp; &#x2935</span></li>"
 
-    breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
-    breadCrumbEnd = '</ol></nav>'
-    breadCrumb = breadCrumbStart + breadCrumbItems + breadCrumbEnd
-    return breadCrumb
+    if breadCrumbItems != '':
+        breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
+        breadCrumbEnd = '</ol></nav>'
+        breadCrumb = breadCrumbStart + breadCrumbItems + breadCrumbEnd
+        print ("> Breadcrumb done!")
+        return breadCrumb
+    else:
+        print ('Noting in breadcrumb')
+        return ""
 
 
-def generateHtmlPages(siteFolder, entries, template):
+def generateHtmlPages(siteFolder, entries, mainMenu,  template):
     print ("Creating html pages...")
-    for entry in entries:
-        # parentLink = createParentLink(entry[0], entry[1], entry[2], entries)
-        breadcrumb = createBreadcrumb(entry[0], entry[1], entry[4])
-        siblingsMenu = createSiblingsMenu(entry[0], entry[1], entry[2], entries)
-        mainMenu = createMainMenu(entry[0], entry[1], entry[2], entries)
-        pageTemplate = re.sub('pageTitle', entry[1], template)
-        pageTemplate = re.sub('pageBody', entry[3], pageTemplate)
+    print(entries)
+    for key, val in entries.items():
+        print(val)
+        breadcrumb = createBreadcrumb(val['slug'], val['path'])
+
+        siblingsMenu = createSubMenu(val, entries)
+        pageTemplate = re.sub('pageTitle', val['parent'], template)
+        pageTemplate = re.sub('pageBody', val['pageContent'], pageTemplate)
         pageTemplate = re.sub('parentLink', breadcrumb, pageTemplate)
         pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
         pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
 
-        print ("Generating file for " + entry[1] + "...")
-        pageFile = open(siteFolder + entry[0] + ".html", "w")
+
+        print ("Generating file for " + val['parent'] + "...")
+        pageFile = open(siteFolder + val['slug'] + ".html", "w")
         pageFile.write(pageTemplate)
         pageFile.close()
         print ("> Done!")
@@ -109,33 +108,80 @@ def getEntrySlug(page):
     slug = page.split("/")[-1]
     slug = re.sub('\.md$', '', slug)
     print ('> Slug is: "' + slug + '"!')
-    return slug
+    if slug:
+        print ('What is slug? ' + slug)
+        return slug
+    else:
+        return ''
 
-def getEntryParent(slug, page):
-    print ("Getting page parent...")
-    menuLevel = -2
-    parent = page.split("/")[menuLevel]
-    if parent == slug:
-        while parent == slug:
-            menuLevel = menuLevel - 1
-            parent = page.split("/")[menuLevel]
-    if parent == "content":
-        parent = "Home"
-    print ('> Parent is: "' + parent + '"!')
-    return parent
+def getSiblings(entries):
+    print ('Creating siblings...')
+    
+    complete = {}
+    for entry in entries:
+        siblingEntries = []
+        childrenEntries = []
+
+        for entry2 in entries:
+            #Creation des pages jumelles
+            if entry['parent'] == entry2['parent'] and entry['slug'] != entry2['slug'] and entry['slug'] != entry['parent']:
+                tempEntries = {}
+                tempEntries['title'] = entry2['title']
+                tempEntries['slug'] = entry2['slug']
+                siblingEntries.append(tempEntries)
+            
+            if entry['slug'] == entry2['parent'] and entry2['slug'] != entry2['parent']:
+                tempChild = {}
+                tempChild['title'] = entry2['title']
+                tempChild['slug'] = entry2['slug']
+                childrenEntries.append(tempChild)
+
+        if len(siblingEntries) >= 1:
+            entry['siblings'] =  siblingEntries               
+        if len(childrenEntries) >= 1:
+            entry['children'] =  childrenEntries
+        
+        complete[entry['slug']] = entry
+    return complete
 
 def createEntries(pages, media):
     fullContent = []
     print ('Starting entries creation...')
+
     for page in pages:
-        tempPage = []
-        slug = getEntrySlug(page)
-        tempPage.append(slug)
-        tempPage.append(getEntryTitle(page))
-        parent = getEntryParent(slug, page)
-        tempPage.append(parent)
-        tempPage.append(getPageContent(page))
-        tempPage.append(page)
+        tempPage = {}
+
+        path = cleanPath(page)
+        parent = ''
+        grandParent = ''
+        slug = ''
+
+        if len(path) >= 2:
+            if path[-1] == path[-2]:
+                parent = path[-1]
+                if len(path) >= 3:
+                    grandParent = path[-3]
+                path = path[:-1]
+            else:
+                parent = path[-2]
+            print ("Parent is... " + parent)
+        
+            if len(path) >= 1:
+                slug = path[-1]
+                print ("slug is... " + slug)
+        
+        # if slug == 
+        title = getEntryTitle(page)
+        pageContent = getPageContent(page)
+
+        tempPage['slug'] = slug
+        tempPage['parent'] = parent
+        if grandParent != '':
+            tempPage['grandParent'] = grandParent
+        tempPage['title'] =title
+        tempPage['pageContent'] = pageContent
+        tempPage['path'] = path
+
         fullContent.append(tempPage)
         print (' ')
     return fullContent
@@ -178,6 +224,15 @@ def convertImages():
     subprocess.run('mogrify -path dist/media -filter Triangle -define filter:support=2 -thumbnail 1200 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB media/*', shell=True) 
     print ('Done.')
 
+def cleanPath(path):
+    print ('Cleaning the path ' + path + ' for future use...')
+    path = re.sub('\.md$', '', path)
+    pathItems = path.split('/')
+    pathItems = pathItems[1:]
+    print (pathItems)
+    print ("> Done !")
+    return pathItems
+
 def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPath):
     print (' ')
     print ('Welcome to the builder!')
@@ -185,10 +240,12 @@ def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPat
     medias = listFiles(mediaFolder)
     pages = listPages(contentFolder)
     entries = createEntries(pages, medias)
+    siblings = getSiblings(entries)
     template = getHtmlTemplate(templateFile)
-    generateHtmlPages(siteFolder, entries, template)
+    mainMenu = createMainMenu(siblings)
+    generateHtmlPages(siteFolder, siblings, mainMenu, template)
     generateCss(siteFolder, cssPath)
     #Convert images only if you need it during development
-    # convertImages()
+    convertImages()
 
 generateWebsite('dist/', 'media/', 'content/', 'partials/main.html', 'partials/style.css')
