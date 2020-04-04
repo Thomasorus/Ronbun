@@ -5,65 +5,62 @@ import re
 mistune = __import__('mistune')
 import subprocess
 
-def recreateTitle(slug):
-    title = re.sub('-', ' ', slug);
-    title = title.title()
-    return title
+# def recreateTitle(slug):
+#     title = re.sub('-', ' ', slug);
+#     title = title.title()
+#     return title
 
+# Creates main menu from entries by checking the lenght of their path and selecting only 
+# the ones who have a single object in their path
 def createMainMenu(entries):
-    # print ("Creating main menu...")
     menu = "<h3>Main menu:</h3><ul>"
     for key, val in entries.items():
         if len(val['path']) == 1:
             menu = menu + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
-        
     menu = menu + '</ul>'
-    # print ("> Done!")
     return menu
 
+# Creates html submenu from the siblings or children dictionnay in the entry
 def createSubMenu(entry):
-    # print ("Creating siblings menu for " + entry['title'] + "...")
     string = ''
     if "siblings" in entry:
         for item in entry['siblings']:
             string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
         if string != "":
            string = "<h3>This page has these siblings:</h3><ul>" + string + '</ul>'
-
-
     elif 'children' in entry:
         for item in entry['children']:
             string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
         if string != "":
             string = "<h3>This page has these children:</h3><ul>" + string + '</ul>'
-
-    # print ("> Done!")
     return string
 
-def createBreadcrumb(slug, path):
-    # print ("Creating breadcrumb for page " + slug + "...")
-    breadCrumbItems = ""    
-    pathItemsLen = len(path) - 1
-    if len(path) >= 1:
-        for i, item in enumerate(path):
-            if slug != item:
-                breadCrumbItems = breadCrumbItems + "<li><a href='" + item + ".html'>" + recreateTitle(item) + "</a><span aria-hidden='true'>&nbsp; &#x2935</span></li>"
+# Creates breadcrumb by using the path items and finding corresponding details in entries
+def createBreadcrumb(key, entry, entries):
+    breadCrumbItems = ""  
+    entryPath = entry['path'][:-1]  
+    pathItemsLen = len(entry['path']) - 1
+    if len(entryPath) >= 1:
+        for i, item in enumerate(entryPath):
+            for key, val in entries.items():
+                print (key, val)
+                if val['slug'] == item:
+                    breadCrumbItems = breadCrumbItems + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a><span aria-hidden='true'>&nbsp; &#x2935</span></li>"
 
     if breadCrumbItems != '':
         breadCrumbStart = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>'
         breadCrumbEnd = '</ol></nav>'
         breadCrumb = breadCrumbStart + breadCrumbItems + breadCrumbEnd
-        # print ("> Breadcrumb done!")
         return breadCrumb
     else:
-        # print ('Nothing in breadcrumb')
         return ""
+    return ""
 
-def generateHtmlPages(siteFolder, entries, mainMenu,  template):
-    # print ("Creating html pages...")
+# Generates html files in the site folder, using the entries and the template.
+# Also triggers the creation of the breadcrumb and the submenu
+def generateHtmlPages(siteFolder, entries, mainMenu, template):
     for key, val in entries.items():
-        breadcrumb = createBreadcrumb(val['slug'], val['path'])
-
+        breadcrumb = createBreadcrumb(key, val, entries)
         siblingsMenu = createSubMenu(val)
 
         pageTemplate = re.sub('pageTitle', val['parent'], template)
@@ -72,53 +69,44 @@ def generateHtmlPages(siteFolder, entries, mainMenu,  template):
         pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
         pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
 
-
-        # print ("Generating file for " + val['parent'] + "...")
         pageFile = open(siteFolder + val['slug'] + ".html", "w")
         pageFile.write(pageTemplate)
         pageFile.close()
-        # print ("> Done!")
-        # print (" ")
     print ("All pages created!")
 
+# Recovers the html template to be used on the website
 def getHtmlTemplate(templatePath):
-    # print ("Getting template file...")
     template = open(templatePath,'r')
     html = template.read()
-    # print ("> Done!")
     return html
 
+# Parses markdown and converts it to html
 def getPageContent(page):
-    print ('Starting conversion from Markdown to HTML...')
     pageContent = open(page,'r')
     html = mistune.markdown(pageContent.read())
-    print ("> Conversion is done!")
     return html
 
+# Get title by parsing and cleaning the first line of the markdown file
 def getEntryTitle(page):
-    print ("Getting page title...")
     pageContent = open(page,'r')
     textContent = pageContent.read()
     textContent = textContent.splitlines()
     textContent = textContent[0]
     textContent = textContent.replace('# ', '')
-    print ('> Title is: "' + textContent + '"!')
     return textContent
 
+# Get the slug from the markdown file name
 def getEntrySlug(page):
-    print ("Getting page slug...")
     slug = page.split("/")[-1]
     slug = re.sub('\.md$', '', slug)
-    print ('> Slug is: "' + slug + '"!')
     if slug:
-        print ('What is slug? ' + slug)
         return slug
     else:
         return ''
 
-def getSiblings(entries):
-    print ('Creating siblings...')
-    
+# Using the parent and grandParent keys, creates the siblings or children arrays who
+# will be later used for creating submenus
+def getSiblings(entries):    
     complete = {}
     for entry in entries:
         siblingEntries = []
@@ -138,7 +126,6 @@ def getSiblings(entries):
                 childrenEntries.append(tempChild)
             
             if 'grandParent' in entry2 and entry['slug'] == entry2['grandParent']:
-                print(entry)
                 tempChild = {}
                 tempChild['title'] = entry2['title']
                 tempChild['slug'] = entry2['slug']
@@ -149,15 +136,12 @@ def getSiblings(entries):
             entry['siblings'] =  siblingEntries               
         if len(childrenEntries) >= 1:
             entry['children'] =  childrenEntries
-        # print(entry)
-        print(' ')
         complete[entry['slug']] = entry
     return complete
 
-def createEntries(pages, media):
+# From the list of files, creates the main array of entries that will be processed later
+def createEntries(pages):
     fullContent = []
-    print ('Starting entries creation...')
-
     for page in pages:
         tempPage = {}
 
@@ -174,11 +158,9 @@ def createEntries(pages, media):
                 path = path[:-1]
             else:
                 parent = path[-2]
-            print ("Parent is... " + parent)
         
             if len(path) >= 1:
                 slug = path[-1]
-                print ("slug is... " + slug)
         
         if slug == '':
             slug = 'index'
@@ -195,32 +177,23 @@ def createEntries(pages, media):
         tempPage['path'] = path
 
         fullContent.append(tempPage)
-        print (' ')
     return fullContent
 
+# Recursively gather all files locations into an array
 def listPages(contentFolder):
-    print ('Checking for pages...')
     pages = glob.glob(contentFolder + '**/*.md', recursive=True)
-    print ('> Found ' + str(len(pages)) + ' pages in content folder!')
     return pages
 
-def listFiles(mediaFolder):
-    print ('Checking media files...')
-    media = glob.glob(mediaFolder + '*.*')
-    print ('> Found ' + str(len(media)) + ' media files in media folder!')
-    return media
-
+# Deletes existing dist folder and its content then recreates it
+# as well as the media folder
 def deleteWebsite(siteFolder):
-    print ('Checking for existing website...')
     siteExists = os.path.exists(siteFolder)
     if siteExists:
-        print ('> Found it! Deleting existing website!')
         shutil.rmtree(siteFolder)
-    print ('Creating the new dist folder...')
     os.mkdir(siteFolder)
     os.mkdir(siteFolder+"media")
-    print ('> Done!')
 
+# Copies css source to dist
 def generateCss(siteFolder, path):
     cssFile = os.path.exists(path)
     if cssFile:
@@ -228,33 +201,32 @@ def generateCss(siteFolder, path):
     else:
         print ("No css file found!")
 
+# Bash script using image magick to convert images and move them to dist/media
 def convertImages():
     print ("Converting images...")
     subprocess.run('mogrify -path dist/media -filter Triangle -define filter:support=2 -thumbnail 1200 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB media/*', shell=True) 
     print ('Done.')
 
+# Transforms the file locations to an array of strings
 def cleanPath(path):
-    print ('Cleaning the path ' + path + ' for future use...')
     path = re.sub('\.md$', '', path)
     pathItems = path.split('/')
     pathItems = pathItems[1:]
-    print (pathItems)
-    print ("> Done !")
     return pathItems
 
-def generateWebsite(siteFolder, mediaFolder, contentFolder, templateFile, cssPath):
+# Main function, generates the website
+def generateWebsite(siteFolder, contentFolder, templateFile, cssPath):
     print (' ')
     print ('Welcome to the builder!')
     deleteWebsite(siteFolder)
-    medias = listFiles(mediaFolder)
     pages = listPages(contentFolder)
-    entries = createEntries(pages, medias)
+    entries = createEntries(pages)
     siblings = getSiblings(entries)
     template = getHtmlTemplate(templateFile)
     mainMenu = createMainMenu(siblings)
     generateHtmlPages(siteFolder, siblings, mainMenu, template)
     generateCss(siteFolder, cssPath)
     # Convert images only if you need it during development
-    convertImages()
+    # convertImages()
 
-generateWebsite('dist/', 'media/', 'content/', 'partials/main.html', 'partials/style.css')
+generateWebsite('dist/', 'content/', 'partials/main.html', 'partials/style.css')
