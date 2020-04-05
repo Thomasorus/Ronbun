@@ -192,14 +192,18 @@ def deleteWebsite(siteFolder):
         shutil.rmtree(siteFolder)
     os.mkdir(siteFolder)
     os.mkdir(siteFolder+"media")
+    os.mkdir(siteFolder+"assets")
 
 # Copies css source to dist
-def generateCss(siteFolder, path):
-    cssFile = os.path.exists(path)
-    if cssFile:
-        shutil.copy(path, siteFolder)
+def moveAssets(siteFolder, path):
+    assets = os.listdir(path)
+    if assets:
+        for asset in assets:
+            asset = os.path.join(path, asset)
+            if os.path.isfile(asset):
+                shutil.copy(asset, siteFolder+path)
     else:
-        print ("No css file found!")
+        print ("No assets found!")
 
 # Bash script using image magick to convert images and move them to dist/media
 def convertImages():
@@ -215,7 +219,7 @@ def cleanPath(path):
     return pathItems
 
 # Main function, generates the website
-def generateWebsite(siteFolder, contentFolder, templateFile, cssPath):
+def generateWebsite(siteFolder, contentFolder, templateFile, assetsPath):
     print (' ')
     print ('Welcome to the builder!')
     deleteWebsite(siteFolder)
@@ -225,8 +229,8 @@ def generateWebsite(siteFolder, contentFolder, templateFile, cssPath):
     template = getHtmlTemplate(templateFile)
     mainMenu = createMainMenu(siblings)
     generateHtmlPages(siteFolder, siblings, mainMenu, template)
-    generateCss(siteFolder, cssPath)
+    moveAssets(siteFolder, assetsPath)
     # Convert images only if you need it during development
-    # convertImages()
+    convertImages()
 
-generateWebsite('dist/', 'content/', 'partials/main.html', 'partials/style.css')
+generateWebsite('dist/', 'content/', 'partials/main.html', 'assets/')
