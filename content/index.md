@@ -1,3 +1,3 @@
-# This is the home
+# Home
 
 Ceci est la home

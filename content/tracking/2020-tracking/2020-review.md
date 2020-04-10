@@ -13,6 +13,9 @@ All the things I read in 2020.
 - Dorohedoro
 - Oroka na Tenshi wa Akuma to Odoru ~
 - Demon Slayer ~
+- The promised neverland
+
+-
 
 ### Comics
 
@@ -51,6 +54,7 @@ All the things I watched in 2020.
 - Steins gate 0
 - Keep Your Hands Off Eizouken!
 - Dorohedoro
+- Beastars
 
 ### Movies
 
