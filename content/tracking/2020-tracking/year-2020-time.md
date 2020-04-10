@@ -29,3 +29,5 @@
 | 13   | Development | Art Eater      | 4     |
 | 13   | Development | Wiki           | 6     |
 | 14   | Development | Wiki           | 12    |
+| 15   | Development | Wiki           | 2     |
+| 15   | Studies     | Javascript     | 5     |
