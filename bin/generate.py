@@ -13,7 +13,7 @@ import subprocess
 # Creates main menu from entries by checking the lenght of their path and selecting only 
 # the ones who have a single object in their path
 def createMainMenu(entries):
-    menu = "<h3>Main menu:</h3><ul>"
+    menu = "<ul>"
     for key, val in entries.items():
         if len(val['path']) == 1:
             menu = menu + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a></li>"
@@ -22,17 +22,18 @@ def createMainMenu(entries):
 
 # Creates html submenu from the siblings or children dictionnay in the entry
 def createSubMenu(entry):
+    print (entry)
     string = ''
     if "siblings" in entry:
         for item in entry['siblings']:
             string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
         if string != "":
-           string = "<h3>This page has these siblings:</h3><ul>" + string + '</ul>'
+           string = "<h3>Other pages in " + entry['parent'] + " :</h3><ul>" + string + '</ul>'
     elif 'children' in entry:
         for item in entry['children']:
             string = string + "<li><a href='" + item['slug'] + ".html'>" + item['title'] + "</a></li>"
         if string != "":
-            string = "<h3>This page has these children:</h3><ul>" + string + '</ul>'
+           string = "<h3>Other pages in " + entry['parent'] + " :</h3><ul>" + string + '</ul>'
     return string
 
 # Creates breadcrumb by using the path items and finding corresponding details in entries
@@ -43,7 +44,6 @@ def createBreadcrumb(key, entry, entries):
     if len(entryPath) >= 1:
         for i, item in enumerate(entryPath):
             for key, val in entries.items():
-                print (key, val)
                 if val['slug'] == item:
                     breadCrumbItems = breadCrumbItems + "<li><a href='" + val['slug'] + ".html'>" + val['title'] + "</a><span aria-hidden='true'>&nbsp; &#x2935</span></li>"
 
@@ -56,18 +56,23 @@ def createBreadcrumb(key, entry, entries):
         return ""
     return ""
 
+def createMainImage(slug, title):
+    image = "<img class='main-image' src='media/" + slug + ".jpg' aria-hidden='true' alt=''/>"
+    return image
+
 # Generates html files in the site folder, using the entries and the template.
 # Also triggers the creation of the breadcrumb and the submenu
 def generateHtmlPages(siteFolder, entries, mainMenu, template):
     for key, val in entries.items():
         breadcrumb = createBreadcrumb(key, val, entries)
-        siblingsMenu = createSubMenu(val)
+        # siblingsMenu = createSubMenu(val)
 
         pageTemplate = re.sub('pageTitle', val['parent'], template)
         pageTemplate = re.sub('pageBody', val['pageContent'], pageTemplate)
         pageTemplate = re.sub('parentLink', breadcrumb, pageTemplate)
         pageTemplate = re.sub('mainMenu', mainMenu, pageTemplate)
-        pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
+        # pageTemplate = re.sub('pageMenuAlt', siblingsMenu, pageTemplate)
+        pageTemplate = re.sub('imageFull', createMainImage(val['slug'], val['title']), pageTemplate)
 
         pageFile = open(siteFolder + val['slug'] + ".html", "w")
         pageFile.write(pageTemplate)
