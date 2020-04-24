@@ -31,3 +31,12 @@
 | 14   | Development | Wiki           | 12    |
 | 15   | Development | Wiki           | 2     |
 | 15   | Studies     | Javascript     | 5     |
+| 15   | Studies     | Javascript     | 3     |
+| 15   | Writing     | Bas Gros Poing | 6     |
+| 16   | Development | Bas Gros Poing | 1     |
+| 16   | Podcast     | Pugilat        | 3     |
+| 16   | Studies     | Javascript     | 2     |
+| 16   | Podcast     | Bas Gros Poing | 4     |
+| 17   | Podcast     | Pugilat        | 8     |
+| 17   | Podcast     | Bas Gros Poing | 3     |
+| 17   | Studies     | Javascript     | 2     |
