@@ -4,6 +4,7 @@
 | ---- | ----------- | -------------- | ----- |
 | 1    |             |                |       |
 | 2    | Development | Wiki           | 6     |
+| 2    | Podcast     | Tauliers       | 3     |
 | 3    | Podcast     | Bas Gros Poing | 4     |
 | 3    | Development | Wiki           | 1     |
 | 4    | Development | Wiki           | 1     |
@@ -23,11 +24,13 @@
 | 10   | Development | Wiki           | 3     |
 | 10   | Development | Bas Gros Poing | 2     |
 | 10   | Development | Art Eater      | 2     |
+| 10   | Podcast     | Tauliers       | 3     |
 | 11   | Development | Art Eater      | 4.5   |
 | 12   | Development | Art Eater      | 12    |
 | 12   | DIY         | Arcade stick   | 10    |
 | 13   | Development | Art Eater      | 4     |
 | 13   | Development | Wiki           | 6     |
+| 13   | Podcast     | Tauliers       | 3     |
 | 14   | Development | Wiki           | 12    |
 | 15   | Development | Wiki           | 2     |
 | 15   | Studies     | Javascript     | 5     |
@@ -40,3 +43,4 @@
 | 17   | Podcast     | Pugilat        | 8     |
 | 17   | Podcast     | Bas Gros Poing | 3     |
 | 17   | Studies     | Javascript     | 2     |
+| 17   | Podcast     | Tauliers       | 3     |
