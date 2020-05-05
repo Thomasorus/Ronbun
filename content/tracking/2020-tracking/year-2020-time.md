@@ -44,3 +44,7 @@
 | 17   | Podcast     | Bas Gros Poing | 3     |
 | 17   | Studies     | Javascript     | 2     |
 | 17   | Podcast     | Tauliers       | 3     |
+| 18   | Editorial     | Bas Gros Poing       | 4     |
+| 18   | Development     | Parser       | 4     |
+| 19   | Management     | Bas Gros Poing       | 4     |
+| 19   | Development     | Parser       | 5     |
