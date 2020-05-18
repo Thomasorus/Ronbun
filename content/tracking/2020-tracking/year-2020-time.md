@@ -48,3 +48,4 @@
 | 18   | Development     | Parser       | 4     |
 | 19   | Management     | Bas Gros Poing       | 4     |
 | 19   | Development     | Parser       | 5     |
+| 20   | Writing     | Bas Gros Poing | 1     |
