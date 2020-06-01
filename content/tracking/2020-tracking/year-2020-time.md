@@ -45,8 +45,10 @@
 | 17   | Studies     | Javascript     | 2     |
 | 17   | Podcast     | Tauliers       | 3     |
 | 18   | Editorial     | Bas Gros Poing       | 4     |
-| 18   | Development     | Parser       | 4     |
+| 18   | Development     | Kaku       | 4     |
 | 19   | Management     | Bas Gros Poing       | 4     |
-| 19   | Development     | Parser       | 5     |
+| 19   | Development     | Kaku       | 5     |
 | 20   | Writing     | Bas Gros Poing | 1     |
 | 21   | Writing     | Bas Gros Poing | 4     |
+| 22   | Development     | Kaku       | 8     |
+| 23   | Development     | Kaku       | 4     |
