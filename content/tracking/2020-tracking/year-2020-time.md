@@ -51,4 +51,4 @@
 | 20   | Writing     | Bas Gros Poing | 1     |
 | 21   | Writing     | Bas Gros Poing | 4     |
 | 22   | Development     | Kaku       | 8     |
-| 23   | Development     | Kaku       | 4     |
+| 23   | Development     | Kaku       | 9     |
