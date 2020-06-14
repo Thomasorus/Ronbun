@@ -52,3 +52,4 @@
 | 21   | Writing     | Bas Gros Poing | 4     |
 | 22   | Development     | Kaku       | 8     |
 | 23   | Development     | Kaku       | 13     |
+| 24   | DIY     | Keyboard       | 5     |
