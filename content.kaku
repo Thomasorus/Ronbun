@@ -1,0 +1,35 @@
+====
+NAME: HOME
+HOST: home
+BREF: This is the home of the website
+BODY:
+
+# Well hello lol
+
++ {tools.html, "tools", weipfnwnmeo}
++ {stuff.html, "stuff"}
+
+- lol
+- nope
+
+====
+
+NAME: KAKU
+HOST: tools
+BREF: Welcome to Kaku's demo! Kaku is my own markup language. It's inspired by Markdown with a few modification for quotes, links, images and lists handling. It was created to fit my needs.
+BODY:
+
+ {https://github.com/Thomasorus/Kaku, "Visit the repo for the full documentation.", Link to Kaku's repo}
+
+~ "Kaku is mostly used for my static website build.", Thomasors, Kaku's Repo, https://github.com/Thomasorus/Kaku~
+
+====
+
+NAME: TOOLS
+HOST: home
+BREF: A collection of hardware and software tools I use
+BODY:
+
+{/kaku.html, "Kaku"} is my own markup language.
+
+====
