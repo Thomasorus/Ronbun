@@ -6,123 +6,46 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
-  font-family: monospace;
-  background: #222;
-  color: white;
-  display: flex;
+  background: white;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  margin:50px 80px;
+  line-height: 1.45;
+font-variant-numeric: oldstyle-nums;
 }
 
-@media (max-width: 600px) {
-  body {
-    display: initial;
-  }
+h1,h2,h3,h4,h5,h6,a,p,ul,li {
+  /* Temp */
 }
-img {
-  max-width: 100%;
+
+a { color: #111; padding:3px}
+a:visited {color: #555;}
+a:hover {background-color: #111; color:white;}
+
+p {font-size: 1.8rem; line-height: 2.8rem;}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
 }
+
+img { max-width: 100%; }
+
+h1 { font-size: 4rem; margin: 0 0 20px 0;}
+h2 { font-size: 3rem; margin: 0 0 15px 0;}
+h3 { font-size: 2rem; margin: 0 0 10px 0;}
+h4 { font-size: 1.8rem; margin: 0 0 10px 0;}
+h5 { font-size: 1.6rem; margin: 0 0 10px 0;}
+h6 { font-size: 1.4rem; margin: 0 0 10px 0;}
+
+h1 a:hover {background-color:initial;}
+h2 a:hover {background-color:initial;}
+h3 a:hover {background-color:initial;}
+h4 a:hover {background-color:initial;}
+h5 a:hover {background-color:initial;}
+h6 a:hover {background-color:initial;}
 
 main {
-  margin: 0 auto;
-  width: 100%;
+  max-width: 600px;
 }
 
-ol,
-ul {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
 
-li {
-  margin-bottom: 1rem;
-}
 
-li a {
-  font-size: 1.6rem;
-}
-
-header {
-  padding: 2rem;
-  min-width: 10rem;
-}
-
-a {
-  color: white;
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-.main-image {
-  z-index: 1;
-  object-fit: cover;
-  max-height: 80vh;
-  max-width: 100%;
-}
-
-.breadcrumb {
-  margin: 2rem;
-}
-
-article {
-  max-width: 500px;
-  padding: 0 4rem 2rem 4rem;
-}
-
-body::after {
-  animation: grain 8s steps(10) infinite;
-  background-image: url("noise.png");
-  content: "";
-  height: 300%;
-  left: -50%;
-  opacity: 1;
-  position: fixed;
-  top: -100%;
-  width: 300%;
-  z-index: 1;
-}
-
-h1,
-h2,
-h3,
-p,
-ol,
-ul,
-li,
-a,
-img {
-  z-index: 2;
-  position: relative;
-}
-
-@keyframes grain {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-5%, -10%);
-  }
-  20% {
-    transform: translate(-15%, 5%);
-  }
-  30% {
-    transform: translate(7%, -25%);
-  }
-  40% {
-    transform: translate(-5%, 25%);
-  }
-  50% {
-    transform: translate(-15%, 10%);
-  }
-  60% {
-    transform: translate(15%, 0%);
-  }
-  70% {
-    transform: translate(0%, 15%);
-  }
-  80% {
-    transform: translate(3%, 35%);
-  }
-  90% {
-    transform: translate(-10%, 10%);
-  }
-}

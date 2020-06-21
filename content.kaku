@@ -1,0 +1,105 @@
+====
+NAME: HOME
+HOST: home
+BREF: This is the home of the website
+BODY:
+
+# Home
+
+## Tools
+
+- {./tools.html, "Philosophy"}
+- {./kaku.html, "Kaku 書く", Kaku is a markup language}
+- {./ronbun.html, "Ronbun 論文", Robun is a static site generator}
+- {./keyboards.html, "Keyboards", The keyboards I use}
+
+====
+
+NAME: KEYBOARDS
+HOST: tools
+BREF: I use special keyboards to write and work
+BODY:
+
+# Keyboards
+
+I use two keyboards: the *Happy Hacking Keyboard* (HHKB) by PFU and a *Happy Hacking Keyboard plate replica* made in China.
+
+## Happy Hacking Keyboard
+
+[media/hhkb.jpg, The happy hacking keyboard]
+
+Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a {https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?_pos=16&_sid=098521c43&_ss=r, "japanese keyset"}. As for all HHKBs, the switches are Topre.
+
+## HHKB plate replica
+
+[media/hhkb-plate.jpg, My plate replica of HHKB]
+
+Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. This keyboard initially had a rough CNC cut plate with Outemu Purple switches. I unsoldered the switchs and replaced them with Cherry MX Silent Red. A friend also lubbed them to avoid making noise. A vinyl like sticker was then applied to the plate to hide the rough metal. 
+
+====
+
+NAME: KAKU
+HOST: tools
+BREF: Kaku is my own markup language.
+BODY:
+
+# Kaku 書く
+
+Kaku (write) is my own markup language. It's inspired by Markdown with a few modification for quotes, links, images and lists handling. It was created to fit my needs and is currently used on this website.
+
+This {https://github.com/Thomasorus/Kaku, "repositoty"} contains the detailed specs and a JavaScript parser for Kaku.
+
+====
+
+NAME: TOOLS
+HOST: home
+BREF: A collection of hardware and software tools I use or made
+BODY:
+
+# Tools
+
+A collection of tools I use or made. 
+
+## Why I make my own tools
+
+As software developers we are all the time required to follow the next big thing and reinvent the wheel. It comes with a loat of code bloat, it requires to learn ready-made libraries or frameworks instead of learning fundamentals, and it is exhausting, maintaining people into imposter syndrome.
+
+Creating my own tools instead of using other people's tools is a very appreciable exercise of self-discovery. It allows me to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. If not, why keep using them?
+
+Coding your my tools removes the notion of efficiency and productivity associated with software development and its means of production. I don't know when it will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I find my own and my software evolves with me.
+
+It's a reappropriation of the means of production towards self-discovery.
+
+## software
+
+- {./kaku.html, "Kaku 書く", Kaku is a markup language} is my markup language
+- {./ronbun.html, "Ronbun 論文", Robun is a static site generator} is my static site generator
+
+## Hardware
+
+- {./keyboards.html, "Keyboards", The keyboards I use} I use and customize
+
+
+====
+
+NAME: RONBUN
+HOST: tools
+BREF: Ronbun is my static site generator
+BODY: 
+
+# Ronbun 論文
+
+Ronbun (paper) is my static site generator. It's build in nodejs and uses {/kaku.html, "Kaku"} as a markup language. It requires imagemagick on the server to process images.
+
+Ronbun uses a single `.kaku` file as a source of data. It parses the file and generates html. Ronbun and the {./kaku.html, "Kaku"} parser try as much as possible to provide light pages and assets by using standard HTML techniques like native lazyloading.
+
+A rewrite of Ronbun should be done in the future in a another language to allow faster compilation time and lower requirements, possibly in Python or C.
+
+====
+
+NAME: ABOUT
+HOST: home
+BREF: About me
+BODY:
+
+I'm Thomas, a fighting game fan and web developer.
