@@ -1,16 +1,11 @@
-# Wiki Engine
+# Ronbun 論文
 
-Required:
+Ronbun is my static site generator. It's written in nodejs, uses Kaku as a text parser, image magick for image compression and `entr` for development.
 
-- python3
-- imagemagick
+Ronbun is still in early development.
 
-How to dev:
+## How it works
 
-- `chmod +x ./dev.sh`
-- `./dev.sh`
-
-How to build:
-
-- `chmod +x ./build.sh`
-- `./build.sh`
+- `./dev.sh` will watch for file changes and recompile html
+- `./build.sh` will compile html and process images
+Don't forget to use - `chmod +x ./*.sh` to allow scripts execution.
