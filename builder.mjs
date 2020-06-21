@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'fs'
 import parser from './kaku.mjs'
 
 async function retrievePageData(text) {
@@ -54,7 +54,7 @@ async function generateHtml(allPages, htmlTemplate) {
         const el = allPages[i];
         let page = htmlTemplate
         page = page.replace(/pageTitle/g, el.name)
-        if(el.name.toLowerCase() !== el.host) {
+        if (el.name.toLowerCase() !== el.host) {
             page = page.replace(/mainMenu/g, `<nav>Back to <a href="${el.host}.html">${el.host}</a></nav>`)
         } else {
             page = page.replace(/mainMenu/g, '')
@@ -74,27 +74,22 @@ async function generateHtml(allPages, htmlTemplate) {
 async function getCss(cssPath, cssDestination) {
     fs.mkdirSync('./dist/assets');
     fs.copyFile(cssPath, cssDestination, err => {
-      if (err) throw err;
+        if (err) throw err;
     });
-  }
+}
+
 
 
 async function generateAll(dir) {
-    
-    fs.rmdirSync(dir, { recursive: true });
-
+    fs.rmdirSync(dir, {
+        recursive: true
+    });
     const textContent = fs.readFileSync("./content.kaku", 'utf8');
     const allPages = await splitContent(textContent);
-
     const htmlTemplate = fs.readFileSync("./partials/main.html", 'utf8');
     await generateHtml(allPages, htmlTemplate);
-
-
-
-    // const imgList = await listFiles('./media');
-    // const data = await listFiles('./content');
-    // await createEntries(index, data, imgList);
     await getCss('./assets/style.css', './dist/assets/style.css');
+    fs.mkdirSync('./dist/media');
 
 }
 
