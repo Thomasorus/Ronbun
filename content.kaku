@@ -103,3 +103,20 @@ BREF: About me
 BODY:
 
 I'm Thomas, a fighting game fan and web developer.
+
+====
+
+NAME: STATICTIPS
+HOST: tools
+Bref: A collection of tips to build simple yet optimized html in static site generators
+BODY:
+
+# Tips and tricks for static site generators
+
+Let's say we want to build a static site generator (like {./ronbun.html, "Ronbun}) with these specifications:
+
+- It can use JavaScript but should work without it
+- It can have assets like images or videos but it should limit bandwith consumption
+- It can use the latest browser features but should degrade beautifully when they are not supported
+
+## To be continued...
