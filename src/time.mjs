@@ -49,6 +49,7 @@ async function createWeeks(allWeeks) {
 async function generateTime(textContent) {
   const allEntries = await parseTime(textContent);
   const yearData = await createWeeks(allEntries);
+  return yearData
 }
 
 export { generateTime as default };
