@@ -7,6 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./assets/style.css" />
   <title>ABOUT</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){        
+     
+     if ("loading" in HTMLImageElement.prototype) {
+         const images = document.querySelectorAll("img[loading='lazy']");
+         const sources = document.querySelectorAll("source");
+         images.forEach(img => {
+             img.src = img.dataset.src;
+             img.srcset = img.dataset.srcset;
+             img.alt = img.dataset.alt;
+  
+             delete img.dataset.src;
+             delete img.dataset.srcset;
+             delete img.dataset.alt;
+         });
+         sources.forEach(source => {
+             source.srcset = source.dataset.srcset;
+             delete source.dataset.srcset;
+         });
+     } else {
+         // Fallback for other browsers
+     }
+  });
+  </script>
 </head>
 
 <body>
@@ -19,7 +43,8 @@
       <p>I'm Thomas, a fighting game fan and web developer.</p>
     </article>
   </main>
-  
+
 </body>
+
 
 </html>

@@ -7,6 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./assets/style.css" />
   <title>KEYBOARDS</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){        
+     
+     if ("loading" in HTMLImageElement.prototype) {
+         const images = document.querySelectorAll("img[loading='lazy']");
+         const sources = document.querySelectorAll("source");
+         images.forEach(img => {
+             img.src = img.dataset.src;
+             img.srcset = img.dataset.srcset;
+             img.alt = img.dataset.alt;
+  
+             delete img.dataset.src;
+             delete img.dataset.srcset;
+             delete img.dataset.alt;
+         });
+         sources.forEach(source => {
+             source.srcset = source.dataset.srcset;
+             delete source.dataset.srcset;
+         });
+     } else {
+         // Fallback for other browsers
+     }
+  });
+  </script>
 </head>
 
 <body>
@@ -16,14 +40,61 @@
   <main>
     <nav>Back to <a href="tools.html">tools</a></nav>
     <article class="text-content">
-      <h1 id="keyboards" style="position:relative;"><a href="#keyboards" aria-label="Keyboards permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Keyboards</h1><p>I use two keyboards: the <strong>Happy Hacking Keyboard</strong> (HHKB) by PFU and a <strong>Happy Hacking Keyboard plate replica</strong> made in China.</p><h2 id="happy-hacking-keyboard" style="position:relative;"><a href="#happy-hacking-keyboard" aria-label="Happy Hacking Keyboard permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Happy Hacking Keyboard</h2><img loading="lazy" src="media/hhkb.jpg" alt="The happy hacking keyboard">
+      <h1 id="keyboards" style="position:relative;"><a href="#keyboards" aria-label="Keyboards permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Keyboards</h1><p>I use two keyboards: the <strong>Happy Hacking Keyboard</strong> (HHKB) by PFU and a <strong>Happy Hacking Keyboard plate replica</strong> made in China.</p><h2 id="happy-hacking-keyboard" style="position:relative;"><a href="#happy-hacking-keyboard" aria-label="Happy Hacking Keyboard permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Happy Hacking Keyboard</h2>
+        
+            <picture>
+                <source type="image/webp" data-srcset="media/hhkb-300.webp 300w, media/hhkb-600.webp 600w, media/hhkb-900.webp 900w, media/hhkb-1200.webp 1200w" />
+                <img loading="lazy"  data-alt="The happy hacking keyboard" 
+                    data-srcset="media/hhkb-300.jpg 300w, media/hhkb-600.jpg 600w, media/hhkb-900.jpg 900w, media/hhkb-1200.jpg 1200w"
+                    data-src="media/hhkb.jpg"
+                >
+            </picture>
+            
+        
+        <noscript>
+            
+                <picture>
+                    <source type="image/webp" srcset="media/hhkb-300.webp 300w, media/hhkb-600.webp 600w, media/hhkb-900.webp 900w, media/hhkb-1200.webp 1200w" />
+                    <img  alt="The happy hacking keyboard" 
+                        srcset="media/hhkb-300.jpg 300w, media/hhkb-600.jpg 600w, media/hhkb-900.jpg 900w, media/hhkb-1200.jpg 1200w"
+                        src="media/hhkb.jpg"
+                    >
+                </picture>
+                
+            
+        </noscript>
+    
 
-<p>Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a <a href="https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?<em>pos=16&</em>sid=098521c43&_ss=r">japanese keyset</a>. As for all HHKBs, the switches are Topre.</p><h2 id="hhkb-plate-replica" style="position:relative;"><a href="#hhkb-plate-replica" aria-label="HHKB plate replica permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>HHKB plate replica</h2><img loading="lazy" src="media/hhkb-plate.jpg" alt="My plate replica of HHKB">
+<p>Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a <a href="https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?<em>pos=16&</em>sid=098521c43&_ss=r">japanese keyset</a>. As for all HHKBs, the switches are Topre.</p><h2 id="hhkb-plate-replica" style="position:relative;"><a href="#hhkb-plate-replica" aria-label="HHKB plate replica permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>HHKB plate replica</h2>
+        
+            <picture>
+                <source type="image/webp" data-srcset="media/hhkb-plate-300.webp 300w, media/hhkb-plate-600.webp 600w, media/hhkb-plate-900.webp 900w, media/hhkb-plate-1200.webp 1200w" />
+                <img loading="lazy"  data-alt="My plate replica of HHKB" 
+                    data-srcset="media/hhkb-plate-300.jpg 300w, media/hhkb-plate-600.jpg 600w, media/hhkb-plate-900.jpg 900w, media/hhkb-plate-1200.jpg 1200w"
+                    data-src="media/hhkb-plate.jpg"
+                >
+            </picture>
+            
+        
+        <noscript>
+            
+                <picture>
+                    <source type="image/webp" srcset="media/hhkb-plate-300.webp 300w, media/hhkb-plate-600.webp 600w, media/hhkb-plate-900.webp 900w, media/hhkb-plate-1200.webp 1200w" />
+                    <img  alt="My plate replica of HHKB" 
+                        srcset="media/hhkb-plate-300.jpg 300w, media/hhkb-plate-600.jpg 600w, media/hhkb-plate-900.jpg 900w, media/hhkb-plate-1200.jpg 1200w"
+                        src="media/hhkb-plate.jpg"
+                    >
+                </picture>
+                
+            
+        </noscript>
+    
 
 <p>Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. This keyboard initially had a rough CNC cut plate with Outemu Purple switches. I unsoldered the switchs and replaced them with Cherry MX Silent Red. A friend also lubbed them to avoid making noise. A vinyl like sticker was then applied to the plate to hide the rough metal.</p>
     </article>
   </main>
-  
+
 </body>
+
 
 </html>

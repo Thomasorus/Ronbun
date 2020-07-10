@@ -7,6 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./assets/style.css" />
   <title>TOOLS</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){        
+     
+     if ("loading" in HTMLImageElement.prototype) {
+         const images = document.querySelectorAll("img[loading='lazy']");
+         const sources = document.querySelectorAll("source");
+         images.forEach(img => {
+             img.src = img.dataset.src;
+             img.srcset = img.dataset.srcset;
+             img.alt = img.dataset.alt;
+  
+             delete img.dataset.src;
+             delete img.dataset.srcset;
+             delete img.dataset.alt;
+         });
+         sources.forEach(source => {
+             source.srcset = source.dataset.srcset;
+             delete source.dataset.srcset;
+         });
+     } else {
+         // Fallback for other browsers
+     }
+  });
+  </script>
 </head>
 
 <body>
@@ -16,14 +40,15 @@
   <main>
     <nav>Back to <a href="home.html">home</a></nav>
     <article class="text-content">
-      <h1 id="tools" style="position:relative;"><a href="#tools" aria-label="Tools permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Tools</h1><p>A collection of tools I use or made. </p><h2 id="why-i-make-my-own-tools" style="position:relative;"><a href="#why-i-make-my-own-tools" aria-label="Why I make my own tools permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Why I make my own tools</h2><p>As software developers we are all the time required to follow the next big thing and reinvent the wheel. It comes with a loat of code bloat, it requires to learn ready-made libraries or frameworks instead of learning fundamentals, and it is exhausting, maintaining people into imposter syndrome.</p><p>Creating my own tools instead of using other people's tools is a very appreciable exercise of self-discovery. It allows me to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. If not, why keep using them?</p><p>Coding your my tools removes the notion of efficiency and productivity associated with software development and its means of production. I don't know when it will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I find my own and my software evolves with me.</p><p>It's a reappropriation of the means of production towards self-discovery.</p><h2 id="software" style="position:relative;"><a href="#software" aria-label="software permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>software</h2><ul><li><a href="./kaku.html" aria-label="Kaku is a markup language">Kaku 書く</a> is my markup language</li><li><a href="./ronbun.html" aria-label="Robun is a static site generator">Ronbun 論文</a> is my static site generator</li></ul>
+      <h1 id="tools" style="position:relative;"><a href="#tools" aria-label="Tools permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Tools</h1><p>A collection of tools I use or made. </p><h2 id="why-i-make-my-own-tools" style="position:relative;"><a href="#why-i-make-my-own-tools" aria-label="Why I make my own tools permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Why I make my own tools</h2><p>As software developers we are all the time required to follow the next big thing and reinvent the wheel. It comes with a loat of code bloat, it requires to learn ready-made libraries or frameworks instead of learning fundamentals, and it is exhausting, maintaining people into imposter syndrome.</p><p>Creating my own tools instead of using other people's tools is a very appreciable exercise of self-discovery. It allows me to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. If not, why keep using them?</p><p>Coding my tools removes the notion of efficiency and productivity associated with software development and its means of production. I don't know when it will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I find my own and my software evolves with me.</p><p>It's a reappropriation of the means of production towards self-discovery.</p><h2 id="software" style="position:relative;"><a href="#software" aria-label="software permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>software</h2><ul><li><a href="./kaku.html" aria-label="Kaku is a markup language">Kaku 書く</a> is my markup language</li><li><a href="./ronbun.html" aria-label="Robun is a static site generator">Ronbun 論文</a> is my static site generator</li></ul>
 
 
 <h2 id="hardware" style="position:relative;"><a href="#hardware" aria-label="Hardware permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Hardware</h2><ul><li><a href="./keyboards.html" aria-label="The keyboards I use">Keyboards</a> I use and customize</li></ul>
 
     </article>
   </main>
-  
+
 </body>
+
 
 </html>

@@ -7,6 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./assets/style.css" />
   <title>RONBUN</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){        
+     
+     if ("loading" in HTMLImageElement.prototype) {
+         const images = document.querySelectorAll("img[loading='lazy']");
+         const sources = document.querySelectorAll("source");
+         images.forEach(img => {
+             img.src = img.dataset.src;
+             img.srcset = img.dataset.srcset;
+             img.alt = img.dataset.alt;
+  
+             delete img.dataset.src;
+             delete img.dataset.srcset;
+             delete img.dataset.alt;
+         });
+         sources.forEach(source => {
+             source.srcset = source.dataset.srcset;
+             delete source.dataset.srcset;
+         });
+     } else {
+         // Fallback for other browsers
+     }
+  });
+  </script>
 </head>
 
 <body>
@@ -19,7 +43,8 @@
       <h1 id="ronbun" style="position:relative;"><a href="#ronbun" aria-label="Ronbun 論文 permalink" style="display:inline-block;width:100%;height:100%;position:absolute;"></a>Ronbun 論文</h1><p>Ronbun (paper) is my static site generator. It's build in nodejs and uses <a href="/kaku.html">Kaku</a> as a markup language. It requires imagemagick on the server to process images.</p><p>Ronbun uses a single <code>.kaku</code> file as a source of data. It parses the file and generates html. Ronbun and the <a href="./kaku.html">Kaku</a> parser try as much as possible to provide light pages and assets by using standard HTML techniques like native lazyloading.</p><p>A rewrite of Ronbun should be done in the future in a another language to allow faster compilation time and lower requirements, possibly in Python or C.</p>
     </article>
   </main>
-  
+
 </body>
+
 
 </html>
