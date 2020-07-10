@@ -6,6 +6,6 @@ Ronbun is still in early development.
 
 ## How it works
 
-- `./dev.sh` will watch for file changes and recompile html
+- `./dev.sh` will watch for file changes and compile html + process images
 - `./build.sh` will compile html and process images
 Don't forget to use - `chmod +x ./*.sh` to allow scripts execution.
