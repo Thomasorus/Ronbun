@@ -216,23 +216,43 @@ function createImages(img, text) {
 
     const imgArr = el.split(",")
     let imgHtml = ""
+    let imgUrl = imgArr[0].replace(/(\.(?:jpe?g|png|gif))$/, "");
 
-    if (imgArr.length === 1) {
-        imgHtml = `<img loading="lazy" src="${imgArr[0]}">`
-    }
+    let alt = ''
+    let caption = ''
 
-    if (imgArr.length === 2) {
-        const alt = ` alt="${imgArr[1].trim()}"`
-        imgHtml = `<img loading="lazy" src="${imgArr[0].trim()}"${alt}>`
+    if (imgArr.length >= 2) {
+        alt = `alt="${imgArr[1].trim()}" `
     }
 
     if (imgArr.length === 3) {
-        const alt = ` alt="${imgArr[1].trim()}"`
-        imgHtml = `<img loading="lazy" src="${imgArr[0]}"${alt}>`
-        const caption = `<figcaption>${extractText(el)}</figcaption>`
-        imgHtml = `<figure>${imgHtml}${caption}</figure>`
+        caption = `<figcaption>${extractText(el)}</figcaption>`
     }
 
+    imgHtml = `
+        ${caption ? `<figure>` : ''}
+            <picture>
+                <source type="image/webp" data-srcset="${imgUrl}-300.webp 300w, ${imgUrl}-600.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}-1200.webp 1200w" />
+                <img loading="lazy" ${alt ? ` data-${alt}`: ""}
+                    data-srcset="${imgUrl}-300.jpg 300w, ${imgUrl}-600.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}-1200.jpg 1200w"
+                    data-src="${imgUrl}.jpg"
+                >
+            </picture>
+            ${caption}
+        ${caption ? `</figure>` : ''}
+        <noscript>
+            ${caption ? `<figure>` : ''}
+                <picture>
+                    <source type="image/webp" srcset="${imgUrl}-300.webp 300w, ${imgUrl}-600.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}-1200.webp 1200w" />
+                    <img ${alt ? ` ${alt}`: ""}
+                        srcset="${imgUrl}-300.jpg 300w, ${imgUrl}-600.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}-1200.jpg 1200w"
+                        src="${imgUrl}.jpg"
+                    >
+                </picture>
+                ${caption}
+            ${caption ? `</figure>` : ''}
+        </noscript>
+    `
     return text.replace(img, imgHtml)
 }
 
@@ -245,6 +265,5 @@ function createLink(link, text) {
     let html = `<a href="${linkElem[0]}"${aria}>${textLink}</a>`;
     return text.replace(link, html)
 }
-
 
 export { parser as default };
