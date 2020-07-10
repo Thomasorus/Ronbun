@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 import {exec} from "child_process"
 import parser from './kaku.mjs'
+import generateTime from './time.mjs'
 
 async function retrievePageData(text) {
 
@@ -91,9 +92,13 @@ async function generateAll(dir) {
     const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
     await generateHtml(allPages, htmlTemplate);
     await getCss('assets/style.css', 'dist/assets/style.css');
-    fs.mkdirSync('dist/media');
-    const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
-    exec(imgProcess, { encoding: 'utf-8' });  
+    // fs.mkdirSync('dist/media');
+    // const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
+    // exec(imgProcess, { encoding: 'utf-8' });  
+    let timeContent = fs.readFileSync("data/time.kaku", "utf8");
+    const t = generateTime(timeContent);
+    console.log({t})
+
     console.log('Finished!')
 
 }
