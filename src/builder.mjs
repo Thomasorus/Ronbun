@@ -73,7 +73,7 @@ async function generateHtml(allPages, htmlTemplate) {
 
 
 async function getCss(cssPath, cssDestination) {
-    fs.mkdirSync('./dist/assets');
+    fs.mkdirSync('dist/assets');
     fs.copyFile(cssPath, cssDestination, err => {
         if (err) throw err;
     });
@@ -86,13 +86,13 @@ async function generateAll(dir) {
     fs.rmdirSync(dir, {
         recursive: true
     });
-    const textContent = fs.readFileSync("./content.kaku", 'utf8');
+    const textContent = fs.readFileSync("data/content.kaku", 'utf8');
     const allPages = await splitContent(textContent);
-    const htmlTemplate = fs.readFileSync("./partials/main.html", 'utf8');
+    const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
     await generateHtml(allPages, htmlTemplate);
-    await getCss('./assets/style.css', './dist/assets/style.css');
-    fs.mkdirSync('./dist/media');
-    const imgProcess = fs.readFileSync("./images.sh", 'utf8')
+    await getCss('assets/style.css', 'dist/assets/style.css');
+    fs.mkdirSync('dist/media');
+    const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
     exec(imgProcess, { encoding: 'utf-8' });  
     console.log('Finished!')
 
