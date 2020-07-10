@@ -82,6 +82,7 @@ async function getCss(cssPath, cssDestination) {
 
 
 async function generateAll(dir) {
+    console.log('Building site...')
     fs.rmdirSync(dir, {
         recursive: true
     });
@@ -93,6 +94,8 @@ async function generateAll(dir) {
     fs.mkdirSync('./dist/media');
     const imgProcess = fs.readFileSync("./images.sh", 'utf8')
     exec(imgProcess, { encoding: 'utf-8' });  
+    console.log('Finished!')
+
 }
 
 generateAll("./dist");
