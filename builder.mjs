@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import {exec} from "child_process"
 import parser from './kaku.mjs'
 
 async function retrievePageData(text) {
@@ -90,7 +91,8 @@ async function generateAll(dir) {
     await generateHtml(allPages, htmlTemplate);
     await getCss('./assets/style.css', './dist/assets/style.css');
     fs.mkdirSync('./dist/media');
-
+    const imgProcess = fs.readFileSync("./images.sh", 'utf8')
+    exec(imgProcess, { encoding: 'utf-8' });  
 }
 
 generateAll("./dist");

@@ -1,1 +1,1 @@
-nodejs builder.mjs & sh ./images.sh
+nodejs builder.mjs
