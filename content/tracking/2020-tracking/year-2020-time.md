@@ -57,3 +57,4 @@
 | 25 | Development | Kaku | 1 |
 | 26 | Writing | Resume | 3 |
 | 27 | Development | Ronbun | 3 |
+| 27 | Development | Kaku | 4 |
