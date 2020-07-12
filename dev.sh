@@ -1,1 +1,1 @@
-nodejs src/server.mjs & find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "dist/" | entr -r nodejs src/builder.mjs
+find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "dist/" | entr -r nodejs src/builder.mjs
