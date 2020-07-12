@@ -8,7 +8,7 @@ body {
   font-size: 1.6rem;
   background: white;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  margin:50px 80px;
+  margin:50px 10vw;
   line-height: 1.45;
 font-variant-numeric: oldstyle-nums;
 }
@@ -49,3 +49,145 @@ main {
 
 
 
+.time-graph {
+  margin:0;
+  padding:0;
+  width: 100%;
+  text-align: center;display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 5px;
+  border-collapse: collapse;
+
+}
+
+.time-graph__text {
+  align-self: flex-end;
+  margin:10px 0;
+}
+
+.time-graph__hours {
+  background:white;
+  color:black;
+  padding:1px 3px 0 1px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family:  monospace;
+
+}
+
+.time-graph ul, .time-graph li {
+  list-style: none;
+}
+
+.time-graph__week {
+  margin:10px 0;
+  padding:0;
+ display: flex;
+  flex-flow: column-reverse nowrap;
+  flex: 1 1 auto;
+}
+
+.time-graph__activity {
+  margin:1.5px;
+  padding:0;
+  box-shadow: 0 0 0 1px black;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.time-graph__legend-container {
+  margin:10px 0 20px 0;
+}
+
+.time-graph__legend {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin:5px 0;
+  font-size: 1.2rem;
+  font-family: monospace;
+}
+
+.time-graph__definition {
+  margin-left:5px;
+}
+
+.time-graph__pattern {
+  height: 15px;
+  width:15px;
+}
+
+.pattern-checks {
+  background-image: repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
+  background-position: 0 0, 10px 10px;
+  background-size: calc(2 * 10px) calc(2 * 10px)
+}
+
+.pattern-grid {
+  background-image: linear-gradient(currentColor 1px, transparent 1px), linear-gradient(to right, currentColor 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-position: -1px;
+}
+
+.pattern-dots {
+  background-image: radial-gradient(currentColor .25px, transparent .25px);
+  background-size: calc(5 * .3px) calc(5 * .3px)
+}
+
+.pattern-cross-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px), radial-gradient(currentColor 1px, transparent 1px);
+  background-size: calc(4 * 1px) calc(4 * 1px);
+  background-position: 0 0, calc(2 * 1px) calc(2 * 1px)
+}
+
+.pattern-vertical-lines {
+  background-image: repeating-linear-gradient(to right, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-size: 4px 4px
+}
+
+.pattern-horizontal-lines {
+  background-image: repeating-linear-gradient(0deg, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-size: 10px 10px
+}
+
+.pattern-diagonal-lines {
+  background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-size: 6px 6px
+}
+
+.pattern-diagonal-lines--alt {
+  background-image: repeating-linear-gradient(-45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-size: 6px 6px
+}
+
+.pattern-vertical-stripes {
+  background-image: linear-gradient(90deg, transparent 50%, currentColor 50%);
+  background-size: 6px 6px;
+  background-position: -2px;
+}
+
+.pattern-horizontal-stripes {
+  background-image: linear-gradient(0deg, transparent 50%, currentColor 50%);
+  background-size: 10px 10px
+}
+
+.pattern-diagonal-stripes {
+  background: repeating-linear-gradient(45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
+}
+
+.pattern-diagonal-stripes--alt {
+  background: repeating-linear-gradient(-45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
+}
+
+.pattern-zigzag {
+  background: linear-gradient(135deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(315deg, currentColor 25%, transparent 25%), linear-gradient(45deg, currentColor 25%, transparent 25%);
+  background-size: calc(2 * 5px) calc(2 * 5px)
+}
+
+.pattern-triangles {
+  background-image: linear-gradient(45deg, currentColor 50%, transparent 50%);
+  background-size: 10px 10px
+}
