@@ -1,5 +1,7 @@
 import * as fs from 'fs'
-import {exec} from "child_process"
+import {
+    exec
+} from "child_process"
 import parser from './kaku.mjs'
 import generateTime from './time.mjs'
 
@@ -72,6 +74,21 @@ async function generateHtml(allPages, htmlTemplate) {
     }
 }
 
+async function generateTimePage(graph, htmlTemplate) {
+    let page = htmlTemplate
+    page = page.replace(/pageTitle/g, "Time")
+    page = page.replace(/mainMenu/g, `<nav>Back to <a href="home.html">Home</a></nav>`)
+    graph = "# Time\n" + graph
+    page = page.replace(/pageBody/g, parser(graph))
+
+    fs.writeFileSync(`./dist/time.html`, page, err => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+    });
+}
+
 
 async function getCss(cssPath, cssDestination) {
     fs.mkdirSync('dist/assets');
@@ -94,11 +111,12 @@ async function generateAll(dir) {
     await getCss('assets/style.css', 'dist/assets/style.css');
     fs.mkdirSync('dist/media');
     const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
-    exec(imgProcess, { encoding: 'utf-8' });  
+    exec(imgProcess, {
+        encoding: 'utf-8'
+    });
     let timeContent = fs.readFileSync("data/time.kaku", "utf8");
-    const t = await generateTime(timeContent);
-    console.log({t})
-
+    const graph = await generateTime(timeContent);
+    await generateTimePage(graph, htmlTemplate)
     console.log('Finished!')
 
 }
