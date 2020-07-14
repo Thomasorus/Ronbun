@@ -1,3 +1,5 @@
+import util from "util"
+
 const patterns = [
   "pattern-checks",
   "pattern-grid",
@@ -39,55 +41,105 @@ async function cleanEntry(entry) {
 }
 
 async function createWeeks(allWeeks) {
-  const year = [];
-  allWeeks.forEach(week => {
-    const yearNumber = week[0]
-    const weekNumber = week[1];
-    const entries = [{
-        activity: week[2]
-      },
-      {
-        project: week[3]
-      },
-      {
-        hours: week[4]
-      }
-    ];
-    const weekObj = {
-      year: yearNumber,
-      week: weekNumber,
-      entries: [entries]
-    };
-    if (!year.length) {
-      year.push(weekObj);
+
+  const years = []
+  const year = []
+
+  //Splitting activities by years
+  allWeeks.forEach(activity => {
+    //Create years
+    const yearObj = {
+      year: activity[0],
+      entries: [],
+      cleaned: []
+    }
+    if (!years.length) {
+      years.push(yearObj);
+      years[0].entries.push(activity)
     } else {
-      const result = year.find(({
-        week
-      }) => week === weekNumber);
-      if (!result) {
-        year.push(weekObj);
-      } else if (result.week === weekNumber) {
-        result.entries.push(entries);
+
+      const neededYear = years.find(({
+        year
+      }) => year === activity[0]);
+
+      if (neededYear) {
+        neededYear.entries.push(activity)
+      } else {
+        years.push(yearObj);
+        const newNeededYear = years.find(({
+          year
+        }) => year === activity[0]);
+        newNeededYear.entries.push(activity);
       }
     }
+  })
+
+  for (let i = 0; i < years.length; i++) {
+    const year = years[i];
+    const activities = year.entries;
+
+    const acc = [];
+
+    activities.forEach(activity => {
+      const yearNumber = activity[0]
+      const weekNumber = activity[1];
+      const entries = {
+          activity: activity[2],
+          project: activity[3],
+          hours: activity[4]
+        }
+      const weekObj = {
+        year: yearNumber,
+        week: weekNumber,
+        entries: [entries]
+      };
+
+      if (!acc.length) {
+        acc.push(weekObj);
+      } else {
+        let result = acc.find(({
+          week
+        }) => week === weekNumber);
+
+        if (!result) {
+          acc.push(weekObj);
+        } else if (result.week === weekNumber) {
+          result.entries.push(entries);
+        }
+      }
+    })
+    acc.forEach(el => {
+      year.cleaned.push(el)
+    });
+  }
+  years.forEach(el => {
+    delete el.entries;
   });
-  return year;
+  return years;
 }
 
-async function createGraph(yearData, graphs, type) {
-  let template = `<h2>Time by ${type}</h2><div class='time-graph'>`
-  for (let i = 0; i < yearData.length; i++) {
-    const weekData = yearData[i]
+
+
+
+
+
+async function createGraph(yearsData, graphs, type) {
+
+  let template = `<h3>Time by ${type}</h3><div class='time-graph'>`
+  for (let i = 0; i < yearsData.length; i++) {
+    const weekData = yearsData[i]
     const activities = weekData["entries"]
     let weekTemplate = ""
     const year = weekData["year"]
     const week = weekData["week"]
 
-    activities.forEach(el => {
+    for (let i = 0; i < activities.length; i++) {
+      const el = activities[i];
+      
 
-      const activity = el[0].activity
-      const project = el[1].project
-      const hours = el[2].hours
+      const activity = el.activity
+      const project = el.project
+      const hours = el.hours
       const size = hours * 10;
       let pattern = ""
 
@@ -95,23 +147,23 @@ async function createGraph(yearData, graphs, type) {
         const el = graphs[i];
         const keeey = Object.keys(el).toString()
         const valuuuue = Object.values(el).toString()
-        
-        if(type === "activity") {
-          if(keeey === activity) {
+
+        if (type === "activity") {
+          if (keeey === activity) {
             pattern = valuuuue
           }
         } else {
-          if(keeey === project) {
+          if (keeey === project) {
             pattern = valuuuue
           }
         }
-        
+
       }
 
       const tempLi = `<li style="height:${size}px;" class="time-graph__activity ${pattern}" title="${activity} on ${project} during ${hours} hours."><span class="time-graph__hours">${hours}</span></li>`
 
       weekTemplate = weekTemplate + tempLi
-    });
+    };
 
     weekTemplate = `<ul class='time-graph__week'><span>${week}</span>${weekTemplate}</ul>`
     template = template + weekTemplate
@@ -122,83 +174,173 @@ async function createGraph(yearData, graphs, type) {
   return template;
 }
 
-async function createActivitiesPatterns(yearData) {
+async function createActivitiesPatterns(yearsData) {
 
   let act = []
 
-  for (let i = 0; i < yearData.length; i++) {
-    const weekData = yearData[i]
-    const activities = weekData["entries"]
-    activities.forEach(el => {
-      act.push(el[0].activity)
-    })
+  for (let i = 0; i < yearsData.length; i++) {
+    const weekData = yearsData[i]
+    const activities = weekData.entries
+
+    for (let u = 0; u < activities.length; u++) {
+      const element = activities[u];
+      const acti = element.activity
+      act.push(acti)
+    }
   }
 
   let uniqueChars = [...new Set(act)];
 
-
   let activitiesPatterns = []
   for (let i = 0; i < uniqueChars.length; i++) {
     const el = uniqueChars[i];
-    if(el !== "null") {
+    if (el !== "null") {
       let acti = {}
       acti[el] = patterns[i]
       activitiesPatterns.push(acti)
     }
   }
-  
   return activitiesPatterns
 }
 
-async function createProjectsPatterns(yearData) {
+async function createProjectsPatterns(yearsData) {
   let proj = []
 
-  for (let i = 0; i < yearData.length; i++) {
-    const weekData = yearData[i]
-    const activities = weekData["entries"]
-    activities.forEach(el => {
-      proj.push(el[1].project)
-    })
+  for (let i = 0; i < yearsData.length; i++) {
+    const weekData = yearsData[i]
+    const projects = weekData["entries"]
+
+      for (let u = 0; u < projects.length; u++) {
+      const element = projects[u];
+      const acti = element.project
+      proj.push(acti)
+    }
   }
 
   let uniqueProjects = [...new Set(proj)];
   let projectsPatterns = []
   for (let i = 0; i < uniqueProjects.length; i++) {
     const el = uniqueProjects[i];
-    if(el !== "null") {
+    if (el !== "null") {
       let proje = {}
       proje[el] = patterns[i]
-      projectsPatterns.push(proje) 
+      projectsPatterns.push(proje)
     }
   }
   return projectsPatterns
 }
 
-async function createLegend(array) {
-  let legendTlp = "<div class='time-graph__legend-container'>"
-  array.forEach(el => {
-    console.log(Object.keys(el))
-    const legend = `<dl class="time-graph__legend"><dt class="time-graph__pattern ${Object.values(el)}"></dt><dd class="time-graph__definition">${Object.keys(el)}</dd></dl>`
+async function createLegend(array, hours) {
+    // console.log(util.inspect(hours, {showHidden: false, depth: null}))
+    let legendTlp = "<div class='time-graph__legend-container'>"
+
+  for (let i = 0; i < array.length; i++) {
+    const el = array[i];
+    const key = Object.keys(el).toString();
+
+    const time = hours.find(({ dataType }) => dataType === key);
+
+    console.log(time.hours)
+    const legend = `<dl class="time-graph__legend"><dt class="time-graph__pattern ${Object.values(el)}"></dt><dd class="time-graph__definition">${Object.keys(el)}: ${time.hours} hours</dd></dl>`
     legendTlp = legendTlp + legend
-  });
+  }
   return legendTlp + "</div>"
 }
 
+async function createHours(allEntries, type) {
+  let hours = []
+
+  for (let i = 0; i < allEntries.length; i++) {
+    const el = allEntries[i];
+
+    let entryObj = {}
+    if (type === "activity") {
+      entryObj = {
+        dataType: el[2],
+        hours: parseInt(el[4])
+      }
+    } else if (type === "project") {
+      entryObj = {
+        dataType: el[3],
+        hours: parseInt(el[4])
+      }
+    }
+    if (entryObj.dataType !== "null") {
+      if (!hours.length) {
+        hours.push(entryObj);
+      } else {
+        const result = hours.find(({
+          dataType
+        }) => dataType === entryObj.dataType);
+        if (!result) {
+          hours.push(entryObj);
+        } else if (result.dataType === entryObj.dataType) {
+          result.hours = result.hours + entryObj.hours
+        }
+      }
+    }
+  }
+  return hours
+}
+
+async function createTotalHours(yearsData) {
+  let total = 0;
+  let weeks = yearsData.length;
+  for (let i = 0; i < yearsData.length; i++) {
+    const el = yearsData[i];
+    for (let u = 0; u < el.entries.length; u++) {
+      const a = el.entries[u];
+    const hours = parseInt(a.hours)
+    total = total + hours    
+
+    }
+  }
+  return `<p>I spent <strong>${total}</strong> hours on personal projects, scattered in <strong>${weeks}</strong> weeks.</p>`;
+}
+
 async function generateTime(textContent) {
+
+  //Parsing file
   const allEntries = await parseTime(textContent);
-  const yearData = await createWeeks(allEntries);
 
-  const activitiesPatterns = await createActivitiesPatterns(yearData);
-  const projectsPatterns = await createProjectsPatterns(yearData);
+  //Splitting entries by year and week
+  const allData = await createWeeks(allEntries);
+  const reversedData = allData.reverse()
+  let graph = ''
 
-  const activitiesGraph = await createGraph(yearData, activitiesPatterns, 'activity');
-  const projectGraph = await createGraph(yearData, projectsPatterns, "project");
+  for (let i = 0; i < reversedData.length; i++) {
 
-  const activitiesLegend = await createLegend(activitiesPatterns);
-  const projectsLegend = await createLegend(projectsPatterns);
+    const e = allData[i];
+    const yearsData = e.cleaned
+    const year = yearsData[0].year
+
+    //Determining patterns for each activity and project
+    const activitiesPatterns = await createActivitiesPatterns(yearsData);
+    const projectsPatterns = await createProjectsPatterns(yearsData);
+
+    // //Creating graphs
+    const activitiesGraph = await createGraph(yearsData, activitiesPatterns, 'activity')
+    const projectsGraph = await createGraph(yearsData, projectsPatterns, "project")
+    
+    // //Create hours for each activity and project
+    const activitiesHours = await createHours(allEntries, "activity");
+    const projectsHours = await createHours(allEntries, "project");
+
+    // //Create graph legends
+    const activitiesLegend = await createLegend(activitiesPatterns, activitiesHours);
+    const projectsLegend = await createLegend(projectsPatterns, projectsHours);
+
+    // //Create total hours
+    const totalHours = await createTotalHours(yearsData);
+
+    const yearText = `<h2>Year ${year}</h2>`
+
+    graph = graph +  yearText + totalHours +  activitiesGraph + activitiesLegend + projectsGraph + projectsLegend 
+  }
 
 
-  const graph = projectGraph + projectsLegend + activitiesGraph + activitiesLegend
+  //Assemble page
+ 
   return graph
 }
 
