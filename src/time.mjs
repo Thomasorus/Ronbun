@@ -1,5 +1,3 @@
-import util from "util"
-
 const patterns = [
   "pattern-checks",
   "pattern-grid",
@@ -84,10 +82,10 @@ async function createWeeks(allWeeks) {
       const yearNumber = activity[0]
       const weekNumber = activity[1];
       const entries = {
-          activity: activity[2],
-          project: activity[3],
-          hours: activity[4]
-        }
+        activity: activity[2],
+        project: activity[3],
+        hours: activity[4]
+      }
       const weekObj = {
         year: yearNumber,
         week: weekNumber,
@@ -135,7 +133,7 @@ async function createGraph(yearsData, graphs, type) {
 
     for (let i = 0; i < activities.length; i++) {
       const el = activities[i];
-      
+
 
       const activity = el.activity
       const project = el.project
@@ -210,7 +208,7 @@ async function createProjectsPatterns(yearsData) {
     const weekData = yearsData[i]
     const projects = weekData["entries"]
 
-      for (let u = 0; u < projects.length; u++) {
+    for (let u = 0; u < projects.length; u++) {
       const element = projects[u];
       const acti = element.project
       proj.push(acti)
@@ -231,16 +229,16 @@ async function createProjectsPatterns(yearsData) {
 }
 
 async function createLegend(array, hours) {
-    // console.log(util.inspect(hours, {showHidden: false, depth: null}))
-    let legendTlp = "<div class='time-graph__legend-container'>"
+  let legendTlp = "<div class='time-graph__legend-container'>"
 
   for (let i = 0; i < array.length; i++) {
     const el = array[i];
     const key = Object.keys(el).toString();
 
-    const time = hours.find(({ dataType }) => dataType === key);
+    const time = hours.find(({
+      dataType
+    }) => dataType === key);
 
-    console.log(time.hours)
     const legend = `<dl class="time-graph__legend"><dt class="time-graph__pattern ${Object.values(el)}"></dt><dd class="time-graph__definition">${Object.keys(el)}: ${time.hours} hours</dd></dl>`
     legendTlp = legendTlp + legend
   }
@@ -290,8 +288,8 @@ async function createTotalHours(yearsData) {
     const el = yearsData[i];
     for (let u = 0; u < el.entries.length; u++) {
       const a = el.entries[u];
-    const hours = parseInt(a.hours)
-    total = total + hours    
+      const hours = parseInt(a.hours)
+      total = total + hours
 
     }
   }
@@ -321,7 +319,7 @@ async function generateTime(textContent) {
     // //Creating graphs
     const activitiesGraph = await createGraph(yearsData, activitiesPatterns, 'activity')
     const projectsGraph = await createGraph(yearsData, projectsPatterns, "project")
-    
+
     // //Create hours for each activity and project
     const activitiesHours = await createHours(allEntries, "activity");
     const projectsHours = await createHours(allEntries, "project");
@@ -335,12 +333,12 @@ async function generateTime(textContent) {
 
     const yearText = `<h2>Year ${year}</h2>`
 
-    graph = graph +  yearText + totalHours +  activitiesGraph + activitiesLegend + projectsGraph + projectsLegend 
+    graph = graph + yearText + totalHours + activitiesGraph + activitiesLegend + projectsGraph + projectsLegend
   }
 
 
   //Assemble page
- 
+
   return graph
 }
 
