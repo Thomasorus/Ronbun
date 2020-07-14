@@ -13,6 +13,10 @@ BODY:
 - {./ronbun.html, "Ronbun 論文", Robun is a static site generator}
 - {./keyboards.html, "Keyboards", The keyboards I use}
 
+## Tracking
+
+- {./time.html, "Time tracker"}
+
 ====
 
 NAME: KEYBOARDS
@@ -62,15 +66,15 @@ A collection of tools I use or made.
 
 ## Why I make my own tools
 
-As software developers we are all the time required to follow the next big thing and reinvent the wheel. It comes with a loat of code bloat, it requires to learn ready-made libraries or frameworks instead of learning fundamentals, and it is exhausting, maintaining people into imposter syndrome.
+As software developers we are all the time required to follow the next big thing and use new framworks or librarys. It comes with a loat of code bloat, it requires to relearn everything from scratch and does not favors building strong fundamentals. It's exhausting and maintains people into imposter syndrome.
 
-Creating my own tools instead of using other people's tools is a very appreciable exercise of self-discovery. It allows me to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. If not, why keep using them?
+Creating my own instead of using other people's tools is a very appreciable exercise of self-discovery. It allows to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. And if not, why do I keep using them?
 
-Coding my tools removes the notion of efficiency and productivity associated with software development and its means of production. I don't know when it will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I find my own and my software evolves with me.
+Coding my tools removes the notion of efficiency and productivity associated with software development. I don't know when the tool I build will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I discover my own and my software evolves with me.
 
 It's a reappropriation of the means of production towards self-discovery.
 
-## software
+## Software
 
 - {./kaku.html, "Kaku 書く", Kaku is a markup language} is my markup language
 - {./ronbun.html, "Ronbun 論文", Robun is a static site generator} is my static site generator
@@ -89,9 +93,9 @@ BODY:
 
 # Ronbun 論文
 
-Ronbun (paper) is my static site generator. It's build in nodejs and uses {/kaku.html, "Kaku"} as a markup language. It requires imagemagick on the server to process images.
+Ronbun (paper) is my static site generator. It's build in nodejs and uses {/kaku.html, "Kaku"} as a markup language. It requires imagemagick on the server to process images. It also process time tracking and presents it as graphics.
 
-Ronbun uses a single `.kaku` file as a source of data. It parses the file and generates html. Ronbun and the {./kaku.html, "Kaku"} parser try as much as possible to provide light pages and assets by using standard HTML techniques like native lazyloading.
+Ronbun uses a `.kaku` file as a source of content and a text file for time recordings. It parses files and generates html. Ronbun and the {./kaku.html, "Kaku"} parser try as much as possible to provide light pages and assets by using standard HTML techniques like native lazyloading.
 
 A rewrite of Ronbun should be done in the future in a another language to allow faster compilation time and lower requirements, possibly in Python or C.
 
