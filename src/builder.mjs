@@ -58,14 +58,16 @@ async function generateHtml(allPages, htmlTemplate) {
         const el = allPages[i];
         let page = htmlTemplate
         page = page.replace(/pageTitle/g, el.name)
-        if (el.name.toLowerCase() !== el.host) {
-            page = page.replace(/mainMenu/g, `<nav>Back to <a href="${el.host}.html">${el.host}</a></nav>`)
+        if (el.name.toLowerCase() !== el.host && el.host !== undefined) {
+            const parentSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
+            page = page.replace(/mainMenu/g, `<nav>Back to <a href="${parentSlug}.html">${el.host}</a></nav>`)
         } else {
             page = page.replace(/mainMenu/g, '')
         }
         page = page.replace(/pageBody/g, parser(el.body))
 
-        fs.writeFileSync(`./dist/${el.name.toLowerCase()}.html`, page, err => {
+        const slug = el.name.toLowerCase().replace(/\b \b/g, "-")
+        fs.writeFileSync(`./dist/${slug}.html`, page, err => {
             if (err) {
                 console.log(err);
                 throw err;
@@ -77,7 +79,7 @@ async function generateHtml(allPages, htmlTemplate) {
 async function generateTimePage(graph, htmlTemplate) {
     let page = htmlTemplate
     page = page.replace(/pageTitle/g, "Time")
-    page = page.replace(/mainMenu/g, `<nav>Back to <a href="home.html">Home</a></nav>`)
+    page = page.replace(/mainMenu/g, `<nav>Back to <a href="tracking.html">Tracking</a></nav>`)
     graph = "# Time\n" + graph
     page = page.replace(/pageBody/g, parser(graph))
 
