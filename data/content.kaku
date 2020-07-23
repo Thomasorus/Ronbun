@@ -15,7 +15,9 @@ BODY:
 
 ## Tracking
 
+- {./tracking.html, "About tracking myself"}
 - {./time.html, "Time tracker"}
+- {./2019.html, "The year 2019"}
 
 ====
 
@@ -55,6 +57,32 @@ This {https://github.com/Thomasorus/Kaku, "repositoty"} contains the detailed sp
 
 ====
 
+NAME: TRACKING
+HOST: home
+BREF: An explanation about why I track some stuff in my life
+BODY:
+
+# Tracking
+
+I track time spent on my hobbies. First I hated the idea. I saw it as self-surveillance, as an intrusion of accounting and management in my personal space where precisely, you don't count your time.
+
+After two months I realized I had the wrong feeling. Tracking hours has become a tool for self-discovery. It allows me to take a huge step back and to be more careful about my well-being. It also helps making connections between what I do and what I feel every day.
+
+For example in the first two months of January, I spent a lot of time on Bas Gros Poing. I was doing web development but also editorial and podcast stuff. It was a lot of fun and by contrast, I think it deepened my disinterest for my daily job. It also explained the low motivation I felt.
+
+For the first two months of 2020 I spent around 70 hours on personal projects. It's 7.8 hours a week, which means I overall worked a day more each week on personal stuff. It made me realize I was on the wrong path to accomplish one of my goals, which is to be less productive and more creative.
+
+For people like me who wonders where their free time disapears, tracking time helps. My advice however, is to find a personal way of tracking time instead of using apps, bullet journals or stuff related to productivity. Finding your own way of tracking your own time is also part of the self-discovery thing.
+
+To me tracking time doesn't mean trying to be more productive, but the opposite.
+
+## Tracking...
+
+- {./time.html, "My time on a week basis"}
+- {./2019.html, "The year 2019"}
+
+====
+
 NAME: TOOLS
 HOST: home
 BREF: A collection of hardware and software tools I use or made
@@ -82,7 +110,6 @@ It's a reappropriation of the means of production towards self-discovery.
 ## Hardware
 
 - {./keyboards.html, "Keyboards", The keyboards I use} I use and customize
-
 
 ====
 
@@ -124,3 +151,266 @@ Let's say we want to build a static site generator (like {./ronbun.html, "Ronbun
 - It can use the latest browser features but should degrade beautifully when they are not supported
 
 ## To be continued...
+
+====
+
+NAME: 2019
+HOST: tracking
+BREF: All things I read, watched in 2019
+BODY:
+
+# 2019 Overview
+
+## Readings of 2019
+
+All the things I read in 2019.
+
+`...` Means the series is still ongoing but that I started it in 2019
+
+### Novels
+
+- The Remembrance of Earth's Past trilogy - Liu Cixin
+- The unfathomable depth of loneliness - Hao Jinfang
+- The Book of the New Sun Vol.1 - Gene Wolf 
+- Viking Mythology - Neil Gamain
+
+### Mangas
+
+- Beastars...
+- Vinland Saga...
+- Kingdom...
+- Yagate Kimi ni Naru (Bloom into You)
+- Shamo
+- Sun Ken Rock
+- Kusuriya no Hitorigoto...
+- Goblin Slayer...
+- Blame! (reprint)
+- Aposimz...
+- No gun's life...
+- At the Mountains of Madness (Lovecraft by Gou Tanabe)
+- In the abyss of time (Lovecraft by Gou Tanabe)
+- Shishunki Renaissance! David-kun
+- Gunnm (reprint)
+- Gunnm Last Order
+- Gunnm: Mars Chronicles...
+- Blue Giant
+- Saltiness
+
+### Comics
+
+- Shangri La
+- Mecanique Céleste
+
+### Art books
+
+- Gustave Doré (Catalogue d'exposition Gustave Doré - Musée d'Orsay)
+- Katsuya Terrada Real Size
+
+### Magazines
+
+- L'étiquette 1 & 2
+- Atom Magazine
+
+### Notable articles
+
+- {https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real, "How William Gibson Keeps His Science Fiction Real"}
+- {http://paulgraham.com/genius.html, "The Bus Ticket Theory of Genius"}
+- {http://www.slate.fr/story/184164/boulangeries-guerre-culturelle-pain-adieu-baguette-disparition-petit-commerce, "La France du pain est coupée en deux"}
+- {https://www.nytimes.com/interactive/2019/11/16/world/asia/china-xinjiang-documents.html, "Absolutely No Mercy: Leaked Files Expose How China Organized Mass Detentions of Muslims"}
+- {https://www.forbes.com/sites/johnkoetsier/2019/09/02/hong-kong-protestors-using-mesh-messaging-app-china-cant-block-usage-up-3685/, "Hong Kong Protestors Using Mesh Messaging App China Can't Block"}
+- {https://matthiasott.com/articles/into-the-personal-website-verse, "Into the Personal-Website-Verse"}
+- {https://www.gamekult.com/actualite/une-petite-histoire-du-jeu-de-baston-en-dix-morceaux-3050819125.html, "Une petite histoire du jeu de baston en dix morceaux"}
+- {https://www.newyorker.com/magazine/2019/04/08/the-day-the-dinosaurs-died, "The Day the Dinosaurs Died"}
+- {https://kotaku.com/how-biowares-anthem-went-wrong-1833731964, "How BioWare's Anthem Went Wrong"}
+
+## Writings of 2019
+
+All the things I wrote in 2019.
+
+### Wrote
+
+- {https://www.redbull.com/fr-fr/evo-2019-tournois-esport-infos, "L’EVO 2019, le plus gros tournoi esport du monde"}
+- {https://www.redbull.com/fr-fr/lethal-league-blaze-esport, "Lethal League Blaze, l’autre jeu de combat qui ne dit pas son nom"}
+- {https://www.redbull.com/fr-fr/samurai-shodown-esport-jeu-combat, "Samurai Shodown, l’original outsider de l’esport baston"}
+- {https://twitter.com/Thomasorus/status/1144623832587821056, "Embrasser, étendre, étouffer le podcast"}
+- {https://basgrospoing.fr/fr/articles/la-schizophrenie-street-fighter-iii-third-strike, "La schizophrénie Street Fighter III: Third Strike"}
+- {https://www.redbull.com/fr-fr/mortal-kombat-pro-kompetition, "Premières fatalities sur Mortal Kombat XI"}
+- {https://www.redbull.com/fr-fr/rza-mortal-kombat?linkId=65552039, "RZA : une main de velours dans un gant de ninja"}
+
+### interviewed
+
+- {https://twitter.com/Vincent_Jule/status/1144341580771409921, "Samurai Shodown: Le retour d'une franchise culte... et un nouvel âge d'or du jeu de combat?"}
+
+### Published
+
+- {https://basgrospoing.fr/fr/articles/theorie-ruissellement-jeu-de-combat-esport, "Trickle-Down Economics in the FGC and E-Sports"}
+
+### Played
+
+- Flappy Fighter
+- Untitled Goose Game
+- Mortal Kombat XI
+- Samurai Shodown 2019
+- Apex Legends
+- Furi
+- Thumper
+- Céleste
+- Hollow Knight
+- The Red Strings Club
+- Tekken 7
+- Disco Elysium
+- A Plague Tale: Innocence
+
+### Coded
+
+- {https://podcastouvert.fr/, "Podcast Ouvert"}
+- {https://claviers-mecaniques.fr/, "Claviers mécaniques") - Frontend
+- {https://happy-tereshkova-b21ae0.netlify.com/, "Art Eater"}
+- {https://github.com/Thomasorus/Podcast-player, "A podcast player"}
+- {https://github.com/Thomasorus/UI-concept-tests,"Some concepts for UIs"}
+- {https://github.com/Thomasorus/wiki-engine, "My wiki engine"}
+- A ton of interfaces at work with accessibility
+- Web components with accessibility
+
+## Watched in 2019
+
+All the things I watched in 2019.
+
+... Means the series is still ongoing but that I started it in 2019
+
+### Anime
+
+- Carole & Tuesday
+- Sailor Moon S1 (original show)
+
+### Movies
+
+- Promare
+
+### Documentaries
+
+- 10 years with Hayao Miyazaki
+
+### Series
+
+- Mindhunter
+
+### Tv shows
+
+- Terrace House
+
+### Notable videos
+
+- How Mind Control Saved Oddworld: Abe's Oddysee
+- The Real Fake Cameras Of Toy Story 4
+
+
+====
+
+NAME: EMPTY AND FULL
+HOST: Stories
+BREF: A story about flowers and brambles
+BODY:
+
+# Empty and Full
+
+The story of *Empty and Full* narrates how {./the-first-one.html, "The First One"}, an immortal being tries to restore balance in an universe he subverted. The whole saga is divided into three major stories: Eat The World, Boxes Filling Space and a third unknown story.
+
+Globally, *Empty and Full* is used a playground to experiment storytelling and painting, but also to question personal philosophical interrogations.
+
+====
+
+NAME: THE FIRST ONE
+HOST: empty and full
+BREF: The first one is the main character of Empty and Full
+BODY:
+
+# The First One
+
+The *First One* is the main protagonist of {./empty-and-full.html, "Empty and Full"}.
+
+## Eat The World
+
+He was born onto one of the {./flower-houses.html, "Flower Houses"} and as the only descendant of his family, the direct heir to inherit a Flower House. His mother died giving him birth, making his father resent him. He grew in solitude and was given a strict education that left him without space to breathe.
+
+At the {./age-of-trial.html, "Age of Trial"}, he was sent to war, like all others of his kind. As the only heir of his family, he should been given a secure position during his two cycle service. Unfortunately, his father opponents maneuvered to place him in the battlefield, hoping for its death and the possibility to inherit his family's Flower House.
+
+During his two cycles service, The First One managed to survive all the battles he was sent to. He made a lot of companions among the Brambles Folks, broadened his horizons and developed a profound anti-war and anarchist attitude. Unfortunately, he was injured during his last battle at the end of his two cycles service. He lost his two arms and was heavily disfigured. Not capable of fighting, he was sent home where he discovered died not long ago.
+
+Not willing to have children and incapable of handling most political and administrative tasks he inherited with the Flower House, he called his ancient war companions for help. As law forbids to inherit a Flower House when its owner is still alive, The First One organized its own as an anarchist organization and drafted a testament where he gave away everything he had to its group.
+
+After a few years later, once all the talks about his political choices disminished, he announced to his closest companions his will to free all the slaves living on his Flower House. By doing so, he hoped it would encourage a more global slave revolution on the other Flower Houses. He also said his Flower House should be open to anyone and that it's wealth should be shared with the Brambles Folk.
+
+
+====
+
+NAME: AGE OF Trial
+HOST: Empty and full
+BREF: The explanation about the age of trial
+BODY:
+
+# Age of Trial
+
+The Age of Trial is the age kids are sent to participate into the War on Brambles. They have to serve for two cycles before going home. Depending on their social standing they are given different roles. The most fortunate are given strategist and secure positions to ensure their families won't lose them. The common people are trained to battle and a lot of them never goes back home.
+
+
+====
+
+NAME: IT EATS THE World
+HOST: Empty and full
+BREF: The first part of the empty and full series
+BODY:
+
+# Eat The World
+
+It Eats the World is the first arc of {./empty-and-full.html, "Empty and Full"}. It tells the story of several beings led by The First One, a creature betrayed by its kind seeking revenge. As he refused to be taken to eternal rest by its own God so he could take revenge, he concluded a pact with The Brambles and became an enslaved immortal.
+
+As both the vessel and slave of The Brambles, he then proceeded to recruit other outcasts and shared his powers with them. Together they started a general war with the goal of destroying void itself by filling it with The Brambles.
+
+
+====
+
+NAME: FLOWER HOUSES
+HOST: Empty and full
+BREF: FLower houses are giant flower capable of containing entire populations
+BODY:
+
+# Flower Houses
+
+Flower Houses are gigantic habitable flowers. They mostly belong to wealthy families, who use the light and warmth to grow food and medicinal plants. As it's almost impossible to grow anything into the Brambles, Flower Houses provide a massive amount of the global food consumed.
+
+Products from the flowers themselves or their leaves are also used to create luxurious goods, rare medicine and elaborate clothing. Most Flower Houses rely on enslaved Bramble Folks for their workforce, promising them a better life, sunlight, absence of war.
+
+====
+
+NAME: FLOWER HUNTERS
+HOST: Empty and full
+BREF: Flower hunters are a cast specialized in finding flower houses
+BODY:
+
+# Flower Hunters
+
+FLower hunters are a cast of specialized biologists trained to art of survival in the brambles. Most of the time, they are hired for many years by privilegied individuals looking for new flower houses. When they find a potential flower house, they note its location by going at the top of the brambles and looking at the starts. Then they rate the flower chance of survival and if it can't survive or grow big enough to form a new house, they harvest it or leave it alone.
+
+The hunters are easily identified by their full black clothing, their strange mask or their darkened skin color. Hunters are also a rarety. They require several years of education before being able to explore the brambles and a lot of them die in their first years. Despite what most people think, they are not a cult and don't worship any specific god. They also don't obey any flower governement, as there's no governing entity in the brambles.
+
+Flower hunters all share the basic same equipment:
+
+- Shears, saws and blades to cut brambles and going forward
+- Full black clothes to avoid being detected
+- Localisation and mapping tools compass, paper maps and sextans
+- Hunting tools : bow and arrows, traps
+- A portable greenhouse where they repot small flower they harvested (to be resold later)
+
+The rate of flower discovery has been increasing as hunters became more efficient in their survival craft. But not the rate of habitable flowers remain low. The last discovered flower house was 317 units ago.
+
+====
+
+NAME: THE BRAMBLES
+HOST: Empty and full
+BREF: The brambles are a mythological plant asserving the world of Empty and Full
+BODY:
+
+# The Brambles
+
+The brambles are a mythological plant asserving the world of Empty and Full
