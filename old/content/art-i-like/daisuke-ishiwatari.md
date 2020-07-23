@@ -1,1 +1,0 @@
-# Daisuke Ishiwatari

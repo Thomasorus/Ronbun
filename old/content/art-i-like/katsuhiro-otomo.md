@@ -1,1 +1,0 @@
-# Katsuhiro Otomo

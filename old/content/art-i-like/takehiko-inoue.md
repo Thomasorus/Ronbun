@@ -1,1 +1,0 @@
-# Takehiko Inoue
