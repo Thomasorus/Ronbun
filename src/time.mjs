@@ -1,18 +1,23 @@
 const patterns = [
-  "pattern-checks",
-  "pattern-grid",
   "pattern-dots",
+
+  "pattern-grid",
+  "pattern-checks",
   "pattern-cross-dots",
-  "pattern-vertical-lines",
-  "pattern-horizontal-lines",
   "pattern-diagonal-lines",
   "pattern-vertical-stripes",
   "pattern-horizontal-stripes",
   "pattern-diagonal-stripes",
   "pattern-zigzag",
   "pattern-triangles",
-  "pattern-diagonal-stripes--alt",
-  "pattern-diagonal-lines--alt"
+  "pattern-double-diagonal-stripes",
+  "pattern-quarter-circles",
+  "pattern-seigaiha",
+  "pattern-checkerboard-diagonal",
+  "pattern-zig-zag",
+  "pattern-vertical-lines",
+  "pattern-horizontal-lines",
+
 ]
 
 async function parseTime(timeToParse) {
@@ -158,12 +163,20 @@ async function createGraph(yearsData, graphs, type) {
 
       }
 
-      const tempLi = `<li style="height:${size}px;" class="time-graph__activity ${pattern}" title="${activity} on ${project} during ${hours} hours."><span class="time-graph__hours">${hours}</span></li>`
+      let tempLi = ""
 
+      if(hours > 0) {
+        tempLi = `<li style="height:${size}px;" class="time-graph__activity ${pattern}"><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="time-graph__tooltip" aria-hidden="true">${activity.replace(/\_/g, " ")} on ${project.replace(/\_/g, " ")} during ${hours} hours.</span><span class="visually-hidden">${activity.replace(/\_/g, " ")} on ${project.replace(/\_/g, " ")} during ${hours} hours.</span></li>`
+      } else {
+        tempLi = `<li class="time-graph__activity><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="visually-hidden">Nothing during week ${week}.</span></li>`
+      }
+      
+      
       weekTemplate = weekTemplate + tempLi
     };
 
-    weekTemplate = `<ul class='time-graph__week'><span>${week}</span>${weekTemplate}</ul>`
+    weekTemplate = `<ul class='time-graph__week'><span aria-hidden="true">${week}</span><span class="visually-hidden">Week ${week}</span>${weekTemplate}</ul>`
+
     template = template + weekTemplate
   }
 
@@ -239,7 +252,8 @@ async function createLegend(array, hours) {
       dataType
     }) => dataType === key);
 
-    const legend = `<dl class="time-graph__legend"><dt class="time-graph__pattern ${Object.values(el)}"></dt><dd class="time-graph__definition">${Object.keys(el)}: ${time.hours} hours</dd></dl>`
+    let definition = Object.keys(el)
+    const legend = `<dl class="time-graph__legend"><span  class="time-graph__pattern ${Object.values(el)}"></span><dt  class="time-graph__definition">${definition[0].replace(/\_/g, " ")}:</dt><dd class="time-graph__value"> ${time.hours} hours</dd></dl>`
     legendTlp = legendTlp + legend
   }
   return legendTlp + "</div>"
@@ -281,7 +295,7 @@ async function createHours(allEntries, type) {
   return hours
 }
 
-async function createTotalHours(yearsData) {
+async function createTotalHours(yearsData, totalActivities, totalProjects, year) {
   let total = 0;
   let weeks = yearsData.length;
   for (let i = 0; i < yearsData.length; i++) {
@@ -290,10 +304,10 @@ async function createTotalHours(yearsData) {
       const a = el.entries[u];
       const hours = parseInt(a.hours)
       total = total + hours
-
     }
   }
-  return `<p>I spent <strong>${total}</strong> hours on personal projects, scattered in <strong>${weeks}</strong> weeks.</p>`;
+  let perWeek = Math.round(total / weeks);
+  return `<p>I spent <strong>${total} hours</strong> on <strong>${totalActivities} activities</strong> for <strong>${totalProjects} projects</strong>. On <strong>week ${weeks}</strong> of <strong>${year}</strong>, my personal projects took me around <strong>${perWeek} hours each week</strong>.</p>`;
 }
 
 async function generateTime(textContent) {
@@ -329,7 +343,7 @@ async function generateTime(textContent) {
     const projectsLegend = await createLegend(projectsPatterns, projectsHours);
 
     // //Create total hours
-    const totalHours = await createTotalHours(yearsData);
+    const totalHours = await createTotalHours(yearsData, activitiesPatterns.length, projectsPatterns.length, year);
 
     const yearText = `<h2>Year ${year}</h2>`
 
