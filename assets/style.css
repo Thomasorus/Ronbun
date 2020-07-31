@@ -7,53 +7,131 @@ body {
   padding: 0;
   font-size: 1.6rem;
   background: white;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  margin:50px 10vw;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  margin: 5px 10vw;
   line-height: 1.45;
-font-variant-numeric: oldstyle-nums;
+  font-variant-numeric: oldstyle-nums;
 }
 
-h1,h2,h3,h4,h5,h6,a,p,ul,li {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+ul,
+li {
   /* Temp */
 }
 
-a { color: #111; padding:3px}
-a:visited {color: #555;}
-a:hover {background-color: #111; color:white;}
+a {
+  color: #111;
+  padding: 3px
+}
 
-p {font-size: 1.8rem; line-height: 2.8rem;}
+a:visited {
+  color: #555;
+}
 
-h1, h2, h3, h4, h5, h6 {
+a:hover {
+  background-color: #111;
+  color: white;
+}
+
+p {
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
 }
 
-img { max-width: 100%; }
+img {
+  max-width: 100%;
+}
 
-h1 { font-size: 4rem; margin: 0 0 20px 0;}
-h2 { font-size: 3rem; margin: 0 0 15px 0;}
-h3 { font-size: 2rem; margin: 0 0 10px 0;}
-h4 { font-size: 1.8rem; margin: 0 0 10px 0;}
-h5 { font-size: 1.6rem; margin: 0 0 10px 0;}
-h6 { font-size: 1.4rem; margin: 0 0 10px 0;}
+h1 {
+  font-size: 4rem;
+  margin: 0 0 20px 0;
+}
 
-h1 a:hover {background-color:initial;}
-h2 a:hover {background-color:initial;}
-h3 a:hover {background-color:initial;}
-h4 a:hover {background-color:initial;}
-h5 a:hover {background-color:initial;}
-h6 a:hover {background-color:initial;}
+h2 {
+  font-size: 3rem;
+  margin: 0 0 15px 0;
+}
+
+h3 {
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+}
+
+h4 {
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+}
+
+h5 {
+  font-size: 1.6rem;
+  margin: 0 0 10px 0;
+}
+
+h6 {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+}
+
+h1 a:hover {
+  background-color: initial;
+}
+
+h2 a:hover {
+  background-color: initial;
+}
+
+h3 a:hover {
+  background-color: initial;
+}
+
+h4 a:hover {
+  background-color: initial;
+}
+
+h5 a:hover {
+  background-color: initial;
+}
+
+h6 a:hover {
+  background-color: initial;
+}
 
 main {
   max-width: 600px;
 }
 
-
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 
 .time-graph {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  text-align: center;display: grid;
+  text-align: center;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
   grid-gap: 5px;
   border-collapse: collapse;
@@ -62,68 +140,92 @@ main {
 
 .time-graph__text {
   align-self: flex-end;
-  margin:10px 0;
+  margin: 10px 0;
 }
 
 .time-graph__hours {
-  background:white;
-  color:black;
-  padding:1px 3px 0 1px;
+  background: white;
+  color: black;
+  padding: 1px 3px 0 1px;
   font-weight: 800;
   letter-spacing: -2px;
-  font-family:  monospace;
+  font-family: monospace;
 
 }
 
-.time-graph ul, .time-graph li {
+.time-graph ul,
+.time-graph li {
   list-style: none;
 }
 
 .time-graph__week {
-  margin:10px 0;
-  padding:0;
- display: flex;
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
   flex-flow: column-reverse nowrap;
   flex: 1 1 auto;
 }
 
 .time-graph__activity {
-  margin:1.5px;
-  padding:0;
+  margin: 1.5px;
+  padding: 0;
   box-shadow: 0 0 0 1px black;
   font-size: 1.2rem;
   line-height: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  position: relative;
+}
+
+.time-graph__tooltip {
+  display: none;
+}
+
+.time-graph__activity:hover > .time-graph__tooltip {
+  margin-top:15px;
+  margin-left:50%;
+	background-color: white;
+	display: block;
+	padding: 5px;
+	position: absolute;
+	border: 1px solid black;
+  z-index: 1;
+  /* white-space: nowrap; */
 }
 
 .time-graph__legend-container {
-  margin:10px 0 20px 0;
+  margin: 10px 0 20px 0;
 }
 
 .time-graph__legend {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin:5px 0;
+  margin: 5px 0;
   font-size: 1.2rem;
   font-family: monospace;
 }
 
+.time-graph__value {
+  margin-left: 5px;
+
+}
+
 .time-graph__definition {
-  margin-left:5px;
+  margin-left: 5px;
 }
 
 .time-graph__pattern {
   height: 15px;
-  width:15px;
+  width: 15px;
+  border: 1px solid black;
 }
 
 .pattern-checks {
   background-image: repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
-  background-position: 0 0, 10px 10px;
-  background-size: calc(2 * 10px) calc(2 * 10px)
+  background-position: 0 0, 5px 5px;
+  background-size: calc(2 * 5px) calc(2 * 5px)
 }
 
 .pattern-grid {
@@ -150,7 +252,7 @@ main {
 
 .pattern-horizontal-lines {
   background-image: repeating-linear-gradient(0deg, currentColor, currentColor 1px, transparent 1px, transparent);
-  background-size: 10px 10px
+  background-size: 4px 4px
 }
 
 .pattern-diagonal-lines {
@@ -171,7 +273,7 @@ main {
 
 .pattern-horizontal-stripes {
   background-image: linear-gradient(0deg, transparent 50%, currentColor 50%);
-  background-size: 10px 10px
+  background-size: 8px 8px
 }
 
 .pattern-diagonal-stripes {
@@ -189,5 +291,34 @@ main {
 
 .pattern-triangles {
   background-image: linear-gradient(45deg, currentColor 50%, transparent 50%);
-  background-size: 10px 10px
+  background-size: 8px 8px
+}
+
+
+.pattern-double-diagonal-stripes {
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, white 5px, white 50%), repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
+  background-size: 13px 13px;
+}
+
+
+.pattern-quarter-circles {
+  background-image: radial-gradient(ellipse farthest-corner at 10px 10px, white, white 50%, black 50%);
+  background-size: 10px 10px;
+}
+
+.pattern-seigaiha {
+  background-color: black;
+  background-image: radial-gradient(circle at 100% 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 50% 100%, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), radial-gradient(circle at 100% 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), radial-gradient(circle at 0 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
+  background-size: 30px 15px;
+}
+
+.pattern-checkerboard-diagonal {
+  background-color: #eee;
+  background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+  background-size: 10px 10px;
+}
+
+.pattern-zig-zag {
+  background-image: repeating-linear-gradient(-319deg, black, black 1px, transparent 4px, transparent 8px);
+  background-size: 4px;
 }
