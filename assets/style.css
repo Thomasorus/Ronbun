@@ -116,6 +116,16 @@ main {
   max-width: 600px;
 }
 
+code {
+  background:lightgrey;
+  padding:1px 2px;
+}
+
+pre {
+  display: inline;
+  margin:0;
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
