@@ -137,20 +137,82 @@ I'm Thomas, a fighting game fan and web developer.
 
 ====
 
-NAME: STATICTIPS
+NAME: HTML TIPS
 HOST: tools
-Bref: A collection of tips to build simple yet optimized html in static site generators
+Bref: A collection of html and css tips to build simple yet optimized websites
 BODY:
 
-# Tips and tricks for static site generators
+# Html and CSS simple tips and tricks for your website
 
-Let's say we want to build a static site generator (like {./ronbun.html, "Ronbun"}) with these specifications:
+If you are reading this, your probably own a website but you're not sure about the quality of the html or css used in it. The goal of this page is to help you with basic yet super easy tricks to make your website accessible, readable and optimized.
 
-- It can use JavaScript but should work without it
-- It can have assets like images or videos but it should limit bandwith consumption
-- It can use the latest browser features but should degrade beautifully when they are not supported
+## About accessibility in this page
 
-## To be continued...
+I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader (the most recommended combination is {https://firefox.com, "Firefox"} with {https://www.nvaccess.org/download/, "NVDA"} on Windows) but there's a lot of handicaps that can give your a hard time using the internet.
+
+You might be deaf, which means you need a transcribed version of an audio file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered. There are a lot of others handicaps that might make the web unusable. Coding properly for accessibility (basically, respecting standards) means using a set of rules that others tools you might not know use to take over the web limitations. The reader mode in most browsers is a good example, screen readers too.
+
+All of these accessibility problems cannot be solved by code. Some are only fixable by inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together.
+
+ Respecting accessibility in UI and UX design often leads to a better user experience for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so do it.
+
+## Layout in html
+
+To be honest there's not a lot to know to build correct web pages.
+
+
+### Semantic html 
+
+When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability. Well html is the same, it has things with names that help knowing what they do.
+
+Also blind users use a lot of shortcuts with their screen readers to simply jump to different parts of the page. So having good html and following a solid structure helps them, but also other users.
+
+
+### How to layout?
+
+There are parts that you can do just in html, and others that need CSS.
+
+#### Divs and spans
+
+If you need to put something into a box, your first reflex should be a `div` or a `span`. What's the difference between them?
+
+If you put several `div` one after the other, you'll see the stack one above the other. If you do the same with `span`, they will stack one after the other. So just by knowing that, you already know how to stack things vertically and horizontaly.
+
+Be careful that `span` might have some limitations. But `div`... they are the basis of everything you'll use when you don't have a better choice. Because there's a lot of choice.
+
+#### Don't use tables for layout
+
+About taking the right tool for the job. *Never use tables for layout*. If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using thables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, it says to the user he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
+
+Also using tables makes your html super verbose, hard to read and hard to debug. If you like working in rows and columns, take a look at the css grid section, you might enjoy it.
+
+
+#### Titles
+
+This one is simple, use `h1`, `h2`, `h3`, etc... Your page should at least have an `h1`. Your page sould not jump from `h1` to `h3` without an `h2`. If you want a smaller title, use css but don't ruin the semantic for styling purposes.
+
+The reason why it is important is because blind users have shortcuts that allows them to jump directly to your titles. One of the best things you can do with your titles too is adding an id and a hidden link to them. This way the user can click the title to add the id to the url, allowing sharing links to different parts of the same page.
+
+This website actually uses this system. You can find the JavaScript function for this {https://github.com/Thomasorus/Kaku/blob/master/src/module.js#L179, "in the github repo of my parser"} {/kaku.html, "Kaku", Go to Kaku page}.
+
+#### Links
+
+Links are pretty straightforward, you put an `a` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" inside links as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
+
+If you can't use a more contextualized text, then add more context inside the `title` attribute in the link. It will provide a tooltip when the user hover on the link. In this case you will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
+
+Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning, and because screen readers already say "link", so your blind visitors will hear "Link, Link".
+
+Last but not least: if you use `taget="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so blind users know the previous page is still open.
+
+Check the code of this link for an example:
+
+`Hey click <a href="/home.html" title="Go to the home page" aria-label="Go to the home page (open in a new tab)" target="blank">here</a> to go to my home page.`
+
+Kwowing all this, it's often less work and trouble to just rephrase the link!
+
+#### Text
+
 
 ====
 
