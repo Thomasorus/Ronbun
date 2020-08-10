@@ -81,7 +81,7 @@ async function generateTimePage(graph, htmlTemplate) {
     page = page.replace(/pageTitle/g, "Time")
     page = page.replace(/mainMenu/g, `<nav>Back to <a href="tracking.html">Tracking</a></nav>`)
     graph = "# Time\n" + graph
-    page = page.replace(/pageBody/g, parser(graph))
+    page = page.replace(/pageBody/g, graph)
 
     fs.writeFileSync(`./dist/time.html`, page, err => {
         if (err) {
