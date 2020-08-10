@@ -61,20 +61,21 @@ img {
 h1 {
   font-size: 4rem;
   margin: 0 0 20px 0;
+  justify-content: ;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 3.6rem;
   margin: 0 0 15px 0;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0 0 10px 0;
 }
 
 h4 {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   margin: 0 0 10px 0;
 }
 
@@ -116,15 +117,17 @@ main {
   max-width: 600px;
 }
 
-code {
-  background:lightgrey;
-  padding:1px 2px;
+pre {
+  background: lightgrey;
+  white-space: pre-wrap;
+  padding: 10px;
 }
 
-pre {
-  display: inline;
-  margin:0;
+code {
+  background: lightgrey;
+  padding: 1px 2px;
 }
+
 
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -135,6 +138,30 @@ pre {
   white-space: nowrap;
   width: 1px;
 }
+
+.code-example {
+  background: white;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  min-height: 70px;
+}
+
+.code-example-value {
+  display: inline;
+  background: white;
+  color: black;
+  padding: 1px 5px 0 5px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family: monospace;
+}
+
+.code-example-children {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+}
+
 
 .time-graph {
   margin: 0;
@@ -192,14 +219,14 @@ pre {
   display: none;
 }
 
-.time-graph__activity:hover > .time-graph__tooltip {
-  margin-top:15px;
-  margin-left:50%;
-	background-color: white;
-	display: block;
-	padding: 5px;
-	position: absolute;
-	border: 1px solid black;
+.time-graph__activity:hover>.time-graph__tooltip {
+  margin-top: 15px;
+  margin-left: 50%;
+  background-color: white;
+  display: block;
+  padding: 5px;
+  position: absolute;
+  border: 1px solid black;
   z-index: 1;
   /* white-space: nowrap; */
 }
