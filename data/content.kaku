@@ -128,7 +128,7 @@ A rewrite of Ronbun should be done in the future in a another language to allow 
 
 ====
 
-NAME: ABOUT
+NAME: NOW
 HOST: home
 BREF: About me
 BODY:
@@ -137,7 +137,7 @@ I'm Thomas, a fighting game fan and web developer.
 
 ====
 
-NAME: HTML TIPS
+NAME: SITE TIPS
 HOST: tools
 Bref: A collection of html and css tips to build simple yet optimized websites
 BODY:
@@ -145,6 +145,8 @@ BODY:
 # Html and CSS simple tips and tricks for your website
 
 If you are reading this, your probably own a website but you're not sure about the quality of the html or css used in it. The goal of this page is to help you with basic yet super easy tricks to make your website accessible, readable and optimized.
+
+This tips and tricks are from on personal experience working as a frontend software developer for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", go to my contact page}.
 
 ## About accessibility in this page
 
@@ -156,36 +158,300 @@ All of these accessibility problems cannot be solved by code. Some are only fixa
 
  Respecting accessibility in UI and UX design often leads to a better user experience for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so do it.
 
-## Layout in html
+## The basics of html
 
-To be honest there's not a lot to know to build correct web pages.
+This section will give your some basic knowledge and tips about html, mostly what to use in what situation. 
 
+### What you need to get started
 
-### Semantic html 
+You need this:
 
-When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability. Well html is the same, it has things with names that help knowing what they do.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
 
-Also blind users use a lot of shortcuts with their screen readers to simply jump to different parts of the page. So having good html and following a solid structure helps them, but also other users.
+The `meta name="viewport"` is especially important. It can be used to block the zoom or dezoom of the page. *Never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
 
+Of course there's a lot more that can go into the `head` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `body`.
 
-### How to layout?
+### Divs and spans
 
-There are parts that you can do just in html, and others that need CSS.
+Html is all about putting something inside something, so your first reflex is probably to grab a `div` or a `span`, the good old ones! But what's the difference between them?
 
-#### Divs and spans
+If you put several `div` one after the other, you'll see they stack one above the other. That's because a `div` has the `display:block;` css property by default. `display:block` makes the element start on a new line and take 100% of its container width.
 
-If you need to put something into a box, your first reflex should be a `div` or a `span`. What's the difference between them?
+If you do the same with `span`, they will stack one after the other. That's because a `span` has the `display:inline;` css property by default, which tells the element to start on the same line as the previous element and has its width and heigh decided by content.
 
-If you put several `div` one after the other, you'll see the stack one above the other. If you do the same with `span`, they will stack one after the other. So just by knowing that, you already know how to stack things vertically and horizontaly.
+So just by knowing that, you already know how to stack things vertically and horizontaly. Great right?
 
-Be careful that `span` might have some limitations. But `div`... they are the basis of everything you'll use when you don't have a better choice. Because there's a lot of choice.
+### Wait wait wait... There's CSS in my html?
+
+Yes! And for a good reason! Imagine your CSS file disapears and your are left only with your html page. Without some pre-made styling, everything would have the same font size, would be inline... That would be unreadable!
+
+That's the reason why browsers implement their own style when encountering an html element. That's a great feature but unfortunately, some people really hate it. Since you want to style the html elements with your own design, you sometimes have to undo some of the basic styling of the browser.
+
+And yes, some of them are verbose to undo, like buttons. That's the reason some people use what is called "resets" css files, to undo the default styling and ease the CSS work. 
+
+But please be careful with resets css files. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Resets can break those things and left you with... nothing. You can't know where you are.
+
+Speaking of where you are, `div` and `span` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
+
+### What is semantic html?
+
+When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability right? Well html is the same, it has things with names that help knowing what they do. The problem  is, html is cool with you doing mistakes and won't throw an error if you don't use the right tool for the job. So in the end you can do mistakes and still have a visually working website who is awfull under the hood.
+
+But blind users use a lot of shortcuts with their screen readers to simply jump to different parts of the page, and those shortcuts only work if html is semanticly valid! So having good html and following a solid structure helps them, but also other users. For example, to use the reader mode in several browsers, your html has to be semanticly valid, or the reader mode won't be available.
+
+There are a lot of semantic html elements and even I who loves html doesn't know them all, so I will only cover the most useful. 
+
+### Content sectionning
+
+These semantic elements have the same style properties as a `div` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing.
+
+You at least need those:
+
+? `header` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+? `nav` : Put your navigation elements inside this. You can several `nav` but you then need to use the `aria-label` attribute to name them for blind users.
+? `main`: Put the main parts of your website inside this one. Quite useful as blund users can use a shortcut to access it directly.
+? `article` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine yourself removing everything except this one.
+? `aside` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side node for example.
+? `footer` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+
+A basic page might look like this for example:
+
+```
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <article></article>
+        <aside></aside>
+    </main>
+    <footer></footer>
+</body>
+```
+
+I did not mention the `section` element but it can be quite usefull if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `article`, but comments should be inside a `section` to make it clearer for blind users that the blog post has ended.
+
+```
+<main>
+    <article>
+        Blablabla
+        <section aria-label="Comments"></section>
+    </article>
+</main>
+```
+
+You can find the other content semantic element on this {https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning, "page"}.
+
+#### Stop right there, what is this `aria` thing in the previous example?
+
+You'll often see `aria-something` inside the html code presented in this page. As stated by the MDN docs on this {https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA, "page"}, _Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities._
+
+Aria is a massive spec to learn and apply so I will just give you some basic ones in this page. Try to follow them as much as you can to give a better readability to your website layouts.
+
+### Yeah, layouts! I want to align those semantic things!
+
+There are parts that you can do just in html, and others that need CSS. *You can save hundread of lines of html by using 5 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
+
+Layout examples will be given through this page, try to reuse and tweak them to your needs. But first we need to adress something...
 
 #### Don't use tables for layout
 
-About taking the right tool for the job. *Never use tables for layout*. If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using thables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, it says to the user he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
+I'm gonna say it again. *Never use tables for layout*. I'm dead serious. Never do it.
 
-Also using tables makes your html super verbose, hard to read and hard to debug. If you like working in rows and columns, take a look at the css grid section, you might enjoy it.
+If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using tables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, it says to the user he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
 
+Also using tables makes your html super verbose, hard to read and hard to debug. If you like working in rows and columns, there are modern solutions for you.
+
+### The `display` property in CSS
+
+Here's a primer to help you get started width `display: ???`. As always there's a ton of values that can be used, but we'll just stay focused on the most common/usefull ones.
+
+#### The good old ones
+
+First the good old ones that you apply directly on each element.
+
+? `inline` : elements are stacked one after the other on the same line until there's no place so a new line is created.
+? `block` : elements are stacks on top of each other.
+? `inline-block` : the best of both worlds as it acts like an inline element, taking it's width and height and staying on the same line, but its height and width can be changed!
+
+#### Flexbox, the GOAT
+
+Flexbox is like a wet dream came true. Imagine: you take the inline-block property where things stack right after each other, but you can decide the direction of this stacking both on the `x` and `y` axis ; and also how the elements behave between themselves!
+
+The main difference comes from the declaration. Instead of declaring `display:flex;` on each element, you only declare it on the parent and it acts on the children.
+
+```
+<div style="display:flex;">
+    <div>1</div>
+    <div>2</div>
+</div>
+```
+
+##### The flex directions
+
+So how does that work? First, you decide if the flow goes horizontaly or vertically, and in which direction. For this, you can use the great `flex-flow` shortcut property. Its most common options are:
+
+? `row` : the children will be displayed from left to right
+? `row-reverse` : the children will be displayed from right to left
+? `column` : the children will be displayed from top to bottom
+? `column-reverse` : the children will be displayed from bottom to top
+
+You can also decide if the child elements should wrap aka create a new line when they lack to be on a single line, by adding `wrap` or `nowrap`.
+
+Real code examples:
+
+`row wrap`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`row-reverse wrap`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row-reverse wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+
+`column wrap`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`column-reverse wrap`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column-reverse wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+
+##### Align the children
+
+Alignement is cool but what if you could decided the distance between those aligned children or even better, let the browser handle it for you? 
+
+Let's reuse this example of a row going from left to right:
+
+```
+<div style="display:flex; flex-flow:row wrap;">
+    <div>1</div>
+    <div>2</div>
+</div>
+```
+
+Use `justify-content` to fine tune the way child elements behave between each others on the horizontal axis:
+
+? `flex-start` : the default value, stack everything at the start of te flow.
+? `flex-end` : stack everything at the end of the flow.
+? `center` : stack all elements at the center of the parent with equal white space on the left and right of the first and last element.
+? `space-between` : space elements as far as possible from each others.
+? `space-around` : automatically gives each child element the same left and right margins.
+? `space-evenly` : instead of giving each child element a margin, creates equal white space between all elements.
+
+Real code examples:
+
+`justify-content: flex-start;`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-start;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`flex-end`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-end;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`center`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`space-between`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-between;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`space-around`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-around;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`space-evenly`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-evenly;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+
+Now the cool thing is... The `align-items` which is also a component of the flex spec takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align center both vertically and horizontally in two lines of CSS! 
+
+`justify-content: center; align-items: center;`
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center; align-items: center;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+Praise flexbox! (/≧▽≦)/
 
 #### Titles
 
@@ -199,15 +465,17 @@ This website actually uses this system. You can find the JavaScript function for
 
 Links are pretty straightforward, you put an `a` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" inside links as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
 
-If you can't use a more contextualized text, then add more context inside the `title` attribute in the link. It will provide a tooltip when the user hover on the link. In this case you will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
+If you can't use a more contextualized text, then add the `title` attribute in the link with more context inside, and it will provide a tooltip when the user hover on the link. You will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
 
-Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning, and because screen readers already say "link", so your blind visitors will hear "Link, Link".
+Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning. Also because screen readers already say "link", your blind visitors will hear "Link, Link".
 
-Last but not least: if you use `taget="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so blind users know the previous page is still open.
+Last but not least: if you use `taget="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so blind users know that the previous page is still open.
 
-Check the code of this link for an example:
+So the end result might look like this:
 
-`Hey click <a href="/home.html" title="Go to the home page" aria-label="Go to the home page (open in a new tab)" target="blank">here</a> to go to my home page.`
+```
+<a href="/home.html" title="Go to the home page" aria-label="Go to the home page (open in a new tab)" target="blank">here</a>
+```
 
 Kwowing all this, it's often less work and trouble to just rephrase the link!
 
