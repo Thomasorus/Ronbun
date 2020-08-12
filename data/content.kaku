@@ -137,26 +137,26 @@ I'm Thomas, a fighting game fan and web developer.
 
 ====
 
-NAME: SITE TIPS
-HOST: tools
-Bref: A collection of html and css tips to build simple yet optimized websites
+NAME: DEV TIPS
+HOST: knowledge
+Bref: A collection of html and CSS tips to build simple yet optimized websites
 BODY:
 
 # Html and CSS simple tips and tricks for your website
 
-If you are reading this, your probably own a website but you're not sure about the quality of the html or css used in it. The goal of this page is to help you with basic yet super easy tricks to make your website accessible, readable and optimized.
+If you are reading this, your probably own a website but you're not sure about the quality of the html or CSS used in it. The goal of this page is to help you with basic yet super easy tricks to make your website accessible, readable by everyone and optimized for low bandwidth.
 
-This tips and tricks are from on personal experience working as a frontend software developer for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", go to my contact page}.
+This tips and tricks are from on personal experience working as a frontend web developer for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", go to my contact page}.
 
 ## About accessibility in this page
 
-I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader (the most recommended combination is {https://firefox.com, "Firefox"} with {https://www.nvaccess.org/download/, "NVDA"} on Windows) but there's a lot of handicaps that can give your a hard time using the internet.
+I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader (the most recommended combination is {https://firefox.com, "Firefox"} with {https://www.nvaccess.org/download/, "NVDA"} on Windows) but there's a lot of handicaps that can give your a hard time on the internet.
 
-You might be deaf, which means you need a transcribed version of an audio file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered. There are a lot of others handicaps that might make the web unusable. Coding properly for accessibility (basically, respecting standards) means using a set of rules that others tools you might not know use to take over the web limitations. The reader mode in most browsers is a good example, screen readers too.
+You might be deaf, which means you need a transcribed version of an audio or video file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered. There are a lot of others handicaps that might make the web unusable. Coding properly for accessibility (basically, respecting standards) means allowing other tools to take over. Screen readers are the obvious ones, but others like screen readers also count.
 
-All of these accessibility problems cannot be solved by code. Some are only fixable by inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together.
+But accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together.
 
- Respecting accessibility in UI and UX design often leads to a better user experience for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so do it.
+Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so try to follow those advices.
 
 ## The basics of html
 
@@ -180,17 +180,19 @@ You need this:
 </html>
 ```
 
-The `meta name="viewport"` is especially important. It can be used to block the zoom or dezoom of the page. *Never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
+You need to indicate that the document is html, the language of the document and of course its encoding. You also need a title as it will be visible in the tab and spoken by screen readers.
+
+The `meta name="viewport"` is especially important. It can be used to block the zoom or dezoom of the page. But don't do it, please *never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
 
 Of course there's a lot more that can go into the `head` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `body`.
 
 ### Divs and spans
 
-Html is all about putting something inside something, so your first reflex is probably to grab a `div` or a `span`, the good old ones! But what's the difference between them?
+Html is all about putting...things! Inside... other things? So your first reflex is probably to grab a `div` or a `span`, the good old ones! But what's the difference between them?
 
-If you put several `div` one after the other, you'll see they stack one above the other. That's because a `div` has the `display:block;` css property by default. `display:block` makes the element start on a new line and take 100% of its container width.
+If you put several `div` one after the other, you'll see they stack one above the other. That's because a `div` has the `display:block;` CSS property by default. `display:block` makes the element start on a new line and take 100% of its container width.
 
-If you do the same with `span`, they will stack one after the other. That's because a `span` has the `display:inline;` css property by default, which tells the element to start on the same line as the previous element and has its width and heigh decided by content.
+If you do the same with `span`, they will stack one after the other. That's because a `span` has the `display:inline;` CSS property by default, which tells the element to start on the same line as the previous element and that its width and heigh are decided by content.
 
 So just by knowing that, you already know how to stack things vertically and horizontaly. Great right?
 
@@ -198,33 +200,33 @@ So just by knowing that, you already know how to stack things vertically and hor
 
 Yes! And for a good reason! Imagine your CSS file disapears and your are left only with your html page. Without some pre-made styling, everything would have the same font size, would be inline... That would be unreadable!
 
-That's the reason why browsers implement their own style when encountering an html element. That's a great feature but unfortunately, some people really hate it. Since you want to style the html elements with your own design, you sometimes have to undo some of the basic styling of the browser.
+That's the reason why browsers implement their own styling when encountering an html element. It's a great feature but unfortunately, some people really hate it. When you want to style the html elements with your own design, you sometimes have to undo some of the basic styling of the browser.
 
-And yes, some of them are verbose to undo, like buttons. That's the reason some people use what is called "resets" css files, to undo the default styling and ease the CSS work. 
+And yes, some of them are verbose to undo, like buttons. That's the reason some people use what is called "resets" CSS files, to undo the default styling and ease the CSS work. 
 
-But please be careful with resets css files. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Resets can break those things and left you with... nothing. You can't know where you are.
+But please be careful when resetting styles. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Going too hard on de-style can break those things and left you with... nothing. You are lost.
 
-Speaking of where you are, `div` and `span` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
+Speaking of being lost, `div` and `span` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
 
 ### What is semantic html?
 
-When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability right? Well html is the same, it has things with names that help knowing what they do. The problem  is, html is cool with you doing mistakes and won't throw an error if you don't use the right tool for the job. So in the end you can do mistakes and still have a visually working website who is awfull under the hood.
+When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability right? Well html is the same, it has things with names that help knowing what they do. The problem  is, unlike a typed language, html is cool with you doing mistakes and won't throw an error if you don't use the right tool for the job. So in the end you can do mistakes and still have a visually working website who is awfull under the hood.
 
-But blind users use a lot of shortcuts with their screen readers to simply jump to different parts of the page, and those shortcuts only work if html is semanticly valid! So having good html and following a solid structure helps them, but also other users. For example, to use the reader mode in several browsers, your html has to be semanticly valid, or the reader mode won't be available.
+But visually impaired users use a lot of shortcuts with their screen readers to simply jump to different parts of the page, and those shortcuts only work if html is semanticly valid! So having good html and following a solid structure helps them, but also other users. For example, to use the reader mode in several browsers, your html has to be semanticly valid, or the reader mode won't be available.
 
-There are a lot of semantic html elements and even I who loves html doesn't know them all, so I will only cover the most useful. 
+There is a lot, _a LOT_ of semantic html elements and even I who loves html doesn't know them all, so I will only cover the most useful. 
 
 ### Content sectionning
 
-These semantic elements have the same style properties as a `div` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing.
+These semantic elements have the same style properties as a `div` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing. You can even add them to an existing design without trouble!
 
 You at least need those:
 
 ? `header` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
-? `nav` : Put your navigation elements inside this. You can several `nav` but you then need to use the `aria-label` attribute to name them for blind users.
-? `main`: Put the main parts of your website inside this one. Quite useful as blund users can use a shortcut to access it directly.
-? `article` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine yourself removing everything except this one.
-? `aside` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side node for example.
+? `nav` : Put your navigation elements inside this. You can have several `nav` but you then need to use the `aria-label` attribute to name them for screen readers users.
+? `main`: Put the main parts of your website inside this one. Very useful as screen readers users can use a shortcut to access it directly.
+? `article` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine if you had to remove everything one thing, and put it inside this tag.
+? `aside` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side note for example.
 ? `footer` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
 
 A basic page might look like this for example:
@@ -241,7 +243,7 @@ A basic page might look like this for example:
 </body>
 ```
 
-I did not mention the `section` element but it can be quite usefull if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `article`, but comments should be inside a `section` to make it clearer for blind users that the blog post has ended.
+I did not mention the `section` element but it can be quite usefull if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `article`, but comments should be inside a `section` to make it clearer for screen readers users that the blog post has ended.
 
 ```
 <main>
@@ -252,43 +254,45 @@ I did not mention the `section` element but it can be quite usefull if you need 
 </main>
 ```
 
-You can find the other content semantic element on this {https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning, "page"}.
+You can find the other content semantic element on this {https://developer.mozilla.org/en-US/docs/Web/HTML/Element, "page"}.
+
 
 #### Stop right there, what is this `aria` thing in the previous example?
 
-You'll often see `aria-something` inside the html code presented in this page. As stated by the MDN docs on this {https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA, "page"}, _Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities._
+You'll often see `aria` attributes inside the html code presented in this page. As stated by the MDN docs on this {https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA, "page"}, _Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities._
 
 Aria is a massive spec to learn and apply so I will just give you some basic ones in this page. Try to follow them as much as you can to give a better readability to your website layouts.
 
+
 ### Yeah, layouts! I want to align those semantic things!
 
-There are parts that you can do just in html, and others that need CSS. *You can save hundread of lines of html by using 5 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
+There are parts that you can do just in html, and others that need CSS. *You can save dozens of lines of html by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
 
-Layout examples will be given through this page, try to reuse and tweak them to your needs. But first we need to adress something...
+Layout examples will be given through this page, try to inspect them with your browser, reuse and tweak them to your needs. But first we need to adress something...
 
 #### Don't use tables for layout
 
 I'm gonna say it again. *Never use tables for layout*. I'm dead serious. Never do it.
 
-If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using tables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, it says to the user he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
+If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using tables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, the screen readers tells him he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
 
-Also using tables makes your html super verbose, hard to read and hard to debug. If you like working in rows and columns, there are modern solutions for you.
+Also using tables makes your html super verbose, hard to read and hard to debug. They are way simplier solutions to do what most people try to do with tables.
 
-### The `display` property in CSS
+### The `display` property
 
-Here's a primer to help you get started width `display: ???`. As always there's a ton of values that can be used, but we'll just stay focused on the most common/usefull ones.
+Here's a primer to help you get started width `display: ???`, the basic tool for doing layouts in html and CSS. As always there's a ton of values that can be used, but we'll just focus on the most common/usefull ones.
 
 #### The good old ones
 
 First the good old ones that you apply directly on each element.
 
-? `inline` : elements are stacked one after the other on the same line until there's no place so a new line is created.
-? `block` : elements are stacks on top of each other.
-? `inline-block` : the best of both worlds as it acts like an inline element, taking it's width and height and staying on the same line, but its height and width can be changed!
+? `inline` : Elements are stacked one after the other on the same line until there's no space so a new line is created.
+? `block` : Elements are stacks on top of each other.
+? `inline-block` : The best of both worlds as it acts like an inline element but its height and width can be changed!
 
 #### Flexbox, the GOAT
 
-Flexbox is like a wet dream came true. Imagine: you take the inline-block property where things stack right after each other, but you can decide the direction of this stacking both on the `x` and `y` axis ; and also how the elements behave between themselves!
+A few years ago the massive adoption of flexbox was like a wet dream coming true. Imagine: you take the inline-block property where things stack right after each other, but you can decide the direction of this stacking both on the `x` and `y` axis ; and also how the elements behave between themselves!
 
 The main difference comes from the declaration. Instead of declaring `display:flex;` on each element, you only declare it on the parent and it acts on the children.
 
@@ -299,9 +303,11 @@ The main difference comes from the declaration. Instead of declaring `display:fl
 </div>
 ```
 
-##### The flex directions
+So how does that work? 
 
-So how does that work? First, you decide if the flow goes horizontaly or vertically, and in which direction. For this, you can use the great `flex-flow` shortcut property. Its most common options are:
+##### Decide the direction
+
+First, you decide if the flow goes horizontaly or vertically, and in which direction. For this, you can use the great `flex-flow` shortcut property. Its most common options are:
 
 ? `row` : the children will be displayed from left to right
 ? `row-reverse` : the children will be displayed from right to left
@@ -313,6 +319,7 @@ You can also decide if the child elements should wrap aka create a new line when
 Real code examples:
 
 `row wrap`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -323,6 +330,7 @@ Real code examples:
 </div>
 
 `row-reverse wrap`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row-reverse wrap;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -334,6 +342,7 @@ Real code examples:
 
 
 `column wrap`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column wrap;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -344,6 +353,7 @@ Real code examples:
 </div>
 
 `column-reverse wrap`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column-reverse wrap;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -353,8 +363,9 @@ Real code examples:
     </div>
 </div>
 
+Neat right?
 
-##### Align the children
+##### Align your children
 
 Alignement is cool but what if you could decided the distance between those aligned children or even better, let the browser handle it for you? 
 
@@ -367,18 +378,19 @@ Let's reuse this example of a row going from left to right:
 </div>
 ```
 
-Use `justify-content` to fine tune the way child elements behave between each others on the horizontal axis:
+We're going to use `justify-content:????;` to fine tune the way child elements behave between each others on the horizontal axis:
 
-? `flex-start` : the default value, stack everything at the start of te flow.
-? `flex-end` : stack everything at the end of the flow.
-? `center` : stack all elements at the center of the parent with equal white space on the left and right of the first and last element.
-? `space-between` : space elements as far as possible from each others.
-? `space-around` : automatically gives each child element the same left and right margins.
-? `space-evenly` : instead of giving each child element a margin, creates equal white space between all elements.
+? `flex-start` : The default value, stack everything at the start of te flow.
+? `flex-end` : Stack everything at the end of the flow.
+? `center` : Stack all elements at the center with equal white space on the left and right.
+? `space-between` : Space elements as far as possible from each others.
+? `space-around` : Automatically gives each child element the same left and right margins.
+? `space-evenly` : Creates equal white space between all elements.
 
 Real code examples:
 
 `justify-content: flex-start;`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-start;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -389,6 +401,7 @@ Real code examples:
 </div>
 
 `flex-end`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-end;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -399,6 +412,7 @@ Real code examples:
 </div>
 
 `center`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -409,6 +423,7 @@ Real code examples:
 </div>
 
 `space-between`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-between;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -419,6 +434,7 @@ Real code examples:
 </div>
 
 `space-around`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-around;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -429,6 +445,7 @@ Real code examples:
 </div>
 
 `space-evenly`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-evenly;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -439,9 +456,12 @@ Real code examples:
 </div>
 
 
-Now the cool thing is... The `align-items` which is also a component of the flex spec takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align center both vertically and horizontally in two lines of CSS! 
+Now the cool thing is... The `align-items:????;` CSS property takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align on the `x` and `y` axis in two lines of code!
+
+It allows us to create the holy grail of alignment: center both vertically and horizontally in two lines of CSS! 
 
 `justify-content: center; align-items: center;`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center; align-items: center;">
     <div class="code-example-children pattern-dots">
         <div class="code-example-value">1</div>
@@ -451,25 +471,329 @@ Now the cool thing is... The `align-items` which is also a component of the flex
     </div>
 </div>
 
-Praise flexbox! (/≧▽≦)/
+Praise flexbox! <span aria-hidden="true">(/≧▽≦)/</span>
 
-#### Titles
+There's a lot more you can do with Flexbox. You can align items individually, reorder items, decide if they are allowed to shrink or grow in size. If you want to learn more about Flex, try the in-game browser {https://flexboxfroggy.com, "Flexbox Froggy"}. If you are not into games try this free course on {https://www.youtube.com/watch?v=Vj7NZ6FiQvo&list=PLu8EoSxDXHP7xj_y6NIAhy0wuCd4uVdid&index=1, "youtube"}.
 
-This one is simple, use `h1`, `h2`, `h3`, etc... Your page should at least have an `h1`. Your page sould not jump from `h1` to `h3` without an `h2`. If you want a smaller title, use css but don't ruin the semantic for styling purposes.
+You might be thinking "Yeah this is cool, but not as cool as my good old tables". Well rejoice dear reader as I'm going to make you happy.
 
-The reason why it is important is because blind users have shortcuts that allows them to jump directly to your titles. One of the best things you can do with your titles too is adding an id and a hidden link to them. This way the user can click the title to add the id to the url, allowing sharing links to different parts of the same page.
+
+#### CSS Grid the almighty
+
+CSS Grid is a relatively new spec that saw massive adoption from browser around the start of 2018 and is now used when Internet Explorer 11 support dropped. So what it is about?
+
+Basically, it's about making virtual grids with columns and rows. You might have met 12 column grids in CSS frameworks like Bootstrap before? That's what Grid allows you to replicate in a few lines of code, except it's way more powerful and easy to use.
+
+Even more than Flexbox, it's a _massive_ spec with tons of use cases and syntax tricks. It's extemely powerful but it's also easy to get lost in it, so we'll just try a few layouts and use cases to get you started with columns and rows.
+
+##### So you like columns?
+
+Let's say you want to replicate the good old 12 columns grid from Bootstrap. For this example we'll go with just 6 columns but it's basically the same. How would that work?
+
+First we have to use `display:grid;` on the parent element, just like we did with flexbox. They we can declare our grid with the `grid-template-columns:????;` property.
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+So let's break it down, what's going on here? The `repeat()` shortcut is a function we use to declare the number of columns we wanted instead of writing `1fr 1fr 1fr 1fr 1fr 1fr`. 
+
+The `fr` is a CSS unit, like pixels or percentages, that means `fractional unit`. In this example, `1fr` repeated six times means "split the space in six and give each children the same space".
+
+So what happens if we decide that the first column should take 2 times the space of other columns? The grid reajust itself nicely:
+
+`grid-template-columns: 2fr repeat(5, 1fr);`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: 2fr repeat(5, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+But wait, what happens if there is not enough children? The grid keeps it's 6 column layouts and populate the 5 elements inside the 5 first columns:
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+</div>
+
+
+If too many children, the grid will create a new row:
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+      <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">7</div>
+    </div>
+</div>
+
+In Grid tutorials you will often hear about the "explicit" and "implicit" columns and rows. The explicit is the one you declared with your code. The implicit is the one created by the browser when there's no written rules to handle specific use cases or bugs.
+
+Of course we could have a grid where columns have a fixed size in pixels. Doing so would ensure the columns keep a reasonnable size even on mobile, but it would make the whole thing un-responsive!
+
+`grid-template-columns: repeat(6, 140px);`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="overflow:scroll;display:grid; grid-template-columns: repeat(6, 140px)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+At this point, you're probably thinking that a media query is needed to make the grid go from `fr` units to `px` units when the viewport is smaller. What a chore right ?...
+
+Well dear reader I have something incredible for you...
+
+<div style="display:flex; align-items:center; justify-content:space-evenly; margin:50px; text-align:center;"><span aria-hidden="true" style="white-space:nowrap;">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span><strong>THE INCREDIBLE <br> MEGA AWESOME <br> NO MEDIA QUERIES <br> RESPONSIVE GRID</strong><span aria-hidden="true" style="white-space:nowrap;">〜(￣▽￣〜)</span></div>
+
+`grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));`
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(70px, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+Try rezizing it! Great right?! So what's happening here? 
+
+- First, we removed the fixed number of columns in the `repeat` to let the child elements decide how much columns the grid should have.
+- Then, we added the `auto-fit` property to let child elements grow in size (it can be replaced with `auto-fill` if you don't want your columns to grow)
+- Finally, we added the `minmax` function that let us define what the minimum and maximum size the column should have. We set a pixel width at the minimum to forbid the columns to shrink too much, and a fractionnal unit as the maximum to allow them to take as much space as they want.
+
+
+##### Ok but how do I position stuff?
+
+In CSS frameworks like Bootstrap, you have utility classes to say "start here and span this much columns" and you can do exactly the same with CSS Grid, using the `grid-column: ? / ?;` shortcut property on the column of your choice. 
+
+There's actually two syntax you can use:
+
+? `? / ?` : Where the first `?` is the starting column and the second `?` is the ending column.
+? `? / span ?` : Where the first `?` is the starting column and the `span ?` is the width of the column in `fr` unit.
+
+
+Let's try different things with our grid:
+
+```
+grid-column: 1 / 5;
+grid-column: 5 / span 2;
+grid-column: 2 / span 4;
+grid-column: 2 / span 1;
+grid-column: 5 / span 1;
+grid-column: 1 / 7;
+```
+
+Results in:
+
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(70px, 1fr)">
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 1 /3">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 5 /span 2">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 2 /span 4">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 2 /span 1">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 5 /span 1">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 1 /7">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+
+##### Ok, what about the rows?
+
+It's basically the same as the columns, except it's for the rows. Use the `grid-template-rows` to declare the number of rows you need. And of course, you can decide where to place each children using `grid-row`, the equivalent for rows of `grid-columns`. It's super useful for art directed pages as you can place everything where you want.
+
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-rows: repeat(4, 1fr); grid-template-columns: repeat(6, 1fr);">
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 2 / span 1;">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 4 / span 1;">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 3 / span 1; grid-column: 6 / span 1;">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 2 / span 2; grid-column: 3 / span 2;">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 1 / span 4; grid-column: 5 / span 1;">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 1 / span 1; grid-column: 2 / span 1;">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+##### Is there a simplier way?
+
+It can become messy to work this way, so one final tip for your: the best way to make complex layouts from row and grids is to use `grid-template-area: ???;` and `grid-are: ???;`, a very funky yet super useful syntax of CSS grid.
+
+With this syntax, you "draw" your layout inside a string in CSS, declaring names for each of your child elements. Let's say we have 5 elements that we want to shape like a star. The result would look like this:
+
+```
+grid-template-areas: 
+"lefttop . righttop"
+". center . "
+"leftbottom . rightbottom";
+```
+
+By doing this, we created a 3 by 3 grid. The `.` character inside the declaration means an element exists but has no name and thus, should be given empty space. Now all we have to do is report those names to our children and _ voila_:
+
+<span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
+<div class="code-example code-example-grid-star" aria-hidden="true">
+    <div class="code-example-children-grid pattern-dots" style="grid-area: lefttop;">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: righttop;">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: center;">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: leftbottom;">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: rightbottom;">
+        <div class="code-example-value">5</div>
+    </div>
+</div>
+
+##### I want MOAR!
+
+If you want to train your CSS grid skills, try playing the amazing Grid Garden game on this {http://cssgridgarden.com/, "page"}. If you want more examples but in a sort of short video format, visit this {https://www.youtube.com/watch?v=DCZdCKjnBCs, "page"}. For a complete free video course on CSS Grid, I recommend {https://www.youtube.com/playlist?list=PLu8EoSxDXHP5CIFvt9-ze3IngcdAc2xKG, "this one"}.
+
+*And that's it for modern layout in HTML and CSS!* 
+
+Congratulations for reading thus far, that was a lot to take! Now let's talk about the content of your pages and about the elements you're going to use to format it!
+
+### Common elements inside your layouts
+
+So we have our page layout composed of semantic HTML elements. Now is the time to put some content. Text! Images! Videos! Titles! Links! We want it all!
+
+#### Order your titles correctly
+
+This one is simple, use `h1`, `h2`, `h3`, etc... Your page should at least have an `h1` and sould not jump from `h1` to `h3` without an `h2`. If you want a smaller title, use CSS but don't ruin the semantic for styling purposes! 
+
+The reason why it is important is because screen readers users have shortcuts that allows them to jump directly to your titles. You can replicate this functionnality for all your users by adding an id and a hidden link to your titles. This way the user can click the title to add the id to the url, allowing sharing links to different parts of the same page.
 
 This website actually uses this system. You can find the JavaScript function for this {https://github.com/Thomasorus/Kaku/blob/master/src/module.js#L179, "in the github repo of my parser"} {/kaku.html, "Kaku", Go to Kaku page}.
 
-#### Links
 
-Links are pretty straightforward, you put an `a` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" inside links as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
+#### Make your links clear and accessible
+
+Links are pretty straightforward, you put an `a` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" outside of clear phrases, as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
 
 If you can't use a more contextualized text, then add the `title` attribute in the link with more context inside, and it will provide a tooltip when the user hover on the link. You will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
 
-Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning. Also because screen readers already say "link", your blind visitors will hear "Link, Link".
+Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning. Also because screen readers already say "link", your screen readers visitors will hear "Link, Link".
 
-Last but not least: if you use `taget="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so blind users know that the previous page is still open.
+Last but not least: if you use `taget="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so screen readers users know that the previous page is still open.
 
 So the end result might look like this:
 
@@ -479,7 +803,87 @@ So the end result might look like this:
 
 Kwowing all this, it's often less work and trouble to just rephrase the link!
 
-#### Text
+#### Organize your text content
+
+Remember when I talked about the box-content semantic elements, the `nav`, `main` and others? Well there's a looot more of them for the text. If you care enough, you can probably find a semantic html element for anything. Here's a few that you should use:
+
+##### text blocks with `p`
+
+If you don't know what to use for your block of text, your probably need a paragraph. Paragraphs come with a natural margin that makes them readable even without adding style.
+
+##### Citations with `blockquote`
+
+The good old quote we often see in articles! It actually comes with the `cite` element and attribute to help you sources your quotes. Take a look at the specifications on {https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote/, "this page"} to make better quotes.
+
+##### Lists with `ul`, `ol`, `dl`
+
+If you enumerate something (text, links, etc...) you probably should add them in a list. Lists are useful for screen readers users as they are announced as a list with the total number of elements inside. Then when reading the list, the screen reader voices each element with its position.
+
+`ul` with `li` inside creates an unordered list with bullets:
+
+- Element A
+- Element C
+- Element Z
+
+`ol` with `li` will create an ordered list with numbers for each element:
+
++ Element 1
++ Element 2
++ Element 3
+
+`dl` is not very popular but is super useful as it's a definition list. Most people still use two columns tables for definitions, but this is way better for screen readers users. 
+
+? Term 1 : Definition 1
+? Term 2 : Definition 2
+? Term 3 : definition 3
+
+##### Preformated text with `pre`
+
+If you have to present some code, it's probably good to wrap it inside a `pre` tag to preserve its formating. Please note that you should also use the inline semabntic `code` element (see further below).
+
+##### Make breaks with `hr`
+
+The `hr` element is to make indicate a break inside your content, a kind of pause, a change of subject. You could think that the old `hr` element is useless when we can style this breaks with CSS, but they indicate to screen readers users that they can take a break too!
+
+
+#### The inline semantic elements
+
+What's the difference between the text semantic elements and the inline semantic elements? Well the first ones are still used to structure your content, but the second ones are used to indicate more precisely what the text inside is about.
+
+This is often complicated to add if you use a CMS or a markup language like Markdown as they don't give syntaxic shortcuts for most of them, so you have to write them by hand. 
+
+Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating could probably be easier too.
+
+
+##### Next match: `strong` versus `b` versus `em` versus `i`
+
+Here we are, at the doors of the great war of semantic inline elements. So who's right between `strong` and `b`? Who wins between `em` and `i`?
+
+Well, they all win.
+
+Everyone is a winner excepts us the developers who have to implement this. Let's try to explain this strange situation. 
+
+Imagine a website for a touristic area with a cliff:
+
+- The `b` tag is used to draw the reader's attention. So it should draw attention to the cliff: "This wonderful area has a forest but also a <b>wonderful cliff</b>".
+- The `strong` tag is to indicate the importance and seriousness of something. So it should warn people about the cliff: "Please be carefull near the cliff as *there are no ramps to prevent you from falling and the winds are strong*".
+- The `i` tag is used to indicate that something is set off from the normal prose. For example it should be used for the foreign name of the cliff: "This cliff name is <i>mh'irr'la</i>" or the thoughts of someone thinking about the cliff: "<i>Is the cliff really in love with me or is it just a farce?</i> thought Jonathan".
+- The `em` tag is used to stress something on the subject, almost as if you speak it aloud. So it should help denote something about the cliff: "Ah yes, the _cliff_, the one that is actually 2 meters tall".
+
+I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser decided to use.
+
+##### Kinda useful inline semantic elements
+
+Speaking about unavailable elements, those could be usefull in some contextx but will mostly have to be added by hand:
+
+? `abbr` : Stands for abbreviation. Can be used for currencies for example.
+? `code` : For code, obviouslym, often best used with `pre`.
+? `time` : For time values of course.
+? `mark` : To highlight some parts of your text.
+? `s` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
+? `del` & `ins` : If you have an edit to make to a text, `del` 
+
+
 
 
 ====
