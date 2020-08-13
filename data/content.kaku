@@ -32,13 +32,13 @@ I use two keyboards: the *Happy Hacking Keyboard* (HHKB) by PFU and a *Happy Hac
 
 ## Happy Hacking Keyboard
 
-[img.jpg, The happy hacking keyboard]
+[media/hhkb.jpg, The happy hacking keyboard]
 
 Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a {https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?_pos=16&_sid=098521c43&_ss=r, "japanese keyset"}. As for all HHKBs, the switches are Topre.
 
 ## HHKB plate replica
 
-[img-plate.jpg, My plate replica of HHKB]
+[media/hhkb-plate.jpg, My plate replica of HHKB]
 
 Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. This keyboard initially had a rough CNC cut plate with Outemu Purple switches. I unsoldered the switchs and replaced them with Cherry MX Silent Red. A friend also lubbed them to avoid making noise. A vinyl like sticker was then applied to the plate to hide the rough metal. 
 
@@ -1085,19 +1085,42 @@ One last thing: I don't care about your reasons, donc replace a `button` by a `d
 
 #### Some cool html interactive elements
 
-You might not know these but they can be super useful.
+You might not know these but they can be super useful. Their main default is that they are sometimes hard to style properly.
 
 ? `details` and `summary` : Allows you to make a kind of accordion box in pure html. By default closed but the `open` attribute on `details` can make it open.
+? `datalist` : Can be used as an input with a list of options auto-suggested by what the user is typing.
+? `progress` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar" on a div.
 
-Details and summary https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
-- Datalist https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-- Progress or why you should not use it
+Note that you can't animate the reveal:
 
 <details>
-  <summary>Code example</summary>
-  
+  <summary>Click me for a code demo</summary>
+  [media/dio.jpg, You though it was code but it was me Dio!"]
 </details>
 
+A datalist can be usefull but requires a full form, which is quite a lot of code:
+
+<label for="jojolist">Choose a Jojo character from this list:</label><br>
+<input list="jojo" id="jojolist" name="muchJojo" />
+<datalist id="jojo">
+  <option value="Jonathan">
+  <option value="Joseph">
+  <option value="Jotaro">
+  <option value="Josuke">
+  <option value="DIO">
+</datalist>
+
+
+A progress bar using `progress` has this look:
+
+<progress aria-valuenow="20" aria-valuemin="0" aria-valuetext="Step 2: Copying files... " aria-valuemax="100" style="display:block; width:100%;">20 %</progress>
+
+
+Use the `role="progressbar" to style it more easily:
+
+<div style="border:1px solid black">
+<div role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="pattern-dots" style="width:20%; text-align:center;">20 %</div>
+</div>
 
 #### Other kinda useful semantic elements
 
@@ -1110,9 +1133,7 @@ Speaking about unavailable elements, those could be usefull in some contextx but
 ? `s` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
 ? `del` & `ins` : If you have an edit to make to a text and want to keep trace of the change `del` and `ins` are a good pick!
 
-
-
-#### Some basics on tables
+#### End it where it started: tables
 
 There isn't a lot about tables that is not already well kwnown. For accessibility you might want to be carefull of a few things.
 
@@ -1123,7 +1144,9 @@ Use the `scope="col"` on your `th` columns to explain to screen readars that the
 If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#Tables_for_visually_impaired_users, "page"}.
 
 
+## Final words
 
+I'm tired.
 
 
 ====
