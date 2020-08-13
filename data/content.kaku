@@ -32,13 +32,13 @@ I use two keyboards: the *Happy Hacking Keyboard* (HHKB) by PFU and a *Happy Hac
 
 ## Happy Hacking Keyboard
 
-[media/hhkb.jpg, The happy hacking keyboard]
+[img.jpg, The happy hacking keyboard]
 
 Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a {https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?_pos=16&_sid=098521c43&_ss=r, "japanese keyset"}. As for all HHKBs, the switches are Topre.
 
 ## HHKB plate replica
 
-[media/hhkb-plate.jpg, My plate replica of HHKB]
+[img-plate.jpg, My plate replica of HHKB]
 
 Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. This keyboard initially had a rough CNC cut plate with Outemu Purple switches. I unsoldered the switchs and replaced them with Cherry MX Silent Red. A friend also lubbed them to avoid making noise. A vinyl like sticker was then applied to the plate to hide the rough metal. 
 
@@ -224,7 +224,7 @@ You at least need those:
 
 ? `header` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
 ? `nav` : Put your navigation elements inside this. You can have several `nav` but you then need to use the `aria-label` attribute to name them for screen readers users.
-? `main`: Put the main parts of your website inside this one. Very useful as screen readers users can use a shortcut to access it directly.
+? `main`: Put the main parts of your website inside this one. Very useful as it indicates to screen readers users they reached the main part of the page.
 ? `article` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine if you had to remove everything one thing, and put it inside this tag.
 ? `aside` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side note for example.
 ? `footer` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
@@ -845,6 +845,200 @@ If you have to present some code, it's probably good to wrap it inside a `pre` t
 
 The `hr` element is to make indicate a break inside your content, a kind of pause, a change of subject. You could think that the old `hr` element is useless when we can style this breaks with CSS, but they indicate to screen readers users that they can take a break too!
 
+#### All about images
+
+Just as links, images can feel pretty straightforward. Put an `img` tag, an `src` and an `alt` attributes and you're good right?!
+
+Well yeah but... what if we could do much more, like loading the right image size depending on viewport, let the browser decide between image formats or even only load images when they are in the viewport?
+
+##### Load the right image size and density
+
+The `img` element has an attribute name `srcset` that allows you to add several links to several versions of your image. You can do two things with `srcset`:
+
++ Ask the browser to change the image depending of the width of the viewport.
++ Ask the browser to change the image depending of the pixel density of the display.
+
+In the example below, I have 4 versions of the same image that I want the browser to use when the viewport is less than 300, 600, 900 and 1200 pixels in width:
+
+```
+<img 
+src="img-1200.jpg" 
+srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w" 
+/>
+```
+
+And for pixel density for 1k, 2k or 4k screens:
+
+```
+<img 
+src="img-1k.jpg" 
+srcset="img-1k.jpg 1x, img-2k.jpg 2x, img-4k.jpg x4" 
+alt="this is an image"
+/>
+```
+
+But you can also combine them, for example for a favicon:
+
+```
+<img 
+src="icon32px.png"
+"icon32px.png 32w, icon64px.png 64w, icon-retina.png 2x icon-ultra.png 3x icon.svg"
+alt="this is an image"
+/>
+```
+
+This way you are sure you only load the right size or density for your readers.
+
+##### Load the right image format
+
+You maybe saw it before and wondered what was the `picture` element good for? Well it's quite simple, it's used to contain several `source` elements and an `img` element. 
+
+The `source` elements are used to give alternate versions of the same image. The most obvious usecase is to load several formats to allow to browser to pick the lighter if it supports it.
+
+Let's take an example with a `jpg` and a `webp`. 
+
+```
+<picture>
+    <source srcset="img1.webp" type="image/webp">
+    <img src="img1.jpg" alt="this is an image" />
+</picture>
+```
+
+If the browser supports the webp format, it will automatically use the webp file instead of the jpg. 
+
+##### Lazy loading images
+
+Lazy loading has become native in most browsers and is quite simple to use: `loading:"lazy"` on your `img` element and you are good to go. They are several ways of doing lazy loading for older browsers who don't support this feature. All of them require to use Javascript. If you want to support old browsers, take a look at this {https://css-tricks.com/the-complete-guide-to-lazy-loading-images/, "article"}.
+
+
+##### Combine all this together!
+
+But you don't have to choose between all these features, you can combine them to have images at the right size, of the best type, only loaded when in the viewport, and allt his only in html.
+
+```
+<picture>
+    <source 
+    type="image/webp" 
+    srcset="img-300.webp 300w, img-600.webp 600w, img-900.webp 900w, img-1200.webp 1200w">
+
+    <img 
+    loading="lazy" 
+    src="img.jpg" 
+    srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w" alt="The happy hacking keyboard">
+</picture>
+            ```
+
+Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known.
+
+#### Some basics on forms
+
+Forms are incredibly complicated to get right from an accessibility standpoint. I don't know all the good practices but I've seen some bad ones that I can warn you about.
+
+##### Forms require strict html
+
+With more people validating forms with JavaScript, we've seen a deprecation of forms html quality. But the reality is quite simple: if you forget about some parts of the form, screen readers users will ne know they are in a form to begin with!
+
++ A form starts and ends with the `form` element even if you validate it with JavaScript. Also add an `id` to it.
++ Each `input`, no matter its type, needs and `id` and a `label` with the `for` attribute pointing to it. 
++ If you have a multi-section form, regroup them with the `fieldset` element and add the `legend` element as the "title" of this fieldset.
++ End your form with a `button` when you can, use the `for` attribute to point on the form's id, and use an `aria-label` to give more context.
+
+For accessibility reasons:
+
+- Use contextualized text for your labels, be precise about what each input is about! If you can't have a clear label, same as links: add a `title` attribute to the input as well as a `aria-label`.
+- Don't rely on the `placeholder` attribute for examples of what is expected as the placeholder text is often hard to read and disapears once the input becomes active!
+- If you want to add an example of what is expected from the user, you can either add it directly in the label (often not very accepted by designers) or add it below the input and then refer to it with the `aria-describedby` attribute (see example below). Using this, screen readers will first read the label, then the `aria-describedby` text.
+
+Wrapping it up, here's an example:
+
+<span class="visually-hidden">There is an form demo below, you can inspect it using the development tools.</span>
+<form id="monsters">
+  <fieldset>
+    <legend>Choose your favorite monster</legend>
+    <small id="error" style="color:red; display:none;">Error: you need to choose a monster.</small><br/>
+
+
+    <input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc">
+    <label for="kraken">Kraken</label><br/>
+    <small id="kraken-desc">The kraken is a kind of giant squid.</small><br/>
+
+    <input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc">
+    <label for="sasquatch">Sasquatch</label><br/>
+    <small id="sasquatch-desc">The Sasquatch is a kind of giant ape.</small><br/>
+
+    <input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc">
+    <label for="mothman">Mothman</label><br/>
+    <small id="mothman-desc">The Mothman is a kind of giant moth.</small><br/>
+  </fieldset>
+</form>
+<button type="submit" form="monsters" value="Submit" aria-label="Validate the monsters form">Validate</button> 
+
+That's it for the code, but more often than you think, bad forms are the result of non inclusive design practices, some of which we will see below.
+
+##### Informations below forms
+
+Ever filled a form and right under the validate button, seen a wall of text written in 10 pixels size that is actually the terms and conditions? Well that can be a problem!
+
+Most forms end with words like _Continue_ or _Validate_ and by doing so, they suggest that the page is finished! A screen reader user can't know there's something else below. 
+
+This problem can be super tedious to explain to designers as most of them don't want a wall of text before the form, and don't ever suggest this to a marketing team! So an accessible solution is to simply use an invisible anchor link pointing to the wall of text right before the form starts.
+
+Screen readers users are humans too, they dislike walls of text about legal stuff like anyone else! This solution allows them to either read it or even better, skip it, like we all do _right?_
+
+##### Don't put informations inside a form!
+
+You probably already tried to tab between inputs in a form. That's because inputs are capturing elements that *you can only escape by using the tab key*. And when you do, *the tab key will lead you to the next natively focusable element* link another input, a button or a link. 
+
+It's important because too many designers put big explanation texts about the form between inputs. Since screen readers users can only use the tab key to get out of an input and will land on the next focusable element, they will not have the explanation texts vocalized and have no way of access them. We saw that `aria-describedby` can be used to link a for to a descriptive text, but that's applying bandage on a broken leg.
+
+Removing texts inside forms might seem like a chore and, when talking about it with designers, they will probably tell you it's a going to make the whole experience bland or suffocating in the case of massive forms. 
+
+But the reality is that *a form that needs explanation texts between inputs is a bad design right from the start*. You should give all necessary information before filling the form, otherwise users might start filling it and realize in the middle they didn't have to, or are not concerned about it. 
+
+Your labels with the descriptions attached should be enough.
+
+##### Handling errors in forms is a pain
+
+Handling errors in forms is super complicated and nobody seems to agree about how to do it correctly. It's especially hard with accessibility in mind, and not only because of screen readers. So take my advices with a grain of salt as I may be wrong on some cases and am still learning about this.
+
+The first rule to respect is that triggering error messages should only happen either when the user tabs out of the input or when ther user validates the form. Don't trigger error messages while the user is typing. Wait for him to go out of the input or it will be a vocalized nightmare or a panic inducing behaviour. You might think that's counter-intuitive as screen readers users may not know that they wrote it wrong but that's actually ok if you do the following right.
+
+When the user validates the form using the button, if an input is required and not filled or wrongly filled, move the user focus to this problematic input using the `.focus()` function in JavaScript. This way the user can promptly fill or fix it and go back below super fast to validate the form again.
+
+To error message should be added the same way as the instructions, with an `aria-describedby`. You can actually have two `id` as a value for `aria-describedby`, so screen readers will read the label, then the description, then the error message.
+
+For the sake of the example, imagine we did not choose a monster below and tried validating the form. In JavaScript, we should add the `error` id to each input's `aria-describedby` so screen readers can vocalize the error message, and remove the `display:none` from the error message itself so non-screen readers users can see it too.
+
+<span class="visually-hidden">There is an form demo below, you can inspect it using the development tools.</span>
+<form id="monsters">
+  <fieldset>
+    <legend>Choose your favorite monster</legend>
+    <small id="error" style="color:red;">Error: you need to choose a monster.</small><br/>
+
+    <input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc error">
+    <label for="kraken">Kraken</label><br/>
+    <small id="kraken-desc">The kraken is a kind of giant squid.</small><br/>
+
+    <input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc error">
+    <label for="sasquatch">Sasquatch</label><br/>
+    <small id="sasquatch-desc">The Sasquatch is a kind of giant ape.</small><br/>
+
+    <input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc error">
+    <label for="mothman">Mothman</label><br/>
+    <small id="mothman-desc">The Mothman is a kind of giant moth.</small><br/>
+  </fieldset>
+</form>
+<button type="submit" form="monsters" value="Submit" aria-label="Validate the monsters form">Validate</button> 
+
+
+Because of all this and contrary to popular practices, *you should never disable a form button*, even if the user made errors or did not finish filling the form. If the validation button is disabled, the user has to travel through the whole form to find which input is not good, which is less practical than sending him directly there when the button is clicked.
+
+Applying this can be tricky on legacy applications that handle errors in a monolytic way. Even if you do frontend surface level error checking, the user might make a typo that can only be identified when the form is sent and the backend discovers it by using informations stored in a database for example. If this happens, the error handling in the backend needs to be written in a way that returns which information is wrong, to allow the frontend to `.focus()` on the wrong input. 
+
+If the backend returns a vague message then the frontend can't do anything outside using `.focus()` to move the user to a standard error message, and the user has to redo the entire form and find by himself what he did wrongly. This is a super bad user experience.
+
+The best solution is of course to do error checking on the backend on each input with an ajax call right after the user finished completing it. But for various reasons going from time to cost of requests, it's not always possible.
+
 
 #### The inline semantic elements
 
@@ -870,9 +1064,42 @@ Imagine a website for a touristic area with a cliff:
 - The `i` tag is used to indicate that something is set off from the normal prose. For example it should be used for the foreign name of the cliff: "This cliff name is <i>mh'irr'la</i>" or the thoughts of someone thinking about the cliff: "<i>Is the cliff really in love with me or is it just a farce?</i> thought Jonathan".
 - The `em` tag is used to stress something on the subject, almost as if you speak it aloud. So it should help denote something about the cliff: "Ah yes, the _cliff_, the one that is actually 2 meters tall".
 
-I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser decided to use.
+I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser of your choice decided to use. For example this page is written using {/kaku.html, "Kaku", Go to Kaku page} who compiles to `strong` and `em` by default. 
 
-##### Kinda useful inline semantic elements
+#### What about `button` and `a`?
+
+For most document type websites the question between links and buttons doesn't really exist. But in application type websites, it's often that developers don't pick the right one or that designers make links look like buttons. 
+
+So to make it clear:
+
+- An `a` is for a page change or a new tab. When changing page, a screen reader user will be automatically moved to the top of the page and will start reading it from there.
+- A `button` is for activating something like a modal or a form. Once pressed, even if things change in the page, it doesn't move a screen reader user somewhere else and it doesn't vocalize anything.
+
+This difference of behavior is super important, especially in single page JavaScript web applications where urls are changed dynamically, but no page change is triggered in the browser! When such a case happen, the developer has to manually move the focus of the screen reader user to the next point of interest inside the app and vocalize what happened and where the user is.
+
+To do this, the developer has to use the `.focus()` function in JavaScript. I'm not 100% sure about how to vocalize the page change so I'm not gonna give any advice on this. If you know good practices please {now.html, "contact me", Go to my contact page} so I can update this part.
+
+One last thing: I don't care about your reasons, donc replace a `button` by a `div`.
+
+
+
+#### Some cool html interactive elements
+
+You might not know these but they can be super useful.
+
+? `details` and `summary` : Allows you to make a kind of accordion box in pure html. By default closed but the `open` attribute on `details` can make it open.
+
+Details and summary https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+- Datalist https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+- Progress or why you should not use it
+
+<details>
+  <summary>Code example</summary>
+  
+</details>
+
+
+#### Other kinda useful semantic elements
 
 Speaking about unavailable elements, those could be usefull in some contextx but will mostly have to be added by hand:
 
@@ -881,7 +1108,20 @@ Speaking about unavailable elements, those could be usefull in some contextx but
 ? `time` : For time values of course.
 ? `mark` : To highlight some parts of your text.
 ? `s` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
-? `del` & `ins` : If you have an edit to make to a text, `del` 
+? `del` & `ins` : If you have an edit to make to a text and want to keep trace of the change `del` and `ins` are a good pick!
+
+
+
+#### Some basics on tables
+
+There isn't a lot about tables that is not already well kwnown. For accessibility you might want to be carefull of a few things.
+
+The `caption` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`.
+
+Use the `scope="col"` on your `th` columns to explain to screen readars that the element is a the start of the column and `scope="row"` for the same `th` elements that start rows.
+
+If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#Tables_for_visually_impaired_users, "page"}.
+
 
 
 
