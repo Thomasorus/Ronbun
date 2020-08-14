@@ -182,17 +182,17 @@ You need this:
 
 You need to indicate that the document is html, the language of the document and of course its encoding. You also need a title as it will be visible in the tab and spoken by screen readers.
 
-The `meta name="viewport"` is especially important. It can be used to block the zoom or dezoom of the page. But don't do it, please *never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
+The `<meta name="viewport>"` is especially important. It can be used to block the zoom or dezoom of the page. But don't do it, please *never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
 
-Of course there's a lot more that can go into the `head` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `body`.
+Of course there's a lot more that can go into the `<head>` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `<body>`.
 
 ### Divs and spans
 
-Html is all about putting...things! Inside... other things? So your first reflex is probably to grab a `div` or a `span`, the good old ones! But what's the difference between them?
+Html is all about putting...things! Inside... other things? So your first reflex is probably to grab a `<div>` or a `<span>`, the good old ones! But what's the difference between them?
 
-If you put several `div` one after the other, you'll see they stack one above the other. That's because a `div` has the `display:block;` CSS property by default. `display:block` makes the element start on a new line and take 100% of its container width.
+If you put several `<div>` one after the other, you'll see they stack one above the other. That's because a `<div>` has the `display:block;` CSS property by default. `display:block` makes the element start on a new line and take 100% of its container width.
 
-If you do the same with `span`, they will stack one after the other. That's because a `span` has the `display:inline;` CSS property by default, which tells the element to start on the same line as the previous element and that its width and heigh are decided by content.
+If you do the same with `<span>`, they will stack one after the other. That's because a `<span>` has the `display:inline;` CSS property by default, which tells the element to start on the same line as the previous element and that its width and heigh are decided by content.
 
 So just by knowing that, you already know how to stack things vertically and horizontaly. Great right?
 
@@ -206,7 +206,7 @@ And yes, some of them are verbose to undo, like buttons. That's the reason some 
 
 But please be careful when resetting styles. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Going too hard on de-style can break those things and left you with... nothing. You are lost.
 
-Speaking of being lost, `div` and `span` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
+Speaking of being lost, `<div>` and `<span>` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
 
 ### What is semantic html?
 
@@ -218,16 +218,16 @@ There is a lot, _a LOT_ of semantic html elements and even I who loves html does
 
 ### Content sectionning
 
-These semantic elements have the same style properties as a `div` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing. You can even add them to an existing design without trouble!
+These semantic elements have the same style properties as a `<div>` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing. You can even add them to an existing design without trouble!
 
 You at least need those:
 
-? `header` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
-? `nav` : Put your navigation elements inside this. You can have several `nav` but you then need to use the `aria-label` attribute to name them for screen readers users.
-? `main`: Put the main parts of your website inside this one. Very useful as it indicates to screen readers users they reached the main part of the page.
-? `article` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine if you had to remove everything one thing, and put it inside this tag.
-? `aside` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side note for example.
-? `footer` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+? `<header>` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+? `<nav>` : Put your navigation elements inside this. You can have several `<nav>` but you then need to use the `aria-label` attribute to name them for screen readers users.
+? `<main>`: Put the main parts of your website inside this one. Very useful as it indicates to screen readers users they reached the main part of the page.
+? `<article>` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine if you had to remove everything one thing, and put it inside this tag.
+? `<aside>` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side note for example.
+? `<footer>` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
 
 A basic page might look like this for example:
 
@@ -243,7 +243,7 @@ A basic page might look like this for example:
 </body>
 ```
 
-I did not mention the `section` element but it can be quite usefull if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `article`, but comments should be inside a `section` to make it clearer for screen readers users that the blog post has ended.
+I did not mention the `section` element but it can be quite usefull if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `<article>`, but comments should be inside a `section` to make it clearer for screen readers users that the blog post has ended.
 
 ```
 <main>
@@ -307,7 +307,7 @@ So how does that work?
 
 ##### Decide the direction
 
-First, you decide if the flow goes horizontaly or vertically, and in which direction. For this, you can use the great `flex-flow` shortcut property. Its most common options are:
+First, you decide if the flow goes horizontaly or vertically, and in which direction. For this, you can use the great `flex-flow: ???;` shortcut property. Its most common options are:
 
 ? `row` : the children will be displayed from left to right
 ? `row-reverse` : the children will be displayed from right to left
@@ -318,7 +318,7 @@ You can also decide if the child elements should wrap aka create a new line when
 
 Real code examples:
 
-`row wrap`
+`flex-flow: row wrap;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap;">
     <div class="code-example-children pattern-dots">
@@ -329,7 +329,7 @@ Real code examples:
     </div>
 </div>
 
-`row-reverse wrap`
+`flex-flow: row-reverse wrap;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row-reverse wrap;">
     <div class="code-example-children pattern-dots">
@@ -341,7 +341,7 @@ Real code examples:
 </div>
 
 
-`column wrap`
+`flex-flow: column wrap;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column wrap;">
     <div class="code-example-children pattern-dots">
@@ -378,7 +378,7 @@ Let's reuse this example of a row going from left to right:
 </div>
 ```
 
-We're going to use `justify-content:????;` to fine tune the way child elements behave between each others on the horizontal axis:
+We're going to use `justify-content: ???;` to fine tune the way child elements behave between each others on the horizontal axis:
 
 ? `flex-start` : The default value, stack everything at the start of te flow.
 ? `flex-end` : Stack everything at the end of the flow.
@@ -400,7 +400,7 @@ Real code examples:
     </div>
 </div>
 
-`flex-end`
+`justify-content: flex-end;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-end;">
     <div class="code-example-children pattern-dots">
@@ -411,7 +411,7 @@ Real code examples:
     </div>
 </div>
 
-`center`
+`justify-content: center;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center;">
     <div class="code-example-children pattern-dots">
@@ -422,7 +422,7 @@ Real code examples:
     </div>
 </div>
 
-`space-between`
+`justify-content: space-between;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-between;">
     <div class="code-example-children pattern-dots">
@@ -433,7 +433,7 @@ Real code examples:
     </div>
 </div>
 
-`space-around`
+`justify-content: space-around;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-around;">
     <div class="code-example-children pattern-dots">
@@ -444,7 +444,7 @@ Real code examples:
     </div>
 </div>
 
-`space-evenly`
+`justify-content: space-evenly;`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
 <div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-evenly;">
     <div class="code-example-children pattern-dots">
@@ -456,7 +456,7 @@ Real code examples:
 </div>
 
 
-Now the cool thing is... The `align-items:????;` CSS property takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align on the `x` and `y` axis in two lines of code!
+Now the cool thing is... The `align-items: ???;` CSS property takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align on the `x` and `y` axis in two lines of code!
 
 It allows us to create the holy grail of alignment: center both vertically and horizontally in two lines of CSS! 
 
@@ -490,7 +490,7 @@ Even more than Flexbox, it's a _massive_ spec with tons of use cases and syntax 
 
 Let's say you want to replicate the good old 12 columns grid from Bootstrap. For this example we'll go with just 6 columns but it's basically the same. How would that work?
 
-First we have to use `display:grid;` on the parent element, just like we did with flexbox. They we can declare our grid with the `grid-template-columns:????;` property.
+First we have to use `display: grid;` on the parent element, just like we did with flexbox. They we can declare our grid with the `grid-template-columns: ???;` property.
 
 `grid-template-columns: repeat(6, 1fr);`
 <span class="visually-hidden">There is an hidden code demo below, please inspect it using the development tools.</span>
@@ -778,7 +778,7 @@ So we have our page layout composed of semantic HTML elements. Now is the time t
 
 #### Order your titles correctly
 
-This one is simple, use `h1`, `h2`, `h3`, etc... Your page should at least have an `h1` and sould not jump from `h1` to `h3` without an `h2`. If you want a smaller title, use CSS but don't ruin the semantic for styling purposes! 
+This one is simple, use `<h1>`, `<h2>`, `h3`, etc... Your page should at least have an `<h1>` and sould not jump from `<h1>` to `<h3>` without an `<h2>`. If you want a smaller title, use CSS but don't ruin the semantic for styling purposes! 
 
 The reason why it is important is because screen readers users have shortcuts that allows them to jump directly to your titles. You can replicate this functionnality for all your users by adding an id and a hidden link to your titles. This way the user can click the title to add the id to the url, allowing sharing links to different parts of the same page.
 
@@ -787,7 +787,7 @@ This website actually uses this system. You can find the JavaScript function for
 
 #### Make your links clear and accessible
 
-Links are pretty straightforward, you put an `a` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" outside of clear phrases, as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
+Links are pretty straightforward, you put an `<a>` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like "more" or "click here" outside of clear phrases, as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
 
 If you can't use a more contextualized text, then add the `title` attribute in the link with more context inside, and it will provide a tooltip when the user hover on the link. You will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
 
@@ -805,55 +805,55 @@ Kwowing all this, it's often less work and trouble to just rephrase the link!
 
 #### Organize your text content
 
-Remember when I talked about the box-content semantic elements, the `nav`, `main` and others? Well there's a looot more of them for the text. If you care enough, you can probably find a semantic html element for anything. Here's a few that you should use:
+Remember when I talked about the box-content semantic elements, the `<nav>`, `<main>` and others? Well there's a looot more of them for the text. If you care enough, you can probably find a semantic html element for anything. Here's a few that you should use:
 
-##### text blocks with `p`
+##### text blocks with `<p>`
 
 If you don't know what to use for your block of text, your probably need a paragraph. Paragraphs come with a natural margin that makes them readable even without adding style.
 
-##### Citations with `blockquote`
+##### Citations with `<blockquote>`
 
-The good old quote we often see in articles! It actually comes with the `cite` element and attribute to help you sources your quotes. Take a look at the specifications on {https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote/, "this page"} to make better quotes.
+The good old quote we often see in articles! It actually comes with the `<cite>` element and attribute to help you sources your quotes. Take a look at the specifications on {https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote/, "this page"} to make better quotes.
 
-##### Lists with `ul`, `ol`, `dl`
+##### Lists with `<ul>`, `<ol>`, `<dl>`
 
 If you enumerate something (text, links, etc...) you probably should add them in a list. Lists are useful for screen readers users as they are announced as a list with the total number of elements inside. Then when reading the list, the screen reader voices each element with its position.
 
-`ul` with `li` inside creates an unordered list with bullets:
+`<ul>` with `<li>` inside creates an unordered list with bullets:
 
 - Element A
 - Element C
 - Element Z
 
-`ol` with `li` will create an ordered list with numbers for each element:
+`<ol>` with `<li>` will create an ordered list with numbers for each element:
 
 + Element 1
 + Element 2
 + Element 3
 
-`dl` is not very popular but is super useful as it's a definition list. Most people still use two columns tables for definitions, but this is way better for screen readers users. 
+`<dl>` is not very popular but is super useful as it's a definition list. Most people still use two columns tables for definitions, but this is way better for screen readers users. 
 
 ? Term 1 : Definition 1
 ? Term 2 : Definition 2
 ? Term 3 : definition 3
 
-##### Preformated text with `pre`
+##### Preformated text with `<pre>`
 
-If you have to present some code, it's probably good to wrap it inside a `pre` tag to preserve its formating. Please note that you should also use the inline semabntic `code` element (see further below).
+If you have to present some code, it's probably good to wrap it inside a `<pre>` tag to preserve its formating. Please note that you should also use the inline semabntic `<code>` element (see further below).
 
-##### Make breaks with `hr`
+##### Make breaks with `<hr>`
 
-The `hr` element is to make indicate a break inside your content, a kind of pause, a change of subject. You could think that the old `hr` element is useless when we can style this breaks with CSS, but they indicate to screen readers users that they can take a break too!
+The `<hr>` element is to make indicate a break inside your content, a kind of pause, a change of subject. You could think that the old `<hr>` element is useless when we can style this breaks with CSS, but they indicate to screen readers users that they can take a break too!
 
 #### All about images
 
-Just as links, images can feel pretty straightforward. Put an `img` tag, an `src` and an `alt` attributes and you're good right?!
+Just as links, images can feel pretty straightforward. Put an `<img>` tag, an `src` and an `alt` attributes and you're good right?!
 
 Well yeah but... what if we could do much more, like loading the right image size depending on viewport, let the browser decide between image formats or even only load images when they are in the viewport?
 
 ##### Load the right image size and density
 
-The `img` element has an attribute name `srcset` that allows you to add several links to several versions of your image. You can do two things with `srcset`:
+The `<img>` element has an attribute name `srcset` that allows you to add several links to several versions of your image. You can do two things with `srcset`:
 
 + Ask the browser to change the image depending of the width of the viewport.
 + Ask the browser to change the image depending of the pixel density of the display.
@@ -891,9 +891,9 @@ This way you are sure you only load the right size or density for your readers.
 
 ##### Load the right image format
 
-You maybe saw it before and wondered what was the `picture` element good for? Well it's quite simple, it's used to contain several `source` elements and an `img` element. 
+You maybe saw it before and wondered what was the `<picture>` element good for? Well it's quite simple, it's used to contain several `<source>` elements and an `<img>` element. 
 
-The `source` elements are used to give alternate versions of the same image. The most obvious usecase is to load several formats to allow to browser to pick the lighter if it supports it.
+The `<source>` elements are used to give alternate versions of the same image. The most obvious usecase is to load several formats to allow to browser to pick the lighter if it supports it.
 
 Let's take an example with a `jpg` and a `webp`. 
 
@@ -908,7 +908,7 @@ If the browser supports the webp format, it will automatically use the webp file
 
 ##### Lazy loading images
 
-Lazy loading has become native in most browsers and is quite simple to use: `loading:"lazy"` on your `img` element and you are good to go. They are several ways of doing lazy loading for older browsers who don't support this feature. All of them require to use Javascript. If you want to support old browsers, take a look at this {https://css-tricks.com/the-complete-guide-to-lazy-loading-images/, "article"}.
+Lazy loading has become native in most browsers and is quite simple to use: `loading:"lazy"` on your `<img>` element and you are good to go. They are several ways of doing lazy loading for older browsers who don't support this feature. All of them require to use Javascript. If you want to support old browsers, take a look at this {https://css-tricks.com/the-complete-guide-to-lazy-loading-images/, "article"}.
 
 
 ##### Combine all this together!
@@ -938,10 +938,10 @@ Forms are incredibly complicated to get right from an accessibility standpoint. 
 
 With more people validating forms with JavaScript, we've seen a deprecation of forms html quality. But the reality is quite simple: if you forget about some parts of the form, screen readers users will ne know they are in a form to begin with!
 
-+ A form starts and ends with the `form` element even if you validate it with JavaScript. Also add an `id` to it.
-+ Each `input`, no matter its type, needs and `id` and a `label` with the `for` attribute pointing to it. 
-+ If you have a multi-section form, regroup them with the `fieldset` element and add the `legend` element as the "title" of this fieldset.
-+ End your form with a `button` when you can, use the `for` attribute to point on the form's id, and use an `aria-label` to give more context.
++ A form starts and ends with the `<form>` element even if you validate it with JavaScript. Also add an `id` to it.
++ Each `<input>`, no matter its type, needs and `id` and a `<label>` with the `for` attribute pointing to it. 
++ If you have a multi-section form, regroup them with the `<fieldset>` element and add the `<legend>` element as the "title" of this fieldset.
++ End your form with a `<button>` when you can, use the `for` attribute to point on the form's id, and use an `aria-label` to give more context.
 
 For accessibility reasons:
 
@@ -1049,9 +1049,9 @@ This is often complicated to add if you use a CMS or a markup language like Mark
 Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating could probably be easier too.
 
 
-##### Next match: `strong` versus `b` versus `em` versus `i`
+##### Next match: `<strong>` versus `<b>` versus `<em>` versus `<i>`
 
-Here we are, at the doors of the great war of semantic inline elements. So who's right between `strong` and `b`? Who wins between `em` and `i`?
+Here we are, at the doors of the great war of semantic inline elements. So who's right between `<strong>` and `<b>`? Who wins between `<em>` and `<i>`?
 
 Well, they all win.
 
@@ -1059,27 +1059,27 @@ Everyone is a winner excepts us the developers who have to implement this. Let's
 
 Imagine a website for a touristic area with a cliff:
 
-- The `b` tag is used to draw the reader's attention. So it should draw attention to the cliff: "This wonderful area has a forest but also a <b>wonderful cliff</b>".
-- The `strong` tag is to indicate the importance and seriousness of something. So it should warn people about the cliff: "Please be carefull near the cliff as *there are no ramps to prevent you from falling and the winds are strong*".
-- The `i` tag is used to indicate that something is set off from the normal prose. For example it should be used for the foreign name of the cliff: "This cliff name is <i>mh'irr'la</i>" or the thoughts of someone thinking about the cliff: "<i>Is the cliff really in love with me or is it just a farce?</i> thought Jonathan".
-- The `em` tag is used to stress something on the subject, almost as if you speak it aloud. So it should help denote something about the cliff: "Ah yes, the _cliff_, the one that is actually 2 meters tall".
+- The `<b>` tag is used to draw the reader's attention. So it should draw attention to the cliff: "This wonderful area has a forest but also a <b>wonderful cliff</b>".
+- The `<strong>` tag is to indicate the importance and seriousness of something. So it should warn people about the cliff: "Please be carefull near the cliff as *there are no ramps to prevent you from falling and the winds are strong*".
+- The `<i>` tag is used to indicate that something is set off from the normal prose. For example it should be used for the foreign name of the cliff: "This cliff name is <i>mh'irr'la</i>" or the thoughts of someone thinking about the cliff: "<i>Is the cliff really in love with me or is it just a farce?</i> thought Jonathan".
+- The `<em>` tag is used to stress something on the subject, almost as if you speak it aloud. So it should help denote something about the cliff: "Ah yes, the _cliff_, the one that is actually 2 meters tall".
 
-I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser of your choice decided to use. For example this page is written using {/kaku.html, "Kaku", Go to Kaku page} who compiles to `strong` and `em` by default. 
+I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser of your choice decided to use. For example this page is written using {/kaku.html, "Kaku", Go to Kaku page} who compiles to `<strong>` and `<em>` by default. 
 
-#### What about `button` and `a`?
+#### What about `<button>` and `<a>`?
 
 For most document type websites the question between links and buttons doesn't really exist. But in application type websites, it's often that developers don't pick the right one or that designers make links look like buttons. 
 
 So to make it clear:
 
-- An `a` is for a page change or a new tab. When changing page, a screen reader user will be automatically moved to the top of the page and will start reading it from there.
-- A `button` is for activating something like a modal or a form. Once pressed, even if things change in the page, it doesn't move a screen reader user somewhere else and it doesn't vocalize anything.
+- An `<a>` is for a page change or a new tab. When changing page, a screen reader user will be automatically moved to the top of the page and will start reading it from there.
+- A `<button>` is for activating something like a modal or a form. Once pressed, even if things change in the page, it doesn't move a screen reader user somewhere else and it doesn't vocalize anything.
 
 This difference of behavior is super important, especially in single page JavaScript web applications where urls are changed dynamically, but no page change is triggered in the browser! When such a case happen, the developer has to manually move the focus of the screen reader user to the next point of interest inside the app and vocalize what happened and where the user is.
 
 To do this, the developer has to use the `.focus()` function in JavaScript. I'm not 100% sure about how to vocalize the page change so I'm not gonna give any advice on this. If you know good practices please {now.html, "contact me", Go to my contact page} so I can update this part.
 
-One last thing: I don't care about your reasons, donc replace a `button` by a `div`.
+One last thing: I don't care about your reasons, donc replace a `<button>` by a `<div>`.
 
 
 
@@ -1087,9 +1087,9 @@ One last thing: I don't care about your reasons, donc replace a `button` by a `d
 
 You might not know these but they can be super useful. Their main default is that they are sometimes hard to style properly.
 
-? `details` and `summary` : Allows you to make a kind of accordion box in pure html. By default closed but the `open` attribute on `details` can make it open.
-? `datalist` : Can be used as an input with a list of options auto-suggested by what the user is typing.
-? `progress` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar" on a div.
+? `<details>` and `<summary>` : Allows you to make a kind of accordion box in pure html. By default closed but the `open` attribute on `<details>` can make it open.
+? `<datalist>` : Can be used as an input with a list of options auto-suggested by what the user is typing.
+? `<progress>` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar" on a div.
 
 Note that you can't animate the reveal:
 
@@ -1111,7 +1111,7 @@ A datalist can be usefull but requires a full form, which is quite a lot of code
 </datalist>
 
 
-A progress bar using `progress` has this look:
+A progress bar using `<progress>` has this look:
 
 <progress aria-valuenow="20" aria-valuemin="0" aria-valuetext="Step 2: Copying files... " aria-valuemax="100" style="display:block; width:100%;">20 %</progress>
 
@@ -1126,20 +1126,20 @@ Use the `role="progressbar" to style it more easily:
 
 Speaking about unavailable elements, those could be usefull in some contextx but will mostly have to be added by hand:
 
-? `abbr` : Stands for abbreviation. Can be used for currencies for example.
-? `code` : For code, obviouslym, often best used with `pre`.
-? `time` : For time values of course.
-? `mark` : To highlight some parts of your text.
-? `s` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
-? `del` & `ins` : If you have an edit to make to a text and want to keep trace of the change `del` and `ins` are a good pick!
+? `<abbr>` : Stands for abbreviation. Can be used for currencies for example.
+? `<code>` : For code, obviouslym, often best used with `<pre>`.
+? `<time>` : For time values of course.
+? `<mark>` : To highlight some parts of your text.
+? `<s>` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
+? `<del>` & `<ins>` : If you have an edit to make to a text and want to keep trace of the change `<del>` and `<ins>` are a good pick!
 
 #### End it where it started: tables
 
 There isn't a lot about tables that is not already well kwnown. For accessibility you might want to be carefull of a few things.
 
-The `caption` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`.
+The `<caption>` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`.
 
-Use the `scope="col"` on your `th` columns to explain to screen readars that the element is a the start of the column and `scope="row"` for the same `th` elements that start rows.
+Use the `scope="col"` on your `<th>` columns to explain to screen readars that the element is a the start of the column and `scope="row"` for the same `<th>` elements that start rows.
 
 If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#Tables_for_visually_impaired_users, "page"}.
 
