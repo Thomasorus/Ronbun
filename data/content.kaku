@@ -137,7 +137,7 @@ I'm Thomas, a fighting game fan and web developer.
 
 ====
 
-NAME: DEV TIPS
+NAME: HTML TIPS
 HOST: knowledge
 Bref: A collection of html and CSS tips to build simple yet optimized websites
 BODY:
@@ -148,7 +148,64 @@ If you are reading this, your probably own a website but you're not sure about t
 
 This tips and tricks are from on personal experience working as a frontend web developer for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", go to my contact page}.
 
-## About accessibility in this page
+## About accessibility
+
+- {accessibility-tips.html, "What is accessibility"}
+- {accessibility-tools.html} "The tools and how they are used "}
+
+## The basics of html
+
+This section will give your some basic knowledge to get started and explain the basics of semantic html. 
+
+- {html-basics.html, "The basics: the head, the div and the span"}
+- {html-semantics.html, "What is semantic html and why should I care?"}
+
+## Modern layouts
+
+There are parts that you can do just in html, and others that need CSS. Layouts are the ones who need CSS. *You can save dozens of lines of html by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
+
+Layout examples will be given through these pages, try to inspect them with your browser, reuse and tweak them to your needs.
+
+- {html-layout-tables.html}, "Don't you dare use tables for layout!"}
+- {html-display.html, "Layout basics with the dislay propety"}
+- {html-flexbox.html, "Flexbox"}
+- {html-grid.html, "Grid"}
+
+## Common elements inside your layouts
+
+So we have our page layouts structured by semantic HTML elements. Now is the time to put some content. Text! Images! Videos! Titles! We want them all!
+
+- {html-titles.html, "Titles"}
+- {html-images.html, "Images"}
+- {html-text.html, "Text"}
+- {html-forms.html, "Forms"}
+
+
+## The inline semantic elements
+
+What's the difference between the text semantic elements and the inline semantic elements? Well the first ones are still used to structure your content, but the second ones are used to indicate more precisely what the text inside is about.
+
+- {html-links.html, "How to do good links"}
+- {html-button-a.html, "When to use a button and a link"}
+
+Below are element often complicated to add if you use a CMS or a markup language like Markdown as they don't give syntaxic shortcuts for most of them, so you have to write them by hand. 
+
+Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating could probably be easier too.
+
+- {html-strong-b-em-i.html, "strong Vs b vs em vs i"}
+- {html-interactive.html, "Some interactive elements that can be useful"}
+- {html-others.html, "More situational elements"}
+
+
+
+====
+
+NAME: ACCESSIBILITY TIPS
+HOST: html tips
+Bref: A collection of accessibility tips to build simple yet inclusive websites
+BODY:
+
+# What is accessibility
 
 I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader (the most recommended combination is {https://firefox.com, "Firefox"} with {https://www.nvaccess.org/download/, "NVDA"} on Windows) but there's a lot of handicaps that can give your a hard time on the internet.
 
@@ -157,6 +214,27 @@ You might be deaf, which means you need a transcribed version of an audio or vid
 But accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together.
 
 Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so try to follow those advices.
+
+
+====
+
+NAME: ACCESSIBILITY TOOLS
+HOST: html tips
+Bref: A collection of accessibility tips to build simple yet inclusive websites
+BODY:
+
+# Accessibility tools
+
+- Screen readers
+- Reader mode
+- Others....
+
+====
+
+NAME: HTML BASICS
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 ## The basics of html
 
@@ -207,6 +285,15 @@ And yes, some of them are verbose to undo, like buttons. That's the reason some 
 But please be careful when resetting styles. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Going too hard on de-style can break those things and left you with... nothing. You are lost.
 
 Speaking of being lost, `<div>` and `<span>` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
+
+
+====
+
+NAME: HTML SEMANTICS
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
+
 
 ### What is semantic html?
 
@@ -264,11 +351,12 @@ You'll often see `aria` attributes inside the html code presented in this page. 
 Aria is a massive spec to learn and apply so I will just give you some basic ones in this page. Try to follow them as much as you can to give a better readability to your website layouts.
 
 
-### Yeah, layouts! I want to align those semantic things!
+====
 
-There are parts that you can do just in html, and others that need CSS. *You can save dozens of lines of html by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
-
-Layout examples will be given through this page, try to inspect them with your browser, reuse and tweak them to your needs. But first we need to adress something...
+NAME: HTML LAYOUT TABLES
+HOST: html tips
+Bref: A collection of html tips to build simple yet modern websites
+BODY:
 
 #### Don't use tables for layout
 
@@ -277,6 +365,14 @@ I'm gonna say it again. *Never use tables for layout*. I'm dead serious. Never d
 If you come from the pre-html 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using tables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, the screen readers tells him he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
 
 Also using tables makes your html super verbose, hard to read and hard to debug. They are way simplier solutions to do what most people try to do with tables.
+
+
+====
+
+NAME: HTML DISPLAY
+HOST: html tips
+Bref: A collection of html tips to build simple yet modern websites
+BODY:
 
 ### The `display` property
 
@@ -289,6 +385,14 @@ First the good old ones that you apply directly on each element.
 ? `inline` : Elements are stacked one after the other on the same line until there's no space so a new line is created.
 ? `block` : Elements are stacks on top of each other.
 ? `inline-block` : The best of both worlds as it acts like an inline element but its height and width can be changed!
+
+
+====
+
+NAME: HTML FLEXBOX
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 #### Flexbox, the GOAT
 
@@ -476,6 +580,13 @@ Praise flexbox! <span aria-hidden="true">(/≧▽≦)/</span>
 There's a lot more you can do with Flexbox. You can align items individually, reorder items, decide if they are allowed to shrink or grow in size. If you want to learn more about Flex, try the in-game browser {https://flexboxfroggy.com, "Flexbox Froggy"}. If you are not into games try this free course on {https://www.youtube.com/watch?v=Vj7NZ6FiQvo&list=PLu8EoSxDXHP7xj_y6NIAhy0wuCd4uVdid&index=1, "youtube"}.
 
 You might be thinking "Yeah this is cool, but not as cool as my good old tables". Well rejoice dear reader as I'm going to make you happy.
+
+====
+
+NAME: HTML GRID
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 
 #### CSS Grid the almighty
@@ -772,9 +883,14 @@ If you want to train your CSS grid skills, try playing the amazing Grid Garden g
 
 Congratulations for reading thus far, that was a lot to take! Now let's talk about the content of your pages and about the elements you're going to use to format it!
 
-### Common elements inside your layouts
 
-So we have our page layout composed of semantic HTML elements. Now is the time to put some content. Text! Images! Videos! Titles! Links! We want it all!
+====
+
+NAME: HTML TITLES
+HOST: html tips
+Bref: A collection of html tips to build simple yet modern websites
+BODY:
+
 
 #### Order your titles correctly
 
@@ -784,6 +900,13 @@ The reason why it is important is because screen readers users have shortcuts th
 
 This website actually uses this system. You can find the JavaScript function for this {https://github.com/Thomasorus/Kaku/blob/master/src/module.js#L179, "in the github repo of my parser"} {/kaku.html, "Kaku", Go to Kaku page}.
 
+
+====
+
+NAME: HTML LINKS
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 #### Make your links clear and accessible
 
@@ -802,6 +925,16 @@ So the end result might look like this:
 ```
 
 Kwowing all this, it's often less work and trouble to just rephrase the link!
+
+
+
+====
+
+NAME: HTML TEXT
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
+
 
 #### Organize your text content
 
@@ -844,6 +977,14 @@ If you have to present some code, it's probably good to wrap it inside a `<pre>`
 ##### Make breaks with `<hr>`
 
 The `<hr>` element is to make indicate a break inside your content, a kind of pause, a change of subject. You could think that the old `<hr>` element is useless when we can style this breaks with CSS, but they indicate to screen readers users that they can take a break too!
+
+
+====
+
+NAME: HTML IMAGES
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 #### All about images
 
@@ -929,6 +1070,14 @@ But you don't have to choose between all these features, you can combine them to
             ```
 
 Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known.
+
+
+====
+
+NAME: HTML FORMS
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 #### Some basics on forms
 
@@ -1040,13 +1189,13 @@ If the backend returns a vague message then the frontend can't do anything outsi
 The best solution is of course to do error checking on the backend on each input with an ajax call right after the user finished completing it. But for various reasons going from time to cost of requests, it's not always possible.
 
 
-#### The inline semantic elements
+====
 
-What's the difference between the text semantic elements and the inline semantic elements? Well the first ones are still used to structure your content, but the second ones are used to indicate more precisely what the text inside is about.
+NAME: HTML STRONG B EM I
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
-This is often complicated to add if you use a CMS or a markup language like Markdown as they don't give syntaxic shortcuts for most of them, so you have to write them by hand. 
-
-Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating could probably be easier too.
 
 
 ##### Next match: `<strong>` versus `<b>` versus `<em>` versus `<i>`
@@ -1066,6 +1215,16 @@ Imagine a website for a touristic area with a cliff:
 
 I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the wysiwyg editor or markup language parser of your choice decided to use. For example this page is written using {/kaku.html, "Kaku", Go to Kaku page} who compiles to `<strong>` and `<em>` by default. 
 
+
+
+====
+
+NAME: HTML BUTTON A
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
+
+
 #### What about `<button>` and `<a>`?
 
 For most document type websites the question between links and buttons doesn't really exist. But in application type websites, it's often that developers don't pick the right one or that designers make links look like buttons. 
@@ -1081,6 +1240,13 @@ To do this, the developer has to use the `.focus()` function in JavaScript. I'm 
 
 One last thing: I don't care about your reasons, donc replace a `<button>` by a `<div>`.
 
+
+====
+
+NAME: HTML INTERACTIVE
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
 
 
 #### Some cool html interactive elements
@@ -1122,6 +1288,15 @@ Use the `role="progressbar" to style it more easily:
 <div role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="pattern-dots" style="width:20%; text-align:center;">20 %</div>
 </div>
 
+
+====
+
+NAME: HTML OTHERS
+HOST: html tips
+Bref: A collection of html basic tips to build simple yet modern websites
+BODY:
+
+
 #### Other kinda useful semantic elements
 
 Speaking about unavailable elements, those could be usefull in some contextx but will mostly have to be added by hand:
@@ -1144,9 +1319,6 @@ Use the `scope="col"` on your `<th>` columns to explain to screen readars that t
 If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#Tables_for_visually_impaired_users, "page"}.
 
 
-## Final words
-
-I'm tired.
 
 
 ====
