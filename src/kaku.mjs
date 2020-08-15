@@ -166,26 +166,22 @@ function extractText(text) {
 
 function createImages(item) {
     let el = item
-    el = el.replace("[", "").replace("]", "")
     const imgArr = el.split(",")
     let imgHtml = ""
+    let imgUrl = imgArr[0].replace(/(\.(?:jpe?g|png|gif))$/, "");
 
-    if (imgArr.length === 1) {
-        imgHtml = `<img loading="lazy" src="${imgArr[0]}">`
-    }
+    let alt = ''
+    let caption = ''
 
-    if (imgArr.length === 2) {
-        const alt = ` alt="${imgArr[1].trim()}"`
-        imgHtml = `<img loading="lazy" src="${imgArr[0].trim()}"${alt}>`
+    if (imgArr.length >= 2) {
+        alt = `alt="${imgArr[1].trim()}" `
     }
 
     if (imgArr.length === 3) {
-        const alt = ` alt="${imgArr[1].trim()}"`
-        imgHtml = `<img loading="lazy" src="${imgArr[0]}"${alt}>`
-        const caption = `<figcaption>${extractText(el)}</figcaption>`
-        imgHtml = `<figure>${imgHtml}${caption}</figure>`
+        caption = `<figcaption>${extractText(el)}</figcaption>`
     }
 
+    imgHtml = `${caption ? `<figure>` : ''}<picture><source type="image/webp" data-srcset="${imgUrl}-300.webp 300w, ${imgUrl}-600.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}-1200.webp 1200w" /><img loading="lazy" ${alt ? ` data-${alt}`: ""} data-srcset="${imgUrl}-300.jpg 300w, ${imgUrl}-600.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}-1200.jpg 1200w" data-src="${imgUrl}.jpg"></picture>${caption} ${caption ? `</figure>` : ''}<noscript> ${caption ? `<figure>` : ''} <picture> <source type="image/webp" srcset="${imgUrl}-300.webp 300w, ${imgUrl}-600.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}-1200.webp 1200w" /> <img loading="lazy" ${alt ? ` ${alt}`: ""} srcset="${imgUrl}-300.jpg 300w, ${imgUrl}-600.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}-1200.jpg 1200w" src="${imgUrl}.jpg"> </picture> ${caption} ${caption ? `</figure>` : ''} </noscript>`
     return imgHtml
 }
 
@@ -194,7 +190,7 @@ function createLink(item) {
     el = el.replace("{", "").replace("}", "")
     const textLink = extractText(el)
     const linkElem = el.split(",")
-    const aria = linkElem.length > 2 ? `title="${linkElem[2].trim()}" aria-label="${linkElem[2].trim()}"` : ""
+    const aria = linkElem.length > 2 ? ` title="${linkElem[2].trim()}" aria-label="${linkElem[2].trim()}"` : ""
     let html = `<a href="${linkElem[0]}"${aria}>${textLink}</a>`;
     return html
 }
@@ -205,10 +201,10 @@ function createQuote(item) {
     const citation = extractText(el)
     el = el.replace(citation, "")
     el = el.split(',')
-    const url = `cite="${el[3].trim()}"`
-    const source = `, <cite>${el[2]}</cite>`
-    const author = `<footer>—${el[1].trim()}${source}</footer>`
-    const html = `<blockquote ${url}><p>${citation}</p>${author}</blockquote>`;
+    const url = el[3] ? ` cite="${el[3].trim()}"` : ""
+    const source = el[2 ] ? `, <cite>${el[2]}</cite>` : ""
+    const author = el[1] ? `<footer>—${el[1].trim()}${source}</footer>` : ""
+    const html = `<blockquote${url}><p>${citation}</p>${author}</blockquote>`;
     return html
 }
 
@@ -224,9 +220,8 @@ function createDefinitionList(item) {
 
 function createMultimedia(item) {
     let el = item
-    el = el.replace(/[|]/g, "")
     el = el.split(",")
-    const url = el[0]
+    const url = el[0].trim()
     let param = el[1] ? el[1].trim() : ''
     let mediaType = url.slice(-1)
     if (param) {
@@ -239,8 +234,8 @@ function createMultimedia(item) {
         param = `controls preload="metadata"`
     }
 
-
-    html = ""
+    
+    let html = ""
     switch (mediaType) {
         case "4":
             html = `<video ${param} src="${url}" type="video/mp4"></video>`
@@ -252,6 +247,7 @@ function createMultimedia(item) {
     }
     return html
 }
+
 
 function createTitle(level, item) {
     const count = level;
