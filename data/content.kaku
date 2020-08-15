@@ -237,6 +237,14 @@ All accessibility problems cannot be solved only by code. Some are only fixable 
 
 Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, and following these advices will result in a better website of everyone.
 
+## Accessibility is hard
+
+So to get started, you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questionning everything you do is a good way of getting there, but when starting it means that basically everything is not good enough.
+
+And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never make it work. Try to detect what is important for your user in each page or situation and make sure it works.
+
+So ask yourself, what is the goal of the website you make? The main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems.
+
 Next: {accessibility-rules-and-tools.html, "Basic rules about accessiblity and tools to enforce them"}
 
 
@@ -253,23 +261,11 @@ Accessibility is a vast, very hard to navigate maze that even people like me who
 
 In this page I will simply tell you a few rules that will help you get started and later, you can dig a bit more by yourself to fix your own problems. 
 
-## Accessibility is hard, and you can't be perfect
-
-So to get started, you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questionning everything you do is a good way of getting there, but when starting it means that basically everything is not good enough.
-
-And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never make it work. Try to detect what is important for your user in each page or situation and make sure it works.
-
-Here's a real world example of an important thing I met while doing accessibility in a bank. What's the most important thing for a banking website? *MONEY*. You need to let users know how much money they have and manipulate their money. But when I came on the project, blind users could not know if their account were positive or negative, and in what currency. This kind of problem was a top priority and needed to be fixed everywhere.
-
-Meanwhile we had a lot of text shortcuts that made listenning to the website texts very unpleasant with a screen readers. Things like _12$/month_ instead of _12$ per month_. It was also a money related problem, but it was understandable, even if unpleasant. We decided to not fix those text issues, because even they didn't block the user from using the website for what it was made for: manipulate money.
-
-So ask yourself, what is the goal of the website you make? The main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems.
-
 ## How screen readers users use them?
 
-I'm not going to give you the full detail but just inform you about some basic things that most people don't know, the most important being that *screen readers users don't only use the tab to navigate your page, they more often use arrows*.
+I'm not going to give you the full detail but just inform you about some basic things that most people don't know, the most important being that *screen readers users don't only use the tab key to navigate your page*!
 
-What does that means? That means don't panic when you start tabbing everywhere and see the focus not stop where you want! When I first started I thought accessibility was all about adding the `tab-index="0"` HTML attribute to almost every element because otherwise, the tab key would not stop on it. But that's not how that works!
+What does that means? That means don't panic when you start tabbing everywhere and see the focus not stopping where you want! When I first started I thought accessibility was all about adding the `tab-index="0"` HTML attribute to almost every element because otherwise, the tab key would not stop on it. But that's not how that works!
 
 Screen readers users will use a combination of arrows to read phrases or letters, shortcuts to access titles and other parts of the website, as well as the tab key, but only to get out of input element in forms! Like any other users with experience using a tool, they probably use it in a way that is totally foreign to you.
 
@@ -284,7 +280,7 @@ Here are some basic but essential rules to help you get started:
 - Don't use super thin fonts. They are pretty but hard to read!
 - Take care about color contrasts, you need a ratio of 4.5:1.
 - Don't indicate states only with colors (like green and red) as colorblind people can't distinguish them.
-- Use icons with text, not icons by themselves if you can.
+- Use icons with text, not icons by themselves, if you can.
 - Don't put crucial informations inside images, even if you add an `alt` attribute.
 - Don't put invisible text everywhere, especially if it was already readable before.
 - Ensure keyboard focus is visible and clear
@@ -316,7 +312,7 @@ Use the `aria-hidden="true"` attribute on the html element of your choice. Again
 
 ## What is a skip content link?
 
-Screen readers users have shortcuts to access to different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page.
+Screen readers users have shortcuts to access to different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page, that you right after the `<body>`.
 
 It's not technically complicated to do and can save your screen readers users tons of time, especially if you have big and complex header or navigation before the main content.
 
@@ -338,11 +334,11 @@ HOST: html tips
 Bref: A collection of html basic tips to build simple yet modern websites
 BODY:
 
-## The basics of html
+# The basics of html
 
 This section will give your some basic knowledge and tips about html, mostly what to use in what situation. 
 
-### What you need to get started
+## What you need to get started
 
 You need this:
 
@@ -366,7 +362,7 @@ The `<meta name="viewport>"` is especially important. It can be used to block th
 
 Of course there's a lot more that can go into the `<head>` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `<body>`.
 
-### Divs and spans
+## Divs and spans
 
 Html is all about putting...things! Inside... other things? So your first reflex is probably to grab a `<div>` or a `<span>`, the good old ones! But what's the difference between them?
 
@@ -376,7 +372,7 @@ If you do the same with `<span>`, they will stack one after the other. That's be
 
 So just by knowing that, you already know how to stack things vertically and horizontaly. Great right?
 
-### Wait wait wait... There's CSS in my html?
+## Wait wait wait... There's CSS in my html?
 
 Yes! And for a good reason! Imagine your CSS file disapears and your are left only with your html page. Without some pre-made styling, everything would have the same font size, would be inline... That would be unreadable!
 
