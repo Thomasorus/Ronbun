@@ -7,23 +7,8 @@ body {
   padding: 0;
   font-size: 1.8rem;
   background: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   margin: 5px 10vw;
   line-height: 1.45;
-  font-variant-numeric: oldstyle-nums;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-p,
-ul,
-li {
-  font-size: 1.;
 }
 
 a {
@@ -128,7 +113,7 @@ code {
 }
 
 li {
-  margin:10px 0;
+  margin: 10px 0;
 }
 
 .visually-hidden {
@@ -141,44 +126,6 @@ li {
   width: 1px;
 }
 
-.code-example {
-  background: white;
-  border: 1px solid black;
-  margin-bottom: 30px;
-  min-height: 70px;
-}
-
-.code-example-value {
-  display: inline;
-  background: white;
-  color: black;
-  padding: 1px 5px 0 5px;
-  font-weight: 800;
-  letter-spacing: -2px;
-  font-family: monospace;
-  font-size: 1.4rem;
-}
-
-.code-example-children {
-  height: 40px;
-  width: 40px;
-  border: 1px solid black;
-}
-
-.code-example-children-grid {
-  border: 1px solid black;
-}
-
-.code-example-grid-star {
-  display:grid;
-  
-  grid-template-areas: 
-"lefttop . righttop"
-". center . "
-"leftbottom . rightbottom";
-}
-
-
 .time-graph {
   margin: 0;
   padding: 0;
@@ -188,7 +135,7 @@ li {
   grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
   grid-gap: 5px;
   border-collapse: collapse;
-
+  font-variant-numeric: oldstyle-nums;
 }
 
 .time-graph__text {
@@ -275,103 +222,164 @@ li {
   border: 1px solid black;
 }
 
+
+/* Code examples */
+.code-example {
+  background: white;
+  border: 1px solid black;
+  margin-bottom: 30px;
+  min-height: 70px;
+}
+
+.code-example-value {
+  display: inline;
+  background: white;
+  color: black;
+  padding: 1px 5px 0 5px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+.code-example-children {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+}
+
+.code-example-children-grid {
+  border: 1px solid black;
+}
+
+.code-example-grid-star {
+  display: grid;
+
+  grid-template-areas:
+    "lefttop . righttop"
+    ". center . "
+    "leftbottom . rightbottom";
+}
+
+/* Patterns collection */
 .pattern-checks {
+  background-image: -o-repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), -o-repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
   background-image: repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
   background-position: 0 0, 5px 5px;
   background-size: calc(2 * 5px) calc(2 * 5px)
 }
 
 .pattern-grid {
+  background-image: -o-linear-gradient(currentColor 1px, transparent 1px), -o-linear-gradient(left, currentColor 1px, transparent 1px);
   background-image: linear-gradient(currentColor 1px, transparent 1px), linear-gradient(to right, currentColor 1px, transparent 1px);
   background-size: 4px 4px;
   background-position: -1px;
 }
 
 .pattern-dots {
+  background-image: -o-radial-gradient(currentColor .25px, transparent .25px);
   background-image: radial-gradient(currentColor .25px, transparent .25px);
   background-size: calc(5 * .3px) calc(5 * .3px)
 }
 
 .pattern-cross-dots {
+  background-image: -o-radial-gradient(currentColor 1px, transparent 1px), -o-radial-gradient(currentColor 1px, transparent 1px);
   background-image: radial-gradient(currentColor 1px, transparent 1px), radial-gradient(currentColor 1px, transparent 1px);
   background-size: calc(4 * 1px) calc(4 * 1px);
   background-position: 0 0, calc(2 * 1px) calc(2 * 1px)
 }
 
 .pattern-vertical-lines {
+  background-image: -o-repeating-linear-gradient(left, currentColor, currentColor 1px, transparent 1px, transparent);
   background-image: repeating-linear-gradient(to right, currentColor, currentColor 1px, transparent 1px, transparent);
   background-size: 4px 4px
 }
 
 .pattern-horizontal-lines {
+  background-image: -o-repeating-linear-gradient(bottom, currentColor, currentColor 1px, transparent 1px, transparent);
   background-image: repeating-linear-gradient(0deg, currentColor, currentColor 1px, transparent 1px, transparent);
   background-size: 4px 4px
 }
 
 .pattern-diagonal-lines {
+  background-image: -o-repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
   background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
   background-size: 6px 6px
 }
 
 .pattern-diagonal-lines--alt {
+  background-image: -o-repeating-linear-gradient(135deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
   background-image: repeating-linear-gradient(-45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
   background-size: 6px 6px
 }
 
 .pattern-vertical-stripes {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, currentColor));
+  background-image: -o-linear-gradient(left, transparent 50%, currentColor 50%);
   background-image: linear-gradient(90deg, transparent 50%, currentColor 50%);
   background-size: 6px 6px;
   background-position: -2px;
 }
 
 .pattern-horizontal-stripes {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, transparent), color-stop(50%, currentColor));
+  background-image: -o-linear-gradient(bottom, transparent 50%, currentColor 50%);
   background-image: linear-gradient(0deg, transparent 50%, currentColor 50%);
   background-size: 8px 8px
 }
 
 .pattern-diagonal-stripes {
+  background: -o-repeating-linear-gradient(45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px));
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
 }
 
 .pattern-diagonal-stripes--alt {
+  background: -o-repeating-linear-gradient(135deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px));
   background: repeating-linear-gradient(-45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
 }
 
 .pattern-zigzag {
+  background: -o-linear-gradient(315deg, currentColor 25%, transparent 25%) -5px 0, -o-linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, -o-linear-gradient(135deg, currentColor 25%, transparent 25%), -o-linear-gradient(45deg, currentColor 25%, transparent 25%);
   background: linear-gradient(135deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(315deg, currentColor 25%, transparent 25%), linear-gradient(45deg, currentColor 25%, transparent 25%);
   background-size: calc(2 * 5px) calc(2 * 5px)
 }
 
 .pattern-triangles {
+  background-image: -o-linear-gradient(45deg, currentColor 50%, transparent 50%);
   background-image: linear-gradient(45deg, currentColor 50%, transparent 50%);
   background-size: 8px 8px
 }
 
 
 .pattern-double-diagonal-stripes {
+  background-image: -o-repeating-linear-gradient(135deg, transparent, transparent 5px, white 5px, white 50%), -o-repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, white 5px, white 50%), repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
   background-size: 13px 13px;
 }
 
 
 .pattern-quarter-circles {
+  background-image: -o-radial-gradient(10px 10px, ellipse farthest-corner, white, white 50%, black 50%);
   background-image: radial-gradient(ellipse farthest-corner at 10px 10px, white, white 50%, black 50%);
   background-size: 10px 10px;
 }
 
 .pattern-seigaiha {
   background-color: black;
+  background-image: -o-radial-gradient(100% 150%, circle, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), -o-radial-gradient(0 150%, circle, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), -o-radial-gradient(50% 100%, circle, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), -o-radial-gradient(100% 50%, circle, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), -o-radial-gradient(0 50%, circle, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
   background-image: radial-gradient(circle at 100% 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 50% 100%, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), radial-gradient(circle at 100% 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), radial-gradient(circle at 0 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
   background-size: 30px 15px;
 }
 
 .pattern-checkerboard-diagonal {
   background-color: #eee;
+  background-image: -o-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), -o-linear-gradient(135deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
   background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
   background-size: 10px 10px;
 }
 
 .pattern-zig-zag {
+  background-image: -o-repeating-linear-gradient(49deg, black, black 1px, transparent 4px, transparent 8px);
   background-image: repeating-linear-gradient(-319deg, black, black 1px, transparent 4px, transparent 8px);
   background-size: 4px;
 }
