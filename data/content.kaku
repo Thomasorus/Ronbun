@@ -135,34 +135,50 @@ BODY:
 
 I'm Thomas, a fighting game fan and web developer.
 
+
+====
+
+NAME: KNOWLEDEGE
+HOST: knowledge
+Bref: Where I write things I don't want to forget
+BODY:
+
+# Knowledge
+
+This page references knowledge of all sorts I wrote.
+
+- {html-tips.html, "Html tips and tricks"}
+
 ====
 
 NAME: HTML TIPS
 HOST: knowledge
-Bref: A collection of html and CSS tips to build simple yet optimized websites
+Bref: A collection of HTML and CSS tips to build simple yet optimized websites
 BODY:
 
 # Html and CSS simple tips and tricks for your website
 
-If you are reading this, your probably own a website but you're not sure about the quality of the html or CSS used in it. The goal of this page is to help you with basic yet super easy tricks to make your website accessible, readable by everyone and optimized for low bandwidth.
+The goal of this page is to help you with easy tricks to make the HTML of your website accessible, readable by everyone and optimized for low bandwidth.
 
-This tips and tricks are from on personal experience working as a frontend web developer for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", go to my contact page}.
+This tips and tricks are from on personal experience working as a frontend web developer specialized in UI and accessibility for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", Go to my contact page}.
 
 ## About accessibility
 
-- {accessibility-tips.html, "What is accessibility"}
-- {accessibility-tools.html} "The tools and how they are used "}
+Accessibility is making your website inclusive for people with disabilities. If respecting accessibility can seem like a chore, it's actually a good way of learning good HTML practices and everything in these pages is therefore influences by it.
 
-## The basics of html
+- {what-is-accessibility.html, "So, what is accessibility?"}
+- {accessibility-rules-and-tools.html, "Basic rules about accessiblity and tools to enforce them"}
 
-This section will give your some basic knowledge to get started and explain the basics of semantic html. 
+## The basics of HTML
 
-- {html-basics.html, "The basics: the head, the div and the span"}
-- {html-semantics.html, "What is semantic html and why should I care?"}
+This section will give your some basic knowledge and code to get started. It will also explain the basics of semantic HTML and why it's important. As everything in these pages, it's a toolbox of things I use, not a full specification rewriting, and it's heavily influenced by my own practices.
 
-## Modern layouts
+- {the-basics-of-html.html, "The basics: the head, the div and the span"}
+- {html-semantics.html, "What is semantic HTML and why should I care?"}
 
-There are parts that you can do just in html, and others that need CSS. Layouts are the ones who need CSS. *You can save dozens of lines of html by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in html. You'll just have a hard time doing what you want and your markup will be ugly.
+## Layouts in HTML
+
+Once you have the basics sets it's probably time to do some layouts. There are parts that you can do just in HTML, and others that need CSS. Layouts are the ones who need CSS. *You can save dozens of lines of HTML by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in HTML. You'll just have a hard time doing what you want and your markup will be ugly.
 
 Layout examples will be given through these pages, try to inspect them with your browser, reuse and tweak them to your needs.
 
@@ -200,38 +216,124 @@ Favor these semantic elements when working for very specific projects where text
 
 ====
 
-NAME: ACCESSIBILITY TIPS
+NAME: What is accessibility
 HOST: html tips
 Bref: A collection of accessibility tips to build simple yet inclusive websites
 BODY:
 
-# What is accessibility
+# What is accessibility ?
 
-I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader (the most recommended combination is {https://firefox.com, "Firefox"} with {https://www.nvaccess.org/download/, "NVDA"} on Windows) but there's a lot of handicaps that can give your a hard time on the internet.
+I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader but there's a lot of handicaps that can give your a hard time on the internet.
 
-You might be deaf, which means you need a transcribed version of an audio or video file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered. There are a lot of others handicaps that might make the web unusable. Coding properly for accessibility (basically, respecting standards) means allowing other tools to take over. Screen readers are the obvious ones, but others like screen readers also count.
+You might be deaf, which means you need a transcribed version of an audio or video file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered or trigger too many animations. There are a lot of others handicaps that might make the web unusable. 
 
-But accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together.
+Coding properly for accessibility (basically, respecting standards) doesn't mean your website is accessible by magic. It means other tools can take over by referring to the code you wrote. Screen readers are the obvious ones, but others like reader mode in your browser of choice is also one of them as it allows to change colors, fonts, etc...
 
-Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, so try to follow those advices.
+## Is accessibility all about code?
+
+No, not at all.
+
+All accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together, you just have to want it.
+
+Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, and following these advices will result in a better website of everyone.
+
+Next: {accessibility-rules-and-tools.html, "Basic rules about accessiblity and tools to enforce them"}
 
 
 ====
 
-NAME: ACCESSIBILITY TOOLS
+NAME: Accessibility rules and tools
 HOST: html tips
 Bref: A collection of accessibility tips to build simple yet inclusive websites
 BODY:
 
-# Accessibility tools
+# Accessibility basic rules and tools
 
-- Screen readers
-- Reader mode
-- Others....
+Accessibility is a vast, very hard to navigate maze that even people like me who worked on it for months can't properly handle correctly. So I don't expect myself to explain everything, and I don't expect you to think about everything. 
+
+In this page I will simply tell you a few rules that will help you get started and later, you can dig a bit more by yourself to fix your own problems. 
+
+## Accessibility is hard, and you can't be perfect
+
+So to get started, you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questionning everything you do is a good way of getting there, but when starting it means that basically everything is not good enough.
+
+And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never make it work. Try to detect what is important for your user in each page or situation and make sure it works.
+
+Here's a real world example of an important thing I met while doing accessibility in a bank. What's the most important thing for a banking website? *MONEY*. You need to let users know how much money they have and manipulate their money. But when I came on the project, blind users could not know if their account were positive or negative, and in what currency. This kind of problem was a top priority and needed to be fixed everywhere.
+
+Meanwhile we had a lot of text shortcuts that made listenning to the website texts very unpleasant with a screen readers. Things like _12$/month_ instead of _12$ per month_. It was also a money related problem, but it was understandable, even if unpleasant. We decided to not fix those text issues, because even they didn't block the user from using the website for what it was made for: manipulate money.
+
+So ask yourself, what is the goal of the website you make? The main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems.
+
+## How screen readers users use them?
+
+I'm not going to give you the full detail but just inform you about some basic things that most people don't know, the most important being that *screen readers users don't only use the tab to navigate your page, they more often use arrows*.
+
+What does that means? That means don't panic when you start tabbing everywhere and see the focus not stop where you want! When I first started I thought accessibility was all about adding the `tab-index="0"` HTML attribute to almost every element because otherwise, the tab key would not stop on it. But that's not how that works!
+
+Screen readers users will use a combination of arrows to read phrases or letters, shortcuts to access titles and other parts of the website, as well as the tab key, but only to get out of input element in forms! Like any other users with experience using a tool, they probably use it in a way that is totally foreign to you.
+
+That's why it's important to have your website tested by actually disabled people. Don't assume how disabled people use the web, ask them to guide you if you can.
+
+## The basic rules
+
+Here are some basic but essential rules to help you get started:
+
+- Don't go below 13 pixels in font size.
+- Overall if you can, try to not change the basic 16px font size that all browsers have.
+- Don't use super thin fonts. They are pretty but hard to read!
+- Take care about color contrasts, you need a ratio of 4.5:1.
+- Don't indicate states only with colors (like green and red) as colorblind people can't distinguish them.
+- Use icons with text, not icons by themselves if you can.
+- Don't put crucial informations inside images, even if you add an `alt` attribute.
+- Don't put invisible text everywhere, especially if it was already readable before.
+- Ensure keyboard focus is visible and clear
+- Provide a _Skip to Content_ link.
+- If you have audio content, provide a transcript.
+- If you have video content, provide subtitles.
+
+## How to hide text destined to screen readers
+
+You can use this CSS class:
+
+```
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+```
+
+But don't overdo it, it must be the exception, not the rule. Some screen readers users can actually see but prefer a combination of voice and text. If you start hiding walls of text the user can't see, you're gonna create a very unpleasant experince.
+
+## How to hide things from screen readers
+
+Use the `aria-hidden="true"` attribute on the html element of your choice. Again, the exception, not the rule. Use it if something can't be vocalize, but provide a textual explanation of it right after.
+
+## What is a skip content link?
+
+Screen readers users have shortcuts to access to different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page.
+
+It's not technically complicated to do and can save your screen readers users tons of time, especially if you have big and complex header or navigation before the main content.
+
+## What tools can I use?
+
+One of the most used combinations of screen readers and browser are {https://www.nvaccess.org/download/, "NVDA"} and {https://firefox.com, "Firefox"}. But you can also use the {https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn, "Chromevox"} extension for Chrome to get an in-browser screen reader.
+
+In Firefox Dev Tools, the "Accessibility" tab will show you a textual representation of your website that can help you detect what will be vocalized and won't. There is a lot of browser extensions for accessibility that will scan the current page and tell you what is violation the rules. 
+
+I've used the {https://www.deque.com/axe/, "Axe extension"} in the past and enjoyed it, but there's a lot more.
+
+
+Next: {the-basics-of-html.html, "The basics: the head, the div and the span"}
 
 ====
 
-NAME: HTML BASICS
+NAME: The basics of html
 HOST: html tips
 Bref: A collection of html basic tips to build simple yet modern websites
 BODY:
