@@ -197,6 +197,7 @@ So we have our page layouts structured by semantic HTML elements. Now is the tim
 - {order-your-titles-correctly.html, "Order your titles correctly"}
 - {organize-your-text-content.html, "Organize your text content"}
 - {all-about-images.html, "All about images"}
+- {all-about-video-and-audio.html, "All about video and audio"}
 - {doing-forms-correctly.html, "Doing forms correctly"}
 - {tables-are-not-that-complicated.html, "Tables are not that complicated"}
 
@@ -214,6 +215,8 @@ What's the difference between the text semantic elements and the inline semantic
 Interactive elements are fully functionnal tools in HTML. Unfortunately they are difficult to style and most often not used that much for this reason. Still some of them are really cool.
 
 - {html-interactive.html, "Some interactive elements that can be useful"}
+
+## Other useful informations
 
 ====
 
@@ -1199,6 +1202,82 @@ But you don't have to choose between all these features, you can combine them to
             ```
 
 Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known and used!
+
+Next: {all-about-video-and-audio.html, "All about video and audio"}
+
+
+====
+
+NAME: All about video and audio
+HOST: HTML tips
+Bref: A collection of HTML basic tips to build simple yet modern websites
+BODY:
+
+# All about video and audio
+
+The `<video>` and `<audio>` elements are super easy and convenient ways to embed multimedia content on the web without relying on a third party. But if the tags are very straightforward, the video and audio formats can be a headache.
+
+You have a lot of formats available but most of them are not supported on every browser. To make it quick you have containers and you have codecs. Containers are the format of the file, the `.mp4` for example. Codecs are the compression algorithm used.
+
+So which video codec should you use?
+
+
+## The video codecs and containers supported on the web
+
+If you are in a hurry and can only produce one export, go with the h264 video codec and MP3 audio codec in a `.mp4` container. It will run everywhere. If you think your Firefox users have the AAC codec installed on their machine, you can replace the MP3 codec by AAC as it has better sound quality.
+
+If you want high quality and compression you will have to export your videos two times and do this combination:
+
+? Apple machines : A `.mp4` container with h265 video encoding and AAC audio encoding.
+? Others : A `.webm` container with AV1 video codec and probably Opus for audio encoding.
+
+If you only want open source and cover a maximum of machines, the best combination is probably a `.webm` container with a vp8 for video encoding and mp3 for the audio (mp3 is open source since 2017). Be careful as this won't work in Safari until Safari 14.
+
+## The audio codecs and containers supported on the web
+
+Basically if you want to archive some audio or put in on the web so people can remix it, you'd better use a lossless audio codec and in this case, FLAC is the king, being compatible with almost everything.
+
+If you are putting audio for streaming and want a good quality, the AAC codec in a `.mp4` container is probably a good pick, but be careful of Firefox users without the codec on their systems. For them you can use the Vorbis codec with a `.ogg` container.
+
+If you don't care about quality and just want everything to work, go with `.mp3`.
+
+
+## Wait, I can pick two?
+
+That's the beauty of it, just like with the `<picture>` element, you can add multiple sources to your `<video>` and `<audio>` elements and let the browser choose. 
+
+```
+<audio controls>
+ <source src="foo.opus" type="audio/ogg; codecs=opus"/>
+ <source src="foo.ogg" type="audio/ogg; codecs=vorbis"/>
+ <source src="foo.mp3" type="audio/mpeg"/>
+</audio>
+```
+
+
+## Save bandwidth with these simple tricks!
+
+The `preload="metadata"` attribute only loads the metadata of your files like the first frame or its length until the user plays the file. And if you want to save even more data, use `preload="none"`. In the case of a video, the preview will be totally dark but that can be mitigated by using the `poster` attribute with a link to an image.
+
+Finally, you should know that converting animated gif to videos often result in radically smaller files, and you can trick the user in believing a gif is being played!
+
+## The multiple configurations of the video player
+
+The `<video>` and `<audio>` elements comes with a set of attributes that allows you to tweak how they act. The `<audio>` element is often left untouched but the `<video>` one has several attributes that allows it to act as a video player or as a fake gif!
+
+Make a traditional video with the `control` attribute:
+
+```
+<video controls" src="path to video" type="video/mp4"></video>
+```
+
+Make a fake gif from a video using those attributes. `loop` will restart the video, `mute` will remove sound and `autoplay` will start it automatically. Be careful as `autoplay` will not respect the `preload` attribute, making the video downloaded instantly.
+
+```
+<video autoplay loop mute src="link to fake gif video" type="video/mp4"></video>
+```
+
+Finally, please note that the `playsinline` attribute prevents videos from playing full screen on mobile when launched. If that's not the behavior your want, don't forget to add it.
 
 Next: {doing-forms-correctly.html, "Doing forms correctly"}
 
