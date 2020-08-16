@@ -57,6 +57,7 @@ async function generateHtml(allPages, htmlTemplate) {
     for (let i = 0; i < allPages.length; i++) {
         const el = allPages[i];
         let page = htmlTemplate
+        console.log(el.name)
         page = page.replace(/pageTitle/g, el.name)
         if (el.name.toLowerCase() !== el.host && el.host !== undefined) {
             const parentSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
