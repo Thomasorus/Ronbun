@@ -223,11 +223,11 @@ BODY:
 
 # What is accessibility ?
 
-I will often refer to _accessibility_ in this page, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader but there's a lot of handicaps that can give your a hard time on the internet.
+I will often refer to _accessibility_ in these pages, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader but there's a lot of handicaps that can give your a hard time on the internet.
 
-You might be deaf, which means you need a transcribed version of an audio or video file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered or trigger too many animations. There are a lot of others handicaps that might make the web unusable. 
+You might be deaf, which means you need a transcribed version of an audio or video file. You might have dislexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered or trigger too many animations. You might have a cognitive impairment, which means you have a hard time understanding some websites. There are a lot of others handicaps that might make the web hard to use.
 
-Coding properly for accessibility (basically, respecting standards) doesn't mean your website is accessible by magic. It means other tools can take over by referring to the code you wrote. Screen readers are the obvious ones, but others like reader mode in your browser of choice is also one of them as it allows to change colors, fonts, etc...
+Coding properly for accessibility (basically, respecting standards) doesn't mean your website is accessible by magic. It means other tools can take over by using the code you wrote. Screen readers are the obvious ones, but others like reader mode in your browser of choice is also one of them as it allows to change colors, fonts, etc...
 
 ## Is accessibility all about code?
 
@@ -235,15 +235,19 @@ No, not at all.
 
 All accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together, you just have to want it.
 
-Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say "It's good for accessibility" it often means it's good for all your users, and following these advices will result in a better website of everyone.
+Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say that something _is good for accessibility_ it often means it's _good for all your users_, and following these advices will result in a better website of everyone.
 
 ## Accessibility is hard
 
-So to get started, you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questionning everything you do is a good way of getting there, but when starting it means that basically everything is not good enough.
+To enforce accessibility you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questionning everything you do is a good way of doing it, but on the long run it leads to the realization that basically nothing is perfect despite your efforts.
 
-And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never make it work. Try to detect what is important for your user in each page or situation and make sure it works.
+And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself (especially on big projects) without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never see it end. Try to detect what is important for your user in each page or situation and make sure it works.
 
-So ask yourself, what is the goal of the website you make? The main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems.
+Ask yourself, what is the goal of the website you make? For a bank it's numbers, are the numbers accessible? For a journal it's text, are the texts accessible? For a government taxes website, it's being as clear as possible about legal stuff. 
+
+What is the main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems, like typos or unimportant texts not being clear enough. 
+
+Choose the right battle and fight it until the end!
 
 Next: {accessibility-rules-and-tools.html, "Basic rules about accessiblity and tools to enforce them"}
 
@@ -257,38 +261,40 @@ BODY:
 
 # Accessibility basic rules and tools
 
-Accessibility is a vast, very hard to navigate maze that even people like me who worked on it for months can't properly handle correctly. So I don't expect myself to explain everything, and I don't expect you to think about everything. 
+Accessibility is a vast, very hard to navigate maze that even people like me who worked on it almost two years can't properly handle correctly. So I don't expect myself to be able to explain everything, and I don't expect you to think about everything. 
 
-In this page I will simply tell you a few rules that will help you get started and later, you can dig a bit more by yourself to fix your own problems. 
+In this page I will simply list the essential rules I had to enforce myself and that will help you get started. Later, you can dig a bit more by yourself to fix your own specific problems.
 
 ## How screen readers users use them?
 
-I'm not going to give you the full detail but just inform you about some basic things that most people don't know, the most important being that *screen readers users don't only use the tab key to navigate your page*!
+Most people don't know it, but *screen readers users don't only use the tab key to navigate in pages*!
 
 What does that means? That means don't panic when you start tabbing everywhere and see the focus not stopping where you want! When I first started I thought accessibility was all about adding the `tab-index="0"` HTML attribute to almost every element because otherwise, the tab key would not stop on it. But that's not how that works!
 
-Screen readers users will use a combination of arrows to read phrases or letters, shortcuts to access titles and other parts of the website, as well as the tab key, but only to get out of input element in forms! Like any other users with experience using a tool, they probably use it in a way that is totally foreign to you.
+Screen readers users will use a combination of arrows to read phrases or letters, shortcuts to access titles and other parts of the website, as well as the tab key, but only to get out of input element in forms or access links and buttons! Like any other users with experience using a tool, they probably use it in a way that is totally foreign to you!
 
-That's why it's important to have your website tested by actually disabled people. Don't assume how disabled people use the web, ask them to guide you if you can.
+That's why it's important to have your website tested by actually disabled people. Don't assume how disabled people use the web, ask them to guide you if you can. You will probably be surprised at how fast screen readers users can navigate a page.
 
 ## The basic rules
 
 Here are some basic but essential rules to help you get started:
 
-- Don't go below 13 pixels in font size.
-- Overall if you can, try to not change the basic 16px font size that all browsers have.
-- Don't use super thin fonts. They are pretty but hard to read!
-- Take care about color contrasts, you need a ratio of 4.5:1.
-- Don't indicate states only with colors (like green and red) as colorblind people can't distinguish them.
-- Use icons with text, not icons by themselves, if you can.
-- Don't put crucial informations inside images, even if you add an `alt` attribute.
-- Don't put invisible text everywhere, especially if it was already readable before.
-- Ensure keyboard focus is visible and clear
-- Provide a _Skip to Content_ link.
+- Don't block the ability to zoom or unzoom on your website.
+- Don't go below 13 pixels in font size. Yes users can zoom, but that would be way more comfortable if they didn't have to do it in the first place!
+- The basic 16px font size that all browsers have is often a good thing to follow.
+- Don't use super thin fonts. They are pretty but very hard to read!
+- Don't overdo it with animations, flashes and stuff that can trigger stress.
+- If your website is not compatible with reader mode, try providing an accessibility menu allowing the change of colors and fonts.
+- Take care about color contrasts, you need a ratio of 4.5:1 to be sure most people can read your texts.
+- Don't indicate states on your website or application by only using colors (like green and red) as colorblind people can't distinguish them (that's the reason traffic lights don't do it!)
+- Try not using icons alone, especially when for ultra specific things that don't make sense on their own. Add text to indicate what it is.
+- Don't put crucial informations inside images, even if you add an `alt` attribute!
+- Ensure keyboard focus is visible and clear. Most of the time, it means not disabling the `focus` styles in CSS.
+- Provide a _Skip to Content_ link at the top of your website.
 - If you have audio content, provide a transcript.
 - If you have video content, provide subtitles.
 
-## How to hide text destined to screen readers
+## How to hide text destined to screen readers users
 
 You can use this CSS class:
 
@@ -304,7 +310,7 @@ You can use this CSS class:
 }
 ```
 
-But don't overdo it, it must be the exception, not the rule. Some screen readers users can actually see but prefer a combination of voice and text. If you start hiding walls of text the user can't see, you're gonna create a very unpleasant experince.
+But don't overdo it, it must be the exception, not the rule. Some screen readers users can actually see but prefer a combination of voice and text. If you start hiding walls of text the user can't see, you're gonna create a very unpleasant experience.
 
 ## How to hide things from screen readers
 
@@ -318,9 +324,9 @@ It's not technically complicated to do and can save your screen readers users to
 
 ## What tools can I use?
 
-One of the most used combinations of screen readers and browser are {https://www.nvaccess.org/download/, "NVDA"} and {https://firefox.com, "Firefox"}. But you can also use the {https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn, "Chromevox"} extension for Chrome to get an in-browser screen reader.
+One of the most used combinations of screen readers and browser are {https://www.nvaccess.org/download/, "NVDA"} and {https://firefox.com, "Firefox"}. But you can also use the {https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn, "Chromevox"} extension for Chrome to get an in-browser screen reader. Most operating systems also provide voice over and from what I heard, the one on iOS is particulary good.
 
-In Firefox Dev Tools, the "Accessibility" tab will show you a textual representation of your website that can help you detect what will be vocalized and won't. There is a lot of browser extensions for accessibility that will scan the current page and tell you what is violation the rules. 
+In Firefox Dev Tools, the "Accessibility" tab will show you a textual representation of your website nodes that can help you detect what will be vocalized and won't. There is a lot of browser extensions for accessibility that will scan the current page and tell you what is violation the rules. 
 
 I've used the {https://www.deque.com/axe/, "Axe extension"} in the past and enjoyed it, but there's a lot more.
 
@@ -336,7 +342,7 @@ BODY:
 
 # The basics of html
 
-This section will give your some basic knowledge and tips about html, mostly what to use in what situation. 
+This section will give your some basic knowledge and tips about html, mostly what semantic tag to use in what situation. 
 
 ## What you need to get started
 
@@ -356,9 +362,9 @@ You need this:
 </html>
 ```
 
-You need to indicate that the document is html, the language of the document and of course its encoding. You also need a title as it will be visible in the tab and spoken by screen readers.
+You need to indicate that the document is HTML, the language of the document and of course its encoding. You also need a title as it will be visible in the tab and spoken by screen readers when the page is loaded.
 
-The `<meta name="viewport>"` is especially important. It can be used to block the zoom or dezoom of the page. But don't do it, please *never block the user from zooming or dezooming on a website*. This is the basic accessibility thing, don't deactivate it!
+The `<meta name="viewport>"` is especially important. It can be used to block the zoom or unzoom of the page. But don't do it, please *never block the user from zooming or unzooming on a website*. This is the basic accessibility thing, don't deactivate it!
 
 Of course there's a lot more that can go into the `<head>` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `<body>`.
 
@@ -384,16 +390,17 @@ But please be careful when resetting styles. When you undo the browser styling, 
 
 Speaking of being lost, `<div>` and `<span>` can sometimes get your users in trouble, unlike the amazing _semantic html_ elements.
 
+Next: {what-is-semantic-html.html, "What is semantic html?"}
 
 ====
 
-NAME: HTML SEMANTICS
+NAME: What is semantic html
 HOST: html tips
 Bref: A collection of html basic tips to build simple yet modern websites
 BODY:
 
 
-### What is semantic html?
+# What is semantic html?
 
 When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability right? Well html is the same, it has things with names that help knowing what they do. The problem  is, unlike a typed language, html is cool with you doing mistakes and won't throw an error if you don't use the right tool for the job. So in the end you can do mistakes and still have a visually working website who is awfull under the hood.
 
@@ -401,7 +408,7 @@ But visually impaired users use a lot of shortcuts with their screen readers to 
 
 There is a lot, _a LOT_ of semantic html elements and even I who loves html doesn't know them all, so I will only cover the most useful. 
 
-### Content sectionning
+## Content sectionning
 
 These semantic elements have the same style properties as a `<div>` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing. You can even add them to an existing design without trouble!
 
@@ -442,21 +449,22 @@ I did not mention the `section` element but it can be quite usefull if you need 
 You can find the other content semantic element on this {https://developer.mozilla.org/en-US/docs/Web/HTML/Element, "page"}.
 
 
-#### Stop right there, what is this `aria` thing in the previous example?
+## Stop right there, what is this `aria` thing in the previous example?
 
 You'll often see `aria` attributes inside the html code presented in this page. As stated by the MDN docs on this {https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA, "page"}, _Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities._
 
 Aria is a massive spec to learn and apply so I will just give you some basic ones in this page. Try to follow them as much as you can to give a better readability to your website layouts.
 
+Next: {never-use-tables-for-layout.html, "Don't use tables for layout"}
 
 ====
 
-NAME: HTML LAYOUT TABLES
+NAME: Never use tables for layout
 HOST: html tips
 Bref: A collection of html tips to build simple yet modern websites
 BODY:
 
-#### Don't use tables for layout
+# Never use tables for layout
 
 I'm gonna say it again. *Never use tables for layout*. I'm dead serious. Never do it.
 
@@ -464,19 +472,20 @@ If you come from the pre-html 5 era, you probably used to organize the elements 
 
 Also using tables makes your html super verbose, hard to read and hard to debug. They are way simplier solutions to do what most people try to do with tables.
 
+Next: {the-display-property.html, "The display property"}
 
 ====
 
-NAME: HTML DISPLAY
+NAME: The display property
 HOST: html tips
 Bref: A collection of html tips to build simple yet modern websites
 BODY:
 
-### The `display` property
+# The `display` property
 
-Here's a primer to help you get started width `display: ???`, the basic tool for doing layouts in html and CSS. As always there's a ton of values that can be used, but we'll just focus on the most common/usefull ones.
+Here's a primer to help you get started width `display: ???`, the basic tool for doing layouts in HTML and CSS. As always there's a ton of values that can be used, but we'll just focus on the most common/usefull ones.
 
-#### The good old ones
+## The good old ones
 
 First the good old ones that you apply directly on each element.
 
@@ -484,6 +493,9 @@ First the good old ones that you apply directly on each element.
 ? `block` : Elements are stacks on top of each other.
 ? `inline-block` : The best of both worlds as it acts like an inline element but its height and width can be changed!
 
+Those values are still in use today but are way less common in modern layout than they used to. Before `flexbox` and `grid`, developers used a lot of `inline-block` to make responsive design work and content flow nicely. It was sometimes very complicated and the reason why things like grid frameworks were very popular.
+
+## The newer
 
 ====
 
