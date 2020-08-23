@@ -1,10 +1,12 @@
 ====
 NAME: Home
-HOST: home
+HOST: Home
 BREF: This is the home of the website
 BODY:
 
-# Home
+# Thomasorus' Wiki
+
+- {about.html, "About me"}
 
 ## Tools
 
@@ -27,7 +29,7 @@ BODY:
 ====
 
 NAME: Keyboards
-HOST: tools
+HOST: Tools
 BREF: I use special keyboards to write and work
 BODY:
 
@@ -50,7 +52,7 @@ Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. T
 ====
 
 NAME: Kaku
-HOST: tools
+HOST: Tools
 BREF: Kaku is my own markup language.
 BODY:
 
@@ -63,7 +65,7 @@ This {https://github.com/Thomasorus/Kaku, "repositoty"} contains the detailed sp
 ====
 
 NAME: Tracking
-HOST: home
+HOST: Home
 BREF: An explanation about why I track some stuff in my life
 BODY:
 
@@ -89,7 +91,7 @@ To me tracking time doesn't mean trying to be more productive, but the opposite.
 ====
 
 NAME: Tools
-HOST: home
+HOST: Home
 BREF: A collection of hardware and software tools I use or made
 BODY:
 
@@ -119,34 +121,65 @@ It's a reappropriation of the means of production towards self-discovery.
 ====
 
 NAME: Ronbun
-HOST: tools
+HOST: Tools
 BREF: Ronbun is my static site generator
 BODY: 
 
 # Ronbun 論文
 
-Ronbun (paper) is my static site generator. It's build in nodejs and uses {/kaku.html, "Kaku"} as a markup language. It requires imagemagick on the server to process images. It also process time tracking and presents it as graphics.
+Ronbun (_paper_) is my *static site generator*. It's built with nodejs and uses {/kaku.html, "Kaku"} as a markup language and imagemagick on the server to process images. It also process time tracking and presents it {time.html, "as graphics"}.
 
-Ronbun uses a `.kaku` file as a source of content and a text file for time recordings. It parses files and generates HTML. Ronbun and the {kaku.html, "Kaku"} parser try as much as possible to provide light pages and assets by using standard HTML techniques like native lazyloading.
+Ronbun uses a {https://github.com/Thomasorus/Ronbun/blob/master/data/content.kaku, "single file"} as a source of content and a {https://github.com/Thomasorus/Ronbun/blob/master/data/time.kaku, "text file"} for time recordings. It parses files and generates HTML using a template. Ronbun and the {kaku.html, "Kaku"} parser try as much as possible to provide light and accessible pages by using {html-tips.html, "standard HTML techniques"}.
 
-A rewrite of Ronbun should be done in the future in a another language to allow faster compilation time and lower requirements, possibly in Python or C.
+Ronbun was created as a self discovery project following my {tools.html, "philosophy"} about personal projects.
+
+Ronbun's repo is on {https://github.com/Thomasorus/Ronbun, "github"}.
+
+Next features:
+
++ Avoid rebuilding unchanged pages
++ Avoid reprocessing unchanged images
++ Add time and date of generation on pages
++ Provide better navigation
++ Add RSS support
++ Add sitemap
+
+Global goals:
+
++ Provide more stats on the tracker
++ Full rewrite in a more generally available language (C, Python...)
+
+
 
 ====
 
-NAME: Now
-HOST: home
+NAME: About
+HOST: Home
 BREF: About me
 BODY:
 
-# Now
+# About me
 
-I'm Thomas, a fighting game fan and web developer.
+I'm a front-end developer specialized in interfaces, user experience and accessibility. I'm a technical generalist with experience on web projects of all sizes and all types of stacks. I have worked alone, as well as in teams of dozens of people, sometimes as a technical advisor for non-technical coworkers.
 
+I have a strong interest in indie web, low tech and sustainable stacks. I've been producing podcasts and writing about fighting games, my main hobby, for more than ten years and have worked for professional publications and brands; as well as organized tournaments and events in non-profit organizations. I also was a French comics specialized bookseller.
+
+I have a degree in fine arts and web development.
+
+
+====
+
+NAME: curriculum vitae
+HOST: Home
+BREF: My curriculum vitae
+BODY:
+
+# Curriculum Vitae
 
 ====
 
 NAME: Knowledge
-HOST: home
+HOST: Home
 Bref: Where I put things I don't want to forget
 BODY:
 
