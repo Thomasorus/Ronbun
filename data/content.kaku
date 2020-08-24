@@ -264,6 +264,7 @@ Performance is a hot topic as the website obesity crisis keeps going. In these p
 
 ## Page updates
 
+? `24/08/2020` : Added a section about reader modes in the accessibility section.
 ? `22/08/2020` : In the interactive elements page I wrote that `<details>` and `<summary>` could not be animated. I was wrong.
 
 ====
@@ -382,6 +383,13 @@ In Firefox Dev Tools, the "Accessibility" tab will show you a textual representa
 
 I've used the {https://www.deque.com/axe/, "Axe extension"} in the past and enjoyed it, but there's a lot more.
 
+## How does the reader mode works?
+
+All modern browsers provide a reader mode that strips most of the design to keep only text and images. They also allow changing fonts, background colors, text to speech and other features.
+
+The problem is... it's not clear how and why some pages allow the reader mode to exist and others don't. According to this {http://zumguy.com/enabling-reading-mode-on-your-website/, "article"} analyzing a {https://github.com/mozilla/readability/, "standalone version"} of Firefox reader mode, an algorythm analyzes the content inside `<p>` elements, checks how _content-y_ they are and assigns them a score. Commas, length of phrases and other parameters are taken into account to score the page and decide if yes or no, it deserves reader mode.
+
+It means that small pages are not going to offer reader mode, which is a shame. But you probably can't do anything about it outside reorganizing content.
 
 Next: {the-basics-of-html.html, "The basics: head, div and span"}
 
@@ -1581,9 +1589,7 @@ BODY:
 
 There isn't a lot about tables that is not already well known. For accessibility you might want to be careful of a few things.
 
-The `<caption>` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`.
-
-Use the `scope="col"` on your `<th>` columns to explain to screen readers that the element is a the start of the column and `scope="row"` for the same `<th>` elements that start rows.
+The `<caption>` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`. Use the `scope="col"` on your `<th>` columns to explain to screen readers that the element is a the start of the column and `scope="row"` for the same `<th>` elements that start rows. 
 
 If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced, "page"}.
 
