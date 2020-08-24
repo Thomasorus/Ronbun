@@ -242,7 +242,7 @@ async function createProjectsPatterns(yearsData) {
 }
 
 async function createLegend(array, hours) {
-  let legendTlp = "<div class='time-graph__legend-container'>"
+  let legendTlp = "<div class='time-graph__legend-container'><ul class='time-graph__legend-list'>"
 
   for (let i = 0; i < array.length; i++) {
     const el = array[i];
@@ -253,10 +253,10 @@ async function createLegend(array, hours) {
     }) => dataType === key);
 
     let definition = Object.keys(el)
-    const legend = `<dl class="time-graph__legend"><span  class="time-graph__pattern ${Object.values(el)}"></span><dt  class="time-graph__definition">${definition[0].replace(/\_/g, " ")}:</dt><dd class="time-graph__value"> ${time.hours} hours</dd></dl>`
+    const legend = `<li class="time-graph__legend"><span  class="time-graph__pattern ${Object.values(el)}"></span><span class="time-graph__definition">${definition[0].replace(/\_/g, " ")}: ${time.hours} hours</span></li>`
     legendTlp = legendTlp + legend
   }
-  return legendTlp + "</div>"
+  return `${legendTlp}</ul></div>`
 }
 
 async function createHours(allEntries, type) {
@@ -347,7 +347,7 @@ async function generateTime(textContent) {
 
     const yearText = `<h2>Year ${year}</h2>`
 
-    graph = graph + yearText + totalHours + activitiesGraph + activitiesLegend + projectsGraph + projectsLegend
+    graph = graph + yearText + totalHours + "<div class='time-graph-container'>" + activitiesGraph + activitiesLegend + "</div>" + "<div class='time-graph-container'>" + projectsGraph + projectsLegend + "</div>"
   }
 
 

@@ -79,6 +79,7 @@ async function generateHtml(allPages, htmlTemplate) {
 
 async function generateTimePage(graph, htmlTemplate) {
     let page = htmlTemplate
+    page = page.replace("<article>", "<article class='full'>")
     page = page.replace(/pageTitle/g, "Time")
     page = page.replace(/breadCrumb/g, `<nav>Back to <a href="tracking.html">Tracking</a></nav>`)
     graph = "<h1>Time</h1>\n" + graph
