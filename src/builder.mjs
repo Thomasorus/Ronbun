@@ -116,6 +116,9 @@ async function generateAll(dir) {
     await getCss('assets/style.css', 'dist/assets/style.css');
     fs.mkdirSync('dist/media');
     const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
+    fs.copyFile('assets/logo.png', 'dist/assets/logo.png', err => {
+        if (err) throw err;
+    });
     exec(imgProcess, {
         encoding: 'utf-8'
     });
