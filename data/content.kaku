@@ -179,7 +179,7 @@ BODY:
 
 NAME: Knowledge
 HOST: Home
-Bref: Where I put things I don't want to forget
+BREF: Where I put things I don't want to forget
 BODY:
 
 # Knowledge
@@ -192,7 +192,7 @@ This page references knowledge of all sorts I want to keep written. It can be te
 
 NAME: Html tips
 HOST: knowledge
-Bref: A collection of HTML and CSS tips to build simple yet optimized websites
+BREF: A collection of HTML and CSS tips to build simple yet optimized websites
 BODY:
 
 # HTML and CSS simple tips and tricks for your website
@@ -307,7 +307,7 @@ Next: {accessibility-rules-and-tools.html, "Basic rules about accessibility and 
 
 NAME: Accessibility rules and tools
 HOST: HTML tips
-Bref: A collection of accessibility tips to build simple yet inclusive websites
+BREF: A collection of accessibility tips to build simple yet inclusive websites
 BODY:
 
 # Accessibility basic rules and tools
@@ -395,7 +395,7 @@ Next: {the-basics-of-html.html, "The basics: head, div and span"}
 
 NAME: The basics of HTML
 HOST: HTML tips
-Bref: The basics of what is needed when starting a website in HTML
+BREF: The basics of what is needed when starting a website in HTML
 BODY:
 
 # The basics of HTML
@@ -454,7 +454,7 @@ Next: {what-is-semantic-html.html, "What is semantic HTML?"}
 
 NAME: What is semantic HTML
 HOST: HTML tips
-Bref: An explanation of semantic HTML and why it's important
+BREF: An explanation of semantic HTML and why it's important
 BODY:
 
 
@@ -519,7 +519,7 @@ Next: {never-use-tables-for-layout.html, "Don't use tables for layout"}
 
 NAME: Never use tables for layout
 HOST: HTML tips
-Bref: An explanation about why using tables for layout is a bad practice
+BREF: An explanation about why using tables for layout is a bad practice
 BODY:
 
 # Never use tables for layout
@@ -536,7 +536,7 @@ Next: {the-display-property.html, "The display property"}
 
 NAME: The display property
 HOST: HTML tips
-Bref: What is the display property in CSS and how it affects HTML
+BREF: What is the display property in CSS and how it affects HTML
 BODY:
 
 # The `display` property
@@ -561,7 +561,7 @@ Next: {flexbox-the-goat.html, "Flexbox, the goat"}
 
 NAME: Flexbox the goat
 HOST: HTML tips
-Bref: A primer on flexbox and why it's awesome and simple for HTML layout
+BREF: A primer on flexbox and why it's awesome and simple for HTML layout
 BODY:
 
 # Flexbox, the GOAT
@@ -761,7 +761,7 @@ Next: {css-grid-the-almighty.html, "CSS Grid the almighty"}
 
 NAME: CSS Grid the almighty
 HOST: HTML tips
-Bref: A primer on grod and how it can replace CSS grid frameworks
+BREF: A primer on grod and how it can replace CSS grid frameworks
 BODY:
 
 
@@ -1069,7 +1069,7 @@ Next: {order-your-titles-correctly.html, "Order your titles correctly"}
 
 NAME: Order your titles correctly
 HOST: HTML tips
-Bref: How to handle titles in HTML so they are logically ordered and accessible
+BREF: How to handle titles in HTML so they are logically ordered and accessible
 BODY:
 
 
@@ -1087,7 +1087,7 @@ Next: {organize-your-text-content.html, "Organize your text content"}
 
 NAME: Make your links clear and accessible
 HOST: HTML tips
-Bref: A collection of HTML basic tips to build simple yet modern websites
+BREF: A collection of HTML basic tips to build simple yet modern websites
 BODY:
 
 # Make your links clear and accessible
@@ -1115,7 +1115,7 @@ Next: {when-to-use-a-button-and-a-link.html, "When to use a button and a link"}
 
 NAME: Organize your text content
 HOST: HTML tips
-Bref: The useful HTML elements when dealing with text
+BREF: The useful HTML elements when dealing with text
 BODY:
 
 
@@ -1169,7 +1169,7 @@ Next: {all-about-images.html, "All about images"}
 
 NAME: All about images
 HOST: HTML tips
-Bref: How to make images optimized, responsive and easy on bandwidth
+BREF: How to make images optimized, responsive and easy on bandwidth
 BODY:
 
 # All about images
@@ -1264,7 +1264,7 @@ Next: {all-about-video-and-audio.html, "All about video and audio"}
 
 NAME: All about video and audio
 HOST: HTML tips
-Bref: Tips and tricks about video and audio codecs for the web and how to use the audio and video elements
+BREF: Tips and tricks about video and audio codecs for the web and how to use the audio and video elements
 BODY:
 
 # All about video and audio
@@ -1339,7 +1339,7 @@ Next: {doing-forms-correctly.html, "Doing forms correctly"}
 
 NAME: Doing forms correctly
 HOST: HTML tips
-Bref: A deep explanation about accessible forms and error handling in HTML
+BREF: A deep explanation about accessible forms and error handling in HTML
 BODY:
 
 # Doing forms correctly
@@ -1458,7 +1458,7 @@ Next: {tables-are-not-that-complicated.html, "Tables are not that complicated"}
 
 NAME: Strong b em and i
 HOST: HTML tips
-Bref: What's the deal with strong, b, em and i in html? Which one I pick?
+BREF: What's the deal with strong, b, em and i in html? Which one I pick?
 BODY:
 
 
@@ -1485,7 +1485,7 @@ Next: {other-kinda-useful-semantic-elements.html, "Other kinda useful semantic e
 
 NAME: When to use a button and a link
 HOST: HTML tips
-Bref: Buttons and links are used for different things, here's an explanation
+BREF: Buttons and links are used for different things, here's an explanation
 BODY:
 
 
@@ -1510,7 +1510,7 @@ Next: {strong-b-em-and-i.html, "The mess of strong b em and i"}
 
 NAME: HTML interactive elements
 HOST: HTML tips
-Bref: Interactive HTML elements are like small native components that can help in some situations
+BREF: Interactive HTML elements are like small native components that can help in some situations
 BODY:
 
 
@@ -1556,7 +1556,7 @@ Use the `role="progressbar" to style it more easily:
 
 NAME: Other kinda useful semantic elements
 HOST: HTML tips
-Bref: The HTML elements you probably don't know but that could be useful in some situations
+BREF: The HTML elements you probably don't know but that could be useful in some situations
 BODY:
 
 
@@ -1580,7 +1580,7 @@ Next: {html-interactive-elements.html, "Some interactive elements that can be us
 
 NAME: Tables are not that complicated
 HOST: HTML tips
-Bref: How to do accessible tables (it's not that complicated)
+BREF: How to do accessible tables (it's not that complicated)
 BODY:
 
 # Tables are not that complicated
