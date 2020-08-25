@@ -59,6 +59,7 @@ async function generateHtml(allPages, htmlTemplate) {
         let page = htmlTemplate
         console.log(el.name)
         page = page.replace(/pageTitle/g, `${el.name} - Thomasorus`)
+        page = page.replace(/metaDescription/g, el.bref)
         if (el.name.toLowerCase() !== el.host.toLowerCase() && el.host !== undefined) {
             const parentSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
             page = page.replace(/breadCrumb/g, `<nav role="breadcrumb"><i>Back to <a href="${parentSlug}.html">${el.host}</a></i></nav>`)
