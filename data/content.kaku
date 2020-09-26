@@ -199,11 +199,11 @@ BODY:
 
 The goal of this page is to help you with easy tricks to make the HTML of your website accessible, readable by everyone and optimized for low bandwidth.
 
-This tips and tricks are from on personal experience working as a front-end web developer specialized in UI and accessibility for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", Go to my contact page}.
+This tips and tricks are from personal experience working as a front-end web developer specialized in UI and accessibility for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", Go to my contact page}.
 
 ## About accessibility
 
-Accessibility is making your website inclusive for people with disabilities. If respecting accessibility can seem like a chore, it's actually a good way of learning good HTML practices and everything in these pages is therefore influences by it.
+Accessibility is making your website inclusive for people with disabilities. If respecting accessibility can seem like a chore, it's actually a good way of learning good HTML practices and everything in these pages is therefore influenced by it.
 
 - {what-is-accessibility.html, "So, what is accessibility?"}
 - {accessibility-rules-and-tools.html, "Basic rules about accessibility and tools to enforce them"}
@@ -274,7 +274,7 @@ BODY:
 
 # What is accessibility ?
 
-I will often refer to _accessibility_ in these pages, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blind people, who have to use a screen reader but there's a lot of handicaps that can give your a hard time on the internet.
+I will often refer to _accessibility_ in these pages, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blindness, who requires the use of a screen reader. But there's a lot of handicaps that can give your a hard time on the internet.
 
 You might be deaf, which means you need a transcribed version of an audio or video file. You might have dyslexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered or trigger too many animations. You might have a cognitive impairment, which means you have a hard time understanding some websites. There are a lot of others handicaps that might make the web hard to use.
 
@@ -286,7 +286,7 @@ No, not at all.
 
 All accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together, you just have to want it.
 
-Respecting accessibility in UI and UX design often leads to a better designs and user experiences for all users. So when I say that something _is good for accessibility_ it often means it's _good for all your users_, and following these advises will result in a better website of everyone.
+Respecting accessibility in UI and UX design often leads to better designs and user experiences for all users. So when I say that something _is good for accessibility_ it often means it's _good for all your users_, and following these advises will result in a better website of everyone.
 
 ## Accessibility is hard
 
@@ -330,7 +330,7 @@ That's why it's important to have your website tested by actually disabled peopl
 
 Here are some basic but essential rules to help you get started:
 
-- Don't block the ability to zoom or zoom out on your website.
+- Don't block the ability to zoom in or zoom out on your website.
 - Don't go below 13 pixels in font size. Yes users can zoom, but that would be way more comfortable if they didn't have to do it in the first place!
 - The basic 16px font size that all browsers have is often a good thing to follow.
 - Don't use super thin fonts. They are pretty but very hard to read!
@@ -369,9 +369,9 @@ Use the `aria-hidden="true"` attribute on the HTML element of your choice. Again
 
 ## What is a skip content link?
 
-Screen readers users have shortcuts to access to different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page, that you right after the `<body>`.
+Screen readers users have shortcuts to access the different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page, that you can add right after the `<body>`.
 
-It's not technically complicated to do and can save your screen readers users tons of time, especially if you have big and complex header or navigation before the main content.
+It's not technically complicated to implement and can save your screen readers users tons of time, especially if you have big and complex header or navigation before the main content.
 
 ## What tools can I use?
 
@@ -777,7 +777,7 @@ Even more than Flexbox, it's a _massive_ spec with tons of use cases and syntax 
 
 For this example we'll go with just 6 vertical columns. How would that work?
 
-First we have to use `display: grid;` on the parent element, just like we did with flexbox. They we can declare our grid with the `grid-template-columns: ???;` property.
+First we have to use `display: grid;` on the parent element, just like we did with flexbox. Then we can declare our grid with the `grid-template-columns: ???;` property.
 
 <span class="visually-hidden">Hello screen reader users! Several code examples of layouts are demonstrated in this page. There is no real content inside these examples that would help you understand them. So instead, for each code example, I decided tell you the code example is hidden, but you can inspect it with developer tools if you are a one. Sorry for the lack of a better solution.</span>
 
@@ -884,7 +884,7 @@ If too many children, the grid will create a new row:
     </div>
 </div>
 
-In Grid tutorials you will often hear about the "explicit" and "implicit" columns and rows. The explicit is the one you declared with your code. The implicit is the one created by the browser when there's no written rules to handle specific use cases or bugs. You can declare rules for both implicit and explicit grids even if I'm not going going into details on this.
+In Grid tutorials you will often hear about the "explicit" and "implicit" columns and rows. The explicit is the one you declared with your code. The implicit is the one created by the browser when there's no written rules to handle specific use cases or bugs. You can declare rules for both implicit and explicit grids even if I won't go into details on this.
 
 Of course we could have a grid where columns have a fixed size in pixels. Doing so would ensure the columns keep a reasonable size even on mobile, but it would make the whole thing un-responsive!
 
@@ -961,7 +961,7 @@ There's actually two syntax you can use:
 Let's try different things with our grid:
 
 ```
-grid-column: 1 / 5;
+grid-column: 1 / 3;
 grid-column: 5 / span 2;
 grid-column: 2 / span 4;
 grid-column: 2 / span 1;
@@ -1123,11 +1123,11 @@ BODY:
 
 Remember when I talked about the box-content semantic elements, the `<nav>`, `<main>` and others? Well there's a _lot_ more of them for the text. If you care enough, you can probably find a semantic HTML element for anything. Here's a few that you should use:
 
-## text blocks with `<p>`
+## Text blocks with `<p>`
 
 If you don't know what to use for your block of text, your probably need a paragraph. Paragraphs come with a natural margin that makes them readable even without adding style. Paragraphs are good, use them!
 
-## Citations with `<blockquote>`
+## Quotes with `<blockquote>`
 
 The good old quote we often see in articles! It can actually comes with the `<cite>` element and attribute to help you sources your quotes, as well as a `<footer>` to indicate the end of the quote and its author. Take a look at the specifications on {https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote/, "this page"} to make better quotes.
 
@@ -1153,7 +1153,7 @@ If you enumerate something (text, links, etc...) you probably should add them in
 ? Term 2 : Definition 2
 ? Term 3 : definition 3
 
-Of course all those lists come with their basic design, but please note that you can change them very easily. You can make your lists go in a single line, change their separation, or even use a custom image instead of dots! Just be careful to not put informative content as a decoration, as it will not be vocalized. Also when reading the source code of a page, HTML are very easy to understand.
+Of course all those lists come with their basic design, but please note that you can change them very easily. You can make your lists go in a single line, change their separation, or even use a custom image instead of dots! Just be careful to not put informative content as a decoration, as it will not be vocalized. Also when reading the source code of a page, HTML lists are very easy to understand.
 
 ## Pre-formatted text with `<pre>`
 
@@ -1180,7 +1180,7 @@ Well yeah but... what if we could do much more, like loading the right image siz
 
 ## Load the right image size and density
 
-The `<img>` element has an attribute `srcset` that allows you to add several links to several versions of your image. You can do two things with `srcset`:
+The `<img>` element has an `srcset` attribute that allows you to add several links to several versions of your image. You can do two things with `srcset`:
 
 + Ask the browser to change the image depending of the width of the viewport.
 + Ask the browser to change the image depending of the pixel density of the display.
@@ -1348,7 +1348,7 @@ Forms are incredibly complicated to get right from an accessibility standpoint. 
 
 ## Forms require strict HTML
 
-With more people validating forms with JavaScript, we've seen a drop in code quality of forms. But the reality is quite simple: if you forget about some parts of the form, screen readers users will ne know they are in a form to begin with!
+With more people validating forms with JavaScript, we've seen a drop in code quality of forms. But the reality is quite simple: if you forget about some parts of the form, screen readers users will not know they are in a form to begin with!
 
 + A form starts and ends with the `<form>` element even if you validate it with JavaScript. Also add an `id` to it.
 + Each `<input>`, no matter its type, needs and `id` and a `<label>` with the `for` attribute pointing to it. 
@@ -1400,7 +1400,7 @@ Screen readers users are humans too, they dislike walls of text about legal stuf
 
 You probably already tried to tab between inputs in a form. That's because inputs are capturing elements that *you can only escape by using the tab key*. And when you do, *the tab key will lead you to the next native focus-able element* like another input, a button or a link. 
 
-It's important because too many designers put big explanation texts about the form between inputs. Since screen readers users can only use the tab key to get out of an input and will land on the next focus-able element, they will not have the explanation texts vocalized and have no way of access them. We saw that `aria-describedby` can be used to link a for to a descriptive text, but that's applying bandage on a broken leg.
+It's important because too many designers put big explanation texts about the form between inputs. Since screen readers users can only use the tab key to get out of an input and will land on the next focus-able element, they will not have the explanation texts vocalized and have no way of access them. We saw that `aria-describedby` can be used to link to a descriptive text, but that's applying a bandage on a broken leg.
 
 Removing texts sections inside forms might seem like a chore and, when talking about it with designers, they will probably tell you it's a going to make the whole experience bland or suffocating in the case of massive forms. 
 
@@ -1412,7 +1412,7 @@ Your labels with the descriptions attached should be enough to make it a pleasan
 
 Handling errors in forms is super complicated and nobody seems to agree about how to do it correctly. It's especially hard with accessibility in mind, and not only because of screen readers. So take my advises with a grain of salt as I may be wrong on some cases and am still learning about this.
 
-The first rule to respect is that triggering error messages should only happen either when the user tabs out of the input or when their user validates the form. Don't trigger error messages while the user is typing. Wait for him to go out of the input or it will be a vocalized nightmare or a panic inducing behavior. You might think that's counter-intuitive as screen readers users may not know that they wrote it wrong but that's actually OK if you do the following right.
+The first rule to respect is that triggering error messages should only happen either when the user tabs out of the input or when the user validates the form. Don't trigger error messages while the user is typing. Wait for him to go out of the input or it will be a vocalized nightmare or a panic inducing behavior. You might think that's counter-intuitive as screen readers users may not know that they wrote it wrong but that's actually OK if you do the following right.
 
 When the user validates the form using the button, if an input is required and not filled or wrongly filled, move the user focus to this problematic input using the `.focus()` function in JavaScript. This way the user can promptly fill or fix it, then go back below super fast to validate the form again.
 
@@ -1444,13 +1444,13 @@ For the sake of the example, imagine we did not choose a monster below and tried
 
 Because of all this and contrary to popular practices, *it's forbidden to disable a form button*, even if the user made errors or did not finish filling the form. If the validation button is disabled it disappears from vocalization and the user has to travel through the whole form to find which input is not good. This is less practical than sending him directly to the input when the button is clicked.
 
-Applying this can be tricky on legacy applications that handle errors in a monolithic way. Even if you do front-end surface level error checking, the user might make a typo that can only be identified when the form is sent and the back-end discovers it by using Information stored in a database. If this happens, the error handling in the back-end needs to be written in a way that returns which information is wrong, to allow the front-end to `.focus()` on the wrong input. 
+Applying this can be tricky on legacy applications that handle errors in a monolithic way. Even if you do front-end surface level error checking, the user might make a typo that can only be identified when the form is sent and the back-end discovers it by using information stored in a database. If this happens, the error handling in the back-end needs to be written in a way that returns which information is wrong, to allow the front-end to `.focus()` on the wrong input. 
 
 If the back-end returns a vague message then the front-end can't do anything outside using `.focus()` to move the user to a standard error message, and the user has to redo the entire form and find by himself what he did wrongly. This is a super bad user experience even for non-disabled users.
 
 The best solution is of course to do error checking on the back-end on each input with an ajax call right after the user exits it. But for various reasons going from time to cost of requests, it's not always possible.
 
-Good luck with your forms and more than anything, *test your forms with real users, disabled or not, to find out if everything is ok*. On this particular subject, you can't trust yourself, you client, product owner, designer or common tester. You need real, fresh experience.
+Good luck with your forms and more than anything, *test your forms with real users, disabled or not, to find out if everything is ok*. On this particular subject, you can't trust yourself, your client, product owner, designer or common tester. You need real, fresh experience.
 
 Next: {tables-are-not-that-complicated.html, "Tables are not that complicated"}
 
@@ -1500,7 +1500,7 @@ So to make it clear:
 
 This difference of behavior is super important, especially in single page JavaScript web applications where urls are changed dynamically, but no page change is triggered in the browser! When such a thing happens, the developer has to manually move the focus of the screen reader user to the next point of interest inside the app and vocalize what happened and where the user is.
 
-To do this, the developer has to use the `.focus()` function in JavaScript. I'm not 100% sure about how to vocalize the page change so I'm not gonna give any advice on this. If you know good practices please {now.html, "contact me"} so I can update this part.
+To do this, the developer has to use the `.focus()` function in JavaScript. I'm not 100% sure about how to vocalize the page change so I'm not gonna give any advice on this. If you know good practices please {about.html, "contact me"} so I can update this part.
 
 One last thing: I don't care about your reasons, don't replace a `<button>` by a `<div>`.
 
@@ -1564,7 +1564,7 @@ BODY:
 
 Below are elements often complicated to add if you use a CMS or a markup language like Markdown as they don't give syntactic shortcuts for most of them, so you have to write them by hand. 
 
-Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating could probably be easier too.
+Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating them to specific components could probably increase their usage.
 
 ? `<abbr>` : Stands for abbreviation. Can be used for currencies for example.
 ? `<code>` : For code, obviously, often best used with `<pre>`.
