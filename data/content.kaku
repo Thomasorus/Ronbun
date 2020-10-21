@@ -185,6 +185,7 @@ BODY:
 This page references knowledge of all sorts I want to keep written. It can be technical writing, ideas, notes to self. 
 
 - {html-tips.html, "HTML tips and tricks"}
+- {the-soft-power-of-javascript.html, "The soft power of JavaScript"}
 
 ====
 
@@ -1980,3 +1981,40 @@ On the software side:
 - A few discussion apps for open source services like signal and connections
 
 And that's it. Not having a browser would be a huge change as I am addicted to distractions coming from it. No camera is not a huge deal as I would probably buy a dedicated camera instead. The lack of GPS could be bothersome but I don't often travel that much.
+
+====
+
+NAME: The soft power of JavaScript
+HOST: Knowledge
+BREF: A reflection on how JavaScript self-sustains itself through never-ending novelty
+BODY:
+
+
+# The soft power of JavaScript
+
+I've been thinking a lot about JavaScript lately. Not about the language itself but about the ecosystem, the economics and politics of it and how, like the United States movie industry or the K-pop music industry, it became a soft power tool that we're forced to consume and use. 
+
+I feel it works this way:
+
++ Big Tech releases *thing.js* and people who worked on it promote it in conferences
++ Tech influencers see *thing.js* as a new revenue opportunity that may stick on the long run and start investing in it
++ They publish books, record courses, write blog posts and create a lot of noise around *thing.js*
++ Tech leads around the world are tasked to make technical stacks decisions, they look on the internet and see there's a lot of noise surrounding *thing.js* and that it's a big tech product
++ *thing.js* is now choosen as the corner stone of the stack and developers have to learn it to find jobs: they buy courses, go to bootcamps, watch videos, read blog posts, giving money to influencers
++ Rince and repeat
+
+To me this spiral of events narrows our ability to think outside this ecosystem. It gives us the illusion of choice (_React, Vue, Angular, Svelte?_) and simplicity (_just npm install!_) and automatically makes us mold projects to the ecosystem (_it's an app not a website_) and increases the overall complexity.
+
+For this very reason and for the same project scope than a previous classic front-end tech stack, small teams then need to grow in size. Suddenly you need a dev ops for builds, a design system lead, more people to slice everything in components, you deport parts of what was usually a backend work to front-end work. But is the output and the durability of the project proportional to the number of people added to the team? I don't think it is.
+
+> "_But jquery was all spaghetti code and manual dom updates! MVC had ugly templates and massive, messy controllers! All this was hard to maintain and hard to evolve!_"
+
+I know about this, having worked on a few projects of this kind. And obviously when you are big tech and have thousands of developers you need to slice everything into bits so people can work. But for us, the normal day developers in small to medium technical departments in small to big companies, what's the benefit? It's hard to compare if the _old way_ of doing things made it harder to maintain and evolve the front-end of a project. But what I'm seeing right now is dozens of job offers in digital services companies for migrations of hundreds of AngularJS components into another framework to basically do the same thing. 
+
+Personally this whole soft power thing increases my imposter syndrome and makes me numb. Always catching up with the next big thing, I didn't asked myself for years if I actually like what I'm using or if it's justified to use it in the first place. The question is not if we should use *thing.js* but if *other-thing.js* is better.
+
+I'm happy I met alternative coding scenes where people ask themselves if what they are doing is sustainable and necessary. I'm happy about what I do at least for personal projects. I know better how, why and where I want to do development in the future. 
+
+Of course I may be wrong about all this. But what I am sure is that this soft power ecosystem is exhausting my love for front-end work, one project at a time.
+
+_21/10/2020_
