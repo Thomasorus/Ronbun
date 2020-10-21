@@ -1,6 +1,5 @@
 const patterns = [
   "pattern-dots",
-
   "pattern-grid",
   "pattern-checks",
   "pattern-cross-dots",
@@ -17,7 +16,9 @@ const patterns = [
   "pattern-zig-zag",
   "pattern-vertical-lines",
   "pattern-horizontal-lines",
-
+  "pattern-grey-lines",
+  "pattern-wave",
+  "pattern-yin"
 ]
 
 async function parseTime(timeToParse) {
