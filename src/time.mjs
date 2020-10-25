@@ -313,6 +313,8 @@ async function createTotalHours(yearsData, totalActivities, totalProjects, year)
 
 async function generateTime(textContent) {
 
+  console.log("Processing time tracker data...")
+
   //Parsing file
   const allEntries = await parseTime(textContent);
 
@@ -350,9 +352,6 @@ async function generateTime(textContent) {
 
     graph = graph + yearText + totalHours + "<div class='time-graph-container'>" + activitiesGraph + activitiesLegend + "</div>" + "<div class='time-graph-container'>" + projectsGraph + projectsLegend + "</div>"
   }
-
-
-  //Assemble page
 
   return graph
 }
