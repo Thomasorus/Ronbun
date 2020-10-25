@@ -52,30 +52,87 @@ async function splitContent(textContent) {
 
 
 async function generateHtml(allPages, htmlTemplate) {
-    fs.mkdirSync('./dist');
+    //fs.mkdirSync('./dist');
 
     for (let i = 0; i < allPages.length; i++) {
-        const el = allPages[i];
-        let page = htmlTemplate
-        console.log(el.name)
-        page = page.replace(/pageTitle/g, `${el.name} - Thomasorus`)
-        page = page.replace(/metaDescription/g, el.bref)
-        if (el.name.toLowerCase() !== el.host.toLowerCase() && el.host !== undefined) {
-            const parentSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
-            page = page.replace(/breadCrumb/g, `<nav role="breadcrumb"><i>Back to <a href="${parentSlug}.html">${el.host}</a></i></nav>`)
-        } else {
-            page = page.replace(/breadCrumb/g, '')
-        }
-        page = page.replace(/pageBody/g, parser(el.body))
-
+        const el = allPages[i]
+        const name = el.name + " - Thomasorus"
         const slug = el.name.toLowerCase().replace(/\b \b/g, "-")
-        fs.writeFileSync(`./dist/${slug}.html`, page, err => {
-            if (err) {
-                console.log(err);
-                throw err;
+        const bref = el.bref
+        const text = parser(el.body)
+        const host = el.host
+        const hostSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
+        let hostNav = ""
+
+        //Check if page and parent page are the same
+        if (el.name.toLowerCase() !== el.host.toLowerCase() && el.host !== undefined) {
+            hostNav = `<nav role="breadcrumb"><i>Back to <a href="${hostSlug}.html">${host}</a></i></nav>`
+        }
+
+        let page = htmlTemplate
+            page = page.replace(/pageTitle/g, `${name}`)
+            page = page.replace(/metaDescription/g, bref)
+            page = page.replace(/breadCrumb/g, hostNav)            
+            page = page.replace(/pageBody/g, text)
+           
+        //Checking if page already exists in dir
+        let existingPage;
+        let error;
+        try	{
+        	existingPage = fs.readFileSync(`./dist/${slug}.html`,'utf8');
+        } catch(err) {
+        	error = err.code;
+        }
+
+        //If page does not exist
+        if(error === "ENOENT") {
+            console.log(`New page: ${name}`)
+
+            fs.writeFileSync(`./dist/${slug}.html`, page, err => {
+                if (err) {
+                    console.log(err);
+                    throw err;
+                }
+            });
+        } else {
+
+            //Gathering content from existing html page for comparaison
+            const titleContent = RegExp(/ <title>([\s\S]*?)<\/title>/).exec(existingPage);
+            const htmlTitle = titleContent[1].replace(/\n/g, "").trim() === name.replace(/\n/g, "").trim() ? true : false  
+            
+            const brefContent = RegExp(/ <meta name="description" content="([\s\S]*?)">/).exec(existingPage);
+            const htmlBref = brefContent[1].replace(/\n/g, "").trim() === bref.replace(/\n/g, "").trim() ? true : false        
+
+            let HostSlugContent;
+            let htmlHostSlug;
+       
+            HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
+            if(HostSlugContent != null) {
+                htmlHostSlug = HostSlugContent[1].replace(/\n/g, "").trim() === host.replace(/\n/g, "").trim() ? true : false
+            } else { 
+                htmlHostSlug = true
             }
-        });
-    }
+        
+            const textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
+            const htmlText = textContent[1].replace(/\n/g, "").trim() === text.replace(/\n/g, "").trim() ? true : false
+
+            //If something change rebuild, else skip
+            if(htmlTitle  === false || htmlBref  === false|| htmlHostSlug  === false|| htmlText === false) {
+                console.log("Rebuilding...")
+                console.log({name, htmlTitle, htmlBref, htmlHostSlug, htmlText})
+                
+                fs.rmSync(`./dist/${slug}.html`);
+                fs.writeFileSync(`./dist/${slug}.html`, page, err => {
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    }
+                });
+            } else {
+                console.log(`Skipping ${name}`)
+            }
+        }
+	}
 }
 
 async function generateTimePage(graph, htmlTemplate) {
@@ -96,7 +153,7 @@ async function generateTimePage(graph, htmlTemplate) {
 
 
 async function getCss(cssPath, cssDestination) {
-    fs.mkdirSync('dist/assets');
+    //fs.mkdirSync('dist/assets');
     fs.copyFile(cssPath, cssDestination, err => {
         if (err) throw err;
     });
@@ -106,15 +163,15 @@ async function getCss(cssPath, cssDestination) {
 
 async function generateAll(dir) {
     console.log('Building site...')
-    fs.rmdirSync(dir, {
-        recursive: true
-    });
+    //fs.rmdirSync(dir, {
+      //  recursive: true
+    //});
     const textContent = fs.readFileSync("data/content.kaku", 'utf8');
     const allPages = await splitContent(textContent);
     const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
     await generateHtml(allPages, htmlTemplate);
     await getCss('assets/style.css', 'dist/assets/style.css');
-    fs.mkdirSync('dist/media');
+    //fs.mkdirSync('dist/media');
     const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
     fs.copyFile('assets/logo.png', 'dist/assets/logo.png', err => {
         if (err) throw err;
