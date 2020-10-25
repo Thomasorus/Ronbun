@@ -4,6 +4,7 @@ import {
 } from "child_process"
 import parser from './kaku.mjs'
 import generateTime from './time.mjs'
+import { error } from 'console';
 
 async function retrievePageData(text) {
 
@@ -51,8 +52,9 @@ async function splitContent(textContent) {
 }
 
 
-async function generateHtml(allPages, htmlTemplate) {
-    //fs.mkdirSync('./dist');
+async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
+
+    console.log("Starting page build")
 
     for (let i = 0; i < allPages.length; i++) {
         const el = allPages[i]
@@ -62,6 +64,8 @@ async function generateHtml(allPages, htmlTemplate) {
         const text = parser(el.body)
         const host = el.host
         const hostSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
+        const today = new Date()
+        const date = today.getDate() +'/'+ today.getMonth()+'/'+ today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         let hostNav = ""
 
         //Check if page and parent page are the same
@@ -74,7 +78,7 @@ async function generateHtml(allPages, htmlTemplate) {
             page = page.replace(/metaDescription/g, bref)
             page = page.replace(/breadCrumb/g, hostNav)            
             page = page.replace(/pageBody/g, text)
-           
+            
         //Checking if page already exists in dir
         let existingPage;
         let error;
@@ -87,6 +91,8 @@ async function generateHtml(allPages, htmlTemplate) {
         //If page does not exist
         if(error === "ENOENT") {
             console.log(`New page: ${name}`)
+            page = page.replace(/pageTimeContent/g, date)
+            page = page.replace(/pageTimeDesign/g, date)
 
             fs.writeFileSync(`./dist/${slug}.html`, page, err => {
                 if (err) {
@@ -107,7 +113,7 @@ async function generateHtml(allPages, htmlTemplate) {
             let htmlHostSlug;
        
             HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
-            if(HostSlugContent != null) {
+            if(HostSlugContent !== null) {
                 htmlHostSlug = HostSlugContent[1].replace(/\n/g, "").trim() === host.replace(/\n/g, "").trim() ? true : false
             } else { 
                 htmlHostSlug = true
@@ -116,11 +122,25 @@ async function generateHtml(allPages, htmlTemplate) {
             const textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
             const htmlText = textContent[1].replace(/\n/g, "").trim() === text.replace(/\n/g, "").trim() ? true : false
 
-            //If something change rebuild, else skip
-            if(htmlTitle  === false || htmlBref  === false|| htmlHostSlug  === false|| htmlText === false) {
+           const contentChange = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
+           const designChange = RegExp(/design update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
+
+           
+
+            //If something changed rebuild, else skip
+            if(htmlTitle  === false || htmlBref  === false|| htmlHostSlug  === false|| htmlText === false || styleHasChanged) {
                 console.log("Rebuilding...")
-                console.log({name, htmlTitle, htmlBref, htmlHostSlug, htmlText})
+                console.log({name, htmlTitle, htmlBref, htmlHostSlug, htmlText, styleHasChanged})
                 
+                if(styleHasChanged) {
+                    page = page.replace(/pageTimeContent/g, contentChange[1])
+                    page = page.replace(/pageTimeDesign/g, date)
+                } else {
+                    page = page.replace(/pageTimeContent/g, date)
+                    page = page.replace(/pageTimeDesign/g, designChange[1])
+                }
+                
+
                 fs.rmSync(`./dist/${slug}.html`);
                 fs.writeFileSync(`./dist/${slug}.html`, page, err => {
                     if (err) {
@@ -129,13 +149,13 @@ async function generateHtml(allPages, htmlTemplate) {
                     }
                 });
             } else {
-                console.log(`Skipping ${name}`)
+                console.log(`Skipping ${el.name}`)
             }
         }
 	}
 }
 
-async function generateTimePage(graph, htmlTemplate) {
+async function generateTimePage(graph, htmlTemplate, dir) {
     let page = htmlTemplate
     page = page.replace("<article>", "<article class='full'>")
     page = page.replace(/pageTitle/g, "Time")
@@ -143,47 +163,109 @@ async function generateTimePage(graph, htmlTemplate) {
     graph = "<h1>Time</h1>\n" + graph
     page = page.replace(/pageBody/g, graph)
 
-    fs.writeFileSync(`./dist/time.html`, page, err => {
+    fs.writeFileSync(`${dir}/time.html`, page, err => {
         if (err) {
             console.log(err);
             throw err;
+        } 
+    });
+    console.log("Tracking page done!")
+}
+
+
+async function getFileSize(dir) {
+    const stats = fs.statSync(dir)
+    return stats.size
+}
+
+async function copyAsset(dir, file) {
+    if (fs.existsSync(`${dir}/assets/${file}`)) {
+        const oldFile = await getFileSize(`${dir}/assets/${file}`)
+        const newFile = await getFileSize(`assets/${file}`)
+        if(oldFile !== newFile) {
+            console.log(`Changes for ${file}`)
+            fs.copyFile(`assets/${file}`, `${dir}/assets/${file}`, err => {
+                if (err) {
+                    throw err 
+                }
+            });
+            return true
+        } else {
+            console.log(`No change for ${file}`)
+            return false
         }
-    });
+    } 
+    else {
+        console.log(`Copy of ${file}`)
+        fs.copyFile(`assets/${file}`, `${dir}/assets/${file}`, err => {
+            if (err) {
+                throw err 
+            }
+        });
+        return true
+    }    
 }
 
+async function getCss(dir) {
+    if (fs.existsSync(`${dir}/assets`)) {
+        console.log('Assets directory exists!');
+    } else {
+        console.log('Assets directory not found. Creating...')
+        fs.mkdirSync(`${dir}/assets`)
+        console.log("Done")
+    }    
+    
+    const logoChange = await copyAsset(dir, "logo.png")
+    const templateCHange = await copyAsset(dir, "main.html")
+    const styleChange = await copyAsset(dir, "style.css")
 
-async function getCss(cssPath, cssDestination) {
-    //fs.mkdirSync('dist/assets');
-    fs.copyFile(cssPath, cssDestination, err => {
-        if (err) throw err;
-    });
+    console.log("Assets copied!")
+
+     return logoChange || templateCHange || styleChange ? true : false
+    
 }
 
-
-
-async function generateAll(dir) {
-    console.log('Building site...')
-    //fs.rmdirSync(dir, {
-      //  recursive: true
-    //});
-    const textContent = fs.readFileSync("data/content.kaku", 'utf8');
-    const allPages = await splitContent(textContent);
-    const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
-    await generateHtml(allPages, htmlTemplate);
-    await getCss('assets/style.css', 'dist/assets/style.css');
-    //fs.mkdirSync('dist/media');
-    const imgProcess = fs.readFileSync("src/images.sh", 'utf8')
-    fs.copyFile('assets/logo.png', 'dist/assets/logo.png', err => {
-        if (err) throw err;
-    });
+async function processImages(dir) {
+    if (fs.existsSync(`${dir}/media`)) {
+        console.log('Media directory exists!');
+    } else {
+        console.log('Media directory not found. Creating...')
+        fs.mkdirSync(`${dir}/media`)
+        console.log("Done")
+    }
+    const imgProcess = fs.readFileSync("src/images.sh", 'utf8', dir)
     exec(imgProcess, {
         encoding: 'utf-8'
     });
+    console.log("Images are processing async")
+}
+
+
+async function generateAll(dir) {
+    console.log('START')
+    if (fs.existsSync(dir)) {
+        console.log('The main directory exists!');
+    } else {
+        console.log('The main directory was not found. Creating...')
+        fs.mkdirSync('./dist')
+        console.log("Done")
+    }
+
+    const styleHasChanged = await getCss(dir);
+    console.log(styleHasChanged)
+
+    const textContent = fs.readFileSync("data/content.kaku", 'utf8');
+    const allPages = await splitContent(textContent);
+    const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
+    await generateHtml(allPages, htmlTemplate, styleHasChanged);
+
     let timeContent = fs.readFileSync("data/time.kaku", "utf8");
     const graph = await generateTime(timeContent);
-    await generateTimePage(graph, htmlTemplate)
-    console.log('Finished!')
+    await generateTimePage(graph, htmlTemplate, dir)
 
+    await processImages(dir);
+
+    console.log('END\n')
 }
 
 generateAll("./dist");
