@@ -62,6 +62,7 @@ pre {
   background: lightgrey;
   white-space: pre-wrap;
   padding: 10px;
+  
 }
 
 code {
@@ -74,8 +75,12 @@ ul {
 }
 
 nav {
-  margin: 10px auto;
-  max-width: 540px;
+  max-width:540px;
+  margin:10px auto;
+}
+
+footer nav, footer aside {
+  margin: 10px 0;
 }
 
 article {
@@ -116,7 +121,25 @@ blockquote footer {
 }
 
 footer {
-  margin: 30px 0;
+  margin: 30px auto;
+  max-width: 540px;
+  display:flex;
+  justify-content: space-between;
+}
+
+footer aside {
+  line-height:1;
+  font-size:13px;
+
+}
+
+footer aside p {
+  margin:0;
+  padding:0;
+}
+
+footer ul {
+  margin:0;
 }
 
 .footer-nav {
