@@ -134,9 +134,7 @@ Ronbun's repo is on {https://github.com/Thomasorus/Ronbun, "github"}.
 
 Next features:
 
-+ Avoid rebuilding unchanged pages
 + Avoid reprocessing unchanged images
-+ Add time and date of generation on pages
 + Provide better navigation
 + Add RSS support
 + Add sitemap
