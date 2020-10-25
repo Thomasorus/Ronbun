@@ -1,0 +1,480 @@
+html {
+  font-size: 10px;
+  /* font-size: 2.4vw;
+  font-size: 10px; */
+}
+
+body {
+  padding: 0;
+  font-size: 1.8rem;
+  font-variant-numeric: oldstyle-nums;
+  background: white;
+  margin: 30px auto;
+  padding: 0 10px;
+  font-family: serif;
+  line-height: 1.4;
+  hyphens: auto;
+}
+
+
+a {
+  color: #111;
+}
+
+a:visited {
+  color: #333;
+}
+
+a:hover {
+  color: #555;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  background-color: initial;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+header {
+  height: 90px;
+  display: flex;
+  max-width: 540px;
+  margin: auto;
+}
+
+
+pre {
+  background: lightgrey;
+  white-space: pre-wrap;
+  padding: 10px;
+  
+}
+
+code {
+  background: lightgrey;
+  padding: 1px 2px;
+}
+
+ul {
+  padding: 0 0 0 16px;
+}
+
+nav {
+  max-width:540px;
+  margin:10px auto;
+}
+
+footer nav, footer aside {
+  margin: 10px 0;
+}
+
+article {
+  max-width: 540px;
+  margin: auto;
+}
+
+.full {
+  max-width: 100vw;
+}
+
+.full .time-graph {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full>*:not(.time-graph-container) {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.time-graph-container h3 {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+blockquote {
+  padding-left: 3em;
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.3;
+}
+
+blockquote footer {
+  margin: 1em;
+}
+
+footer {
+  margin: 30px auto;
+  max-width: 540px;
+  display:flex;
+  justify-content: space-between;
+}
+
+footer aside {
+  line-height:1;
+  font-size:13px;
+
+}
+
+footer aside p {
+  margin:0;
+  padding:0;
+}
+
+footer ul {
+  margin:0;
+}
+
+.footer-nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.footer-nav li {
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.time-graph {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25px);
+  grid-gap: 3px;
+  border-collapse: collapse;
+  font-variant-numeric: oldstyle-nums;
+  justify-content: center;
+}
+
+.time-graph__text {
+  align-self: flex-end;
+  margin: 10px 0;
+}
+
+.time-graph__hours {
+  background: white;
+  color: black;
+  padding: 1px 3px 0 1px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family: monospace;
+
+}
+
+.time-graph ul,
+.time-graph li {
+  list-style: none;
+}
+
+.time-graph__week {
+  width: 100%;
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  flex: 1 1 auto;
+}
+
+.time-graph__activity {
+  margin: 1.5px;
+  padding: 0;
+  box-shadow: 0 0 0 1px black;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.time-graph__tooltip {
+  display: none;
+}
+
+.time-graph__activity:hover>.time-graph__tooltip {
+  margin-top: 15px;
+  margin-left: 50%;
+  background-color: white;
+  display: block;
+  padding: 5px;
+  position: absolute;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.time-graph__legend-list {
+  margin: 10px auto 20px auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0;
+}
+
+.time-graph__legend {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 5px 10px;
+}
+
+.time-graph__legend-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 1.2rem;
+  font-family: monospace;
+}
+
+.time-graph__value {
+  margin-left: 2px;
+  margin-right: 20px;
+}
+
+.time-graph__definition {
+  padding-top: 2px;
+  white-space: nowrap;
+}
+
+.time-graph__pattern {
+  height: 15px;
+  min-width: 15px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+
+/* Code examples for html tips*/
+.code-example {
+  background: white;
+  border: 1px solid black;
+  margin-bottom: 30px;
+  min-height: 70px;
+}
+
+.code-example-value {
+  display: inline;
+  background: white;
+  color: black;
+  padding: 1px 5px 0 5px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+.code-example-children {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+}
+
+.code-example-children-grid {
+  border: 1px solid black;
+}
+
+.code-example-grid-star {
+  display: grid;
+
+  grid-template-areas:
+    "lefttop . righttop"
+    ". center . "
+    "leftbottom . rightbottom";
+}
+
+/* Patterns collection */
+.pattern-checks {
+  background-image: -o-repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), -o-repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
+  background-image: repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor);
+  background-position: 0 0, 5px 5px;
+  background-size: calc(2 * 5px) calc(2 * 5px)
+}
+
+.pattern-grid {
+  background-image: -o-linear-gradient(currentColor 1px, transparent 1px), -o-linear-gradient(left, currentColor 1px, transparent 1px);
+  background-image: linear-gradient(currentColor 1px, transparent 1px), linear-gradient(to right, currentColor 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-position: -1px;
+}
+
+.pattern-dots {
+  background-image: -o-radial-gradient(currentColor .25px, transparent .25px);
+  background-image: radial-gradient(currentColor .25px, transparent .25px);
+  background-size: calc(5 * .3px) calc(5 * .3px)
+}
+
+.pattern-cross-dots {
+  background-image: -o-radial-gradient(currentColor 1px, transparent 1px), -o-radial-gradient(currentColor 1px, transparent 1px);
+  background-image: radial-gradient(currentColor 1px, transparent 1px), radial-gradient(currentColor 1px, transparent 1px);
+  background-size: calc(4 * 1px) calc(4 * 1px);
+  background-position: 0 0, calc(2 * 1px) calc(2 * 1px)
+}
+
+.pattern-vertical-lines {
+  background-image: -o-repeating-linear-gradient(left, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-image: repeating-linear-gradient(to right, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-size: 4px 4px
+}
+
+.pattern-horizontal-lines {
+  background-image: -o-repeating-linear-gradient(bottom, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-image: repeating-linear-gradient(0deg, currentColor, currentColor 1px, transparent 1px, transparent);
+  background-size: 4px 4px
+}
+
+.pattern-diagonal-lines {
+  background-image: -o-repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-size: 6px 6px
+}
+
+.pattern-diagonal-lines--alt {
+  background-image: -o-repeating-linear-gradient(135deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-image: repeating-linear-gradient(-45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+  background-size: 6px 6px
+}
+
+.pattern-vertical-stripes {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, currentColor));
+  background-image: -o-linear-gradient(left, transparent 50%, currentColor 50%);
+  background-image: linear-gradient(90deg, transparent 50%, currentColor 50%);
+  background-size: 6px 6px;
+  background-position: -2px;
+}
+
+.pattern-horizontal-stripes {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, transparent), color-stop(50%, currentColor));
+  background-image: -o-linear-gradient(bottom, transparent 50%, currentColor 50%);
+  background-image: linear-gradient(0deg, transparent 50%, currentColor 50%);
+  background-size: 8px 8px
+}
+
+.pattern-diagonal-stripes {
+  background: -o-repeating-linear-gradient(45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px));
+  background: repeating-linear-gradient(45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
+}
+
+.pattern-diagonal-stripes--alt {
+  background: -o-repeating-linear-gradient(135deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px));
+  background: repeating-linear-gradient(-45deg, transparent, transparent 5px, currentColor 5px, currentColor calc(2 * 5px))
+}
+
+.pattern-zigzag {
+  background: -o-linear-gradient(315deg, currentColor 25%, transparent 25%) -5px 0, -o-linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, -o-linear-gradient(135deg, currentColor 25%, transparent 25%), -o-linear-gradient(45deg, currentColor 25%, transparent 25%);
+  background: linear-gradient(135deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(315deg, currentColor 25%, transparent 25%), linear-gradient(45deg, currentColor 25%, transparent 25%);
+  background-size: calc(2 * 5px) calc(2 * 5px)
+}
+
+.pattern-triangles {
+  background-image: -o-linear-gradient(45deg, currentColor 50%, transparent 50%);
+  background-image: linear-gradient(45deg, currentColor 50%, transparent 50%);
+  background-size: 8px 8px
+}
+
+
+.pattern-double-diagonal-stripes {
+  background-image: -o-repeating-linear-gradient(135deg, transparent, transparent 5px, white 5px, white 50%), -o-repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, white 5px, white 50%), repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
+  background-size: 13px 13px;
+}
+
+
+.pattern-quarter-circles {
+  background-image: -o-radial-gradient(10px 10px, ellipse farthest-corner, white, white 50%, black 50%);
+  background-image: radial-gradient(ellipse farthest-corner at 10px 10px, white, white 50%, black 50%);
+  background-size: 10px 10px;
+}
+
+.pattern-seigaiha {
+  background-color: black;
+  background-image: -o-radial-gradient(100% 150%, circle, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), -o-radial-gradient(0 150%, circle, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), -o-radial-gradient(50% 100%, circle, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), -o-radial-gradient(100% 50%, circle, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), -o-radial-gradient(0 50%, circle, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
+  background-image: radial-gradient(circle at 100% 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 50% 100%, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), radial-gradient(circle at 100% 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), radial-gradient(circle at 0 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
+  background-size: 30px 15px;
+}
+
+.pattern-checkerboard-diagonal {
+  background-color: #eee;
+  background-image: -o-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), -o-linear-gradient(135deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+  background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+  background-size: 10px 10px;
+}
+
+.pattern-zig-zag {
+  background-image: -o-repeating-linear-gradient(49deg, black, black 1px, transparent 4px, transparent 8px);
+  background-image: repeating-linear-gradient(-319deg, black, black 1px, transparent 4px, transparent 8px);
+  background-size: 4px;
+}
+
+.pattern-grey-lines {
+  background-color:white;
+  background-image: linear-gradient(90deg, rgba(0,0,0,.5) 50%, transparent 50%),
+  linear-gradient(rgba(0,0,0,.5) 50%, transparent 50%);
+  background-size:6px 6px;
+}
+
+.pattern-wave {
+  background:
+    radial-gradient(circle at 100% 50%, transparent 20%, black 21%,
+      black 34%, transparent 35%, transparent),
+    radial-gradient(circle at 0% 50%, transparent 20%, black 21%, black 34%, transparent 35%, transparent) 0 -50px;
+  background-color: #EEEEEE;
+  background-size: 12px 37px;
+}
+
+.pattern-yin {
+  background:
+    radial-gradient(circle at 50% 59%, white 3%, black 4%, black 11%, rgba(54, 78, 39, 0) 12%, rgba(54, 78, 39, 0)) 50px 0,
+    radial-gradient(circle at 50% 41%, black 3%, white 4%, white 11%, rgba(210, 202, 171, 0) 12%, rgba(210, 202, 171, 0)) 50px 0,
+    radial-gradient(circle at 50% 59%, white 3%, black 4%, black 11%, rgba(54, 78, 39, 0) 12%, rgba(54, 78, 39, 0)) 0 50px,
+    radial-gradient(circle at 50% 41%, black 3%, white 4%, white 11%, rgba(210, 202, 171, 0) 12%, rgba(210, 202, 171, 0)) 0 50px,
+    radial-gradient(circle at 100% 50%, white 16%, rgba(210, 202, 171, 0) 17%),
+    radial-gradient(circle at 0% 50%, black 16%, rgba(54, 78, 39, 0) 17%),
+    radial-gradient(circle at 100% 50%, white 16%, rgba(210, 202, 171, 0) 17%) 50px 50px,
+    radial-gradient(circle at 0% 50%, black 16%, rgba(54, 78, 39, 0) 17%) 50px 50px;
+  background-color: #555;
+  background-size: 20px 21px;
+}
+
+
+@media (max-width: 600px) {
+  body {
+    margin: 10px;
+  }
+
+  header {
+    height: 50px;
+  }
+}
