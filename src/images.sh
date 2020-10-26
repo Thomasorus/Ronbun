@@ -35,7 +35,7 @@ function resize () {
     # create output path
     path=$(dirname $file)   # just/the/path    
     name=$(basename $file)  # filename.ext
-  fileBase="${name%%.*}"  # filename
+    fileBase="${name%%.*}"  # filename
     fileExt="${name#*.}"    # ext
 
     # substitute source path with destination path
@@ -75,8 +75,13 @@ function resize () {
     # Finally also strip the original image of it's EXIF data
     # and resize it to a max width of 1200
     output="$dst/$name"
+    outputwebp="$dst/$fileBase.webp"
     if [[ ! -f $output ]]; then
-      convert $file -strip -auto-orient -resize $MAXWIDTH $output
+
+      convert $file -resize $MAXWIDTH -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off $output
+
+      convert $file -resize $MAXWIDTH -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define webp:lossless=true -define webp:auto-filter=true $outputwebp
+      
       echo -n "| ${MAXWIDTH} "
     else echo -n "| ----- "
     fi
