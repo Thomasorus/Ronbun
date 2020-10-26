@@ -150,7 +150,8 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
 async function generateTimePage(graph, htmlTemplate, dir) {
     let page = htmlTemplate
     page = page.replace("<article>", "<article class='full'>")
-    page = page.replace(/pageTitle/g, "Time")
+    page = page.replace(/pageTitle/g, "Time - Thomasorus")
+    page = page.replace(/metaDescription/g, "Thomasorus' time tracker")
     page = page.replace(/breadCrumb/g, `<nav>Back to <a href="tracking.html">Tracking</a></nav>`)
     graph = "<h1>Time</h1>\n" + graph
     page = page.replace(/pageBody/g, graph)
