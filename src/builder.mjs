@@ -1,10 +1,6 @@
 import * as fs from 'fs'
-import {
-    exec
-} from "child_process"
 import parser from './kaku.mjs'
 import generateTime from './time.mjs'
-import { error } from 'console';
 
 async function retrievePageData(text) {
 
@@ -141,7 +137,7 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
                 }
                 
 
-                fs.rmSync(`./dist/${slug}.html`);
+                fs.unlinkSync(`./dist/${slug}.html`);
                 fs.writeFileSync(`./dist/${slug}.html`, page, err => {
                     if (err) {
                         console.log(err);
