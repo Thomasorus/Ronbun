@@ -233,11 +233,7 @@ async function processImages(dir) {
         fs.mkdirSync(`${dir}/media`)
         console.log("Done")
     }
-    const imgProcess = fs.readFileSync("src/images.sh", 'utf8', dir)
-    exec(imgProcess, {
-        encoding: 'utf-8'
-    });
-    console.log("Images are processing async")
+    console.log("Processing images")
 }
 
 
@@ -264,8 +260,6 @@ async function generateAll(dir) {
     await generateTimePage(graph, htmlTemplate, dir)
 
     await processImages(dir);
-
-    console.log('END\n')
 }
 
 generateAll("./dist");
