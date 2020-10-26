@@ -1,1 +1,1 @@
-find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "dist/" | entr -r ./build.sh
+./server.sh | find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "dist/" | entr -r ./build.sh

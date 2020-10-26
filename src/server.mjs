@@ -50,5 +50,5 @@ http.createServer(function (request, response) {
         }
     });
 
-}).listen(8125);
-console.log('Server running at http://127.0.0.1:8125/');
+}).listen(8080);
+console.log('Server running at http://localhost:8080/');
