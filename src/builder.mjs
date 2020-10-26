@@ -118,9 +118,7 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
             const textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
             const htmlText = textContent[1].replace(/\n/g, "").trim() === text.replace(/\n/g, "").trim() ? true : false
 
-           const contentChange = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
-           const designChange = RegExp(/design update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
-
+            const contentChange = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
            
 
             //If something changed rebuild, else skip
@@ -130,10 +128,8 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
                 
                 if(styleHasChanged) {
                     page = page.replace(/pageTimeContent/g, contentChange[1])
-                    page = page.replace(/pageTimeDesign/g, date)
                 } else {
                     page = page.replace(/pageTimeContent/g, date)
-                    page = page.replace(/pageTimeDesign/g, designChange[1])
                 }
                 
 
@@ -244,7 +240,6 @@ async function generateAll(dir) {
     }
 
     const styleHasChanged = await getCss(dir);
-    console.log(styleHasChanged)
 
     const textContent = fs.readFileSync("data/content.kaku", 'utf8');
     const allPages = await splitContent(textContent);
