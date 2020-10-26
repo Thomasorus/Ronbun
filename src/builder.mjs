@@ -155,6 +155,10 @@ async function generateTimePage(graph, htmlTemplate, dir) {
     graph = "<h1>Time</h1>\n" + graph
     page = page.replace(/pageBody/g, graph)
 
+    const today = new Date()
+        const date = today.getDate() +'/'+ today.getMonth()+'/'+ today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    page = page.replace(/pageTimeContent/g, date)
+
     fs.writeFileSync(`${dir}/time.html`, page, err => {
         if (err) {
             console.log(err);
