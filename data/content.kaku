@@ -1516,7 +1516,7 @@ You might not know these but they can be super useful. Their main default is tha
 
 ? `<details>` and `<summary>` : Allows you to make a kind of accordion box in pure HTML. By default closed but the `open` attribute on `<details>` can make it open.
 ? `<datalist>` : Can be used as an input with a list of options auto-suggested by what the user is typing.
-? `<progress>` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar" on a div.
+? `<progress>` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar` on a div.
 
 <details>
   <summary>Click me for a code demo</summary>
