@@ -2038,48 +2038,50 @@ BODY:
 
 This list was created by {https://twitter.com/bastianallgeier, "Bastian", Link to Bastian twitter acccount} from the Kirby Team on the Kirby {https://discord.gg/r5AjvspYmY, "Discord"}. For conservation purposes, I reproduced it here. It was then consolidated using Tom Mac Wright article about {https://macwright.com/2020/10/28/if-not-spas.html, "Single Page Apps"} replacements.
 
-## Opinionated full-stack JavaScript frameworks
-
-- Redwood JS
-- Blitz JS
-- Remix
-
 ## JS-based page transitions 
 
-Using the history API and Ajax requests to fetch HTML of the next page and replace the current body with it
+Using the history API and Ajax requests to fetch HTML of the next page and replace the current body with it.
 
-- Turbolinks
-- PJAX
-- Barba
-- Swup
-- Highwayjs
+- {https://github.com/turbolinks/turbolinks, "Turbolinks"}
+- {https://github.com/MoOx/pjax, "PJAX"}
+- {https://barba.js.org/, "Barba"}
+- {https://swup.js.org/, "Swup"}
+- {https://highway.js.org/, "Highway"}
 
 ## JS-enhanced HTML 
 
 Event handling/reactivity/dom manipulation via HTML attributes
 
-- Alpine
-- Stimulus JS
+- {https://github.com/alpinejs/alpine/, "Alpine"}
+- {https://stimulusjs.org/, "Stimulus JS"}
+- {https://htmx.org/, "HTMLX"}
 
 ## Inline replacement of components
 
 Static HTML gets updated via websockets or Ajax calls on the fly with small snippets rendered on the server.
 
-- Livewire (PHP)
-- Stimulus Reflex (Ruby)
-- Phoenix Liveview (Elixir)
-- HTMLX
+- {https://laravel-livewire.com/, "Livewire"} (PHP)
+- {https://docs.stimulusreflex.com/, "Stimulus Reflex"} (Ruby)
+- {https://www.phoenixframework.org/blog/build-a-real-time-twitter-clone-in-15-minutes-with-live-view-and-phoenix-1-5, "Phoenix Liveview"} (Elixir)
 
 ## Server-injected SPA
 
 A client-side, component based application (Vue, React, etc) gets its state from pre-rendered JSON 
 
-- Inertia
+- {https://inertiajs.com/, "Inertia"}
 
 ## Traditional SPA
 
-A client-side, component-based application (Vue, React, etc) but data is being fetched via API (REST or GraphQL)
+A client-side, component-based application (Vue, React, etc) but data is being fetched via API (REST or GraphQL).
 
-- Traditional Vue app
-- Traditional React app
-- Traditionnal Angular app
+- Vue app
+- React app
+- Angular app
+
+## Opinionated full-stack JavaScript frameworks
+
+Using existing frontend and backend stacks in an opiniated way to offer a fullstack solution in full JavaScript
+
+- {https://redwoodjs.com/, "Redwood JS"}
+- {https://blitzjs.com/, "Blitz JS"}
+- {https://remix.run/, "Remix"}
