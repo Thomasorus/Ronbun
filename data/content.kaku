@@ -2025,3 +2025,61 @@ I'm happy I met alternative coding scenes where people ask themselves if what th
 Of course I may be wrong about all this. But what I am sure is that this soft power ecosystem is exhausting my love for front-end work, one project at a time.
 
 _21/10/2020_
+
+
+====
+
+NAME: List of JavaScript frameworks
+HOST: Knowledge
+BREF: A reflection on how JavaScript self-sustains itself through never-ending novelty
+BODY:
+
+# A list of JavaScript frameworks
+
+This list was created by {https://twitter.com/bastianallgeier, "Bastian", Link to Bastian twitter acccount} from the Kirby Team on the Kirby {https://discord.gg/r5AjvspYmY, "Discord"}. For conservation purposes, I reproduced it here. It was then consolidated using Tom Mac Wright article about {https://macwright.com/2020/10/28/if-not-spas.html, "Single Page Apps"} replacements.
+
+## Opinionated full-stack JavaScript frameworks
+
+- Redwood JS
+- Blitz JS
+- Remix
+
+## JS-based page transitions 
+
+Using the history API and Ajax requests to fetch HTML of the next page and replace the current body with it
+
+- Turbolinks
+- PJAX
+- Barba
+- Swup
+- Highwayjs
+
+## JS-enhanced HTML 
+
+Event handling/reactivity/dom manipulation via HTML attributes
+
+- Alpine
+- Stimulus JS
+
+## Inline replacement of components
+
+Static HTML gets updated via websockets or Ajax calls on the fly with small snippets rendered on the server.
+
+- Livewire (PHP)
+- Stimulus Reflex (Ruby)
+- Phoenix Liveview (Elixir)
+- HTMLX
+
+## Server-injected SPA
+
+A client-side, component based application (Vue, React, etc) gets its state from pre-rendered JSON 
+
+- Inertia
+
+## Traditional SPA
+
+A client-side, component-based application (Vue, React, etc) but data is being fetched via API (REST or GraphQL)
+
+- Traditional Vue app
+- Traditional React app
+- Traditionnal Angular app
