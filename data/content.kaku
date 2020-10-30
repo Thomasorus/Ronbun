@@ -183,6 +183,7 @@ This page references knowledge of all sorts I want to keep written. It can be te
 
 - {html-tips.html, "HTML tips and tricks"}
 - {the-soft-power-of-javascript.html, "The soft power of JavaScript"}
+- {list-of-javascript-frameworks.html, "List of JavaScript frameworks"}
 
 ====
 
@@ -249,12 +250,18 @@ Interactive elements are fully functional tools in HTML. Unfortunately they are 
 
 - {html-interactive-elements.html, "Some interactive elements that can be useful"}
 
-## Performance
+## About CSS 
 
 Performance is a hot topic as the website obesity crisis keeps going. In these pages I already explained a few things to improve performance, especially in the video and image pages. Still there are a few broader topics related to performance that we should talk about.
 
 - {css-good-practices.html, "CSS Good practices to optimize file size and specificity"}
-- About JavaScript frenzy and hate
+
+## About JavaScript
+
+JavaScript and its most famous frameworks React, Vue and Angular are everywhere in web development. Their use created an increasing complexity and normalized technical stacks, often for no good reason. Understanding what it implies to developers, as well as making informed choices about JavaScript is now primordial.
+
+- {the-soft-power-of-javascript.html, "The soft power of JavaScript"}
+- {list-of-javascript-frameworks.html, "List of JavaScript frameworks"}
 
 ## Page updates
 
