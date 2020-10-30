@@ -60,7 +60,7 @@ BODY:
 
 Kaku (write) is my own markup language. It's inspired by Markdown with a few modification for quotes, links, images and lists handling. It was created to fit my needs and is currently used on this website.
 
-This {https://github.com/Thomasorus/Kaku, "repositoty"} contains the detailed specs and a JavaScript parser for Kaku.
+This {https://github.com/Thomasorus/Kaku, "repository"} contains the detailed specs and a JavaScript parser for Kaku.
 
 ====
 
