@@ -8,6 +8,10 @@ Ronbun is still in early development.
 
 The goal is to create a simple html generator entirely driven by my needs, thus why it doesn't use markdown, why there's a single content file, why navigation is simplified.
 
+## License
+
+Ronbun 論文 is a free to use by individuals and organizations that do not operate by capitalist principles. For more information see the [license](LICENSE.md) file.
+
 ## Requirements
 
 Ronbun requires is developed and built on a linux machine, it requires:
