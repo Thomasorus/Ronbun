@@ -5,9 +5,9 @@ import * as path from 'path'
 http.createServer(function (request, response) {
     console.log('request ', request.url);
 
-    var filePath = './dist/' + request.url;
-    if (filePath == './dist/') {
-        filePath = './dist/home.html';
+    var filePath = './www/' + request.url;
+    if (filePath == './www/') {
+        filePath = './www/home.html';
     }
 
     var extname = String(path.extname(filePath)).toLowerCase();

@@ -48,7 +48,7 @@ async function splitContent(textContent) {
 }
 
 
-async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
+async function generateHtml(allPages, htmlTemplate, styleHasChanged, dir) {
 
     console.log("Starting page build")
 
@@ -79,7 +79,7 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
         let existingPage;
         let error;
         try	{
-        	existingPage = fs.readFileSync(`./dist/${slug}.html`,'utf8');
+        	existingPage = fs.readFileSync(`${dir}/${slug}.html`,'utf8');
         } catch(err) {
         	error = err.code;
         }
@@ -90,7 +90,7 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
             page = page.replace(/pageTimeContent/g, date)
             page = page.replace(/pageTimeDesign/g, date)
 
-            fs.writeFileSync(`./dist/${slug}.html`, page, err => {
+            fs.writeFileSync(`${dir}/${slug}.html`, page, err => {
                 if (err) {
                     console.log(err);
                     throw err;
@@ -133,8 +133,8 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged) {
                 }
                 
 
-                fs.unlinkSync(`./dist/${slug}.html`);
-                fs.writeFileSync(`./dist/${slug}.html`, page, err => {
+                fs.unlinkSync(`${dir}/${slug}.html`);
+                fs.writeFileSync(`${dir}/${slug}.html`, page, err => {
                     if (err) {
                         console.log(err);
                         throw err;
@@ -240,7 +240,7 @@ async function generateAll(dir) {
         console.log('The main directory exists!');
     } else {
         console.log('The main directory was not found. Creating...')
-        fs.mkdirSync('./dist')
+        fs.mkdirSync(dir)
         console.log("Done")
     }
 
@@ -249,7 +249,7 @@ async function generateAll(dir) {
     const textContent = fs.readFileSync("data/content.kaku", 'utf8');
     const allPages = await splitContent(textContent);
     const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
-    await generateHtml(allPages, htmlTemplate, styleHasChanged);
+    await generateHtml(allPages, htmlTemplate, styleHasChanged, dir);
 
     let timeContent = fs.readFileSync("data/time.kaku", "utf8");
     const graph = await generateTime(timeContent);
@@ -258,4 +258,4 @@ async function generateAll(dir) {
     await processImages(dir);
 }
 
-generateAll("./dist");
+generateAll("./www");

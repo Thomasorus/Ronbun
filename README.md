@@ -45,4 +45,4 @@ Look at the `generateAll()` function to get a sense of the build process.
 - `src` contains de building files.
 - `media` contains the image, audio and video files that are to be process or copied during build.
 - `old` contains older versions of the builder written in js and python, as well as content has to be transferred into the `content.kaku` file.
-- `dist` is the built website.
+- `www` is the built website.

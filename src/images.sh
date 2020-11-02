@@ -12,7 +12,7 @@
 # path where the original images are located
 SRC="media"
 # path where the images will be stored
-DST="dist/media"
+DST="www/media"
 # sizes to convert to
 SIZES=( 240 680 900 )
 MAXWIDTH=1200
