@@ -72,8 +72,7 @@
 
 <p>In the example below, I have 4 versions of the same image that I want the browser to use when the viewport is less than 300, 600, 900 and 1200 pixels in width:</p>
 
-<pre><code>
-<span><</span>img
+<pre><code><span><</span>img
 src="img-1200.jpg"
 srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w"
 />
@@ -81,8 +80,7 @@ srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w
 
 <p>And for pixel density for 1k, 2k or 4k screens:</p>
 
-<pre><code>
-<span><</span>img
+<pre><code><span><</span>img
 src="img-1k.jpg"
 srcset="img-1k.jpg 1x, img-2k.jpg 2x, img-4k.jpg x4"
 alt="this is an image"
@@ -91,8 +89,7 @@ alt="this is an image"
 
 <p>But you can also combine them, for example for a favicon:</p>
 
-<pre><code>
-<span><</span>img
+<pre><code><span><</span>img
 src="icon32px.png"
 "icon32px.png 32w, icon64px.png 64w, icon-retina.png 2x icon-ultra.png 3x icon.svg"
 alt="this is an image"
@@ -109,8 +106,7 @@ alt="this is an image"
 
 <p>Let's take an example with a <code>jpg</code> and a <code>webp</code>.</p>
 
-<pre><code>
-<span><</span>picture>
+<pre><code><span><</span>picture>
 <span><</span>source srcset="img1.webp" type="image/webp">
 <span><</span>img src="img1.jpg" alt="this is an image" />
 <span><</span>/picture>
@@ -127,8 +123,7 @@ alt="this is an image"
 
 <p>But you don't have to choose between all these features, you can combine them to have images at the right size, of the best type, only loaded when in the viewport, and allt his only in HTML.</p>
 
-<pre><code>
-<span><</span>picture>
+<pre><code><span><</span>picture>
 <span><</span>source
 type="image/webp"
 srcset="img-300.webp 300w, img-600.webp 600w, img-900.webp 900w, img-1200.webp 1200w">
@@ -142,6 +137,32 @@ srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w
 
 <p>Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known and used!</p>
 
+<h2 id="about-svg-files" style="position:relative;"><a href="#about-svg-files" aria-label="About svg files permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>About svg files</h2>
+
+<p>The SVG format (for <em>Scalable Vector Graphics</em>) is using vector graphics with an XML markup language. It can therefore used in a browser as inline code to display images, which is a good thing as it reduces the number of requests made by the browser.</p>
+
+<p>Here's a few tips:</p>
+
+<ul><li>During export from programs like Illustrator, Affinity Designer or Inkscape, take care of not exporting an SVG with an image inside.</li>
+<li>SVG exports often come with a lot of useless information stored inside, which makes them verbose and heavy. Compress them by using an SVG compressor like <a href="https://jakearchibald.github.io/svgomg/">SVGO</a>.</li>
+<li>The width and height of the SVG doesn't matter much from a file weight perspective but their design can be ugly on unreadable if too small or too big.</li>
+<li>Most of the time you will put the inline SVG inside a <code><span><</span>div></code> or a <code><span><</span>span></code> that has a fixed width and height and the SVG file will overflow. To make it fit, use a simple CSS rule like <code>width:100%; height:100%;</code>.</li></ul>
+
+<p>SVG can be informative or decorative and its purpose can change the way you handle accessibility. If you are using an SVG for informative purposes (like a graph), you should add a <code><span><</span>title></code> to add a tooltip and/pr an <code>aria-label</code> attribute to just vocalize it.</p>
+
+<pre><code><span><</span>svg role="img" aria-label="Accessible Name">
+<span><</span>title>Accessible Name<span><</span>/title>
+<span><</span>!-- child elements of the inline SVG -->
+<span><</span>/svg>
+</pre></code>
+
+<p>If the SVG is used for decorative purposes (like an icon) you can simply hide it using <code>aria-hidden="true"</code>.</p>
+
+<pre><code><span><</span>svg role="img" aria-hidden="true">
+<span><</span>!-- child elements of the inline SVG -->
+<span><</span>/svg>
+</pre></code>
+
 <p>Next: <a href="all-about-video-and-audio.html">All about video and audio</a></p>
     </article>
   </main>
@@ -150,7 +171,7 @@ srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w
     <aside>
       <p>Page meta:</p>
       <ul>
-        <li>Last content update: <time>25/9/2020 22:38:53</time></li>
+        <li>Last content update: <time>3/10/2020 10:33:13</time></li>
       </ul>
     </aside>
     <nav aria-label="Contact links">

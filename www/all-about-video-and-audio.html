@@ -90,8 +90,7 @@
 
 <p>That's the beauty of it, just like with the <code><span><</span>picture></code> element, you can add multiple sources to your <code><span><</span>video></code> and <code><span><</span>audio></code> elements and let the browser choose.</p>
 
-<pre><code>
-<span><</span>audio controls>
+<pre><code><span><</span>audio controls>
 <span><</span>source src="foo.opus" type="audio/ogg; codecs=opus"/>
 <span><</span>source src="foo.ogg" type="audio/ogg; codecs=vorbis"/>
 <span><</span>source src="foo.mp3" type="audio/mpeg"/>
@@ -111,14 +110,12 @@
 
 <p>Make a traditional video with the <code>control</code> attribute:</p>
 
-<pre><code>
-<span><</span>video controls" src="path to video" type="video/mp4"><span><</span>/video>
+<pre><code><span><</span>video controls" src="path to video" type="video/mp4"><span><</span>/video>
 </pre></code>
 
 <p>Make a fake gif from a video using those attributes. <code>loop</code> will restart the video, <code>mute</code> will remove sound and <code>autoplay</code> will start it automatically. Be careful as <code>autoplay</code> will not respect the <code>preload</code> attribute, making the video downloaded instantly.</p>
 
-<pre><code>
-<span><</span>video autoplay loop mute src="link to fake gif video" type="video/mp4"><span><</span>/video>
+<pre><code><span><</span>video autoplay loop mute src="link to fake gif video" type="video/mp4"><span><</span>/video>
 </pre></code>
 
 <p>Finally, please note that the <code>playsinline</code> attribute prevents videos from playing full screen on mobile when launched. If that's not the behavior your want, don't forget to add it.</p>
@@ -131,7 +128,7 @@
     <aside>
       <p>Page meta:</p>
       <ul>
-        <li>Last content update: <time>25/9/2020 22:38:53</time></li>
+        <li>Last content update: <time>3/10/2020 10:33:13</time></li>
       </ul>
     </aside>
     <nav aria-label="Contact links">
