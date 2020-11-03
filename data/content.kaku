@@ -1260,6 +1260,34 @@ But you don't have to choose between all these features, you can combine them to
 
 Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known and used!
 
+## About svg files
+
+The SVG format (for _Scalable Vector Graphics_) is using vector graphics with an XML markup language. It can therefore used in a browser as inline code to display images, which is a good thing as it reduces the number of requests made by the browser.
+
+Here's a few tips:
+
+- During export from programs like Illustrator, Affinity Designer or Inkscape, take care of not exporting an SVG with an image inside.
+- SVG exports often come with a lot of useless information stored inside, which makes them verbose and heavy. Compress them by using an SVG compressor like {https://jakearchibald.github.io/svgomg/, "SVGO"}.
+- The width and height of the SVG doesn't matter much from a file weight perspective but their design can be ugly on unreadable if too small or too big.
+- Most of the time you will put the inline SVG inside a `<div>` or a `<span>` that has a fixed width and height and the SVG file will overflow. To make it fit, use a simple CSS rule like `width:100%; height:100%;`.
+
+SVG can be informative or decorative and its purpose can change the way you handle accessibility. If you are using an SVG for informative purposes (like a graph), you should add a `<title>` to add a tooltip and/pr an `aria-label` attribute to just vocalize it.
+
+```
+<svg role="img" aria-label="Accessible Name">
+  <title>Accessible Name</title>
+  <!-- child elements of the inline SVG -->
+</svg>
+```
+
+If the SVG is used for decorative purposes (like an icon) you can simply hide it using `aria-hidden="true"`.
+
+```
+<svg role="img" aria-hidden="true">
+  <!-- child elements of the inline SVG -->
+</svg>
+```
+
 Next: {all-about-video-and-audio.html, "All about video and audio"}
 
 
