@@ -265,6 +265,7 @@ JavaScript and its most famous frameworks React, Vue and Angular are everywhere 
 
 ## Page updates
 
+? `03/11/2020` : Added a SVG subsection in the image page
 ? `24/08/2020` : Added a section about reader modes in the accessibility section.
 ? `22/08/2020` : In the interactive elements page I wrote that `<details>` and `<summary>` could not be animated. I was wrong.
 
