@@ -131,7 +131,7 @@
 
 <p>When the user validates the form using the button, if an input is required and not filled or wrongly filled, move the user focus to this problematic input using the <code>.focus()</code> function in JavaScript. This way the user can promptly fill or fix it, then go back below super fast to validate the form again.</p>
 
-<p>To error message should be added the same way as the instructions, with an <code>aria-describedby</code>. You can actually have two <code>id</code> as a value for <code>aria-describedby</code>, so screen readers will read the label, then the description, then the error message.</p>
+<p>The error message should be added the same way as the instructions, with an <code>aria-describedby</code>. You can actually have two <code>id</code> as a value for <code>aria-describedby</code>, so screen readers will read the label, then the description, then the error message. Finally, a <code>aria-invalid="true"</code> needs to be added to each invalid input.</p>
 
 <p>For the sake of the example, imagine we did not choose a monster below and tried validating the form. In JavaScript, we should add the <code>error</code> id to each input's <code>aria-describedby</code> so screen readers can vocalize the error message, and remove the <code>display:none</code> from the error message itself so non-screen readers users can see it too.</p>
 
@@ -141,15 +141,15 @@
 <legend>Choose your favorite monster</legend>
 <small id="error" style="color:red;">Error: you need to choose a monster.</small><br/>
 
-<input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc error">
+<input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc error" aria-invalid="true">
 <label for="kraken">Kraken</label><br/>
 <small id="kraken-desc">The kraken is a kind of giant squid.</small><br/>
 
-<input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc error">
+<input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc error" aria-invalid="true">
 <label for="sasquatch">Sasquatch</label><br/>
 <small id="sasquatch-desc">The Sasquatch is a kind of giant ape.</small><br/>
 
-<input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc error">
+<input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc error" aria-invalid="true">
 <label for="mothman">Mothman</label><br/>
 <small id="mothman-desc">The Mothman is a kind of giant moth.</small><br/>
 </fieldset>
@@ -175,7 +175,7 @@
     <aside>
       <p>Page meta:</p>
       <ul>
-        <li>Last content update: <time>25/9/2020 22:38:53</time></li>
+        <li>Last content update: <time>3/10/2020 11:31:55</time></li>
       </ul>
     </aside>
     <nav aria-label="Contact links">
