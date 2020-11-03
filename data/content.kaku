@@ -9,6 +9,7 @@ BODY:
 This is my little space where I store things.
 
 - {about.html, "About me"}
+- {now.html, "Now"}
 
 ## Self Tracking
 
@@ -25,6 +26,31 @@ This is my little space where I store things.
 - {kaku.html, "Kaku 書く", Kaku is a markup language}
 - {ronbun.html, "Ronbun 論文", Robun is a static site generator}
 - {keyboards.html, "Keyboards", The keyboards I use}
+
+====
+NAME: Now
+HOST: Home
+BREF: What am I doing now?
+BODY:
+
+# Now
+
+Studying:
+- The C language by redoing {kaku.html, "Kaku"}
+- How to escape the {the-soft-power-of-javascript.html, "soft power of JavaScript"} by finding {list-of-javascript-frameworks.html, "alternatives"} adapted to different types of projects
+
+Reading:
+- _Never split the difference_ by Chris Voss
+- _The Book of the New Sun_ by Gene Wolfe
+
+Writing:
+- An article about how to achieve 2D look in 3D
+- The lore of a story I had in mind for a long time
+
+Others:
+- Almost done buying an appartment, preparing renovation works
+- Trying to switch to a Raspberry Pi for a distraction-free development environnement
+
 
 ====
 
