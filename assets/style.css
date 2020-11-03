@@ -59,15 +59,18 @@ header {
 
 
 pre {
-  background: lightgrey;
+  background: black;
   white-space: pre-wrap;
   padding: 10px;
   
 }
 
 code {
-  background: lightgrey;
+  background: black;
+  color:white;
+  font-size: 1.6rem;
   padding: 1px 2px;
+  
 }
 
 ul {
