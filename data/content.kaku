@@ -2147,3 +2147,149 @@ Using existing frontend and backend stacks in an opiniated way to offer a fullst
 - {https://redwoodjs.com/, "Redwood JS"}
 - {https://blitzjs.com/, "Blitz JS"}
 - {https://remix.run/, "Remix"}
+
+
+====
+
+NAME: Freelancing notes
+HOST: Knowledge
+BREF: Personal notes on freelancing
+BODY:
+
+# Feelancing notes
+
+This page is about freelance work related to web projects (design, user experience, counseling). 
+
+## The types of freelancers
+
+There are two types of freelancers in this field:
+
+? Mercenaries : They execute the work, do it fast and for various clients. Since they are just implementing and not leading the project, their rates is lower than experts.
+? Experts : They lead a project and sometimes implement it at the same time. They have less clients, for a longer period and a higher rate.
+
+Both types are legitimate and needed in the field. Both have pros and cons:
+
+- Mercenaries can't catch a break and need to operate on a tight schedule, but their rate, diversified skills and type of work make it more unlikely for them to be out of missions.
+- Experts are less pressured into finding work all the time, but their expertise might not be needed all the time. They have a higher rate to compensate when they don't have any client.
+
+What is sure is that both types need to build a network of clients.
+
+## Build a network
+
+It's always better to search for clients when you are not in need right away. One of the best ways of doing it is sending spoutaneous applications to agencies you would want to work with. If they refuse your candidacy or don't answer it's not a problem, they may remember you when they have a specific need.
+
+Freelancing platforms can also be a good way of finding clients but there is a lot of competition that may pull rates down. Sometimes it may be better to have no deal than a bad one. 
+
+It's important to have a commercial relationships with clients. Sending emails to contacts to let them know you are available and trigger word of mouth is key. Making people remember you by sending them some news (for example a happy new year card) or thanking them when they refer you to another person is probably a good idea.
+
+
+## Cash management
+
+It's extemely important to have six months to one year of cash flow. And to build it, it's important to get paid in time and at a correct fpriceee. Most clients pay in the following sixty days after receiving the bill. But some can take months (agencies) to years (governement or public missions) before paying. There are even cases where companies don't pay in the hope of the freelancer going bankrupt so the debt is cancelled.
+
+Depending on the country, clients may want to negociate the price (it's always the case in France, never in the United States) and it can be hard to maintain you value and increase it afterward.
+
+When deciding of your daily rate, it's important to take these arguments into consideration:
+
+- If you take 5 weeks of vacation each year it's 17 days of non-payed work.
+- If they have an accident and can't work for a long time, they need an insurance for both medical fees and a substitue wage.
+- A part of the rate needs to go to the cash flow that will help when there are no clients (6 months to 1 year of cash flow is necessary).
+- Freelancers don't contribute to public retirement, so they need to finance it themselves throught complementary systems (life insurance, real estate)
+- Depending on the country where the freelancer is located, taxes can take a substantial amount of the rate.
+- Depending of the type of company you have, you may need to pay an accountant
+
+Taking all these factors into consideration substantially lowers the money a freelancer earns. *Overall, only around 50% of the price payed by the client is the real salary*.
+
+Freelancers can only count on themselves and thus need to create their own insurances. They are some period in the year (like summer, Christmas) where clients don't need them. 
+
+## Pricing
+
+About pricing:
+
+- Hour rate pricings are rare.
+- Daily rates are more common.
+- Package pricing is common in the web.
+
+If you are a developer *never do a package pricing* and favor daily or monthly rates, except if you are super sure about the scope of the project and protected by the quote. In other type of works (design, user experience) package pricing is often the norm and requires to be very careful when writing quotes.
+
+## Quotes
+
+Good quotes are the ultimate protection for freelancers and can help building a more profesionnal relationship with the client. Quotes should always list what is in the scope of the project and what is not in. This way the freelancer can refuse a sudden change or propose a new quote for a project change.
+
+Here's a list of basic things to think about when making a quote.
+
+### Design
+
+- Indicate a fixed number of initial design concepts that will be given to the client to help him decide the direction of the design.
+- The list of pages, templates, or components that will be created once the direction is chosen.
+
+### Text 
+
+- Be clear that you are not creating the text content for the client, nor inputing text into his content management system, nor creating his pages.
+- If the client wants you to do all this, add into the quote a maximum lenght and price for each text, the time required to input the text, and the list of pages required.
+
+### Graphics and photographs
+
+- Be clear that the client has to provide graphic files (logos, icons for example) and the file format you are expecting. If the client doesn't want to do it by himself, list what is needed and add it to the quote.
+- Be clear that the client has to provide the photographs for the website. Propose a list of stock photograph websites. If the client doesn't want to do it itself, list the number of needed photographs and add them to the quote.
+
+### Development:
+- Detail the goal of the project and the specific parts you are working on and what is required by the client for you to do your work.
+- If the project has an intricate codebase or list of features, detail what you will not work on.
+- List the languages, technologies, libraries, frameworks required.
+
+### Browser testing
+
+- Be clear that browser testing is about allowing a similar experience on all browsers, not a pixel perfect render as it's impossible.
+- List in which browsers the tests will be done, and which one won't be tested.
+- If the client needs to support a very old browser (ex: IE11) then the development rate should be higher. 
+
+### Tech support
+
+- If you don't provide website hosting be clear about it. If the client want you to open an account for hosting their project and put it online, add it to the quote. Be clear that outside installing the website, you are not the tech support.
+- If you do provide hosting, list what is required (domain name, type of hosting, mails) and what is not.
+
+### SEO
+
+- Be clear that you can't guarantee increases in search engine rankings.
+
+
+## Contract
+
+When the quote is accepted, provide a contract to the client. It's the last moment you can set rules with your him about how things are going to work out.
+
+Be sure the client knows that:
+
+- The project can only go forward if he is involved and that any lack of feedback required to the continuation of the project may halt it.
+- The freelancer can't be responsible for any delay due to the lack of feedback from the client.
+- He can change its mind but that an additionnal quote will be made.
+- If he is not satisfied he can terminate the contract but will have to pay the time already spent working on the project.
+- Any legal stuff that you think is important (liability, payment schedule, Intellectual property rights, work display)
+
+## Working with clients
+
+When clients hire a freelancer they basically want a facilitator, so everything should be done to keep the reassure the client.
+
+To avoid problems and facilitate the work:
+
+- Get as much scope as you can
+- Communicate to get all the steps of the projects
+- Find at which step you have to intervene
+- Provide a ready-made benefit
+- If you have to work with a team, choose the people you want to work with
+- Never put yourself in a position where you can be faulted
+
+Transparency and communication are keys to a good working relationship. 
+
+- Give daily feedback and/or deliveries
+- No need to write a novel each day, just a short notice is enough
+- Ask the client if everything is ok on his side
+- If you need feedback and mails are not working, make a voice call 
+- Never apologise of being communicative
+- If you are working remotely, never apologise for working remotely
+
+When something is going bad, for example budget is exploding or demands are increasing, impose your way of working by saying _no_ but provide _options_. Never come with empty hands as the goal is to simplify the process and save time.
+
+## Type of company
+
+Each country has its own rules about freelancing. However european freelancers can have a company in Estony with an e-residency certificate. It costs around 100 euros a month and provides services for everything like invoices and payment. You may still have to pay your residency country charges.
