@@ -2301,9 +2301,14 @@ HOST: Knowledge
 BREF: My Raspberry Pi configuration
 BODY:
 
+
 # Raspberry Pi
 
-I've been trying to use  a Raspberry Pi 4 as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
+I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
+
+I use a Raspberry Pi 4 with 8gigs or ram and an aluminium heatsink.
+
+[/media/pi.jpg, "Pi 4 with a heatsink"]
 
 ## The struggle of linux distribution performances
 
@@ -2359,9 +2364,13 @@ Ubuntu is so slow I could not be bothered to use it for anything. Also it's stra
 
 ## My configuration
 
+[/media/i3.jpg, "A screenshot of my i3 Desktop"]
+
 After a lot of testing I ended using *Dietpi*. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you. 
 
 But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).
+
+I use the 32bit version as the 64bit has bugs.
 
 
 ## Dietpi installation guide
@@ -2387,8 +2396,14 @@ This guide is mostly for my own use but feel free to use it.
 - By default dietpi has no emoji support or foreign languages like Japanese, you might want to install fonts to support them.
 - I use `feh` to randomize wallpapers (it's inside my i3 config file)
 
+### Chrome extensions
+
+- Ublock original
+- Noscript
+- Ninja cookie
+- 1PasswordX
+- h264ify
+
 ### i3 config file
 
-```
-paster i3 config file
-```
+My config file is available on {https://gist.githubusercontent.com/Thomasorus/89322ec9b0913e680616548265f5346f/raw/ccfd72704a6fced96ab6642477397c2ef6fa2efc/i3-config.txt, "github"}.
