@@ -210,8 +210,7 @@ BODY:
 This page references knowledge of all sorts I want to keep written. It can be technical writing, ideas, notes to self. 
 
 - {html-tips.html, "HTML tips and tricks"}
-- {the-soft-power-of-javascript.html, "The soft power of JavaScript"}
-- {list-of-javascript-frameworks.html, "List of JavaScript frameworks"}
+- {raspberry-pi.html, "Raspberry pi as a development machine"}
 
 ====
 
