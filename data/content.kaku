@@ -2293,3 +2293,102 @@ When something is going bad, for example budget is exploding or demands are incr
 ## Type of company
 
 Each country has its own rules about freelancing. However european freelancers can have a company in Estony with an e-residency certificate. It costs around 100 euros a month and provides services for everything like invoices and payment. You may still have to pay your residency country charges.
+
+====
+
+NAME: Raspberry Pi
+HOST: Knowledge
+BREF: My Raspberry Pi configuration
+BODY:
+
+# Raspberry Pi
+
+I've been trying to use  a Raspberry Pi 4 as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
+
+## The struggle of linux distribution performances
+
+Despite the hype around the fourth version of the Pi, most desktop distributions run very slowly on it and provide poor user experience. I've tried all the distros listed below and gave them ratings on these topics:
+
+- User Experience
+- Responsiveness
+- Software support
+- Easy to install
+
+The ratings are:
+
+- Perfect
+- Average
+- Poor
+- Terrible
+
+### Raspbian (Raspberry Pi OS)
+
+? User Experience : *Average* It's ugly but coherent and easy to use
+? Responsiveness : *Average* Most things are fast but some programs (mostly Electron apps) struggle
+? Software support : *Perfect* It's an Ubuntu base and the official OS
+? Easy to install : *Perfect* Plug and play and follow the guide
+
+Raspbian excels in nothing but is not terrible in anything. It's too bad it struggles with Electron apps. Supports hardware acceleration.
+
+### Dietpi
+
+? User Experience : *Poor* Dietpi proposes ready-made basic desktops (Mate, XFCE, LXQTm, LXDE) that are ugly and sometimes does not work (sound cursor in XFCE).
+? Responsiveness : *Perfect* Everything is fast or fast enough, even Electron Apps are usable
+? Software support : *Perfect* It's based on Raspbian and comes with it's own list of ready-made software
+? Easy to install : *Poor* Small iso but very long install with terminal based menus, takes a lot of time and not everything is clear
+
+Dietpi is probably the best in performance, but only for people with some skills at setting up their own environnement. Supports hardware acceleration.
+
+### Manjaro
+
+? User Experience : *Perfect* It's beautiful, coherent and easy to use
+? Responsiveness : *Poor* It's still usable but worse than Raspbian, no hardware acceleration support for video
+? Software support : *Average* Based on Arch Linux, most things are available but most configuration tweaks are for Raspbian/Ubuntu
+? Easy to install : *Average* There's a few terminal screens but it's quick and works fine
+
+If Manjaro was a bit snappier and did not lack some performance tweaks available to Ubuntu based distros (like hardware acceleration) it would be my default distribution.
+
+### Ubuntu
+
+? User Experience : *Average* The classic gnome Ubuntu
+? Responsiveness : *Terrible* It's so slow for everything it's almost unusable 
+? Software support : *Perfect* It's Ubuntu so everything is there
+? Easy to install : *Perfect* The classic Ubuntu install experience, everything is clear
+
+Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.
+
+## My configuration
+
+After a lot of testing I ended using *Dietpi*. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you. 
+
+But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).
+
+
+## Dietpi installation guide
+
+This guide is mostly for my own use but feel free to use it.
+
+### Basic setup
+
+- If you are on Wifi, edit the `dietpi` and `dietpi-wifi` files in the boot folder before inserting the sd card, as dietpi will trigger `apt update` and `apt upgrade` on launch.
+- Use `dietpi-config` in the command line and activate the sound in the audio options and bluetooth (if needed) in the advaned options (note that activating bluetooth somettimes returns an error, but it's working).
+- Configure the language, keyboard and locale.
+- Using `dietpi-software` from the command line launches a menu with ready to use software install. The `Optimized software` contains the window managers, the `additional software` contains things like `git`, `openssh`, `vim` and other tools.
+- If you want to use i3, install `i3`, `i3lock`, `i3status` and `suckless-tools`.
+- By default dietpi launches in the terminal. To launch to the window manager, use `dietpi-config`, go to `autostart options`. You'll see a list, go `Desktops` and press Enter on `LightDM Login Mask`, then select the user (probably dietpi) and exit. The next time you'll reboot you will boot on LightDM and will be able to choose your window manager.
+
+### Other programs
+
+- `thunar` as a file manager.
+- `chromium-browser` for browsing
+- Hardware acceleration following this {https://www.dedoimedo.com/computers/rpi4-ubuntu-mate-hw-video-acceleration.html, "tutorial"}
+- `blueman` to manager bluetooth devices
+- `mps-youtube` and `youtube-dl` to play youtube music in the terminal. The `youtube-dl` package is old, you have to update it using pip3: `pip3 install --upgrade youtube-dl` and use your own Youtube V3 Api Key. Set it inside mps-youtube with `set api_key KEY`.
+- By default dietpi has no emoji support or foreign languages like Japanese, you might want to install fonts to support them.
+- I use `feh` to randomize wallpapers (it's inside my i3 config file)
+
+### i3 config file
+
+```
+paster i3 config file
+```
