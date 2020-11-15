@@ -29,6 +29,10 @@ This is my little space where I store things.
 - {ronbun.html, "Ronbun 論文", Robun is a static site generator}
 - {keyboards.html, "Keyboards", The keyboards I use}
 
+## Journal
+
+- {i-removed-the-computer.html, "I removed the computer"}
+
 ====
 NAME: Now
 HOST: Home
@@ -2407,3 +2411,30 @@ This guide is mostly for my own use but feel free to use it.
 ### i3 config file
 
 My config file is available on {https://gist.githubusercontent.com/Thomasorus/89322ec9b0913e680616548265f5346f/raw/ccfd72704a6fced96ab6642477397c2ef6fa2efc/i3-config.txt, "github"}.
+
+====
+
+NAME: I removed the computer
+HOST: Home
+BREF: I removed my main computer from my desk
+BODY:
+
+# I removed the computer
+
+My family had its first computer 20 years ago. Each day I would come back from school to spend hours on it. When I turned eighteen I bought my first computer. I installed it on my desk where I usually did homeworks, and since that time a computer has always been on my desk. I coded, wrote, recorded podcasts, read, played... It didn't change during my art school years, as I had a dedicated desk to paint at school. Once I graduated, I basically stopped painting because I was fed up with art. I started many projects that were exclusively made on a computer and had a lot of fun. I thought it would be this way forever.
+
+But one day, it changed.
+
+Sitting at as desk never botherred me that much. It was a position where I could watch a movie, play video games or write, and feel comfortable. Five years ago I went from working in a shop, standing all day, to being a web developper, sitting all day. From this moment onward sitting at a desk felt like a _work position_. It wasn't a problem when I was doing _productive_ hobbies like recording, writing or coding, but it became harder to play video games, and impossible to watch a movie or a show. Due to chronicle occipital neuralgia I can't be in a relaxed position while sitting at a desk, I need to sit straight.
+
+The desire to draw and paint also came back and with it, the constant frustration of not having a dedicated space for these activities. Mixing electronics and art furniture (ink, water, giant sheets of paper) is a bad idea when you are as clumsy as I am. Cables from peripherals are on the way. When I lean to draw the screen is in my face. You can't have both in the same space unless you have a giant desk.
+
+And there's this procrastination problem. When I don't feel like doing anything, I sit at my desk, and I _use_ it. I refresh my feeds, I launch programs, I mindlessly seek _something_ that could free me from this anxious state I'm in. Of course it never works and I sometimes leave the desk frustrated. _I had free time and did nothing, I didn't even relax_ is a common feeling.  
+
+So today I removed the computer from my desk. It is now in the living room, under the TV, with a wireless keyboard and trackpad. I plan to use a gamepad to play, in a relaxing position, all these games I accumulated. As I needed a way to write, code and record podcasts, I bought a Raspberry Pi and took several hours to {raspberry-pi.html, "create a setup "} that is both productive and limited. I can code, write and record (even if I still have sound issues). But being a 32bit ARM computer, I can't install Slack, Discord, Steam or anything else. The only source of distraction is the browser and it can barely run a 1080p video and navigate the web without struggling.
+
+I hid the Raspberry Pi behind the screen, who now floats above the desk thanks to an arm support. Most importantly, it can be moved out to the side in a few seconds to regain the full depth of the desk. I installed my pencils, brushes and notebooks and hope that, in the future, if I feel the need to procrastinate, I will do it with paper instead.
+
+Changing a 16 year old habit isn't easy. I don't know if that will work. I fear that the Raspberry Pi might be too limited for some of my projects, but using a more powerful computer brings the risk of more distraction. We'll see how it works.
+
+_15/11/2020_
