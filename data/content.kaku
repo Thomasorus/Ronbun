@@ -20,8 +20,7 @@ This is my little space where I store things.
 ## Shared Knowledge
 
 - {html-tips.html, "HTML Tips and tricks, everything I know about it"}
-- {raspberry-pi.html, "Raspberry pi as a development machine"}
-
+- {raspberry-pi-distros.html, "Raspberry Pi distributions"}
 
 ## My Tools
 
@@ -29,6 +28,8 @@ This is my little space where I store things.
 - {kaku.html, "Kaku 書く", Kaku is a markup language}
 - {ronbun.html, "Ronbun 論文", Robun is a static site generator}
 - {keyboards.html, "Keyboards", The keyboards I use}
+- {raspberry-pi.html, "Raspberry Pi"}
+
 
 ## Journal
 
@@ -66,8 +67,7 @@ Writing:
 - The lore of a story I had in mind for a long time
 
 Others:
-- Almost done buying an appartment, preparing renovation works
-- Trying to switch to a Raspberry Pi for a distraction-free development environnement
+- Renovating my appartment
 
 
 ====
@@ -161,7 +161,9 @@ It's a reappropriation of the means of production towards self-discovery.
 
 ## Hardware
 
-- {keyboards.html, "Keyboards", The keyboards I use} I use and customize
+- {keyboards.html, "Keyboards", The keyboards I use I use and customize}
+- {raspberry-pi.html, "Raspberry Pi"}
+
 
 ====
 
@@ -234,7 +236,7 @@ BODY:
 This page references knowledge of all sorts I want to keep written. It can be technical writing, ideas, notes to self. 
 
 - {html-tips.html, "HTML tips and tricks"}
-- {raspberry-pi.html, "Raspberry pi as a development machine"}
+- {raspberry-pi-distros.html, "Raspberry Pi distributions"}
 
 ====
 
@@ -2353,22 +2355,13 @@ Each country has its own rules about freelancing. However european freelancers c
 
 ====
 
-NAME: Raspberry Pi
+NAME: Raspberry Pi Distros
 HOST: Knowledge
-BREF: My Raspberry Pi configuration
+BREF: Distros I tested with for a Raspberry Pi
 PRIV: false
 BODY:
 
-
-# Raspberry Pi
-
-I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
-
-I use a Raspberry Pi 4 with 8gigs or ram and an aluminium heatsink.
-
-[/media/pi.jpg, "Pi 4 with a heatsink"]
-
-## The struggle of linux distribution performances
+# Raspberry Pi distributions
 
 Despite the hype around the fourth version of the Pi, most desktop distributions run very slowly on it and provide poor user experience. I've tried all the distros listed below and gave them ratings on these topics:
 
@@ -2384,7 +2377,7 @@ The ratings are:
 - Poor
 - Terrible
 
-### Raspbian (Raspberry Pi OS)
+## Raspbian (Raspberry Pi OS)
 
 ? User Experience : *Average* It's ugly but coherent and easy to use
 ? Responsiveness : *Average* Most things are fast but some programs (mostly Electron apps) struggle
@@ -2393,7 +2386,7 @@ The ratings are:
 
 Raspbian excels in nothing but is not terrible in anything. It's too bad it struggles with Electron apps. Supports hardware acceleration.
 
-### Dietpi
+## Dietpi
 
 ? User Experience : *Poor* Dietpi proposes ready-made basic desktops (Mate, XFCE, LXQTm, LXDE) that are ugly and sometimes does not work (sound cursor in XFCE).
 ? Responsiveness : *Perfect* Everything is fast or fast enough, even Electron Apps are usable
@@ -2402,7 +2395,7 @@ Raspbian excels in nothing but is not terrible in anything. It's too bad it stru
 
 Dietpi is probably the best in performance, but only for people with some skills at setting up their own environnement. Supports hardware acceleration.
 
-### Manjaro
+## Manjaro
 
 ? User Experience : *Perfect* It's beautiful, coherent and easy to use
 ? Responsiveness : *Poor* It's still usable but worse than Raspbian, no hardware acceleration support for video
@@ -2411,7 +2404,7 @@ Dietpi is probably the best in performance, but only for people with some skills
 
 If Manjaro was a bit snappier and did not lack some performance tweaks available to Ubuntu based distros (like hardware acceleration) it would be my default distribution.
 
-### Ubuntu
+## Ubuntu
 
 ? User Experience : *Average* The classic gnome Ubuntu
 ? Responsiveness : *Terrible* It's so slow for everything it's almost unusable 
@@ -2420,16 +2413,30 @@ If Manjaro was a bit snappier and did not lack some performance tweaks available
 
 Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.
 
-## My configuration
+====
 
-[/media/i3.jpg, "A screenshot of my i3 Desktop"]
+NAME: Raspberry Pi
+HOST: Knowledge
+BREF: My Raspberry Pi configuration
+PRIV: false
+BODY:
 
-After a lot of testing I ended using *Dietpi*. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you. 
+## My Raspberry Pi configuration
+
+
+I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
+
+I use a Raspberry Pi 4 with 8 gigs or ram and an aluminium heatsink.
+
+[/media/pi.jpg, "Pi 4 with a heatsink"]
+
+After a lot of {raspberry-pi-distros.html, "testing"} I ended using *Dietpi*. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you. 
 
 But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).
 
 I use the 32bit version as the 64bit has bugs.
 
+[/media/i3.jpg, "A screenshot of my i3 Desktop"]
 
 ## Dietpi installation guide
 

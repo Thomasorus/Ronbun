@@ -57,76 +57,22 @@
   <nav role="breadcrumb"><i>Back to <a href="knowledge.html">Knowledge</a></i></nav>
   <main>
     <article>
-      <h1 id="raspberry-pi" style="position:relative;"><a href="#raspberry-pi" aria-label="Raspberry Pi permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspberry Pi</h1>
+      <h2 id="my-raspberry-pi-configuration" style="position:relative;"><a href="#my-raspberry-pi-configuration" aria-label="My Raspberry Pi configuration permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>My Raspberry Pi configuration</h2>
+
 
 <p>I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.</p>
 
-<p>I use a Raspberry Pi 4 with 8gigs or ram and an aluminium heatsink.</p>
+<p>I use a Raspberry Pi 4 with 8 gigs or ram and an aluminium heatsink.</p>
 
 <picture><source type="image/webp" data-srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /><img loading="lazy"  data-alt=""Pi 4 with a heatsink""  data-srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" data-src="/media/pi.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /> <img loading="lazy"  alt=""Pi 4 with a heatsink""  srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" src="/media/pi.jpg"> </picture>   </noscript>
 
-<h2 id="the-struggle-of-linux-distribution-performances" style="position:relative;"><a href="#the-struggle-of-linux-distribution-performances" aria-label="The struggle of linux distribution performances permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>The struggle of linux distribution performances</h2>
-
-<p>Despite the hype around the fourth version of the Pi, most desktop distributions run very slowly on it and provide poor user experience. I've tried all the distros listed below and gave them ratings on these topics:</p>
-
-<ul><li>User Experience</li>
-<li>Responsiveness</li>
-<li>Software support</li>
-<li>Easy to install</li></ul>
-
-<p>The ratings are:</p>
-
-<ul><li>Perfect</li>
-<li>Average</li>
-<li>Poor</li>
-<li>Terrible</li></ul>
-
-<h3 id="raspbian-raspberry-pi-os" style="position:relative;"><a href="#raspbian-raspberry-pi-os" aria-label="Raspbian (Raspberry Pi OS) permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspbian (Raspberry Pi OS)</h3>
-
-<dl><dt>User Experience</dt><dd><strong>Average</strong> It's ugly but coherent and easy to use</dd>
-<dt>Responsiveness</dt><dd><strong>Average</strong> Most things are fast but some programs (mostly Electron apps) struggle</dd>
-<dt>Software support</dt><dd><strong>Perfect</strong> It's an Ubuntu base and the official OS</dd>
-<dt>Easy to install</dt><dd><strong>Perfect</strong> Plug and play and follow the guide</dd></dl>
-
-<p>Raspbian excels in nothing but is not terrible in anything. It's too bad it struggles with Electron apps. Supports hardware acceleration.</p>
-
-<h3 id="dietpi" style="position:relative;"><a href="#dietpi" aria-label="Dietpi permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Dietpi</h3>
-
-<dl><dt>User Experience</dt><dd><strong>Poor</strong> Dietpi proposes ready-made basic desktops (Mate, XFCE, LXQTm, LXDE) that are ugly and sometimes does not work (sound cursor in XFCE).</dd>
-<dt>Responsiveness</dt><dd><strong>Perfect</strong> Everything is fast or fast enough, even Electron Apps are usable</dd>
-<dt>Software support</dt><dd><strong>Perfect</strong> It's based on Raspbian and comes with it's own list of ready-made software</dd>
-<dt>Easy to install</dt><dd><strong>Poor</strong> Small iso but very long install with terminal based menus, takes a lot of time and not everything is clear</dd></dl>
-
-<p>Dietpi is probably the best in performance, but only for people with some skills at setting up their own environnement. Supports hardware acceleration.</p>
-
-<h3 id="manjaro" style="position:relative;"><a href="#manjaro" aria-label="Manjaro permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Manjaro</h3>
-
-<dl><dt>User Experience</dt><dd><strong>Perfect</strong> It's beautiful, coherent and easy to use</dd>
-<dt>Responsiveness</dt><dd><strong>Poor</strong> It's still usable but worse than Raspbian, no hardware acceleration support for video</dd>
-<dt>Software support</dt><dd><strong>Average</strong> Based on Arch Linux, most things are available but most configuration tweaks are for Raspbian/Ubuntu</dd>
-<dt>Easy to install</dt><dd><strong>Average</strong> There's a few terminal screens but it's quick and works fine</dd></dl>
-
-<p>If Manjaro was a bit snappier and did not lack some performance tweaks available to Ubuntu based distros (like hardware acceleration) it would be my default distribution.</p>
-
-<h3 id="ubuntu" style="position:relative;"><a href="#ubuntu" aria-label="Ubuntu permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Ubuntu</h3>
-
-<dl><dt>User Experience</dt><dd><strong>Average</strong> The classic gnome Ubuntu</dd>
-<dt>Responsiveness</dt><dd><strong>Terrible</strong> It's so slow for everything it's almost unusable</dd>
-<dt>Software support</dt><dd><strong>Perfect</strong> It's Ubuntu so everything is there</dd>
-<dt>Easy to install</dt><dd><strong>Perfect</strong> The classic Ubuntu install experience, everything is clear</dd></dl>
-
-<p>Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.</p>
-
-<h2 id="my-configuration" style="position:relative;"><a href="#my-configuration" aria-label="My configuration permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>My configuration</h2>
-
-<picture><source type="image/webp" data-srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /><img loading="lazy"  data-alt=""A screenshot of my i3 Desktop""  data-srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" data-src="/media/i3.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /> <img loading="lazy"  alt=""A screenshot of my i3 Desktop""  srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" src="/media/i3.jpg"> </picture>   </noscript>
-
-<p>After a lot of testing I ended using <strong>Dietpi</strong>. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you.</p>
+<p>After a lot of <a href="raspberry-pi-distros.html">testing</a> I ended using <strong>Dietpi</strong>. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you.</p>
 
 <p>But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).</p>
 
 <p>I use the 32bit version as the 64bit has bugs.</p>
 
+<picture><source type="image/webp" data-srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /><img loading="lazy"  data-alt=""A screenshot of my i3 Desktop""  data-srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" data-src="/media/i3.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /> <img loading="lazy"  alt=""A screenshot of my i3 Desktop""  srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" src="/media/i3.jpg"> </picture>   </noscript>
 
 <h2 id="dietpi-installation-guide" style="position:relative;"><a href="#dietpi-installation-guide" aria-label="Dietpi installation guide permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Dietpi installation guide</h2>
 

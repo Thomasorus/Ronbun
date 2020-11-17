@@ -4,7 +4,7 @@
 <title>Thomasorus — A small personal website</title>
 <link>https://thomasorus.com/</link>
 <description>Thomasorus — A small personal website</description>
-<lastBuildDate>Tue, 17 Nov 2020 22:50:38 GMT</lastBuildDate>
+<lastBuildDate>Tue, 17 Nov 2020 23:05:48 GMT</lastBuildDate>
 <image>
   <url>https://thomasorus.com/assets/logo.png</url>
   <title>Thomasorus — A small personal website</title>
@@ -31,15 +31,16 @@
 <h2 id="shared-knowledge" style="position:relative;"><a href="#shared-knowledge" aria-label="Shared Knowledge permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Shared Knowledge</h2>
 
 <ul><li><a href="html-tips.html" title="everything I know about it"" aria-label="everything I know about it"">HTML Tips and tricks, everything I know about it</a></li>
-<li><a href="raspberry-pi.html">Raspberry pi as a development machine</a></li></ul>
-
+<li><a href="raspberry-pi-distros.html">Raspberry Pi distributions</a></li></ul>
 
 <h2 id="my-tools" style="position:relative;"><a href="#my-tools" aria-label="My Tools permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>My Tools</h2>
 
 <ul><li><a href="tools.html">Philosophy</a></li>
 <li><a href="kaku.html" title="Kaku is a markup language" aria-label="Kaku is a markup language">Kaku 書く</a></li>
 <li><a href="ronbun.html" title="Robun is a static site generator" aria-label="Robun is a static site generator">Ronbun 論文</a></li>
-<li><a href="keyboards.html" title="The keyboards I use" aria-label="The keyboards I use">Keyboards</a></li></ul>
+<li><a href="keyboards.html" title="The keyboards I use" aria-label="The keyboards I use">Keyboards</a></li>
+<li><a href="raspberry-pi.html">Raspberry Pi</a></li></ul>
+
 
 <h2 id="journal" style="position:relative;"><a href="#journal" aria-label="Journal permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Journal</h2>
 
@@ -76,8 +77,7 @@
 <li>The lore of a story I had in mind for a long time</li></ul>
 
 <p>Others:</p>
-<ul><li>Almost done buying an appartment, preparing renovation works</li>
-<li>Trying to switch to a Raspberry Pi for a distraction-free development environnement</li></ul>]]>
+<ul><li>Renovating my appartment</li></ul>]]>
   </description>
 </item>
 <item>
@@ -166,7 +166,8 @@
 
 <h2 id="hardware" style="position:relative;"><a href="#hardware" aria-label="Hardware permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Hardware</h2>
 
-<ul><li><a href="keyboards.html" title="The keyboards I use" aria-label="The keyboards I use">Keyboards</a> I use and customize</li></ul>]]>
+<ul><li><a href="keyboards.html" title="The keyboards I use I use and customize" aria-label="The keyboards I use I use and customize">Keyboards</a></li>
+<li><a href="raspberry-pi.html">Raspberry Pi</a></li></ul>]]>
   </description>
 </item>
 <item>
@@ -232,7 +233,7 @@
 <p>This page references knowledge of all sorts I want to keep written. It can be technical writing, ideas, notes to self.</p>
 
 <ul><li><a href="html-tips.html">HTML tips and tricks</a></li>
-<li><a href="raspberry-pi.html">Raspberry pi as a development machine</a></li></ul>]]>
+<li><a href="raspberry-pi-distros.html">Raspberry Pi distributions</a></li></ul>]]>
   </description>
 </item>
 <item>
@@ -1984,20 +1985,12 @@ color:red;
   </description>
 </item>
 <item>
-  <title>Raspberry Pi - Thomasorus</title>
-  <link>https://thomasorus.com/raspberry-pi.html</link>
-  <guid isPermaLink="false">raspberry-pi</guid>
-  <pubDate>Tue, 13 Oct 2020 12:15:49 GMT</pubDate>
+  <title>Raspberry Pi Distros - Thomasorus</title>
+  <link>https://thomasorus.com/raspberry-pi-distros.html</link>
+  <guid isPermaLink="false">raspberry-pi-distros</guid>
+  <pubDate>Tue, 17 Nov 2020 23:57:37 GMT</pubDate>
   <description>
-<![CDATA[<h1 id="raspberry-pi" style="position:relative;"><a href="#raspberry-pi" aria-label="Raspberry Pi permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspberry Pi</h1>
-
-<p>I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.</p>
-
-<p>I use a Raspberry Pi 4 with 8gigs or ram and an aluminium heatsink.</p>
-
-<picture><source type="image/webp" data-srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /><img loading="lazy"  data-alt=""Pi 4 with a heatsink""  data-srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" data-src="/media/pi.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /> <img loading="lazy"  alt=""Pi 4 with a heatsink""  srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" src="/media/pi.jpg"> </picture>   </noscript>
-
-<h2 id="the-struggle-of-linux-distribution-performances" style="position:relative;"><a href="#the-struggle-of-linux-distribution-performances" aria-label="The struggle of linux distribution performances permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>The struggle of linux distribution performances</h2>
+<![CDATA[<h1 id="raspberry-pi-distributions" style="position:relative;"><a href="#raspberry-pi-distributions" aria-label="Raspberry Pi distributions permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspberry Pi distributions</h1>
 
 <p>Despite the hype around the fourth version of the Pi, most desktop distributions run very slowly on it and provide poor user experience. I've tried all the distros listed below and gave them ratings on these topics:</p>
 
@@ -2013,7 +2006,7 @@ color:red;
 <li>Poor</li>
 <li>Terrible</li></ul>
 
-<h3 id="raspbian-raspberry-pi-os" style="position:relative;"><a href="#raspbian-raspberry-pi-os" aria-label="Raspbian (Raspberry Pi OS) permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspbian (Raspberry Pi OS)</h3>
+<h2 id="raspbian-raspberry-pi-os" style="position:relative;"><a href="#raspbian-raspberry-pi-os" aria-label="Raspbian (Raspberry Pi OS) permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Raspbian (Raspberry Pi OS)</h2>
 
 <dl><dt>User Experience</dt><dd><strong>Average</strong> It's ugly but coherent and easy to use</dd>
 <dt>Responsiveness</dt><dd><strong>Average</strong> Most things are fast but some programs (mostly Electron apps) struggle</dd>
@@ -2022,7 +2015,7 @@ color:red;
 
 <p>Raspbian excels in nothing but is not terrible in anything. It's too bad it struggles with Electron apps. Supports hardware acceleration.</p>
 
-<h3 id="dietpi" style="position:relative;"><a href="#dietpi" aria-label="Dietpi permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Dietpi</h3>
+<h2 id="dietpi" style="position:relative;"><a href="#dietpi" aria-label="Dietpi permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Dietpi</h2>
 
 <dl><dt>User Experience</dt><dd><strong>Poor</strong> Dietpi proposes ready-made basic desktops (Mate, XFCE, LXQTm, LXDE) that are ugly and sometimes does not work (sound cursor in XFCE).</dd>
 <dt>Responsiveness</dt><dd><strong>Perfect</strong> Everything is fast or fast enough, even Electron Apps are usable</dd>
@@ -2031,7 +2024,7 @@ color:red;
 
 <p>Dietpi is probably the best in performance, but only for people with some skills at setting up their own environnement. Supports hardware acceleration.</p>
 
-<h3 id="manjaro" style="position:relative;"><a href="#manjaro" aria-label="Manjaro permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Manjaro</h3>
+<h2 id="manjaro" style="position:relative;"><a href="#manjaro" aria-label="Manjaro permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Manjaro</h2>
 
 <dl><dt>User Experience</dt><dd><strong>Perfect</strong> It's beautiful, coherent and easy to use</dd>
 <dt>Responsiveness</dt><dd><strong>Poor</strong> It's still usable but worse than Raspbian, no hardware acceleration support for video</dd>
@@ -2040,25 +2033,38 @@ color:red;
 
 <p>If Manjaro was a bit snappier and did not lack some performance tweaks available to Ubuntu based distros (like hardware acceleration) it would be my default distribution.</p>
 
-<h3 id="ubuntu" style="position:relative;"><a href="#ubuntu" aria-label="Ubuntu permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Ubuntu</h3>
+<h2 id="ubuntu" style="position:relative;"><a href="#ubuntu" aria-label="Ubuntu permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Ubuntu</h2>
 
 <dl><dt>User Experience</dt><dd><strong>Average</strong> The classic gnome Ubuntu</dd>
 <dt>Responsiveness</dt><dd><strong>Terrible</strong> It's so slow for everything it's almost unusable</dd>
 <dt>Software support</dt><dd><strong>Perfect</strong> It's Ubuntu so everything is there</dd>
 <dt>Easy to install</dt><dd><strong>Perfect</strong> The classic Ubuntu install experience, everything is clear</dd></dl>
 
-<p>Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.</p>
+<p>Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.</p>]]>
+  </description>
+</item>
+<item>
+  <title>Raspberry Pi - Thomasorus</title>
+  <link>https://thomasorus.com/raspberry-pi.html</link>
+  <guid isPermaLink="false">raspberry-pi</guid>
+  <pubDate>Tue, 13 Oct 2020 12:15:49 GMT</pubDate>
+  <description>
+<![CDATA[<h2 id="my-raspberry-pi-configuration" style="position:relative;"><a href="#my-raspberry-pi-configuration" aria-label="My Raspberry Pi configuration permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>My Raspberry Pi configuration</h2>
 
-<h2 id="my-configuration" style="position:relative;"><a href="#my-configuration" aria-label="My configuration permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>My configuration</h2>
 
-<picture><source type="image/webp" data-srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /><img loading="lazy"  data-alt=""A screenshot of my i3 Desktop""  data-srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" data-src="/media/i3.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /> <img loading="lazy"  alt=""A screenshot of my i3 Desktop""  srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" src="/media/i3.jpg"> </picture>   </noscript>
+<p>I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.</p>
 
-<p>After a lot of testing I ended using <strong>Dietpi</strong>. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you.</p>
+<p>I use a Raspberry Pi 4 with 8 gigs or ram and an aluminium heatsink.</p>
+
+<picture><source type="image/webp" data-srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /><img loading="lazy"  data-alt=""Pi 4 with a heatsink""  data-srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" data-src="/media/pi.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/pi-240.webp 300w, /media/pi-680.webp 600w, /media/pi-900.webp 900w, /media/pi.webp 1200w" /> <img loading="lazy"  alt=""Pi 4 with a heatsink""  srcset="/media/pi-240.jpg 300w, /media/pi-680.jpg 600w, /media/pi-900.jpg 900w, /media/pi.jpg 1200w" src="/media/pi.jpg"> </picture>   </noscript>
+
+<p>After a lot of <a href="raspberry-pi-distros.html">testing</a> I ended using <strong>Dietpi</strong>. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you.</p>
 
 <p>But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).</p>
 
 <p>I use the 32bit version as the 64bit has bugs.</p>
 
+<picture><source type="image/webp" data-srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /><img loading="lazy"  data-alt=""A screenshot of my i3 Desktop""  data-srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" data-src="/media/i3.jpg"></picture> <noscript>  <picture> <source type="image/webp" srcset="/media/i3-240.webp 300w, /media/i3-680.webp 600w, /media/i3-900.webp 900w, /media/i3.webp 1200w" /> <img loading="lazy"  alt=""A screenshot of my i3 Desktop""  srcset="/media/i3-240.jpg 300w, /media/i3-680.jpg 600w, /media/i3-900.jpg 900w, /media/i3.jpg 1200w" src="/media/i3.jpg"> </picture>   </noscript>
 
 <h2 id="dietpi-installation-guide" style="position:relative;"><a href="#dietpi-installation-guide" aria-label="Dietpi installation guide permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>Dietpi installation guide</h2>
 
