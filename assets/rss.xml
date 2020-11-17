@@ -3,12 +3,12 @@
 <title>Thomasorus</title>
 <link>https://thomasorus.com/</link>
 <description>Thomasorus — A small personal website</description>
-<lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0900</lastBuildDate>
+<lastBuildDate>{{DATE}}</lastBuildDate>
 <image>
   <url>https://thomasorus.com/assets/logo.png</url>
   <title>Thomasorus — A small personal website</title>
   <link>https://thomasorus.com/</link>
 </image>
-
+{{CONTENT}}
 </channel>
 </rss>
