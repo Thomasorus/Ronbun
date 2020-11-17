@@ -1,140 +1,95 @@
 import * as fs from 'fs'
-import parser from './kaku.mjs'
-import generateTime from './time.mjs'
-
-async function retrievePageData(text) {
-
-    for (let i = 0; i < splitContent.length; i++) {
-        const el = splitContent[i];
-        if (el) {
-            const content = retrievePageData(el);
-            allPages.push(content)
-        }
-    }
-
-    const symbols = [
-        /(?:NAME:)((?:\\[\s\S]|[^\\])+?)\n/g,
-        /(?:HOST:)((?:\\[\s\S]|[^\\])+?)\n/g,
-        /(?:BREF:)((?:\\[\s\S]|[^\\])+?)\n/g,
-        /(?:BODY:)((?:\\[\s\S]|[^\\])+?)$/g,
-    ];
-
-    const page = []
-
-    for (let i = 0; i < symbols.length; i++) {
-        const s = symbols[i]
-        if (text.match(s)) {
-            const match = text.match(s)
-            const type = match[0].substring(0, 4).toLowerCase()
-            const value = match[0].substr(5).trim()
-            page[type] = value;
-        }
-    }
-    return page
-}
+import * as utils from './utils.mjs'
+import {
+    config
+} from './config.mjs'
+import contentParser from './kaku.mjs'
+import timeParser from './time.mjs'
 
 
-async function splitContent(textContent) {
-    const tempPage = []
-    const splitContent = textContent.split("====");
-    for (let i = 0; i < splitContent.length; i++) {
-        const el = splitContent[i];
-        if (el) {
-            const content = await retrievePageData(el);
-            tempPage.push(content)
-        }
-    }
-    return tempPage
-}
-
-
-async function generateHtml(allPages, htmlTemplate, styleHasChanged, dir) {
-
+async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDir) {
     console.log("Starting page build")
 
-    for (let i = 0; i < allPages.length; i++) {
-        const el = allPages[i]
-        const name = el.name + " - Thomasorus"
-        const slug = el.name.toLowerCase().replace(/\b \b/g, "-")
-        const bref = el.bref
-        const text = parser(el.body)
-        const host = el.host
-        const hostSlug = el.host.toLowerCase().replace(/\b \b/g, "-")
-        const today = new Date()
-        const date = today.getDate() +'/'+ today.getMonth()+'/'+ today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        let hostNav = ""
-
-        //Check if page and parent page are the same
+    for (let i = 0; i < contentArray.length; i++) {
+        const el = contentArray[i]
+        //Create nav only if host exist and is not the same as current page
         if (el.name.toLowerCase() !== el.host.toLowerCase() && el.host !== undefined) {
-            hostNav = `<nav role="breadcrumb"><i>Back to <a href="${hostSlug}.html">${host}</a></i></nav>`
+            el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.hostSlug}.html">${el.host}</a></i></nav>`
         }
 
-        let page = htmlTemplate
-            page = page.replace(/pageTitle/g, `${name}`)
-            page = page.replace(/metaDescription/g, bref)
-            page = page.replace(/breadCrumb/g, hostNav)            
-            page = page.replace(/pageBody/g, text)
-            
+        let page = htmlTemplate;
+
+        page = page.replace(/pageTitle/g, `${el.title}`)
+        page = page.replace(/metaDescription/g, el.bref)
+        page = page.replace(/breadCrumb/g, el.hostNav)
+        page = page.replace(/pageBody/g, el.html)
+
         //Checking if page already exists in dir
         let existingPage;
         let error;
-        try	{
-        	existingPage = fs.readFileSync(`${dir}/${slug}.html`,'utf8');
-        } catch(err) {
-        	error = err.code;
+        try {
+            existingPage = await utils.readFile(`${buildDir}/${el.slug}.html`)
+        } catch (err) {
+            error = err.code;
         }
 
         //If page does not exist
-        if(error === "ENOENT") {
-            console.log(`New page: ${name}`)
-            page = page.replace(/pageTimeContent/g, date)
-            page = page.replace(/pageTimeDesign/g, date)
-
-            fs.writeFileSync(`${dir}/${slug}.html`, page, err => {
-                if (err) {
-                    console.log(err);
-                    throw err;
-                }
-            });
-        } else {
-
-            //Gathering content from existing html page for comparaison
+        if (error === "ENOENT") {
+            console.log(`New page: ${el.name}`)
+            const path = `${buildDir}/${el.slug}.html`;
+            const file = page.replace(/pageTimeContent/g, el.date);
+            await utils.createFile(path, file);
+        } 
+        else {
+            //Checking if page changed
             const titleContent = RegExp(/ <title>([\s\S]*?)<\/title>/).exec(existingPage);
-            const htmlTitle = titleContent[1].replace(/\n/g, "").trim() === name.replace(/\n/g, "").trim() ? true : false  
+            const htmlTitle = titleContent[1].replace(/\n/g, "").trim() === el.title.replace(/\n/g, "").trim() ? true : false  
             
             const brefContent = RegExp(/ <meta name="description" content="([\s\S]*?)">/).exec(existingPage);
-            const htmlBref = brefContent[1].replace(/\n/g, "").trim() === bref.replace(/\n/g, "").trim() ? true : false        
+            const htmlBref = brefContent[1].replace(/\n/g, "").trim() === el.bref.replace(/\n/g, "").trim() ? true : false        
 
-            let HostSlugContent;
-            let htmlHostSlug;
-       
-            HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
-            if(HostSlugContent !== null) {
-                htmlHostSlug = HostSlugContent[1].replace(/\n/g, "").trim() === host.replace(/\n/g, "").trim() ? true : false
-            } else { 
-                htmlHostSlug = true
+            let textContent;
+            let htmlText;
+            if(el.name !== "Time") {
+                textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
+                htmlText = textContent[1].replace(/\n/g, "").trim() === el.html.replace(/\n/g, "").trim() ? true : false
+            } else {
+                htmlText = false;
             }
         
-            const textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
-            const htmlText = textContent[1].replace(/\n/g, "").trim() === text.replace(/\n/g, "").trim() ? true : false
+            let htmlHostSlug;
+            let HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
+
+            if (HostSlugContent !== null) {
+                htmlHostSlug = HostSlugContent[1].replace(/\n/g, "").trim() === el.host.replace(/\n/g, "").trim() ? true : false
+            } else {
+                htmlHostSlug = true
+            }
 
             const contentChange = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(existingPage);
-           
 
             //If something changed rebuild, else skip
-            if(htmlTitle  === false || htmlBref  === false|| htmlHostSlug  === false|| htmlText === false || styleHasChanged) {
+            if (htmlTitle === false || htmlBref === false || htmlHostSlug === false || htmlText === false || styleHasChanged) {
                 console.log("Rebuilding...")
-                console.log({name, htmlTitle, htmlBref, htmlHostSlug, htmlText, styleHasChanged})
-                
-                if(styleHasChanged) {
+                const name = el.name
+                console.log({
+                    name,
+                    htmlTitle,
+                    htmlBref,
+                    htmlHostSlug,
+                    htmlText,
+                    styleHasChanged
+                })
+
+                if (styleHasChanged || htmlText === false) {
                     page = page.replace(/pageTimeContent/g, contentChange[1])
                 } else {
-                    page = page.replace(/pageTimeContent/g, date)
+                    page = page.replace(/pageTimeContent/g, el.date)
                 }
-                
 
-                fs.unlinkSync(`${dir}/${slug}.html`);
-                fs.writeFileSync(`${dir}/${slug}.html`, page, err => {
+
+                fs.unlinkSync(`${buildDir}/${el.slug}.html`);
+                fs.writeFileSync(`${buildDir}/${el.slug}.html`, page, err => {
                     if (err) {
                         console.log(err);
                         throw err;
@@ -144,118 +99,84 @@ async function generateHtml(allPages, htmlTemplate, styleHasChanged, dir) {
                 console.log(`Skipping ${el.name}`)
             }
         }
-	}
+    }
 }
 
-async function generateTimePage(graph, htmlTemplate, dir) {
-    let page = htmlTemplate
-    page = page.replace("<article>", "<article class='full'>")
-    page = page.replace(/pageTitle/g, "Time - Thomasorus")
-    page = page.replace(/metaDescription/g, "Thomasorus' time tracker")
-    page = page.replace(/breadCrumb/g, `<nav>Back to <a href="tracking.html">Tracking</a></nav>`)
-    graph = "<h1>Time</h1>\n" + graph
-    page = page.replace(/pageBody/g, graph)
+async function generateAssets(buildAssetsDir, srcAssetsDir) {
+    await utils.mkDir(buildAssetsDir, srcAssetsDir)
+    const logoChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "logo.png")
+    const templateChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "main.html")
+    const styleChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "style.css")
+    console.log("Assets copied!")
+    return logoChange || templateChange || styleChange ? true : false
+}
+
+async function generateData(textContentArray, timeContent) {
+    const symbols = [
+        /(?:NAME:)((?:\\[\s\S]|[^\\])+?)\n/g,
+        /(?:HOST:)((?:\\[\s\S]|[^\\])+?)\n/g,
+        /(?:BREF:)((?:\\[\s\S]|[^\\])+?)\n/g,
+        /(?:BODY:)((?:\\[\s\S]|[^\\])+?)$/g,
+    ];
 
     const today = new Date()
-        const date = today.getDate() +'/'+ today.getMonth()+'/'+ today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    page = page.replace(/pageTimeContent/g, date)
+    const contentArray = [];
 
-    fs.writeFileSync(`${dir}/time.html`, page, err => {
-        if (err) {
-            console.log(err);
-            throw err;
-        } 
-    });
-    console.log("Tracking page done!")
-}
+    for (let i = 0; i < textContentArray.length; i++) {
+        const el = textContentArray[i];
+        if (el) {
+            const page = []
 
-
-async function getFileSize(dir) {
-    const stats = fs.statSync(dir)
-    return stats.size
-}
-
-async function copyAsset(dir, file) {
-    if (fs.existsSync(`${dir}/assets/${file}`)) {
-        const oldFile = await getFileSize(`${dir}/assets/${file}`)
-        const newFile = await getFileSize(`assets/${file}`)
-        if(oldFile !== newFile) {
-            console.log(`Changes for ${file}`)
-            fs.copyFile(`assets/${file}`, `${dir}/assets/${file}`, err => {
-                if (err) {
-                    throw err 
+            //Retrieving data from document
+            for (let i = 0; i < symbols.length; i++) {
+                const s = symbols[i]
+                if (el.match(s)) {
+                    const match = el.match(s)
+                    const key = match[0].substring(0, 4).toLowerCase()
+                    const value = match[0].substr(5).trim()
+                    page[key] = value;
                 }
-            });
-            return true
-        } else {
-            console.log(`No change for ${file}`)
-            return false
-        }
-    } 
-    else {
-        console.log(`Copy of ${file}`)
-        fs.copyFile(`assets/${file}`, `${dir}/assets/${file}`, err => {
-            if (err) {
-                throw err 
             }
-        });
-        return true
-    }    
-}
+            //Creating additionnal data
+            page.title = page.name + " - Thomasorus"
+            page.slug = page.name.toLowerCase().replace(/\b \b/g, "-")
+            page.hostSlug = page.host.toLowerCase().replace(/\b \b/g, "-")
+            page.date = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            page.hostNav = ""
+            page.html = contentParser(page.body)
 
-async function getCss(dir) {
-    if (fs.existsSync(`${dir}/assets`)) {
-        console.log('Assets directory exists!');
-    } else {
-        console.log('Assets directory not found. Creating...')
-        fs.mkdirSync(`${dir}/assets`)
-        console.log("Done")
-    }    
-    
-    const logoChange = await copyAsset(dir, "logo.png")
-    const templateCHange = await copyAsset(dir, "main.html")
-    const styleChange = await copyAsset(dir, "style.css")
+            if(page.name === "Time") {
+                page.html = page.html + await timeParser(timeContent)
+            }
 
-    console.log("Assets copied!")
-
-     return logoChange || templateCHange || styleChange ? true : false
-    
-}
-
-async function processImages(dir) {
-    if (fs.existsSync(`${dir}/media`)) {
-        console.log('Media directory exists!');
-    } else {
-        console.log('Media directory not found. Creating...')
-        fs.mkdirSync(`${dir}/media`)
-        console.log("Done")
+            contentArray.push(page)
+        }
     }
-    console.log("Processing images")
+    return contentArray
 }
 
 
-async function generateAll(dir) {
+
+async function generateAll() {
     console.log('START')
-    if (fs.existsSync(dir)) {
-        console.log('The main directory exists!');
-    } else {
-        console.log('The main directory was not found. Creating...')
-        fs.mkdirSync(dir)
-        console.log("Done")
-    }
 
-    const styleHasChanged = await getCss(dir);
+    await utils.mkDir(config.buildDir);
 
-    const textContent = fs.readFileSync("data/content.kaku", 'utf8');
-    const allPages = await splitContent(textContent);
-    const htmlTemplate = fs.readFileSync("assets/main.html", 'utf8');
-    await generateHtml(allPages, htmlTemplate, styleHasChanged, dir);
+    //Checking for changes in template, style or logo
+    const styleHasChanged = await generateAssets(config.buildAssetsDir, config.srcAssetsDir);
 
-    let timeContent = fs.readFileSync("data/time.kaku", "utf8");
-    const graph = await generateTime(timeContent);
-    await generateTimePage(graph, htmlTemplate, dir)
+    //Recover all files needed
+    const textContent = utils.readFile(`${config.srcDataDir}/${config.contentFile}`)
+    const timeContent = utils.readFile(`${config.srcDataDir}/${config.timeFile}`)
+    const htmlTemplate = utils.readFile(`${config.srcAssetsDir}/${config.htmlTemplate}`)
+    const rssTemplate = utils.readFile(`${config.srcAssetsDir}/${config.rssTemplate}`)
+    const rssItemTemplate = utils.readFile(`${config.srcAssetsDir}/${config.itemTemplate}`)
 
-    await processImages(dir);
+    const textContentArray = await utils.splitContent(textContent, config.contentSplitter);
+    const contentArray = await generateData(textContentArray, timeContent);
+    await generateHtml(contentArray, htmlTemplate, styleHasChanged, config.buildDir);
+
+    await utils.mkDir(config.buildMediaDir);
 }
 
-generateAll("./www");
+generateAll();
