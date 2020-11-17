@@ -2,6 +2,7 @@
 NAME: Home
 HOST: Home
 BREF: The personal wiki of Thomasorus
+PRIV: false
 BODY:
 
 # Thomasorus' garden
@@ -38,6 +39,7 @@ This is my little space where I store things.
 NAME: Time
 HOST: Tracking
 BREF: Thomasorus' time tracker
+PRIV: false
 BODY:
 
 # Time
@@ -46,6 +48,7 @@ BODY:
 NAME: Now
 HOST: Home
 BREF: What am I doing now?
+PRIV: false
 BODY:
 
 # Now
@@ -72,6 +75,7 @@ Others:
 NAME: Keyboards
 HOST: Tools
 BREF: I use custom keyboards to write and work
+PRIV: false
 BODY:
 
 # Keyboards
@@ -95,6 +99,7 @@ Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. T
 NAME: Kaku
 HOST: Tools
 BREF: Kaku is a markup language made to fit my needs.
+PRIV: false
 BODY:
 
 # Kaku 書く
@@ -108,6 +113,7 @@ This {https://github.com/Thomasorus/Kaku, "repository"} contains the detailed sp
 NAME: Tracking
 HOST: Home
 BREF: An explanation about why I track some stuff in my life
+PRIV: false
 BODY:
 
 # Tracking
@@ -131,6 +137,7 @@ To me tracking time doesn't mean trying to be more productive, but the opposite.
 NAME: Tools
 HOST: Home
 BREF: A collection of hardware and software tools I use or made
+PRIV: false
 BODY:
 
 # Tools
@@ -161,6 +168,7 @@ It's a reappropriation of the means of production towards self-discovery.
 NAME: Ronbun
 HOST: Tools
 BREF: Ronbun is my static site generator and time tracking system
+PRIV: false
 BODY: 
 
 # Ronbun 論文
@@ -191,6 +199,7 @@ Global goals:
 NAME: About
 HOST: Home
 BREF: About me
+PRIV: false
 BODY:
 
 # About me
@@ -207,6 +216,7 @@ I have a degree in fine arts and web development.
 NAME: curriculum vitae
 HOST: Home
 BREF: My curriculum vitae
+PRIV: false
 BODY:
 
 # Curriculum Vitae
@@ -216,6 +226,7 @@ BODY:
 NAME: Knowledge
 HOST: Home
 BREF: Where I put things I don't want to forget
+PRIV: false
 BODY:
 
 # Knowledge
@@ -230,6 +241,7 @@ This page references knowledge of all sorts I want to keep written. It can be te
 NAME: Html tips
 HOST: knowledge
 BREF: A collection of HTML and CSS tips to build simple yet optimized websites
+PRIV: false
 BODY:
 
 # HTML and CSS simple tips and tricks for your website
@@ -314,6 +326,7 @@ JavaScript and its most famous frameworks React, Vue and Angular are everywhere 
 NAME: What is accessibility
 HOST: HTML tips
 BREF: A primer on accessibility for the web
+PRIV: false
 BODY:
 
 # What is accessibility ?
@@ -352,6 +365,7 @@ Next: {accessibility-rules-and-tools.html, "Basic rules about accessibility and 
 NAME: Accessibility rules and tools
 HOST: HTML tips
 BREF: A collection of accessibility tips to build simple yet inclusive websites
+PRIV: false
 BODY:
 
 # Accessibility basic rules and tools
@@ -440,6 +454,7 @@ Next: {the-basics-of-html.html, "The basics: head, div and span"}
 NAME: The basics of HTML
 HOST: HTML tips
 BREF: The basics of what is needed when starting a website in HTML
+PRIV: false
 BODY:
 
 # The basics of HTML
@@ -499,6 +514,7 @@ Next: {what-is-semantic-html.html, "What is semantic HTML?"}
 NAME: What is semantic HTML
 HOST: HTML tips
 BREF: An explanation of semantic HTML and why it's important
+PRIV: false
 BODY:
 
 
@@ -564,6 +580,7 @@ Next: {never-use-tables-for-layout.html, "Don't use tables for layout"}
 NAME: Never use tables for layout
 HOST: HTML tips
 BREF: An explanation about why using tables for layout is a bad practice
+PRIV: false
 BODY:
 
 # Never use tables for layout
@@ -581,6 +598,7 @@ Next: {the-display-property.html, "The display property"}
 NAME: The display property
 HOST: HTML tips
 BREF: What is the display property in CSS and how it affects HTML
+PRIV: false
 BODY:
 
 # The `display` property
@@ -606,6 +624,7 @@ Next: {flexbox-the-goat.html, "Flexbox, the goat"}
 NAME: Flexbox the goat
 HOST: HTML tips
 BREF: A primer on flexbox and why it's awesome and simple for HTML layout
+PRIV: false
 BODY:
 
 # Flexbox, the GOAT
@@ -806,6 +825,7 @@ Next: {css-grid-the-almighty.html, "CSS Grid the almighty"}
 NAME: CSS Grid the almighty
 HOST: HTML tips
 BREF: a primer on grid and how it can replace CSS grid frameworks
+PRIV: false
 BODY:
 
 
@@ -1114,6 +1134,7 @@ Next: {order-your-titles-correctly.html, "Order your titles correctly"}
 NAME: Order your titles correctly
 HOST: HTML tips
 BREF: How to handle titles in HTML so they are logically ordered and accessible
+PRIV: false
 BODY:
 
 
@@ -1132,6 +1153,7 @@ Next: {organize-your-text-content.html, "Organize your text content"}
 NAME: Make your links clear and accessible
 HOST: HTML tips
 BREF: A collection of HTML basic tips to build simple yet modern websites
+PRIV: false
 BODY:
 
 # Make your links clear and accessible
@@ -1160,6 +1182,7 @@ Next: {when-to-use-a-button-and-a-link.html, "When to use a button and a link"}
 NAME: Organize your text content
 HOST: HTML tips
 BREF: The useful HTML elements when dealing with text
+PRIV: false
 BODY:
 
 
@@ -1214,6 +1237,7 @@ Next: {all-about-images.html, "All about images"}
 NAME: All about images
 HOST: HTML tips
 BREF: How to make images optimized, responsive and easy on bandwidth
+PRIV: false
 BODY:
 
 # All about images
@@ -1337,6 +1361,7 @@ Next: {all-about-video-and-audio.html, "All about video and audio"}
 NAME: All about video and audio
 HOST: HTML tips
 BREF: Tips and tricks about video and audio codecs for the web and how to use the audio and video elements
+PRIV: false
 BODY:
 
 # All about video and audio
@@ -1412,6 +1437,7 @@ Next: {doing-forms-correctly.html, "Doing forms correctly"}
 NAME: Doing forms correctly
 HOST: HTML tips
 BREF: A deep explanation about accessible forms and error handling in HTML
+PRIV: false
 BODY:
 
 # Doing forms correctly
@@ -1531,6 +1557,7 @@ Next: {tables-are-not-that-complicated.html, "Tables are not that complicated"}
 NAME: Strong b em and i
 HOST: HTML tips
 BREF: What's the deal with strong, b, em and i in html? Which one I pick?
+PRIV: false
 BODY:
 
 
@@ -1558,6 +1585,7 @@ Next: {other-kinda-useful-semantic-elements.html, "Other kinda useful semantic e
 NAME: When to use a button and a link
 HOST: HTML tips
 BREF: Buttons and links are used for different things, here's an explanation
+PRIV: false
 BODY:
 
 
@@ -1583,6 +1611,7 @@ Next: {strong-b-em-and-i.html, "The mess of strong b em and i"}
 NAME: HTML interactive elements
 HOST: HTML tips
 BREF: Interactive HTML elements are like small native components that can help in some situations
+PRIV: false
 BODY:
 
 
@@ -1629,6 +1658,7 @@ Use the `role="progressbar" to style it more easily:
 NAME: Other kinda useful semantic elements
 HOST: HTML tips
 BREF: The HTML elements you probably don't know but that could be useful in some situations
+PRIV: false
 BODY:
 
 
@@ -1653,6 +1683,7 @@ Next: {html-interactive-elements.html, "Some interactive elements that can be us
 NAME: Tables are not that complicated
 HOST: HTML tips
 BREF: How to do accessible tables (it's not that complicated)
+PRIV: false
 BODY:
 
 # Tables are not that complicated
@@ -1670,6 +1701,7 @@ Next: {make-your-links-clear-and-accessible.html, "Make your links clear and acc
 NAME: CSS good practices
 HOST: Html tips
 BREF: CSS Good practices to optimize file size and specificity and not hate CSS
+PRIV: false
 BODY: 
 
 # CSS Good practices to optimize file size and specificity
@@ -1765,6 +1797,7 @@ By doing this your code will be lighter, easier to maintain, reusable and extend
 NAME: 2019
 HOST: tracking
 BREF: All things I read, watched in 2019
+PRIV: false
 BODY:
 
 # 2019 Overview
@@ -1918,6 +1951,7 @@ All the things I watched in 2019.
 NAME: Empty and Full
 HOST: Stories
 BREF: A story about flowers and brambles
+PRIV: true
 BODY:
 
 # Empty and Full
@@ -1931,6 +1965,7 @@ Globally, *Empty and Full* is used a playground to experiment storytelling and p
 NAME: The First One
 HOST: empty and full
 BREF: The first one is the main character of Empty and Full
+PRIV: true
 BODY:
 
 # The First One
@@ -1955,6 +1990,7 @@ After a few years later, once all the talks about his political choices disminis
 NAME: Age of Trial
 HOST: Empty and full
 BREF: The explanation about the age of trial
+PRIV: true
 BODY:
 
 # Age of Trial
@@ -1967,6 +2003,7 @@ The Age of Trial is the age kids are sent to participate into the War on Bramble
 NAME: It Eats The World
 HOST: Empty and full
 BREF: The first part of the empty and full series
+PRIV: true
 BODY:
 
 # It Eats The World
@@ -1981,6 +2018,7 @@ As both the vessel and slave of The Brambles, he then proceeded to recruit other
 NAME: Flower Houses
 HOST: Empty and full
 BREF: Flower houses are giant flower capable of containing entire populations
+PRIV: true
 BODY:
 
 # Flower Houses
@@ -1994,6 +2032,7 @@ Products from the flowers themselves or their leaves are also used to create lux
 NAME: Flower harvesters
 HOST: Empty and full
 BREF: Flower harvesters are a cast specialized in finding flower houses
+PRIV: true
 BODY:
 
 # Flower harvesters
@@ -2027,6 +2066,7 @@ Flower harvesters organize their journey according to the brambles' caprices. Th
 NAME: The Brambles
 HOST: Empty and full
 BREF: The brambles are a mythological plant asserving the world of Empty and Full
+PRIV: true
 BODY:
 
 # The Brambles
@@ -2039,6 +2079,7 @@ The brambles are a mythological plant asserving the world of Empty and Full
 NAME: My ideal phone
 HOST: Knowledge
 BREF: What I wish from a phone
+PRIV: true
 BODY:
 
 # My ideal phone
@@ -2070,6 +2111,7 @@ And that's it. Not having a browser would be a huge change as I am addicted to d
 NAME: The soft power of JavaScript
 HOST: Html tips
 BREF: A reflection on how JavaScript self-sustains itself through never-ending novelty
+PRIV: false
 BODY:
 
 
@@ -2108,6 +2150,7 @@ _21/10/2020_
 NAME: List of JavaScript frameworks
 HOST: Html tips
 BREF: A list of JavaScript frameworks that can be used in different situations
+PRIV: false
 BODY:
 
 # A list of JavaScript frameworks
@@ -2168,6 +2211,7 @@ Using existing frontend and backend stacks in an opiniated way to offer a fullst
 NAME: Freelancing notes
 HOST: Knowledge
 BREF: Personal notes on freelancing
+PRIV: true
 BODY:
 
 # Freelancing notes
@@ -2312,6 +2356,7 @@ Each country has its own rules about freelancing. However european freelancers c
 NAME: Raspberry Pi
 HOST: Knowledge
 BREF: My Raspberry Pi configuration
+PRIV: false
 BODY:
 
 
@@ -2426,6 +2471,7 @@ My config file is available on {https://gist.githubusercontent.com/Thomasorus/89
 NAME: I removed the computer
 HOST: Home
 BREF: I removed my main computer from my desk
+PRIV: false
 BODY:
 
 # I removed the computer
