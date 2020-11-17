@@ -39,24 +39,23 @@ async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDi
             const path = `${buildDir}/${el.slug}.html`;
             const file = page.replace(/pageTimeContent/g, el.date);
             await utils.createFile(path, file);
-        } 
-        else {
+        } else {
             //Checking if page changed
             const titleContent = RegExp(/ <title>([\s\S]*?)<\/title>/).exec(existingPage);
-            const htmlTitle = titleContent[1].replace(/\n/g, "").trim() === el.title.replace(/\n/g, "").trim() ? true : false  
-            
+            const htmlTitle = titleContent[1].replace(/\n/g, "").trim() === el.title.replace(/\n/g, "").trim() ? true : false
+
             const brefContent = RegExp(/ <meta name="description" content="([\s\S]*?)">/).exec(existingPage);
-            const htmlBref = brefContent[1].replace(/\n/g, "").trim() === el.bref.replace(/\n/g, "").trim() ? true : false        
+            const htmlBref = brefContent[1].replace(/\n/g, "").trim() === el.bref.replace(/\n/g, "").trim() ? true : false
 
             let textContent;
             let htmlText;
-            if(el.name !== "Time") {
+            if (el.name !== "Time") {
                 textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
                 htmlText = textContent[1].replace(/\n/g, "").trim() === el.html.replace(/\n/g, "").trim() ? true : false
             } else {
                 htmlText = false;
             }
-        
+
             let htmlHostSlug;
             let HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
 
@@ -86,12 +85,12 @@ async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDi
                 } else {
                     page = page.replace(/pageTimeContent/g, el.date)
                 }
-                
+
                 if (el.name = "Title") {
                     page = page.replace("<article>", "<article class='full'>")
                 }
 
-                
+
                 fs.unlinkSync(`${buildDir}/${el.slug}.html`);
                 fs.writeFileSync(`${buildDir}/${el.slug}.html`, page, err => {
                     if (err) {
@@ -145,11 +144,11 @@ async function generateData(textContentArray, timeContent) {
             page.title = page.name + " - Thomasorus"
             page.slug = page.name.toLowerCase().replace(/\b \b/g, "-")
             page.hostSlug = page.host.toLowerCase().replace(/\b \b/g, "-")
-            page.date = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            page.date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             page.hostNav = ""
             page.html = contentParser(page.body)
 
-            if(page.name === "Time") {
+            if (page.name === "Time") {
                 page.html = page.html + await timeParser(timeContent)
             }
 
@@ -159,6 +158,36 @@ async function generateData(textContentArray, timeContent) {
     return contentArray
 }
 
+async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir) {
+    console.log("\nBuilding RSS")
+
+    const items = []
+    let date;
+    for (let i = 0; i < contentArray.length; i++) {
+        const item = contentArray[i];
+        let template = rssItemTemplate;
+        date = item.date
+        const page = utils.readFile(`${buildDir}/${item.slug}.html`);
+        const pageDate = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(page);
+
+        template = template.replace(/{{TITLE}}/g, item.title)
+        template = template.replace(/{{GUID}}/g, item.slug)
+        template = template.replace(/{{DATE}}/g, pageDate[1])
+        template = template.replace(/{{CONTENT}}/g, item.html)
+
+        items.push(template)
+    }
+
+    const itemsString = items.join("\n");
+    let rssFile = rssTemplate.replace(/{{CONTENT}}/, itemsString).replace(/{{DATE}}/, date)
+
+    fs.writeFileSync(`${buildDir}/feed.xml`, rssFile, err => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+    });
+}
 
 
 async function generateAll() {
@@ -179,7 +208,7 @@ async function generateAll() {
     const textContentArray = await utils.splitContent(textContent, config.contentSplitter);
     const contentArray = await generateData(textContentArray, timeContent);
     await generateHtml(contentArray, htmlTemplate, styleHasChanged, config.buildDir);
-
+    await generateRss(contentArray, rssTemplate, rssItemTemplate, config.buildDir);
     await utils.mkDir(config.buildMediaDir);
 }
 
