@@ -1,6 +1,7 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Thomasorus</title>
+<atom:link href="https://thomasorus.com/feed.xml" rel="self" type="application/rss+xml" />
+<title>Thomasorus — A small personal website</title>
 <link>https://thomasorus.com/</link>
 <description>Thomasorus — A small personal website</description>
 <lastBuildDate>{{DATE}}</lastBuildDate>
