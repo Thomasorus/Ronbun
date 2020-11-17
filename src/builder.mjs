@@ -159,8 +159,6 @@ async function generateData(textContentArray, timeContent) {
 }
 
 async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir) {
-    console.log("\nBuilding RSS")
-
     const items = []
     let date;
     for (let i = 0; i < contentArray.length; i++) {
@@ -182,14 +180,24 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
 
     const itemsString = items.join("\n");
     const event = new Date();
-    let rssFile = rssTemplate.replace(/{{CONTENT}}/, itemsString).replace(/{{DATE}}/, event.toUTCString())
+    const rssFile = rssTemplate.replace(/{{CONTENT}}/, itemsString).replace(/{{DATE}}/, event.toUTCString())
 
-    fs.writeFileSync(`${buildDir}/feed.xml`, rssFile, err => {
-        if (err) {
-            console.log(err);
-            throw err;
-        }
-    });
+    const currentRss = utils.readFile(`${buildDir}/feed.xml`);
+    const rssContent = RegExp(/<\/image>([\s\S]*?)<\/channel>/).exec(currentRss);
+    const rssHasChanged = rssContent[1].replace(/\n/g, "").trim() === itemsString.replace(/\n/g, "").trim() ? false : true
+
+    if(rssHasChanged) {
+        console.log("Updating RSS file")
+        fs.writeFileSync(`${buildDir}/feed.xml`, rssFile, err => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+        });
+    } else {
+        console.log("Skipping RSS file")
+    }
+  
 }
 
 
