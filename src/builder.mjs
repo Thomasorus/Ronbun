@@ -167,19 +167,22 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
         const item = contentArray[i];
         let template = rssItemTemplate;
         date = item.date
+       
         const page = utils.readFile(`${buildDir}/${item.slug}.html`);
         const pageDate = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(page);
+        const pageDateIso = await utils.toIsoDate(pageDate[1]);
 
         template = template.replace(/{{TITLE}}/g, item.title)
         template = template.replace(/{{GUID}}/g, item.slug)
-        template = template.replace(/{{DATE}}/g, pageDate[1])
+        template = template.replace(/{{DATE}}/g, pageDateIso.toUTCString())
         template = template.replace(/{{CONTENT}}/g, item.html)
 
         items.push(template)
     }
 
     const itemsString = items.join("\n");
-    let rssFile = rssTemplate.replace(/{{CONTENT}}/, itemsString).replace(/{{DATE}}/, date)
+    const event = new Date();
+    let rssFile = rssTemplate.replace(/{{CONTENT}}/, itemsString).replace(/{{DATE}}/, event.toUTCString())
 
     fs.writeFileSync(`${buildDir}/feed.xml`, rssFile, err => {
         if (err) {

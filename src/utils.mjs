@@ -29,11 +29,11 @@ export async function copyAsset(buildAssetsDir, srcAssetsDir, file) {
     if (fs.existsSync(`${buildAssetsDir}/${file}`)) {
         const oldFile = await getFileSize(`${buildAssetsDir}/${file}`)
         const newFile = await getFileSize(`${srcAssetsDir}/${file}`)
-        if(oldFile !== newFile) {
+        if (oldFile !== newFile) {
             console.log(`Changes for ${file}`)
             fs.copyFile(`${srcAssetsDir}/${file}`, `${buildAssetsDir}/${file}`, err => {
                 if (err) {
-                    throw err 
+                    throw err
                 }
             });
             return true
@@ -41,16 +41,15 @@ export async function copyAsset(buildAssetsDir, srcAssetsDir, file) {
             console.log(`No change for ${file}`)
             return false
         }
-    } 
-    else {
+    } else {
         console.log(`Copy of ${file}`)
         fs.copyFile(`${srcAssetsDir}/${file}`, `${buildAssetsDir}/${file}`, err => {
             if (err) {
-                throw err 
+                throw err
             }
         });
         return true
-    }    
+    }
 }
 
 //Returns the file size
@@ -71,5 +70,30 @@ export async function compareStrings(oldPage, item, reg) {
     console.log(regex)
     // const hasChanged = content[1].replace(/\n/g, "").trim() === item.replace(/\n/g, "").trim() ? true : false
 
-    return content 
+    return content
+}
+
+export async function toIsoDate(date) {
+    const splitDate = date.split(" ")
+    const hour = splitDate[1].split(":")
+    const fixedHour = hour.map(function (h) {
+        if (h.length === 1) {
+            return "0" + h
+        } else {
+            return h
+        }
+    });
+
+    const splitDay = splitDate[0].split("/")
+    const fixedDay = splitDay.map(function (d) {
+        if (d.length === 1) {
+            return "0" + d
+        } else {
+            return d
+        }
+    })
+    const day = `${fixedDay[2]}-${fixedDay[1]}-${fixedDay[0]}`
+    const isoDate = `${day}T${fixedHour.join(":")}Z`;
+    const formatedDate = new Date(isoDate)
+    return formatedDate
 }
