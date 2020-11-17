@@ -8,7 +8,7 @@ import timeParser from './time.mjs'
 
 
 async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDir) {
-    console.log("Starting page build")
+    console.log("Starting page builder")
 
     for (let i = 0; i < contentArray.length; i++) {
         const el = contentArray[i]
@@ -47,14 +47,18 @@ async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDi
             const brefContent = RegExp(/ <meta name="description" content="([\s\S]*?)">/).exec(existingPage);
             const htmlBref = brefContent[1].replace(/\n/g, "").trim() === el.bref.replace(/\n/g, "").trim() ? true : false
 
-            let textContent;
+            let textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
             let htmlText;
-            if (el.name !== "Time") {
-                textContent = RegExp(/<article>([\s\S]*?)<\/article>/).exec(existingPage);
-                htmlText = textContent[1].replace(/\n/g, "").trim() === el.html.replace(/\n/g, "").trim() ? true : false
+            if (textContent) {
+                if (el.name !== "Time") {
+                    htmlText = textContent[1].replace(/\n/g, "").trim() === el.html.replace(/\n/g, "").trim() ? true : false
+                } else {
+                    htmlText = false;
+                }
             } else {
-                htmlText = false;
+                htmlText = true;
             }
+
 
             let htmlHostSlug;
             let HostSlugContent = RegExp(/html">([\s\S]*?)<\/a><\/i><\/nav>/).exec(existingPage);
@@ -99,18 +103,19 @@ async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDi
                     }
                 });
             } else {
-                console.log(`Skipping ${el.name}`)
+                process.stdout.write('.');
             }
         }
     }
+    console.log("\n")
 }
 
 async function generateAssets(buildAssetsDir, srcAssetsDir) {
+    console.log("Checking for assets")
     await utils.mkDir(buildAssetsDir, srcAssetsDir)
     const logoChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "logo.png")
     const templateChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "main.html")
     const styleChange = await utils.copyAsset(buildAssetsDir, srcAssetsDir, "style.css")
-    console.log("Assets copied!")
     return logoChange || templateChange || styleChange ? true : false
 }
 
@@ -165,7 +170,7 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
         const item = contentArray[i];
         let template = rssItemTemplate;
         date = item.date
-       
+
         const page = utils.readFile(`${buildDir}/${item.slug}.html`);
         const pageDate = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(page);
         const pageDateIso = await utils.toIsoDate(pageDate[1]);
@@ -186,7 +191,7 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
     const rssContent = RegExp(/<\/image>([\s\S]*?)<\/channel>/).exec(currentRss);
     const rssHasChanged = rssContent[1].replace(/\n/g, "").trim() === itemsString.replace(/\n/g, "").trim() ? false : true
 
-    if(rssHasChanged) {
+    if (rssHasChanged) {
         console.log("Updating RSS file")
         fs.writeFileSync(`${buildDir}/feed.xml`, rssFile, err => {
             if (err) {
@@ -197,12 +202,12 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
     } else {
         console.log("Skipping RSS file")
     }
-  
+
 }
 
 
 async function generateAll() {
-    console.log('START')
+    console.log('STARTING RONBUN')
 
     await utils.mkDir(config.buildDir);
 
