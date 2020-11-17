@@ -90,7 +90,7 @@ async function generateHtml(contentArray, htmlTemplate, styleHasChanged, buildDi
                     page = page.replace(/pageTimeContent/g, el.date)
                 }
 
-                if (el.name = "Title") {
+                if (el.name === "Time") {
                     page = page.replace("<article>", "<article class='full'>")
                 }
 
@@ -124,6 +124,7 @@ async function generateData(textContentArray, timeContent) {
         /(?:NAME:)((?:\\[\s\S]|[^\\])+?)\n/g,
         /(?:HOST:)((?:\\[\s\S]|[^\\])+?)\n/g,
         /(?:BREF:)((?:\\[\s\S]|[^\\])+?)\n/g,
+        /(?:PRIV:)((?:\\[\s\S]|[^\\])+?)\n/g,
         /(?:BODY:)((?:\\[\s\S]|[^\\])+?)$/g,
     ];
 
@@ -168,19 +169,21 @@ async function generateRss(contentArray, rssTemplate, rssItemTemplate, buildDir)
     let date;
     for (let i = 0; i < contentArray.length; i++) {
         const item = contentArray[i];
-        let template = rssItemTemplate;
-        date = item.date
-
-        const page = utils.readFile(`${buildDir}/${item.slug}.html`);
-        const pageDate = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(page);
-        const pageDateIso = await utils.toIsoDate(pageDate[1]);
-
-        template = template.replace(/{{TITLE}}/g, item.title)
-        template = template.replace(/{{GUID}}/g, item.slug)
-        template = template.replace(/{{DATE}}/g, pageDateIso.toUTCString())
-        template = template.replace(/{{CONTENT}}/g, item.html)
-
-        items.push(template)
+        if(item.priv === "false"){
+            let template = rssItemTemplate;
+            date = item.date
+    
+            const page = utils.readFile(`${buildDir}/${item.slug}.html`);
+            const pageDate = RegExp(/content update: <time>([\s\S]*?)<\/time>/).exec(page);
+            const pageDateIso = await utils.toIsoDate(pageDate[1]);
+    
+            template = template.replace(/{{TITLE}}/g, item.title)
+            template = template.replace(/{{GUID}}/g, item.slug)
+            template = template.replace(/{{DATE}}/g, pageDateIso.toUTCString())
+            template = template.replace(/{{CONTENT}}/g, item.html)
+    
+            items.push(template)
+        }
     }
 
     const itemsString = items.join("\n");
