@@ -1,0 +1,10 @@
+<item>
+  <title>{{TITLE}}</title>
+  <link>https://thomasorus.com/{{GUID}}.html</link>
+  <guid isPermaLink="false">{{GUID}}</guid>
+  <pubDate>{{DATE}}Sun, 09 Feb 2020 00:00:00 +0900</pubDate>
+  <dc:creator><![CDATA[Thomasorus]]></dc:creator>
+  <description>
+<![CDATA[{{CONTENT}}]]>
+  </description>
+</item>
