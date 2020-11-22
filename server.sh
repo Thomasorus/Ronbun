@@ -1,1 +1,1 @@
-nodejs src/server.mjs
+node src/server.mjs

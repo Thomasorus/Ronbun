@@ -1,4 +1,4 @@
 #!/bin/sh
-nodejs src/builder.mjs
+node src/builder.mjs
 src/images.sh
 echo "END"
