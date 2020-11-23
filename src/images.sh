@@ -10,7 +10,7 @@
 # https://git.sr.ht/~rostiger/batchResize/
 # -----------------------------------------------------------------------------
 # path where the original images are located
-SRC="media"
+SRC="data/media"
 # path where the images will be stored
 DST="www/media"
 # sizes to convert to
@@ -20,7 +20,7 @@ MAXWIDTH=1200
 function resize () {
   
   # Ugh, I forgot what this does exactly.. :S
-  [[ $file == *"media/*"* ]] && exit
+  [[ $file == *"data/media/*"* ]] && exit
   
   # Just a security check to prevent an endless loop in case
   # $DST is inside $SRC (don't do that!) 

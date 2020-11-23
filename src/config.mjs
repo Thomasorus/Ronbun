@@ -1,7 +1,7 @@
 export const config = {
-    srcDataDir : "./data",
+    srcDataDir : "./data/content",
     srcAssetsDir : "./assets",
-    srcMediaDir : "./media",
+    srcMediaDir : "./data/media",
 
     buildDir : "./www",
     buildAssetsDir : "./www/assets",
