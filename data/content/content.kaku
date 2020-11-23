@@ -1,0 +1,2625 @@
+====
+NAME: Home
+HOST: Home
+BREF: The personal wiki of Thomasorus
+PRIV: false
+BODY:
+
+# Thomasorus' garden
+
+This is my little space where I store things.
+
+- {about.html, "About me"}
+- {now.html, "Now"}
+
+## Self Tracking
+
+- {time.html, "Time tracker"}
+- {tracking.html, "About tracking myself"}
+
+## Shared Knowledge
+
+- {html-tips.html, "HTML Tips and tricks, everything I know about it"}
+- {raspberry-pi-distros.html, "Raspberry Pi distributions"}
+
+## My Tools
+
+- {tools.html, "Philosophy"}
+- {kaku.html, "Kaku 書く", Kaku is a markup language}
+- {ronbun.html, "Ronbun 論文", Robun is a static site generator}
+- {keyboards.html, "Keyboards", The keyboards I use}
+- {raspberry-pi.html, "Raspberry Pi"}
+
+
+## Journal
+
+- {renovation-journal.html, "Renovation journal"}
+- {i-removed-the-computer.html, "I removed the computer"}
+
+====
+
+NAME: Time
+HOST: Tracking
+BREF: Thomasorus' time tracker
+PRIV: false
+BODY:
+
+# Time
+
+====
+NAME: Now
+HOST: Home
+BREF: What am I doing now?
+PRIV: false
+BODY:
+
+# Now
+
+Studying:
+- The C language by redoing {kaku.html, "Kaku"}
+- How to escape the {the-soft-power-of-javascript.html, "soft power of JavaScript"} by finding {list-of-javascript-frameworks.html, "alternatives"} adapted to different types of projects
+
+Reading:
+- _Never split the difference_ by Chris Voss
+- _The Book of the New Sun_ by Gene Wolfe
+
+Writing:
+- An article about how to achieve 2D look in 3D
+- The lore of a story I had in mind for a long time
+
+Others:
+- Renovating my apartment
+
+
+====
+
+NAME: Keyboards
+HOST: Tools
+BREF: I use custom keyboards to write and work
+PRIV: false
+BODY:
+
+# Keyboards
+
+I use two keyboards: the *Happy Hacking Keyboard* (HHKB) by PFU and a *Happy Hacking Keyboard plate replica* made in China.
+
+## Happy Hacking Keyboard
+
+[media/hhkb.jpg, The happy hacking keyboard]
+
+Bought in 2016 at Akihabara in Japan, this HHKB had been my daily driver since. It took several weeks to get used to it as I learned both to write in QWERTY and the very special layout of this keyboard. It's currently customised with a {https://kbdfans.com/products/pre-orderelectrostatic-capacity-keyboard-japanese-keycaps?_pos=16&_sid=098521c43&_ss=r, "japanese keyset"}. As for all HHKBs, the switches are Topre.
+
+## HHKB plate replica
+
+[media/hhkb-plate.jpg, My plate replica of HHKB]
+
+Bought in 2018 to have a second keyboard with the HHKB layout to drop at work. This keyboard initially had a rough CNC cut plate with Outemu Purple switches. I unsoldered the switchs and replaced them with Cherry MX Silent Red. A friend also lubbed them to avoid making noise. A vinyl like sticker was then applied to the plate to hide the rough metal. 
+
+====
+
+NAME: Kaku
+HOST: Tools
+BREF: Kaku is a markup language made to fit my needs.
+PRIV: false
+BODY:
+
+# Kaku 書く
+
+Kaku (write) is my own markup language. It's inspired by Markdown with a few modification for quotes, links, images and lists handling. It was created to fit my needs and is currently used on this website.
+
+This {https://github.com/Thomasorus/Kaku, "repository"} contains the detailed specs and a JavaScript parser for Kaku.
+
+====
+
+NAME: Tracking
+HOST: Home
+BREF: An explanation about why I track some stuff in my life
+PRIV: false
+BODY:
+
+# Tracking
+
+I track time spent on my hobbies. First I hated the idea. I saw it as self-surveillance, as an intrusion of accounting and management in my personal space where precisely, you don't count your time.
+
+After two months I realized I had the wrong feeling. Tracking hours has become a tool for self-discovery. It allows me to take a huge step back and to be more careful about my well-being. It also helps making connections between what I do and what I feel every day.
+
+For example, for the first two months of 2020 I spent around 70 hours on personal projects. It's 7.8 hours a week, which means I overall worked a day more each week on personal stuff. It made me realize I was on the wrong path to accomplish one of my goals, which is to be less productive and more creative.
+
+For people like me who wonders where their free time disappears, tracking time helps. My advice however, is to find a personal way of tracking time instead of using apps, bullet journals or stuff related to productivity. Finding your own way of tracking your own time is also part of the self-discovery thing.
+
+To me tracking time doesn't mean trying to be more productive, but the opposite.
+
+## Tracking...
+
+- {time.html, "My time on a week basis"}
+
+====
+
+NAME: Tools
+HOST: Home
+BREF: A collection of hardware and software tools I use or made
+PRIV: false
+BODY:
+
+# Tools
+
+A collection of tools I use or made. 
+
+## Why I make my own tools
+
+As software developers we are all the time required to follow the next big thing and use new frameworks or libraries. It comes with a loat of code bloat, it requires to relearn everything from scratch and does not favors building strong fundamentals. It's exhausting and maintains people into imposter syndrome.
+
+Creating my own instead of using other people's tools is a very appreciable exercise of self-discovery. It allows to ask, ala Marie Kondo, if these tools I use all the time as a software developer brings me happiness. And if not, why do I keep using them?
+
+Coding my tools removes the notion of efficiency and productivity associated with software development. I don't know when the tool I build will be done and it doesn't matter, that's why it's relaxing. Instead of complying with other people way of doing, I discover my own and my software evolves with me.
+
+It's a reappropriation of the means of production towards self-discovery.
+
+## Software
+
+- {kaku.html, "Kaku 書く", Kaku is a markup language} is my markup language
+- {ronbun.html, "Ronbun 論文", Robun is a static site generator} is my static site generator
+
+## Hardware
+
+- {keyboards.html, "Keyboards", The keyboards I use I use and customize}
+- {raspberry-pi.html, "Raspberry Pi"}
+
+
+====
+
+NAME: Ronbun
+HOST: Tools
+BREF: Ronbun is my static site generator and time tracking system
+PRIV: false
+BODY: 
+
+# Ronbun 論文
+
+Ronbun (_paper_) is my *static site generator*. It's built with nodejs and uses {/kaku.html, "Kaku"} as a markup language and imagemagick on the server to process images. It also process time tracking and presents it {time.html, "as graphics"}.
+
+Ronbun uses a {https://github.com/Thomasorus/Ronbun/blob/master/data/content.kaku, "single file"} as a source of content and a {https://github.com/Thomasorus/Ronbun/blob/master/data/time.kaku, "text file"} for time recordings. It parses files and generates HTML using a template. Ronbun and the {kaku.html, "Kaku"} parser try as much as possible to provide light and accessible pages by using {html-tips.html, "standard HTML techniques"}.
+
+Ronbun was created as a self discovery project following my {tools.html, "philosophy"} about personal projects.
+
+Ronbun's repo is on {https://github.com/Thomasorus/Ronbun, "github"}.
+
+Next features:
+
++ Provide better navigation
++ Add RSS support
++ Add sitemap
+
+Global goals:
+
++ Provide more stats on the tracker
++ Full rewrite in a more generally available language (C, Python...)
+
+
+
+====
+
+NAME: About
+HOST: Home
+BREF: About me
+PRIV: false
+BODY:
+
+# About me
+
+I'm a front-end developer specialized in interfaces, user experience and accessibility. I'm a technical generalist with experience on web projects of all sizes and all types of stacks. I have worked alone, as well as in teams of dozens of people, sometimes as a technical advisor for non-technical coworkers.
+
+I have a strong interest in indie web, low tech and sustainable stacks. I've been producing podcasts and writing about fighting games, my main hobby, for more than ten years and have worked for professional publications and brands; as well as organized tournaments and events in non-profit organizations. I also was a French comics specialized bookseller.
+
+I have a degree in fine arts and web development.
+
+
+====
+
+NAME: curriculum vitae
+HOST: Home
+BREF: My curriculum vitae
+PRIV: false
+BODY:
+
+# Curriculum Vitae
+
+====
+
+NAME: Knowledge
+HOST: Home
+BREF: Where I put things I don't want to forget
+PRIV: false
+BODY:
+
+# Knowledge
+
+This page references knowledge of all sorts I want to keep written. It can be technical writing, ideas, notes to self. 
+
+- {html-tips.html, "HTML tips and tricks"}
+- {raspberry-pi-distros.html, "Raspberry Pi distributions"}
+
+====
+
+NAME: Html tips
+HOST: knowledge
+BREF: A collection of HTML and CSS tips to build simple yet optimized websites
+PRIV: false
+BODY:
+
+# HTML and CSS simple tips and tricks for your website
+
+The goal of this page is to help you with easy tricks to make the HTML of your website accessible, readable by everyone and optimized for low bandwidth.
+
+This tips and tricks are from personal experience working as a front-end web developer specialized in UI and accessibility for the last 5 years. It might not be perfect or 100% accurate. If you find any problem, please {/now.html, "contact me", Go to my contact page}.
+
+## About accessibility
+
+Accessibility is making your website inclusive for people with disabilities. If respecting accessibility can seem like a chore, it's actually a good way of learning good HTML practices and everything in these pages is therefore influenced by it.
+
+- {what-is-accessibility.html, "So, what is accessibility?"}
+- {accessibility-rules-and-tools.html, "Basic rules about accessibility and tools to enforce them"}
+
+## The basics of HTML
+
+This section will give your some basic knowledge and code to get started. It will also explain the basics of semantic HTML and why it's important. As everything in these pages, it's a toolbox of things I use, not a full specification rewriting, and it's heavily influenced by my own practices.
+
+- {the-basics-of-html.html, "The basics: the head, the div and the span"}
+- {what-is-semantic-html.html, "What is semantic HTML and why should I care?"}
+
+
+## Layouts in HTML
+
+Once you have the basics sets it's probably time to do some layouts. There are parts that you can do just in HTML, and others that need CSS. Layouts are the ones who need CSS. *You can save dozens of lines of HTML by using 3 lines of CSS when you are doing layout*. So don't try doing all your layout only in HTML. You'll just have a hard time doing what you want and your markup will be ugly.
+
+Layout examples will be given through these pages, try to inspect them with your browser, reuse and tweak them to your needs.
+
+- {never-use-tables-for-layout.html, "Don't you dare use tables for layout!"}
+- {the-display-property.html, "The basics of layout with the display property"}
+- {flexbox-the-goat.html, "Flexbox, the goat"}
+- {css-grid-the-almighty.html, "CSS Grid the almighty"}
+
+## Common elements inside your layouts
+
+So we have our page layouts structured by semantic HTML elements. Now is the time to put some content. Text! Images! Videos! Titles! We want them all!
+
+- {order-your-titles-correctly.html, "Order your titles correctly"}
+- {organize-your-text-content.html, "Organize your text content"}
+- {all-about-images.html, "All about images"}
+- {all-about-video-and-audio.html, "All about video and audio"}
+- {doing-forms-correctly.html, "Doing forms correctly"}
+- {tables-are-not-that-complicated.html, "Tables are not that complicated"}
+
+## The inline semantic elements
+
+What's the difference between the text semantic elements and the inline semantic elements? Well the first ones are still used to structure your content, but the second ones are used to indicate more precisely what the text inside is about.
+
+- {make-your-links-clear-and-accessible.html, "Make your links clear and accessible"}
+- {when-to-use-a-button-and-a-link.html, "When to use a button and a link"}
+- {strong-b-em-and-i.html, "The mess of strong b em and i"}
+- {other-kinda-useful-semantic-elements.html, "Other kinda useful semantic elements"}
+
+## The not very used interactive elements
+
+Interactive elements are fully functional tools in HTML. Unfortunately they are difficult to style and most often not used that much for this reason. Still some of them are really cool.
+
+- {html-interactive-elements.html, "Some interactive elements that can be useful"}
+
+## About CSS 
+
+Performance is a hot topic as the website obesity crisis keeps going. In these pages I already explained a few things to improve performance, especially in the video and image pages. Still there are a few broader topics related to performance that we should talk about.
+
+- {css-good-practices.html, "CSS Good practices to optimize file size and specificity"}
+
+## About JavaScript
+
+JavaScript and its most famous frameworks React, Vue and Angular are everywhere in web development. Their use created an increasing complexity and normalized technical stacks, often for no good reason. Understanding what it implies to developers, as well as making informed choices about JavaScript is now primordial.
+
+- {the-soft-power-of-javascript.html, "The soft power of JavaScript"}
+- {list-of-javascript-frameworks.html, "List of JavaScript frameworks"}
+
+## Page updates
+
+? `03/11/2020` : Added a SVG subsection in the image page
+? `24/08/2020` : Added a section about reader modes in the accessibility section.
+? `22/08/2020` : In the interactive elements page I wrote that `<details>` and `<summary>` could not be animated. I was wrong.
+
+====
+
+NAME: What is accessibility
+HOST: HTML tips
+BREF: A primer on accessibility for the web
+PRIV: false
+BODY:
+
+# What is accessibility ?
+
+I will often refer to _accessibility_ in these pages, which globally means having a website that people with disabilities can use. Disabilities come in a lot of ways. The most obvious one is blindness, who requires the use of a screen reader. But there's a lot of handicaps that can give your a hard time on the internet.
+
+You might be deaf, which means you need a transcribed version of an audio or video file. You might have dyslexia, which means you have a hard time reading text and need special fonts (and surprisingly _Comic Sans MS_ is one of them). You might have anxiety and panic disorders, which means you can't go to some websites who are too cluttered or trigger too many animations. You might have a cognitive impairment, which means you have a hard time understanding some websites. There are a lot of others handicaps that might make the web hard to use.
+
+Coding properly for accessibility (basically, respecting standards) doesn't mean your website is accessible by magic. It means other tools can take over by using the code you wrote. Screen readers are the obvious ones, but others like reader mode in your browser of choice is also one of them as it allows to change colors, fonts, etc...
+
+## Is accessibility all about code?
+
+No, not at all.
+
+All accessibility problems cannot be solved only by code. Some are only fixable by enforcing an inclusive interface and user experience design. You might have heard that enforcing accessibility leads to design constraints, which is true. But from experience it's entirely possible to have a nice design and user experience while being accessible. People saying it's not possible are lazy liars. Also you might have heard that enforcing accessibility is bad for SEO. It's also a lie as both can work together, you just have to want it.
+
+Respecting accessibility in UI and UX design often leads to better designs and user experiences for all users. So when I say that something _is good for accessibility_ it often means it's _good for all your users_, and following these advises will result in a better website of everyone.
+
+## Accessibility is hard
+
+To enforce accessibility you need to get yourself into the shoes of your disabled users. Is this usable by screen readers? Is it understandable by people with cognitive impairments? Questioning everything you do is a good way of doing it, but on the long run it leads to the realization that basically nothing is perfect despite your efforts.
+
+And that's the hard pill to swallow: you probably can't make accessibility perfect by yourself (especially on big projects) without funding, manpower and a lot of testing. It's a huge task and you should aim for _usable_ instead of _perfection_ or you'll never see it end. Try to detect what is important for your user in each page or situation and make sure it works.
+
+Ask yourself, what is the goal of the website you make? For a bank it's numbers, are the numbers accessible? For a journal it's text, are the texts accessible? For a government taxes website, it's being as clear as possible about legal stuff. 
+
+What is the main think you can't mess around with? Make it your top accessibility priority, everywhere, and fix it. Once it's done, then you'll come back to fix those small problems, like typos or unimportant texts not being clear enough. 
+
+Choose the right battle and fight it until the end!
+
+Next: {accessibility-rules-and-tools.html, "Basic rules about accessibility and tools to enforce them"}
+
+
+====
+
+NAME: Accessibility rules and tools
+HOST: HTML tips
+BREF: A collection of accessibility tips to build simple yet inclusive websites
+PRIV: false
+BODY:
+
+# Accessibility basic rules and tools
+
+Accessibility is a vast, very hard to navigate maze that even people like me who worked on it almost two years can't properly handle correctly. So I don't expect myself to be able to explain everything, and I don't expect you to think about everything. 
+
+In this page I will simply list the essential rules I had to enforce myself and that will help you get started. Later, you can dig a bit more by yourself to fix your own specific problems.
+
+## How screen readers users use them?
+
+Most people don't know it, but *screen readers users don't only use the tab key to navigate in pages*!
+
+What does that means? That means don't panic when you start tabbing everywhere and see the focus not stopping where you want! When I first started I thought accessibility was all about adding the `tab-index="0"` HTML attribute to almost every element because otherwise, the tab key would not stop on it. But that's not how that works!
+
+Screen readers users will use a combination of arrows to read phrases or letters, shortcuts to access titles and other parts of the website, as well as the tab key, but only to get out of input element in forms or access links and buttons! Like any other users with experience using a tool, they probably use it in a way that is totally foreign to you!
+
+That's why it's important to have your website tested by actually disabled people. Don't assume how disabled people use the web, ask them to guide you if you can. You will probably be surprised at how fast screen readers users can navigate a page.
+
+## The basic rules
+
+Here are some basic but essential rules to help you get started:
+
+- Don't block the ability to zoom in or zoom out on your website.
+- Don't go below 13 pixels in font size. Yes users can zoom, but that would be way more comfortable if they didn't have to do it in the first place!
+- The basic 16px font size that all browsers have is often a good thing to follow.
+- Don't use super thin fonts. They are pretty but very hard to read!
+- Don't overdo it with animations, flashes and stuff that can trigger stress.
+- If your website is not compatible with reader mode, try providing an accessibility menu allowing the change of colors and fonts.
+- Take care about color contrasts, you need a ratio of 4.5:1 to be sure most people can read your texts.
+- Don't indicate states on your website or application by only using colors (like green and red) as colorblind people can't distinguish them (that's the reason traffic lights don't do it!)
+- Try not using icons alone, especially when for ultra specific things that don't make sense on their own. Add text to indicate what it is.
+- Don't put crucial information inside images, even if you add an `alt` attribute!
+- Ensure keyboard focus is visible and clear. Most of the time, it means not disabling the `focus` styles in CSS.
+- Provide a _Skip to Content_ link at the top of your website.
+- If you have audio content, provide a transcript.
+- If you have video content, provide subtitles.
+
+## How to hide text destined to screen readers users
+
+You can use this CSS class:
+
+```
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+```
+
+But don't overdo it, it must be the exception, not the rule. Some screen readers users can actually see but prefer a combination of voice and text. If you start hiding walls of text the user can't see, you're gonna create a very unpleasant experience.
+
+## How to hide things from screen readers
+
+Use the `aria-hidden="true"` attribute on the HTML element of your choice. Again, the exception, not the rule. Use it if something can't be vocalize, but provide a textual explanation of it right after.
+
+## What is a skip content link?
+
+Screen readers users have shortcuts to access the different parts of your website, but that doesn't mean you can't give them your own shortcuts. Escape or skip links are an invisible menu of anchor links to different parts of your page, that you can add right after the `<body>`.
+
+It's not technically complicated to implement and can save your screen readers users tons of time, especially if you have big and complex header or navigation before the main content.
+
+## What tools can I use?
+
+One of the most used combinations of screen readers and browser are {https://www.nvaccess.org/download/, "NVDA"} and {https://firefox.com, "Firefox"}. But you can also use the {https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn, "Chromevox"} extension for Chrome to get an in-browser screen reader. Most operating systems also provide voice over and from what I heard, the one on iOS is particulary good.
+
+In Firefox Dev Tools, the "Accessibility" tab will show you a textual representation of your website nodes that can help you detect what will be vocalized and won't. There is a lot of browser extensions for accessibility that will scan the current page and tell you what is violation the rules. 
+
+I've used the {https://www.deque.com/axe/, "Axe extension"} in the past and enjoyed it, but there's a lot more.
+
+## How does the reader mode works?
+
+All modern browsers provide a reader mode that strips most of the design to keep only text and images. They also allow changing fonts, background colors, text to speech and other features.
+
+The problem is... it's not clear how and why some pages allow the reader mode to exist and others don't. According to this {http://zumguy.com/enabling-reading-mode-on-your-website/, "article"} analyzing a {https://github.com/mozilla/readability/, "standalone version"} of Firefox reader mode, an algorythm analyzes the content inside `<p>` elements, checks how _content-y_ they are and assigns them a score. Commas, length of phrases and other parameters are taken into account to score the page and decide if yes or no, it deserves reader mode.
+
+It means that small pages are not going to offer reader mode, which is a shame. But you probably can't do anything about it outside reorganizing content.
+
+Next: {the-basics-of-html.html, "The basics: head, div and span"}
+
+====
+
+NAME: The basics of HTML
+HOST: HTML tips
+BREF: The basics of what is needed when starting a website in HTML
+PRIV: false
+BODY:
+
+# The basics of HTML
+
+This section will give your some basic knowledge and tips about HTML, mostly what semantic tag to use in what situation. 
+
+## What you need to get started
+
+You need this:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+You need to indicate that the document is HTML, the language of the document and of course its encoding. You also need a title as it will be visible in the tab and spoken by screen readers when the page is loaded.
+
+The `<meta name="viewport>"` is especially important. It can be used to block the zoom or zoom out of the page. But don't do it, please *never block the user from zooming in or zooming out on a website*. This is the basic accessibility thing, don't deactivate it!
+
+Of course there's a lot more that can go into the `<head>` of a website. Styles, scripts, meta-descriptions, open graph tags... The head has its own life in itself that you can explore, but it's not the purpose of this guide to give you an extended lesson about it so we'll skip it and start adding things inside the `<body>`.
+
+## Divs and spans
+
+HTML is all about putting...things! Inside... other things? So your first reflex is probably to grab a `<div>` or a `<span>`, the good old ones! But what's the difference between them?
+
+If you put several `<div>` one after the other, you'll see they stack one above the other. That's because a `<div>` has the `display:block;` CSS property by default. `display:block` makes the element start on a new line and take 100% of its container width.
+
+If you do the same with `<span>`, they will stack one after the other. That's because a `<span>` has the `display:inline;` CSS property by default, which tells the element to start on the same line as the previous element and that its width and heigh are decided by content.
+
+So just by knowing that, you already know how to stack things vertically and horizontally. Great right?
+
+## Wait wait wait... There's CSS in my HTML?
+
+Yes! And for a good reason! Imagine your CSS file disappears and your are left only with your HTML page. Without some pre-made styling, everything would have the same font size, would be inline... That would be unreadable!
+
+That's the reason why browsers implement their own styling when encountering an HTML element. It's a great feature but unfortunately, some people really hate it. When you want to style the HTML elements with your own design, you sometimes have to undo some of the basic styling of the browser.
+
+And yes, some of them are verbose to undo, like buttons. That's the reason some people use what is called "resets" CSS files, to undo the default styling and ease the CSS work. 
+
+But please be careful when resetting styles. When you undo the browser styling, you also undo accessibility styles. If you ever used the tab key to navigate inside a website, you saw that the focused element is distinguished from the rest with borders or outlines. Going too hard on un-style can break those things and left you with... nothing. You are lost.
+
+Speaking of being lost, `<div>` and `<span>` can sometimes get your users in trouble, unlike the amazing _semantic HTML_ elements.
+
+Next: {what-is-semantic-html.html, "What is semantic HTML?"}
+
+====
+
+NAME: What is semantic HTML
+HOST: HTML tips
+BREF: An explanation of semantic HTML and why it's important
+PRIV: false
+BODY:
+
+
+# What is semantic HTML?
+
+When you use `int` or `string` in a programming language, you know exactly what each of them is doing and it helps in code readability right? Well HTML is the same, it has things with names that help knowing what they do. The problem  is, unlike a typed language, HTML is cool with you doing mistakes and won't throw an error if you don't use the right tool for the job. So in the end you can do mistakes and still have a visually working website who is awful under the hood.
+
+But visually impaired users use a lot of shortcuts with their screen readers to simply jump to different parts of the page, and those shortcuts only work if HTML is semantically valid! So having good HTML and following a solid structure helps them, but also other users. For example, to use the reader mode in several browsers, your HTML has to be semantically valid, or the reader mode won't be available.
+
+There is a lot, _a LOT_ of semantic HTML elements and even I who loves HTML doesn't know them all, so I will only cover the most useful. 
+
+## Content sectioning
+
+These semantic elements have the same style properties as a `<div>` (they stack on top of each others) and won't change anything related to your design, so feel free to use them without stressing. You can even add them to an existing design without trouble!
+
+You at least need those:
+
+? `<header>` : Put the content from the top portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+? `<nav>` : Put your navigation elements inside this. You can have several `<nav>` but you then need to use the `aria-label` attribute to name them for screen readers users.
+? `<main>`: Put the main parts of your website inside this one. Very useful as it indicates to screen readers users they reached the main part of the page.
+? `<article>` : Put the main content of your website inside this one. It must be content that is self-sustainable. Imagine if you had to remove everything but one thing, and put it inside this tag.
+? `<aside>` : put the content indirectly related to the article content inside this one. It can be a sidebar or a side note for example.
+? `<footer>` : Put the content from the bottom portion of your website that your user will read the first time they visit but will skip afterwards, inside this.
+
+A basic page might look like this for example:
+
+```
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <article></article>
+        <aside></aside>
+    </main>
+    <footer></footer>
+</body>
+```
+
+I did not mention the `section` element but it can be quite useful if you need to split your content in different sections that are directly related to your content and that are of equal importance. For example a blog post should have its main content and comments inside `<article>`, but comments should be inside a `section` to make it clearer for screen readers users that the blog post has ended.
+
+```
+<main>
+    <article>
+        Blablabla
+        <section aria-label="Comments"></section>
+    </article>
+</main>
+```
+
+You can find the other content semantic element on this {https://developer.mozilla.org/en-US/docs/Web/HTML/Element, "page"}.
+
+
+## Stop right there, what is this `aria` thing in the previous example?
+
+You'll often see `aria` attributes inside the HTML code presented in this page. As stated by the MDN docs on this {https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA, "page"}, _Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities._
+
+Aria is a massive spec to learn and apply so I will just give you some basic ones in this page. Try to follow them as much as you can to give a better readability to your website layouts.
+
+Next: {never-use-tables-for-layout.html, "Don't use tables for layout"}
+
+====
+
+NAME: Never use tables for layout
+HOST: HTML tips
+BREF: An explanation about why using tables for layout is a bad practice
+PRIV: false
+BODY:
+
+# Never use tables for layout
+
+I'm gonna say it again. *Never use tables for layout*. I'm dead serious. Never do it.
+
+If you come from the pre-HTML 5 era, you probably used to organize the elements of your page with tables because it was the norm. But using tables for something else that presenting data is a catastrophic thing for accessibility. When a screen reader meets a table, the screen readers tells him he's entering a table, so the user thinks he's going to hear about data organized in row and columns.
+
+Also using tables makes your HTML super verbose, hard to read and hard to debug. They are way simpler solutions to do what most people try to do with tables.
+
+Next: {the-display-property.html, "The display property"}
+
+====
+
+NAME: The display property
+HOST: HTML tips
+BREF: What is the display property in CSS and how it affects HTML
+PRIV: false
+BODY:
+
+# The `display` property
+
+Here's a primer to help you get started width `display: ???`, the basic tool for doing layouts in HTML and CSS. As always there's a ton of values that can be used, but we'll just focus on the most common/useful ones.
+
+## The good old ones
+
+First the good old ones that you apply directly on each element.
+
+? `inline` : Elements are stacked one after the other on the same line until there's no space so a new line is created.
+? `block` : Elements are stacks on top of each other.
+? `inline-block` : The best of both worlds as it acts like an inline element but its height and width can be changed!
+
+Those values are still in use today but are way less common in modern layout than they used to. Before `flexbox` and `grid`, developers used a lot of `inline-block` layouts to make responsive design work and content flow nicely. It was sometimes very complicated and the reason why things like grid frameworks were very popular.
+
+Today there is absolutely no reason to not use `flexbox` and `grid`. They can even be used on Internet Explorer 11 if written correctly and compiled with a tool like {https://github.com/postcss/autoprefixer, "Autoprefixer", Go to Autoprefixer github page}. 
+
+Next: {flexbox-the-goat.html, "Flexbox, the goat"}
+
+====
+
+NAME: Flexbox the goat
+HOST: HTML tips
+BREF: A primer on flexbox and why it's awesome and simple for HTML layout
+PRIV: false
+BODY:
+
+# Flexbox, the GOAT
+
+A few years ago the massive adoption of flexbox was like a wet dream coming true. Imagine: you take the inline-block property where things stack right after each other, but you can decide the direction of this stacking both on the `x` and `y` axis ; and also how the elements behave between themselves!
+
+The main difference comes from the declaration. Instead of declaring `display:flex;` on each element, you only declare it on the parent and it acts on the children.
+
+```
+<div style="display:flex;">
+    <div>1</div>
+    <div>2</div>
+</div>
+```
+
+So how does that work? 
+
+## Decide the direction
+
+First, you decide if the flow goes horizontally or vertically, and in which direction. For this, you can use the great `flex-flow: ???;` shortcut property. Its most common options are:
+
+? `row` : the children will be displayed from left to right
+? `row-reverse` : the children will be displayed from right to left
+? `column` : the children will be displayed from top to bottom
+? `column-reverse` : the children will be displayed from bottom to top
+
+You can also decide if the child elements should wrap aka create a new line when they lack to be on a single line, by adding `wrap` or `nowrap`.
+
+Real code examples:
+
+<span class="visually-hidden">Hello screen reader users! Several code examples of layouts are demonstrated in this page. There is no real content inside these examples that would help you understand them. So instead, for each code example, I decided tell you the code example is hidden, but you can inspect it with developer tools if you are a one. Sorry for the lack of a better solution.</span>
+
+`flex-flow: row wrap;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`flex-flow: row-reverse wrap;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row-reverse wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+
+`flex-flow: column wrap;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`column-reverse wrap`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:column-reverse wrap;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+Neat right?
+
+## Align your children on the X axis!
+
+Alignment is cool but what if you could decided the distance between those aligned children or even better, let the browser handle it for you? 
+
+Let's reuse this example of a row going from left to right:
+
+```
+<div style="display:flex; flex-flow:row wrap;">
+    <div>1</div>
+    <div>2</div>
+</div>
+```
+
+We're going to use `justify-content: ???;` to fine tune the way child elements behave between each others on the horizontal axis:
+
+? `flex-start` : The default value, stack everything at the start of te flow.
+? `flex-end` : Stack everything at the end of the flow.
+? `center` : Stack all elements at the center with equal white space on the left and right.
+? `space-between` : Space elements as far as possible from each others.
+? `space-around` : Automatically gives each child element the same left and right margins.
+? `space-evenly` : Creates equal white space between all elements.
+
+Real code examples:
+
+`justify-content: flex-start;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-start;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`justify-content: flex-end;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: flex-end;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`justify-content: center;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`justify-content: space-between;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-between;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`justify-content: space-around;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-around;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+`justify-content: space-evenly;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: space-evenly;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+
+## Align your children on the Y axis!
+
+Now the cool thing is... The `align-items: ???;` CSS property takes the same values as `justify-content`, but for the vertical axis! Which means we have a way to align on the `x` and `y` axis in two lines of code!
+
+It allows us to create the holy grail of alignment: center both vertically and horizontally in two lines of CSS! 
+
+`justify-content: center; align-items: center;`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:flex; flex-flow:row wrap; justify-content: center; align-items: center;">
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+</div>
+
+Praise flexbox! <span aria-label="Happy smiley praising with hands up!">(/≧▽≦)/</span>
+
+There's a lot more you can do with Flexbox. You can align items individually, reorder items, decide if they are allowed to shrink or grow in size. If you want to learn more about Flex, try the in-game browser {https://flexboxfroggy.com, "Flexbox Froggy"}. If you are not into games try this free course on {https://www.youtube.com/watch?v=Vj7NZ6FiQvo&list=PLu8EoSxDXHP7xj_y6NIAhy0wuCd4uVdid&index=1, "youtube"}.
+
+You might be thinking _Yeah this is cool, but not as cool as my good old tables_. Well rejoice dear reader as I'm going to make you happy.
+
+Next: {css-grid-the-almighty.html, "CSS Grid the almighty"}
+
+====
+
+NAME: CSS Grid the almighty
+HOST: HTML tips
+BREF: a primer on grid and how it can replace CSS grid frameworks
+PRIV: false
+BODY:
+
+
+# CSS Grid the almighty
+
+CSS Grid is a relatively new spec that saw massive adoption from browser around the start of 2018 and is now used almost everywhere. So what it is about?
+
+Basically, it's about making virtual grids with columns and rows. You might have met 12 column grids in CSS frameworks like Bootstrap before? That's what Grid allows you to replicate in a few lines of code, except it's way more powerful and easy to use.
+
+Even more than Flexbox, it's a _massive_ spec with tons of use cases and syntax tricks. It's extremely powerful but it's also easy to get lost in it, so we'll just try a few layouts and use cases to get you started with columns and rows.
+
+## So you like columns?
+
+For this example we'll go with just 6 vertical columns. How would that work?
+
+First we have to use `display: grid;` on the parent element, just like we did with flexbox. Then we can declare our grid with the `grid-template-columns: ???;` property.
+
+<span class="visually-hidden">Hello screen reader users! Several code examples of layouts are demonstrated in this page. There is no real content inside these examples that would help you understand them. So instead, for each code example, I decided tell you the code example is hidden, but you can inspect it with developer tools if you are a one. Sorry for the lack of a better solution.</span>
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+So let's break it down, what's going on here? The `repeat()` shortcut is a function we use to declare the number of columns we wanted instead of writing `1fr 1fr 1fr 1fr 1fr 1fr`. 
+
+The `fr` is a CSS unit, like pixels or percentages, that means `fractional unit`. In this example, `1fr` repeated six times means _split the space in six and give each children the same space_.
+
+So what happens if we decide that the first column should take 2 times the space of other columns? The grid readjust itself nicely:
+
+`grid-template-columns: 2fr repeat(5, 1fr);`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: 2fr repeat(5, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+But wait, what happens if there is not enough children? The grid keeps it's 6 column layouts and populate the 5 elements inside the 5 first columns:
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+</div>
+
+
+If too many children, the grid will create a new row:
+
+`grid-template-columns: repeat(6, 1fr);`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns: repeat(6, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+      <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">7</div>
+    </div>
+</div>
+
+In Grid tutorials you will often hear about the "explicit" and "implicit" columns and rows. The explicit is the one you declared with your code. The implicit is the one created by the browser when there's no written rules to handle specific use cases or bugs. You can declare rules for both implicit and explicit grids even if I won't go into details on this.
+
+Of course we could have a grid where columns have a fixed size in pixels. Doing so would ensure the columns keep a reasonable size even on mobile, but it would make the whole thing un-responsive!
+
+`grid-template-columns: repeat(6, 140px);`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="overflow:scroll-x;display:grid; grid-template-columns: repeat(6, 140px)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+At this point, you're probably thinking that a media query is needed to make the grid go from `fr` units to `px` units when the viewport is smaller. What a chore right ?...
+
+Well dear reader I have something incredible for you...
+
+<div style="display:flex; align-items:center; justify-content:space-evenly; margin:50px; text-align:center;"><span aria-label="Smiley throwing sparkles" style="white-space:nowrap;">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span><strong>THE INCREDIBLE <br> MEGA AWESOME <br> NO MEDIA QUERIES <br> RESPONSIVE GRID</strong><span aria-label="Smiley being super chill" style="white-space:nowrap;">〜(￣▽￣〜)</span></div>
+
+`grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));`
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(70px, 1fr)">
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+Try resizing it! Great right?! So what's happening here? 
+
+- First, we removed the fixed number of columns in the `repeat` to let the child elements decide how much columns the grid should have. Frightening? Don't worry.
+- Then, we added the `auto-fit` property to let child elements grow in size (it can be replaced with `auto-fill` if you don't want your columns to grow).
+- Finally, we added the `minmax` function that let us define what the minimum and maximum size the column should have. We set a pixel width at the minimum to forbid the columns to shrink too much, and a fractional unit as the maximum to allow them to take as much space as they want.
+
+What it means is this: the grid will try to stack as many children as possible inside the available width until the minimum size is met. In this case, a new row will be created.
+
+## Ok but how do I position stuff?
+
+In CSS frameworks like Bootstrap, you have utility classes to say _start here and span this much columns_ and you can do exactly the same with CSS Grid, using the `grid-column: ? / ?;` shortcut property on the column of your choice. 
+
+There's actually two syntax you can use:
+
+? `? / ?` : Where the first `?` is the starting column and the second `?` is the ending column.
+? `? / span ?` : Where the first `?` is the starting column and the `span ?` is the width of the column in `fr` unit.
+
+
+Let's try different things with our grid:
+
+```
+grid-column: 1 / 3;
+grid-column: 5 / span 2;
+grid-column: 2 / span 4;
+grid-column: 2 / span 1;
+grid-column: 5 / span 1;
+grid-column: 1 / 7;
+```
+
+Results in:
+
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(70px, 1fr)">
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 1 /3">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 5 /span 2">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 2 /span 4">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 2 /span 1">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 5 /span 1">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-column: 1 /7">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+## Ok, what about the rows?
+
+It's basically the same as the columns, except it's for the rows. Use the `grid-template-rows` to declare the number of rows you need. And of course, you can decide where to place each children using `grid-row`, the equivalent for rows of `grid-columns`. It's super useful for art directed pages as you can place everything where you want.
+
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example" aria-hidden="true" style="display:grid; grid-template-rows: repeat(4, 1fr); grid-template-columns: repeat(6, 1fr);">
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 2 / span 1;">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 4 / span 1;">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 3 / span 1; grid-column: 6 / span 1;">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 2 / span 2; grid-column: 3 / span 2;">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 1 / span 4; grid-column: 5 / span 1;">
+        <div class="code-example-value">5</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-row: 1 / span 1; grid-column: 2 / span 1;">
+        <div class="code-example-value">6</div>
+    </div>
+</div>
+
+## All this is quite complicated, is there a simpler way?
+
+It can become messy to work this way, so one final tip for you: the best way to make complex layouts from row and grids is to use `grid-template-area: ??;` and `grid-area: ??;`, a very funky yet super useful combination of CSS grid.
+
+With this syntax, you _draw_ your layout inside a string in CSS, declaring names for each of your child elements. Let's say we have 5 elements that we want to shape like a star. The result would look like this:
+
+```
+grid-template-areas: 
+"lefttop . righttop"
+". center . "
+"leftbottom . rightbottom";
+```
+
+By doing this, we created a 3 by 3 grid. The `.` character inside the declaration means an element exists but has no name and thus, should be given empty space. Now all we have to do is report those names to our children and _ voila_:
+
+<span class="visually-hidden">Hidden code demo below.</span>
+<div class="code-example code-example-grid-star" aria-hidden="true">
+    <div class="code-example-children-grid pattern-dots" style="grid-area: lefttop;">
+        <div class="code-example-value">1</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: righttop;">
+        <div class="code-example-value">2</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: center;">
+        <div class="code-example-value">3</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: leftbottom;">
+        <div class="code-example-value">4</div>
+    </div>
+    <div class="code-example-children-grid pattern-dots" style="grid-area: rightbottom;">
+        <div class="code-example-value">5</div>
+    </div>
+</div>
+
+This syntax is very useful for more visual minded people and can lead to great art directed pages. The Smashing Magazine website has a very nice article on the subject on this {https://www.smashingmagazine.com/2018/04/art-directing-web-css-grid/, "page"}.
+
+## I want MOAR!
+
+If you want to train your CSS grid skills, try playing the amazing Grid Garden game on this {http://cssgridgarden.com/, "page"}. If you want more examples but in a sort of short video format, visit this {https://www.youtube.com/watch?v=DCZdCKjnBCs, "page"}. For a complete free video course on CSS Grid, I recommend {https://www.youtube.com/playlist?list=PLu8EoSxDXHP5CIFvt9-ze3IngcdAc2xKG, "this one"}.
+
+*And that's it for modern layout in HTML and CSS!* 
+
+Congratulations for reading thus far, that was a lot to take! Now let's talk about the content of your pages and about the elements you're going to use to format it!
+
+Next: {order-your-titles-correctly.html, "Order your titles correctly"}
+
+====
+
+NAME: Order your titles correctly
+HOST: HTML tips
+BREF: How to handle titles in HTML so they are logically ordered and accessible
+PRIV: false
+BODY:
+
+
+# Order your titles correctly
+
+This one is simple, use `<h1>`, `<h2>`, `h3`, etc... Your page should at least have an `<h1>` and should not jump from `<h1>` to `<h3>` without an `<h2>`. If you want a smaller title, use CSS but don't ruin the semantic for styling purposes! The same applies when, for example, you have a smaller title before the main title. If this happens, change the smaller title to a simple text.
+
+The reason why it is important is because screen readers users have shortcuts that allows them to jump directly to your titles and count on you to organize them logically. In long pages it can rapidly become hard to link to certain parts of your page.  Adding an id and a hidden link to your titles can help your users share specific parts of your page. With this technique, the user can click the title to add the id to the url.
+
+This website actually uses this system. You can find the JavaScript function for this {https://github.com/Thomasorus/Kaku/blob/master/src/module.js, "in the github repo of my parser"} {/kaku.html, "Kaku", Go to Kaku page}.
+
+Next: {organize-your-text-content.html, "Organize your text content"}
+
+====
+
+NAME: Make your links clear and accessible
+HOST: HTML tips
+BREF: A collection of HTML basic tips to build simple yet modern websites
+PRIV: false
+BODY:
+
+# Make your links clear and accessible
+
+Links are pretty straightforward, you put an `<a>` with an `href` attribute and you're good right? Yes, but often links lack readability due to poor phrasing. Try not using texts like _more_ or _click here_ outside of clear phrases, as they do not convey what's going to happen when you click. Try to have a different texts for each link. 
+
+If you can't use a more contextualized text, then add the `title` attribute in the link with more context inside, and it will provide a tool-tip when the user hover on the link. You will also have to add an `aria-label` attribute with the same contextualized text for screen readers. 
+
+Inside those attributes, don't use the work "link". It's not explicit, it doesn't convey meaning. Also because screen readers already say _link_, your screen readers visitors will hear _Link, Link_.
+
+Last but not least: if you use `target="blank"` to open to a new tab, you have to vocalize it using the same `aria-label` attribute. Just add `(open in a new tab)` at the end of your text so screen readers users know that the previous page is still open.
+
+So the end result might look like this:
+
+```
+<a href="/home.html" title="Go to the home page" aria-label="Go to the home page (open in a new tab)" target="blank">here</a>
+```
+
+Knowing all this, it's often less work and trouble to just rephrase the link!
+
+Next: {when-to-use-a-button-and-a-link.html, "When to use a button and a link"}
+
+
+====
+
+NAME: Organize your text content
+HOST: HTML tips
+BREF: The useful HTML elements when dealing with text
+PRIV: false
+BODY:
+
+
+# Organize your text content
+
+Remember when I talked about the box-content semantic elements, the `<nav>`, `<main>` and others? Well there's a _lot_ more of them for the text. If you care enough, you can probably find a semantic HTML element for anything. Here's a few that you should use:
+
+## Text blocks with `<p>`
+
+If you don't know what to use for your block of text, your probably need a paragraph. Paragraphs come with a natural margin that makes them readable even without adding style. Paragraphs are good, use them!
+
+## Quotes with `<blockquote>`
+
+The good old quote we often see in articles! It can actually comes with the `<cite>` element and attribute to help you sources your quotes, as well as a `<footer>` to indicate the end of the quote and its author. Take a look at the specifications on {https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote/, "this page"} to make better quotes.
+
+## Lists with `<ul>`, `<ol>`, `<dl>`
+
+If you enumerate something (text, links, etc...) you probably should add them in a list. Lists are useful for screen readers users as they are announced as a list with the total number of elements inside. Then when reading each entry, the screen reader voices its position.
+
+`<ul>` with `<li>` inside creates an unordered list with bullets:
+
+- Element A
+- Element C
+- Element Z
+
+`<ol>` with `<li>` will create an ordered list with numbers for each element:
+
++ Element 1
++ Element 2
++ Element 3
+
+`<dl>` is not very popular but is super useful as it's a definition list. Most people still use two columns tables for definitions, but this is way better for screen readers users. 
+
+? Term 1 : Definition 1
+? Term 2 : Definition 2
+? Term 3 : definition 3
+
+Of course all those lists come with their basic design, but please note that you can change them very easily. You can make your lists go in a single line, change their separation, or even use a custom image instead of dots! Just be careful to not put informative content as a decoration, as it will not be vocalized. Also when reading the source code of a page, HTML lists are very easy to understand.
+
+## Pre-formatted text with `<pre>`
+
+If you have to present some code, it's probably good to wrap it inside a `<pre>` tag to preserve its formatting. Please note that you should also use the inline semantic `<code>` element (we'll talk about it later in these pages).
+
+## Make breaks with `<hr>`
+
+The `<hr>` element is to indicate a break inside your content: a kind of pause, a change of subject. You could think that the old `<hr>` element is useless when we can style these breaks with CSS, but they indicate to screen readers users that they can take a break too! 
+
+Next: {all-about-images.html, "All about images"}
+
+====
+
+NAME: All about images
+HOST: HTML tips
+BREF: How to make images optimized, responsive and easy on bandwidth
+PRIV: false
+BODY:
+
+# All about images
+
+Just as links, images can feel pretty straightforward. Put an `<img>` tag, an `src` and an `alt` attributes and you're good right?!
+
+Well yeah but... what if we could do much more, like loading the right image size depending on viewport, let the browser decide between image formats or even only load images when they are in the viewport?
+
+## Load the right image size and density
+
+The `<img>` element has an `srcset` attribute that allows you to add several links to several versions of your image. You can do two things with `srcset`:
+
++ Ask the browser to change the image depending of the width of the viewport.
++ Ask the browser to change the image depending of the pixel density of the display.
+
+In the example below, I have 4 versions of the same image that I want the browser to use when the viewport is less than 300, 600, 900 and 1200 pixels in width:
+
+```
+<img 
+src="img-1200.jpg" 
+srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w" 
+/>
+```
+
+And for pixel density for 1k, 2k or 4k screens:
+
+```
+<img 
+src="img-1k.jpg" 
+srcset="img-1k.jpg 1x, img-2k.jpg 2x, img-4k.jpg x4" 
+alt="this is an image"
+/>
+```
+
+But you can also combine them, for example for a favicon:
+
+```
+<img 
+src="icon32px.png"
+"icon32px.png 32w, icon64px.png 64w, icon-retina.png 2x icon-ultra.png 3x icon.svg"
+alt="this is an image"
+/>
+```
+
+This way you are sure you only load the right size or density for your readers.
+
+## Load the right image format
+
+You maybe saw it before and wondered what was the `<picture>` element good for? Well it's quite simple, it's used to contain several `<source>` elements and an `<img>` element. 
+
+The `<source>` elements are used to give alternate versions of the same image. The most obvious use-case is to load several formats to allow to browser to pick the lighter if it supports it.
+
+Let's take an example with a `jpg` and a `webp`. 
+
+```
+<picture>
+    <source srcset="img1.webp" type="image/webp">
+    <img src="img1.jpg" alt="this is an image" />
+</picture>
+```
+
+If the browser supports the webp format, it will automatically use the webp file instead of the jpg. Please note that if the browser does not support the `<picture>` element the `<img>` one will still work, so there is no good reason to not use them.
+
+## Lazy loading images
+
+Lazy loading has become native in most browsers and is quite simple to use: `loading:"lazy"` on your `<img>` element and you are good to go. They are several ways of doing lazy loading for older browsers who don't support this feature. All of them require to use JavaScript. If you want to support old browsers, take a look at this {https://css-tricks.com/the-complete-guide-to-lazy-loading-images/, "article"}.
+
+
+## Combine all this together!
+
+But you don't have to choose between all these features, you can combine them to have images at the right size, of the best type, only loaded when in the viewport, and allt his only in HTML.
+
+```
+<picture>
+    <source 
+    type="image/webp" 
+    srcset="img-300.webp 300w, img-600.webp 600w, img-900.webp 900w, img-1200.webp 1200w">
+
+    <img 
+    loading="lazy" 
+    src="img.jpg" 
+    srcset="img-300.jpg 300w, img-600.jpg 600w, img-900.jpg 900w, img-1200.jpg 1200w" alt="The happy hacking keyboard">
+</picture>
+            ```
+
+Knowing that images are the most heavy thing loaded by websites, it's incredible that this syntax isn't more known and used!
+
+## About svg files
+
+The SVG format (for _Scalable Vector Graphics_) is using vector graphics with an XML markup language. It can therefore used in a browser as inline code to display images, which is a good thing as it reduces the number of requests made by the browser.
+
+Here's a few tips:
+
+- During export from programs like Illustrator, Affinity Designer or Inkscape, take care of not exporting an SVG with an image inside.
+- SVG exports often come with a lot of useless information stored inside, which makes them verbose and heavy. Compress them by using an SVG compressor like {https://jakearchibald.github.io/svgomg/, "SVGO"}.
+- The width and height of the SVG doesn't matter much from a file weight perspective but their design can be ugly on unreadable if too small or too big.
+- Most of the time you will put the inline SVG inside a `<div>` or a `<span>` that has a fixed width and height and the SVG file will overflow. To make it fit, use a simple CSS rule like `width:100%; height:100%;`.
+
+SVG can be informative or decorative and its purpose can change the way you handle accessibility. If you are using an SVG for informative purposes (like a graph), you should add a `<title>` to add a tooltip and/pr an `aria-label` attribute to just vocalize it.
+
+```
+<svg role="img" aria-label="Accessible Name">
+  <title>Accessible Name</title>
+  <!-- child elements of the inline SVG -->
+</svg>
+```
+
+If the SVG is used for decorative purposes (like an icon) you can simply hide it using `aria-hidden="true"`.
+
+```
+<svg role="img" aria-hidden="true">
+  <!-- child elements of the inline SVG -->
+</svg>
+```
+
+Next: {all-about-video-and-audio.html, "All about video and audio"}
+
+
+====
+
+NAME: All about video and audio
+HOST: HTML tips
+BREF: Tips and tricks about video and audio codecs for the web and how to use the audio and video elements
+PRIV: false
+BODY:
+
+# All about video and audio
+
+The `<video>` and `<audio>` elements are super easy and convenient ways to embed multimedia content on the web without relying on a third party. But if the tags are very straightforward, the video and audio formats can be a headache.
+
+You have a lot of formats available but most of them are not supported on every browser. To make it quick you have containers and you have codecs. Containers are the format of the file, the `.mp4` for example. Codecs are the compression algorithm used.
+
+So which video codec should you use?
+
+
+## The video codecs and containers supported on the web
+
+If you are in a hurry and can only produce one export, go with the h264 video codec and MP3 audio codec in a `.mp4` container. It will run everywhere. If you think your Firefox users have the AAC codec installed on their machine, you can replace the MP3 codec by AAC as it has better sound quality.
+
+If you want high quality and compression you will have to export your videos two times and do this combination:
+
+? Apple machines : A `.mp4` container with h265 video encoding and AAC audio encoding.
+? Others : A `.webm` container with AV1 video codec and probably Opus for audio encoding.
+
+If you only want open source and cover a maximum of machines, the best combination is probably a `.webm` container with a vp8 for video encoding and mp3 for the audio (mp3 is open source since 2017). Be careful as this won't work in Safari until Safari 14.
+
+## The audio codecs and containers supported on the web
+
+Basically if you want to archive some audio or put in on the web so people can remix it, you'd better use a lossless audio codec and in this case, FLAC is the king, being compatible with almost everything.
+
+If you are putting audio for streaming and want a good quality, the AAC codec in a `.mp4` container is probably a good pick, but be careful of Firefox users without the codec on their systems. For them you can use the Vorbis codec with a `.ogg` container.
+
+If you don't care about quality and just want everything to work, go with `.mp3`.
+
+
+## Wait, I can pick two?
+
+That's the beauty of it, just like with the `<picture>` element, you can add multiple sources to your `<video>` and `<audio>` elements and let the browser choose. 
+
+```
+<audio controls>
+ <source src="foo.opus" type="audio/ogg; codecs=opus"/>
+ <source src="foo.ogg" type="audio/ogg; codecs=vorbis"/>
+ <source src="foo.mp3" type="audio/mpeg"/>
+</audio>
+```
+
+
+## Save bandwidth with these simple tricks!
+
+The `preload="metadata"` attribute only loads the metadata of your files like the first frame or its length until the user plays the file. And if you want to save even more data, use `preload="none"`. In the case of a video, the preview will be totally dark but that can be mitigated by using the `poster` attribute with a link to an image.
+
+Finally, you should know that converting animated gif to videos often result in radically smaller files, and you can trick the user in believing a gif is being played!
+
+## The multiple configurations of the video player
+
+The `<video>` and `<audio>` elements comes with a set of attributes that allows you to tweak how they act. The `<audio>` element is often left untouched but the `<video>` one has several attributes that allows it to act as a video player or as a fake gif!
+
+Make a traditional video with the `control` attribute:
+
+```
+<video controls" src="path to video" type="video/mp4"></video>
+```
+
+Make a fake gif from a video using those attributes. `loop` will restart the video, `mute` will remove sound and `autoplay` will start it automatically. Be careful as `autoplay` will not respect the `preload` attribute, making the video downloaded instantly.
+
+```
+<video autoplay loop mute src="link to fake gif video" type="video/mp4"></video>
+```
+
+Finally, please note that the `playsinline` attribute prevents videos from playing full screen on mobile when launched. If that's not the behavior your want, don't forget to add it.
+
+Next: {doing-forms-correctly.html, "Doing forms correctly"}
+
+====
+
+NAME: Doing forms correctly
+HOST: HTML tips
+BREF: A deep explanation about accessible forms and error handling in HTML
+PRIV: false
+BODY:
+
+# Doing forms correctly
+
+Forms are incredibly complicated to get right from an accessibility standpoint. I don't know all the good practices but I've seen some bad ones that I can warn you about. Please contact me if you find a mistake in this section as I really am not 100% sure about everything.
+
+## Forms require strict HTML
+
+With more people validating forms with JavaScript, we've seen a drop in code quality of forms. But the reality is quite simple: if you forget about some parts of the form, screen readers users will not know they are in a form to begin with!
+
++ A form starts and ends with the `<form>` element even if you validate it with JavaScript. Also add an `id` to it.
++ Each `<input>`, no matter its type, needs and `id` and a `<label>` with the `for` attribute pointing to it. 
++ If you have a multi-section form, regroup them with the `<fieldset>` element and add the `<legend>` element as the "title" of this fieldset.
++ End your form with a `<button>` when you can, use the `for` attribute to point on the form's id, and use an `aria-label` to give more context.
+
+For accessibility reasons:
+
+- Use contextualized text for your labels, be precise about what each input is about! If you can't have a clear label, same as links: add a `title` attribute to the input as well as a `aria-label`.
+- Don't rely on the `placeholder` attribute for examples of what is expected! The placeholder text is often hard to read and disappears once the input becomes active, making it difficult for users with cognitive impairment.
+- If you want to add an example of what is expected from the user, you can either add it directly in the label (often not very accepted by designers) or add it below the input and then refer to it with the `aria-describedby` attribute (see example below). Using this, screen readers will first read the label, then the `aria-describedby` text in one go.
+
+Wrapping it up, here's an example that you can inspect with your browser's developer tools:
+
+<span class="visually-hidden">This is a form demo below, not a real one, don't activate it!</span>
+<form id="monsters">
+  <fieldset>
+    <legend>Choose your favorite monster</legend>
+    <small id="error" style="color:red; display:none;">Error: you need to choose a monster.</small><br/>
+
+    <input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc">
+    <label for="kraken">Kraken</label><br/>
+    <small id="kraken-desc">The kraken is a kind of giant squid.</small><br/>
+
+    <input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc">
+    <label for="sasquatch">Sasquatch</label><br/>
+    <small id="sasquatch-desc">The Sasquatch is a kind of giant ape.</small><br/>
+
+    <input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc">
+    <label for="mothman">Mothman</label><br/>
+    <small id="mothman-desc">The Mothman is a kind of giant moth.</small><br/>
+  </fieldset>
+</form>
+<button type="submit" form="monsters" value="Submit" aria-label="Validate the monsters form">Validate</button> 
+
+That's it for the code, but more often than you think, bad forms are the result of non inclusive design practices, some of which we will see below.
+
+## Information below forms
+
+Ever filled a form and right under the validate button, seen a wall of text written in 10 pixels size that is actually the terms and conditions? Well that can be a problem!
+
+Most forms end with words like _Continue_ or _Validate_ and by doing so, suggest that the page is finished. A screen reader user can't know there's something else below. 
+
+This problem can be super tedious to explain to designers as most of them don't want a wall of text before the form, and don't ever suggest this to a marketing team! So an accessible solution is to simply use an invisible anchor link pointing to the wall of text right before the form starts.
+
+Screen readers users are humans too, they dislike walls of text about legal stuff like anyone else! This solution allows them to either read it or even better, skip it, like we all do _right?_
+
+## Don't put text sections inside a form!
+
+You probably already tried to tab between inputs in a form. That's because inputs are capturing elements that *you can only escape by using the tab key*. And when you do, *the tab key will lead you to the next native focus-able element* like another input, a button or a link. 
+
+It's important because too many designers put big explanation texts about the form between inputs. Since screen readers users can only use the tab key to get out of an input and will land on the next focus-able element, they will not have the explanation texts vocalized and have no way of access them. We saw that `aria-describedby` can be used to link to a descriptive text, but that's applying a bandage on a broken leg.
+
+Removing texts sections inside forms might seem like a chore and, when talking about it with designers, they will probably tell you it's a going to make the whole experience bland or suffocating in the case of massive forms. 
+
+But the reality is that *a form that needs explanation texts between inputs is a bad design right from the start*. You should give all necessary information before filling the form, otherwise users might start filling it and realize in the middle they didn't have to, or are not concerned about it. 
+
+Your labels with the descriptions attached should be enough to make it a pleasant and understandable experience. Yes forms are not fun but we can't sacrifice usability to some _funnel_ concept marketers enjoy to create.
+
+## Handling errors in forms is a pain
+
+Handling errors in forms is super complicated and nobody seems to agree about how to do it correctly. It's especially hard with accessibility in mind, and not only because of screen readers. So take my advises with a grain of salt as I may be wrong on some cases and am still learning about this.
+
+The first rule to respect is that triggering error messages should only happen either when the user tabs out of the input or when the user validates the form. Don't trigger error messages while the user is typing. Wait for him to go out of the input or it will be a vocalized nightmare or a panic inducing behavior. You might think that's counter-intuitive as screen readers users may not know that they wrote it wrong but that's actually OK if you do the following right.
+
+When the user validates the form using the button, if an input is required and not filled or wrongly filled, move the user focus to this problematic input using the `.focus()` function in JavaScript. This way the user can promptly fill or fix it, then go back below super fast to validate the form again.
+
+The error message should be added the same way as the instructions, with an `aria-describedby`. You can actually have two `id` as a value for `aria-describedby`, so screen readers will read the label, then the description, then the error message. Finally, a `aria-invalid="true"` needs to be added to each invalid input.
+
+For the sake of the example, imagine we did not choose a monster below and tried validating the form. In JavaScript, we should add the `error` id to each input's `aria-describedby` so screen readers can vocalize the error message, and remove the `display:none` from the error message itself so non-screen readers users can see it too.
+
+<span class="visually-hidden">There is a form demo below, you can inspect it using the development tools.</span>
+<form id="monsters">
+  <fieldset>
+    <legend>Choose your favorite monster</legend>
+    <small id="error" style="color:red;">Error: you need to choose a monster.</small><br/>
+
+    <input type="radio" id="kraken" name="monster" aria-describedby="kraken-desc error" aria-invalid="true">
+    <label for="kraken">Kraken</label><br/>
+    <small id="kraken-desc">The kraken is a kind of giant squid.</small><br/>
+
+    <input type="radio" id="sasquatch" name="monster" aria-describedby="sasquatch-desc error" aria-invalid="true">
+    <label for="sasquatch">Sasquatch</label><br/>
+    <small id="sasquatch-desc">The Sasquatch is a kind of giant ape.</small><br/>
+
+    <input type="radio" id="mothman" name="monster" aria-describedby="mothman-desc error" aria-invalid="true">
+    <label for="mothman">Mothman</label><br/>
+    <small id="mothman-desc">The Mothman is a kind of giant moth.</small><br/>
+  </fieldset>
+</form>
+<button type="submit" form="monsters" value="Submit" aria-label="Validate the monsters form">Validate</button> 
+
+
+Because of all this and contrary to popular practices, *it's forbidden to disable a form button*, even if the user made errors or did not finish filling the form. If the validation button is disabled it disappears from vocalization and the user has to travel through the whole form to find which input is not good. This is less practical than sending him directly to the input when the button is clicked.
+
+Applying this can be tricky on legacy applications that handle errors in a monolithic way. Even if you do front-end surface level error checking, the user might make a typo that can only be identified when the form is sent and the back-end discovers it by using information stored in a database. If this happens, the error handling in the back-end needs to be written in a way that returns which information is wrong, to allow the front-end to `.focus()` on the wrong input. 
+
+If the back-end returns a vague message then the front-end can't do anything outside using `.focus()` to move the user to a standard error message, and the user has to redo the entire form and find by himself what he did wrongly. This is a super bad user experience even for non-disabled users.
+
+The best solution is of course to do error checking on the back-end on each input with an ajax call right after the user exits it. But for various reasons going from time to cost of requests, it's not always possible.
+
+Good luck with your forms and more than anything, *test your forms with real users, disabled or not, to find out if everything is ok*. On this particular subject, you can't trust yourself, your client, product owner, designer or common tester. You need real, fresh experience.
+
+Next: {tables-are-not-that-complicated.html, "Tables are not that complicated"}
+
+====
+
+NAME: Strong b em and i
+HOST: HTML tips
+BREF: What's the deal with strong, b, em and i in html? Which one I pick?
+PRIV: false
+BODY:
+
+
+# `<strong>` versus `<b>` versus `<em>` versus `<i>`
+
+Here we are, at the doors of the great war of semantic inline elements. So who's right between `<strong>` and `<b>`? Who wins between `<em>` and `<i>`?
+
+Well, they all win.
+
+Everyone is a winner excepts us the developers who have to implement this. Let's try to explain this strange situation. 
+
+Imagine a website for a touristic area with a cliff:
+
+- The `<b>` tag is used to draw the reader's attention. So it should draw attention to the cliff: "This wonderful area has a forest but also a <b>wonderful cliff</b>".
+- The `<strong>` tag is to indicate the importance and seriousness of something. So it should warn people about the cliff: "Please be careful near the cliff as *there are no ramps to prevent you from falling and the winds are strong*".
+- The `<i>` tag is used to indicate that something is set off from the normal prose. For example it should be used for the foreign name of the cliff: "This cliff name is <i>mh'irr'la</i>" or the thoughts of someone thinking about the cliff: "<i>Is the cliff really in love with me or is it just a farce?</i> thought Jonathan".
+- The `<em>` tag is used to stress something on the subject, almost as if you speak it aloud. So it should help denote something about the cliff: "Ah yes, the _cliff_, the one that is actually 2 meters tall".
+
+I hope it makes sense. The sad reality is that no one writes prose in HTML, so you'll probably be stuck with whatever the <abbr title="What you see is what you get">wysiwyg</abbr> editor or markup language parser of your choice decided to use. For example this page is written using {/kaku.html, "Kaku", Go to Kaku page} who compiles to `<strong>` and `<em>` by default. 
+
+Next: {other-kinda-useful-semantic-elements.html, "Other kinda useful semantic elements"}
+
+====
+
+NAME: When to use a button and a link
+HOST: HTML tips
+BREF: Buttons and links are used for different things, here's an explanation
+PRIV: false
+BODY:
+
+
+# When to use a button and a link
+
+For most document type websites the question between links and buttons doesn't really exist. But in application type websites, it's often that developers don't pick the right one or that designers make links look like buttons. 
+
+So to make it clear:
+
+- An `<a>` is for a page change or a new tab. When changing page, a screen reader user will be automatically moved to the top of the page and will start reading it from there.
+- A `<button>` is for activating something like a modal or a form. Once pressed, even if things change in the page, it doesn't move a screen reader user somewhere else and it doesn't vocalize anything.
+
+This difference of behavior is super important, especially in single page JavaScript web applications where urls are changed dynamically, but no page change is triggered in the browser! When such a thing happens, the developer has to manually move the focus of the screen reader user to the next point of interest inside the app and vocalize what happened and where the user is.
+
+To do this, the developer has to use the `.focus()` function in JavaScript. I'm not 100% sure about how to vocalize the page change so I'm not gonna give any advice on this. If you know good practices please {about.html, "contact me"} so I can update this part.
+
+One last thing: I don't care about your reasons, don't replace a `<button>` by a `<div>`.
+
+Next: {strong-b-em-and-i.html, "The mess of strong b em and i"}
+
+====
+
+NAME: HTML interactive elements
+HOST: HTML tips
+BREF: Interactive HTML elements are like small native components that can help in some situations
+PRIV: false
+BODY:
+
+
+# Some cool HTML interactive elements
+
+You might not know these but they can be super useful. Their main default is that they are sometimes hard to style properly.
+
+? `<details>` and `<summary>` : Allows you to make a kind of accordion box in pure HTML. By default closed but the `open` attribute on `<details>` can make it open.
+? `<datalist>` : Can be used as an input with a list of options auto-suggested by what the user is typing.
+? `<progress>` : A progress with several attributes for showing progress. It's very hard to style correctly but you can have the same accessibility by using the `role="progressbar` on a div.
+
+<details>
+  <summary>Click me for a code demo</summary>
+  [media/dio.jpg, You though it was code but it was me Dio!"]
+</details>
+
+A datalist can be useful but requires a full form, which is quite a lot of code:
+
+<label for="jojolist">Choose a Jojo character from this list:</label><br>
+<input list="jojo" id="jojolist" name="muchJojo" />
+<datalist id="jojo">
+  <option value="Jonathan">
+  <option value="Joseph">
+  <option value="Jotaro">
+  <option value="Josuke">
+  <option value="DIO">
+</datalist>
+
+
+A progress bar using `<progress>` has this look:
+
+<progress aria-valuenow="20" aria-valuemin="0" aria-valuetext="Step 2: Copying files... " aria-valuemax="100" style="display:block; width:100%;">20 %</progress>
+
+
+Use the `role="progressbar" to style it more easily:
+
+<div style="border:1px solid black">
+<div role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="pattern-dots" style="width:20%; text-align:center;">20 %</div>
+</div>
+
+
+====
+
+NAME: Other kinda useful semantic elements
+HOST: HTML tips
+BREF: The HTML elements you probably don't know but that could be useful in some situations
+PRIV: false
+BODY:
+
+
+# Other kinda useful semantic elements
+
+Below are elements often complicated to add if you use a CMS or a markup language like Markdown as they don't give syntactic shortcuts for most of them, so you have to write them by hand. 
+
+Favor these semantic elements when working for very specific projects where text cannot always convey all the meaning by itself. If you have a design system, incorporating them to specific components could probably increase their usage.
+
+? `<abbr>` : Stands for abbreviation. Can be used for currencies for example.
+? `<code>` : For code, obviously, often best used with `<pre>`.
+? `<time>` : For time values of course.
+? `<mark>` : To highlight some parts of your text.
+? `<s>` : Strikes the text to indicate it's no longer relevant. Don't confuse it with `strike` who just strikes the text for... design?
+? `<del>` & `<ins>` : If you have an edit to make to a text and want to keep trace of the change `<del>` and `<ins>` are a good pick!
+
+Next: {html-interactive-elements.html, "Some interactive elements that can be useful"}
+
+
+====
+
+NAME: Tables are not that complicated
+HOST: HTML tips
+BREF: How to do accessible tables (it's not that complicated)
+PRIV: false
+BODY:
+
+# Tables are not that complicated
+
+There isn't a lot about tables that is not already well known. For accessibility you might want to be careful of a few things.
+
+The `<caption>` element should be added to all your tables as sort of title for this table. It will inform all users what the table is about: `<caption>I'm a table title!</caption>`. Use the `scope="col"` on your `<th>` columns to explain to screen readers that the element is a the start of the column and `scope="row"` for the same `<th>` elements that start rows. 
+
+If you need to make more complicated tables accessible, try take examples in the MDN documentation on this {https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced, "page"}.
+
+Next: {make-your-links-clear-and-accessible.html, "Make your links clear and accessible"}
+
+
+====
+NAME: CSS good practices
+HOST: Html tips
+BREF: CSS Good practices to optimize file size and specificity and not hate CSS
+PRIV: false
+BODY: 
+
+# CSS Good practices to optimize file size and specificity
+
+In the past CSS had such limitations and was so badly understood by most developers that using frameworks or libraries was seen as the only way to get things working. {https://getbootstrap.com/, "Bootstrap"} was the king of CSS frameworks and with it came a ton of code that was most often not used at all. The only usable alternative was probably {https://get.foundation/, "Foundation"} or SASS libraries like {https://www.oddbird.net/susy/, "Susy"}.
+
+Fortunately today we have a lot of choice! We still have Bootstrap, but also lighter alternatives like {https://bulma.io/, "Bulma"} or totally different propositions like the utility first {https://tailwindcss.com/, "Tailwind"}. Also tools like {https://purgecss.com/, "Purge CSS"} can help reduce the size of CSS bundles by removing the unused parts of CSS frameworks.
+
+In reaction to fully equipped frameworks we've also seen class-less CSS frameworks rising in popularity for a few years and they come with the promise of a small file size that correctly styles a website with only the HTML elements. That indeed sounds like a smart idea as it forces the developer to use {what-is-semantic-html.html, "semantic HTML"}.
+
+But if you have to extend this kind of framework with your own design and don't want to use classes, you're going to create more troublesome code that you think.
+
+## Enters specificity
+
+> "Specificity is the means by which browsers decide which CSS property values are the most relevant to an element and, therefore, will be applied. Specificity is based on the matching rules which are composed of different sorts of CSS selectors.", MDN, About specificity, https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+
+So what are the more specific and less specific things you can meet in CSS? Here's a list from more to less specific:
+
++ IDs
++ Classes, attributes and pseudo classes
++ Elements and pseudo elements
+
+Knowing this, some practices can create a lot more specificity than others. Among them, these are the worst:
+
+- Using IDs as they are single use.
+- Nesting selectors, for example `.navigation .navigation-list` doubles the specificity of the later and prevents it from working outside the former.
+- Qualifying selectors, the action of sticking a class to a specific HTML element like `ul.navigation`
+
+Specificity is why a lot of people hate CSS:
+
+- It makes it hard to extend an existing code base if everything is super specific
+- It can trigger repaints of existing elements, thus creating flashes when loading the website
+- It makes the code super verbose and hard to maintain
+- It creates code segments that can't be reused in another situation
+
+So as you can see, it's not just a technical thing but a good practice methodology to take specificity seriously.
+
+## Chain elements or use a class?
+
+To come back to our no-class CSS topic, we find ourselves in front of a dilemna.
+
+Let's say you want to add red to your links located in a list in the navigation of your website, using only HTML elements and no classes. It would look like this:
+
+```
+nav ul li a {
+    color:red;
+}
+```
+
+Since browsers read CSS from right to left, each time they meet a new element in this declaration, they have to re-compute the design. This is how the browser interprets this chain:
+
++ _I style links to red_
++ _Wait it's only links in lists that need red_
++ _Crap, it was only links in lists in the navigation that need red_
+
+Unless you have a terribly big CSS file that takes a lot of time to be parsed and triggers a lot of refresh, of course you will not see this happening. But this is still happening under the hood.
+
+Now let's compare this to a simple utility class:
+
+```
+.redcolor {
+    color:red;
+}
+
+<a class="redcolor">
+```
+
+With this code, the browser only thinks _if I see a redcolor class, I add red_. And that's it, no repaint, no problem. But here's the thing: *chaining HTML elements is calculated as less specific than using a class*.
+
+So who is right and who is wrong? The browser is right, but ultimately, the no-class CSS is worse:
+
+- It's more verbose
+- It's harder to extend the existing code and will get even more verbode when doing so
+- It can't be reused in another context since it's tied to specific parents
+
+So in the end, using class is a better idea. The no-class CSS methodology is good, but only works as a starter point for global elements.
+
+## Tips and tricks for your CSS
+
+So in the end what should you do if you want to maintain small CSS file size and low specificity? Here are some rules that you can apply to almost every project:
+
+- Style HTML elements for broader usage. The moment you start chaining them means you need a class
+- Never nest or qualify classes and instead, use a simple yet effective naming methodology like {http://getbem.com/introduction/, "BEM, Block Element Modifier"}
+- Try to organize your CSS file with less specific elements at the top and ery specific elements at the bottom, which is often refferred to the {https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/, "Inverted Triangle"} methodology
+- Using a methodology like BEM might help you think about your CSS classes as objects than can be reused and extended, a good practice called {https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/, "Object Oriented CSS"}
+
+You can check your specifity using this {https://specificity.keegan.st/, "specificity calculator"} and check if your file has his specific code in order (from less to more) using this specificity {https://jonassebastianohlsson.com/specificity-graph/, "graph generator"}.
+
+By doing this your code will be lighter, easier to maintain, reusable and extendable like objects, and won't trigger repaints.
+
+====
+
+NAME: 2019
+HOST: tracking
+BREF: All things I read, watched in 2019
+PRIV: false
+BODY:
+
+# 2019 Overview
+
+## Readings of 2019
+
+All the things I read in 2019.
+
+`...` Means the series is still ongoing but that I started it in 2019
+
+### Novels
+
+- The Remembrance of Earth's Past trilogy - Liu Cixin
+- The unfathomable depth of loneliness - Hao Jinfang
+- The Book of the New Sun Vol.1 - Gene Wolf 
+- Viking Mythology - Neil Gamain
+
+### Mangas
+
+- Beastars...
+- Vinland Saga...
+- Kingdom...
+- Yagate Kimi ni Naru (Bloom into You)
+- Shamo
+- Sun Ken Rock
+- Kusuriya no Hitorigoto...
+- Goblin Slayer...
+- Blame! (reprint)
+- Aposimz...
+- No gun's life...
+- At the Mountains of Madness (Lovecraft by Gou Tanabe)
+- In the abyss of time (Lovecraft by Gou Tanabe)
+- Shishunki Renaissance! David-kun
+- Gunnm (reprint)
+- Gunnm Last Order
+- Gunnm: Mars Chronicles...
+- Blue Giant
+- Saltiness
+
+### Comics
+
+- Shangri La
+- Mecanique Céleste
+
+### Art books
+
+- Gustave Doré (Catalogue d'exposition Gustave Doré - Musée d'Orsay)
+- Katsuya Terrada Real Size
+
+### Magazines
+
+- L'étiquette 1 & 2
+- Atom Magazine
+
+### Notable articles
+
+- {https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real, "How William Gibson Keeps His Science Fiction Real"}
+- {http://paulgraham.com/genius.html, "The Bus Ticket Theory of Genius"}
+- {http://www.slate.fr/story/184164/boulangeries-guerre-culturelle-pain-adieu-baguette-disparition-petit-commerce, "La France du pain est coupée en deux"}
+- {https://www.nytimes.com/interactive/2019/11/16/world/asia/china-xinjiang-documents.html, "Absolutely No Mercy: Leaked Files Expose How China Organized Mass Detentions of Muslims"}
+- {https://www.forbes.com/sites/johnkoetsier/2019/09/02/hong-kong-protestors-using-mesh-messaging-app-china-cant-block-usage-up-3685/, "Hong Kong Protestors Using Mesh Messaging App China Can't Block"}
+- {https://matthiasott.com/articles/into-the-personal-website-verse, "Into the Personal-Website-Verse"}
+- {https://www.gamekult.com/actualite/une-petite-histoire-du-jeu-de-baston-en-dix-morceaux-3050819125.html, "Une petite histoire du jeu de baston en dix morceaux"}
+- {https://www.newyorker.com/magazine/2019/04/08/the-day-the-dinosaurs-died, "The Day the Dinosaurs Died"}
+- {https://kotaku.com/how-biowares-anthem-went-wrong-1833731964, "How BioWare's Anthem Went Wrong"}
+
+## Writings of 2019
+
+All the things I wrote in 2019.
+
+### Wrote
+
+- {https://www.redbull.com/fr-fr/evo-2019-tournois-esport-infos, "L’EVO 2019, le plus gros tournoi esport du monde"}
+- {https://www.redbull.com/fr-fr/lethal-league-blaze-esport, "Lethal League Blaze, l’autre jeu de combat qui ne dit pas son nom"}
+- {https://www.redbull.com/fr-fr/samurai-shodown-esport-jeu-combat, "Samurai Shodown, l’original outsider de l’esport baston"}
+- {https://twitter.com/Thomasorus/status/1144623832587821056, "Embrasser, étendre, étouffer le podcast"}
+- {https://basgrospoing.fr/fr/articles/la-schizophrenie-street-fighter-iii-third-strike, "La schizophrénie Street Fighter III: Third Strike"}
+- {https://www.redbull.com/fr-fr/mortal-kombat-pro-kompetition, "Premières fatalities sur Mortal Kombat XI"}
+- {https://www.redbull.com/fr-fr/rza-mortal-kombat?linkId=65552039, "RZA : une main de velours dans un gant de ninja"}
+
+### interviewed
+
+- {https://twitter.com/Vincent_Jule/status/1144341580771409921, "Samurai Shodown: Le retour d'une franchise culte... et un nouvel âge d'or du jeu de combat?"}
+
+### Published
+
+- {https://basgrospoing.fr/fr/articles/theorie-ruissellement-jeu-de-combat-esport, "Trickle-Down Economics in the FGC and E-Sports"}
+
+### Played
+
+- Flappy Fighter
+- Untitled Goose Game
+- Mortal Kombat XI
+- Samurai Shodown 2019
+- Apex Legends
+- Furi
+- Thumper
+- Céleste
+- Hollow Knight
+- The Red Strings Club
+- Tekken 7
+- Disco Elysium
+- A Plague Tale: Innocence
+
+### Coded
+
+- {https://podcastouvert.fr/, "Podcast Ouvert"}
+- {https://claviers-mecaniques.fr/, "Claviers mécaniques") - Frontend
+- {https://happy-tereshkova-b21ae0.netlify.com/, "Art Eater"}
+- {https://github.com/Thomasorus/Podcast-player, "A podcast player"}
+- {https://github.com/Thomasorus/UI-concept-tests,"Some concepts for UIs"}
+- {https://github.com/Thomasorus/wiki-engine, "My wiki engine"}
+- A ton of interfaces at work with accessibility
+- Web components with accessibility
+
+## Watched in 2019
+
+All the things I watched in 2019.
+
+... Means the series is still ongoing but that I started it in 2019
+
+### Anime
+
+- Carole & Tuesday
+- Sailor Moon S1 (original show)
+
+### Movies
+
+- Promare
+
+### Documentaries
+
+- 10 years with Hayao Miyazaki
+
+### Series
+
+- Mindhunter
+
+### Tv shows
+
+- Terrace House
+
+### Notable videos
+
+- How Mind Control Saved Oddworld: Abe's Oddysee
+- The Real Fake Cameras Of Toy Story 4
+
+
+====
+
+NAME: Empty and Full
+HOST: Stories
+BREF: A story about flowers and brambles
+PRIV: true
+BODY:
+
+# Empty and Full
+
+The story of *Empty and Full* narrates how {the-first-one.html, "The First One"}, an immortal being tries to restore balance in an universe he subverted. The whole saga is divided into three major stories: Eat The World, Boxes Filling Space and a third unknown story.
+
+Globally, *Empty and Full* is used a playground to experiment storytelling and painting, but also to question personal philosophical interrogations.
+
+====
+
+NAME: The First One
+HOST: empty and full
+BREF: The first one is the main character of Empty and Full
+PRIV: true
+BODY:
+
+# The First One
+
+The *First One* is the main protagonist of {empty-and-full.html, "Empty and Full"}.
+
+## Eat The World
+
+He was born onto one of the {flower-houses.html, "Flower Houses"} and as the only descendant of his family, the direct heir to inherit a Flower House. His mother died giving him birth, making his father resent him. He grew in solitude and was given a strict education that left him without space to breathe.
+
+At the {age-of-trial.html, "Age of Trial"}, he was sent to war, like all others of his kind. As the only heir of his family, he should been given a secure position during his two cycle service. Unfortunately, his father opponents maneuvered to place him in the battlefield, hoping for its death and the possibility to inherit his family's Flower House.
+
+During his two cycles service, The First One managed to survive all the battles he was sent to. He made a lot of companions among the Brambles Folks, broadened his horizons and developed a profound anti-war and anarchist attitude. Unfortunately, he was injured during his last battle at the end of his two cycles service. He lost his two arms and was heavily disfigured. Not capable of fighting, he was sent home where he discovered died not long ago.
+
+Not willing to have children and incapable of handling most political and administrative tasks he inherited with the Flower House, he called his ancient war companions for help. As law forbids to inherit a Flower House when its owner is still alive, The First One organized its own as an anarchist organization and drafted a testament where he gave away everything he had to its group.
+
+After a few years later, once all the talks about his political choices disminished, he announced to his closest companions his will to free all the slaves living on his Flower House. By doing so, he hoped it would encourage a more global slave revolution on the other Flower Houses. He also said his Flower House should be open to anyone and that it's wealth should be shared with the Brambles Folk.
+
+
+====
+
+NAME: Age of Trial
+HOST: Empty and full
+BREF: The explanation about the age of trial
+PRIV: true
+BODY:
+
+# Age of Trial
+
+The Age of Trial is the age kids are sent to participate into the War on Brambles. They have to serve for two cycles before going home. Depending on their social standing they are given different roles. The most fortunate are given strategist and secure positions to ensure their families won't lose them. The common people are trained to battle and a lot of them never goes back home.
+
+
+====
+
+NAME: It Eats The World
+HOST: Empty and full
+BREF: The first part of the empty and full series
+PRIV: true
+BODY:
+
+# It Eats The World
+
+It Eats the World is the first arc of {empty-and-full.html, "Empty and Full"}. It tells the story of several beings led by The First One, a creature betrayed by its kind seeking revenge. As he refused to be taken to eternal rest by its own God so he could take revenge, he concluded a pact with The Brambles and became an enslaved immortal.
+
+As both the vessel and slave of The Brambles, he then proceeded to recruit other outcasts and shared his powers with them. Together they started a general war with the goal of destroying void itself by filling it with The Brambles.
+
+
+====
+
+NAME: Flower Houses
+HOST: Empty and full
+BREF: Flower houses are giant flower capable of containing entire populations
+PRIV: true
+BODY:
+
+# Flower Houses
+
+Flower Houses are gigantic habitable flowers. They mostly belong to wealthy families, who use the light and warmth to grow food and medicinal plants. As it's almost impossible to grow anything into the Brambles, Flower Houses provide a massive amount of the global food consumed.
+
+Products from the flowers themselves or their leaves are also used to create luxurious goods, rare medicine and elaborate clothing. Most Flower Houses rely on enslaved Bramble Folks for their workforce, promising them a better life, sunlight, absence of war.
+
+====
+
+NAME: Flower harvesters
+HOST: Empty and full
+BREF: Flower harvesters are a cast specialized in finding flower houses
+PRIV: true
+BODY:
+
+# Flower harvesters
+
+Flower harvesters are a cast of specialized biologists trained to art of survival in the brambles. Most of the time, they are hired by privilegied individuals looking for new {flower-houses.html, "flower houses"}. When they find a potential flower house, they note its location by going at the top of the brambles and looking at the stars. Then they rate the flower chance of survival and if it can't survive or grow big enough to form a new house, they harvest it or leave it alone.
+
+The harvesters are easily identified by their full black clothing used to camouflage, their strange mask for those wearing them, or their darkened skin color. Harvesters are also a rarety. They require several years of education before being able to explore the brambles and a lot of them die in their first years. Despite what most people think, they are not a cult and don't worship any specific god. They also don't obey any flower governement, as there's no governing entity in the brambles.
+
+The rate of flower discovery has been increasing as harvesters became more efficient in their survival craft. But the rate of new habitable flowers remain low. The last discovered habitable flower house happened 317 units ago.
+
+
+## Equipment
+
+Flower harvesters all share the basic same equipment:
+
+- Shears, saws and blades to cut brambles
+- Fully renforced black clothes to avoid injury and being detected
+- Localisation and mapping tools, compass, paper maps and sextans
+- Hunting tools: bow and arrows, traps
+- A portable greenhouse where they repot small flower they harvested (to be resold later)
+- Suspendable tents and hamacs as well as all the equipment needed to establish camp
+
+## Lifestyle
+
+Flower harvesters live a solitary and autonomous life. They hunt the rare walking animals and gather the rare edible herbs available on the ground, a rarity as most people are living in the upper branches, hunting birds and harvesting white berries. The lack of sun and the food they consume gives them a black and dark purple tinted skin.
+
+Flower harvesters organize their journey according to the brambles' caprices. They can walk for days or sleep in their suspended tents for weeks. When the later happens they often map the areas they went throught or do technical drawing of plants and animals.
+
+====
+
+NAME: The Brambles
+HOST: Empty and full
+BREF: The brambles are a mythological plant asserving the world of Empty and Full
+PRIV: true
+BODY:
+
+# The Brambles
+
+The brambles are a mythological plant asserving the world of Empty and Full
+
+
+==== 
+
+NAME: My ideal phone
+HOST: Knowledge
+BREF: What I wish from a phone
+PRIV: true
+BODY:
+
+# My ideal phone
+
+The advancement in do it yourself and open source electronics for phone parts made me think about what would be my ideal phone. What I'd love is a productivity phone with a touch of audio capabilities for leasure.
+
+Ideally the hardware would have:
+
+- A physical keyboard like the Blackberry phones
+- An energy efficient and readable small screen
+- A 4G antenna to allow sharing connections
+- An USB-C port for charging and data transfer
+- A headphone jack for music and microphone
+- A big storage capacity
+
+On the software side:
+
+- Phone calls and texts of course
+- The ability to use contacts, calendars and notes from a third party provider instead of storing it locally
+- A podcast app with search on the Apple directory, download andd play
+- A music application that can play local files but also download them from a private library
+- A few utility and productivity apps like calendar, calculator, notes, etc...
+- A few discussion apps for open source services like signal and connections
+
+And that's it. Not having a browser would be a huge change as I am addicted to distractions coming from it. No camera is not a huge deal as I would probably buy a dedicated camera instead. The lack of GPS could be bothersome but I don't often travel that much.
+
+====
+
+NAME: The soft power of JavaScript
+HOST: Html tips
+BREF: A reflection on how JavaScript self-sustains itself through never-ending novelty
+PRIV: false
+BODY:
+
+
+# The soft power of JavaScript
+
+I've been thinking a lot about JavaScript lately. Not about the language itself but about the ecosystem, the economics and politics of it and how, like the United States movie industry or the K-pop music industry, it became a soft power tool that we're forced to consume and use. 
+
+I feel it works this way:
+
++ Big Tech releases *thing.js* and people who worked on it promote it in conferences
++ Tech influencers see *thing.js* as a new revenue opportunity that may stick on the long run and start investing in it
++ They publish books, record courses, write blog posts and create a lot of noise around *thing.js*
++ Tech leads around the world are tasked to make technical stacks decisions, they look on the internet and see there's a lot of noise surrounding *thing.js* and that it's a big tech product
++ *thing.js* is now choosen as the corner stone of the stack and developers have to learn it to find jobs: they buy courses, go to bootcamps, watch videos, read blog posts, giving money to influencers
++ Rince and repeat
+
+To me this spiral of events narrows our ability to think outside this ecosystem. It gives us the illusion of choice (_React, Vue, Angular, Svelte?_) and simplicity (_just npm install!_) and automatically makes us mold projects to the ecosystem (_it's an app not a website_) and increases the overall complexity.
+
+For this very reason and for the same project scope than a previous classic front-end tech stack, small teams then need to grow in size. Suddenly you need a dev ops for builds, a design system lead, more people to slice everything in components, you deport parts of what was usually a backend work to front-end work. But is the output and the durability of the project proportional to the number of people added to the team? I don't think it is.
+
+> "_But jquery was all spaghetti code and manual dom updates! MVC had ugly templates and massive, messy controllers! All this was hard to maintain and hard to evolve!_"
+
+I know about this, having worked on a few projects of this kind. And obviously when you are big tech and have thousands of developers you need to slice everything into bits so people can work. But for us, the normal day developers in small to medium technical departments in small to big companies, what's the benefit? It's hard to compare if the _old way_ of doing things made it harder to maintain and evolve the front-end of a project. But what I'm seeing right now is dozens of job offers in digital services companies for migrations of hundreds of AngularJS components into another framework to basically do the same thing. 
+
+Personally this whole soft power thing increases my imposter syndrome and makes me numb. Always catching up with the next big thing, I didn't asked myself for years if I actually like what I'm using or if it's justified to use it in the first place. The question is not if we should use *thing.js* but if *other-thing.js* is better.
+
+I'm happy I met alternative coding scenes where people ask themselves if what they are doing is sustainable and necessary. I'm happy about what I do at least for personal projects. I know better how, why and where I want to do development in the future. 
+
+Of course I may be wrong about all this. But what I am sure is that this soft power ecosystem is exhausting my love for front-end work, one project at a time.
+
+_21/10/2020_
+
+
+====
+
+NAME: List of JavaScript frameworks
+HOST: Html tips
+BREF: A list of JavaScript frameworks that can be used in different situations
+PRIV: false
+BODY:
+
+# A list of JavaScript frameworks
+
+This list was created by {https://twitter.com/bastianallgeier, "Bastian", Link to Bastian twitter acccount} from the Kirby Team on the Kirby {https://discord.gg/r5AjvspYmY, "Discord"}. For conservation purposes, I reproduced it here. It was then consolidated using Tom Mac Wright article about {https://macwright.com/2020/10/28/if-not-spas.html, "Single Page Apps"} replacements.
+
+## JS-based page transitions 
+
+Using the history API and Ajax requests to fetch HTML of the next page and replace the current body with it.
+
+- {https://github.com/turbolinks/turbolinks, "Turbolinks"}
+- {https://github.com/MoOx/pjax, "PJAX"}
+- {https://barba.js.org/, "Barba"}
+- {https://swup.js.org/, "Swup"}
+- {https://highway.js.org/, "Highway"}
+
+## JS-enhanced HTML 
+
+Event handling/reactivity/dom manipulation via HTML attributes
+
+- {https://github.com/alpinejs/alpine/, "Alpine"}
+- {https://stimulusjs.org/, "Stimulus JS"}
+- {https://htmx.org/, "HTMLX"}
+
+## Inline replacement of components
+
+Static HTML gets updated via websockets or Ajax calls on the fly with small snippets rendered on the server.
+
+- {https://laravel-livewire.com/, "Livewire"} (PHP)
+- {https://docs.stimulusreflex.com/, "Stimulus Reflex"} (Ruby)
+- {https://www.phoenixframework.org/blog/build-a-real-time-twitter-clone-in-15-minutes-with-live-view-and-phoenix-1-5, "Phoenix Liveview"} (Elixir)
+
+## Server-injected SPA
+
+A client-side, component based application (Vue, React, etc) gets its state from pre-rendered JSON 
+
+- {https://inertiajs.com/, "Inertia"}
+
+## Traditional SPA
+
+A client-side, component-based application (Vue, React, etc) but data is being fetched via API (REST or GraphQL).
+
+- Vue app
+- React app
+- Angular app
+
+## Opinionated full-stack JavaScript frameworks
+
+Using existing frontend and backend stacks in an opiniated way to offer a fullstack solution in full JavaScript
+
+- {https://redwoodjs.com/, "Redwood JS"}
+- {https://blitzjs.com/, "Blitz JS"}
+- {https://remix.run/, "Remix"}
+
+
+====
+
+NAME: Freelancing notes
+HOST: Knowledge
+BREF: Personal notes on freelancing
+PRIV: true
+BODY:
+
+# Freelancing notes
+
+This page is about freelance work related to web projects (design, user experience, development, counseling). 
+
+## The types of freelancers
+
+There are two types of freelancers that I know about in this field:
+
+? Mercenaries : They execute the work, do it fast and for various clients. Since they are just implementing and not leading the project, their rates is lower than experts.
+? Experts : They lead a project and sometimes implement it at the same time. They have less clients, for a longer period and a higher rate.
+
+Both types are legitimate and needed in the field. Both have pros and cons:
+
+- Mercenaries can't catch a break and need to operate on a tight schedule, but their rate, diversified skills and type of work make it more unlikely for them to be out of missions.
+- Experts are less pressured into finding work all the time, but their expertise might not be needed all the time. They have a higher rate to compensate when they don't have any client.
+
+What is sure is that both types need to build a network of clients.
+
+## Build a network
+
+It's always better to search for clients when you are not in need right away. One of the best ways of doing it is sending spoutaneous applications to agencies you would want to work with. If they refuse your candidacy or don't answer it's not a problem, they may remember you when they have a specific need.
+
+Freelancing platforms can also be a good way of finding clients but there is a lot of competition that may pull rates down. Sometimes it may be better to have no deal than a bad one. 
+
+It's important to have a commercial relationships with clients. Sending emails to contacts to let them know you are available and trigger word of mouth is key. Making people remember you by sending them some news (for example a happy new year card) or thanking them when they refer you to another person is probably a good idea.
+
+
+## Cash management
+
+It's extemely important to have six months to one year of cash flow. And to build it, it's important to get paid in time and at a correct price. Most clients pay in the following sixty days after receiving the bill. But some can take months (agencies) to years (governement or public missions) before paying. There are even cases where companies don't pay in the hope that the freelancer go bankrupt so the debt is cancelled.
+
+Depending on the country, clients may want to negociate the price (it's always the case in France where I live, way less common in the United States for example). It can be hard to maintain you value and increase it afterward so try to not lower your prices to get a deal.
+
+When deciding of your daily rate, it's important to take these arguments into consideration:
+
+- If you take 5 weeks of vacation each year it's 17 days of non-payed work.
+- If you have an accident and can't work for a long time, you need an insurance for both medical fees and a substitue wage.
+- A part of the rate needs to go to the cash flow that will help you live when there are no clients (6 months to 1 year of cash flow is necessary).
+- As a freelancer you probably don't contribute to public retirement, so you need to finance it yourself throught complementary systems (life insurance, real estate)
+- Depending on the country where you are located, taxes can take a substantial amount of your rate.
+- Depending of the type of company you have, you may need to pay an accountant each year.
+
+Taking all these factors into consideration substantially lowers the money you earn as a freelancer. *Overall, only around 50% of the price payed by the client is the real salary*.
+
+As a freelancer you can only count on yourself and thus you need to create your own insurances. They are some period in the year (like summer, Christmas) where freelancers are not needed and even if it frees time to find new clients, it means you have to pay your bills with your cash flow. 
+
+## Pricing
+
+About pricing:
+
+- Hour rate pricings are rare.
+- Daily rates are more common.
+- Package pricing is common in the web.
+
+If you are a developer *never do a package pricing* and favor daily or monthly rates, except if you are super sure about the scope of the project and protected by the quote. In other type of works (design, user experience) package pricing is often the norm and requires to be very careful when writing quotes.
+
+## Quotes
+
+Good quotes are the ultimate protection for freelancers and can help building a more profesionnal relationship with the client. Quotes should always list what is in the scope of the project and what is not in. This way you can refuse a sudden change or propose a new quote for a project change.
+
+Here's a list of basic things to think about when making a quote.
+
+### Design
+
+- Indicate a fixed number of initial design concepts that will be given to the client to help him decide the direction of the design.
+- List the number of pages, templates, or components that will be created once the direction is chosen.
+
+### Text 
+
+- Be clear that you are not creating the text content for the client, nor inputing text or creating his pages into his content management system.
+- If the client wants you to do all this, add into the quote a maximum lenght and price for each text, the time required to input the text, and the list of pages required, and get payed.
+
+### Graphics and photographs
+
+- Be clear that the client has to provide graphic files (logos, icons for example) and the file format you are expecting. If the client doesn't want to do it by himself, list what is needed and add it to the quote as extra work.
+- Be clear that the client has to provide the photographs for the website. Propose a list of stock photograph websites where he can choose what he wants. If the client doesn't want to do it itself, prepare a separate bill with the images you will buy for the project.
+
+### Development:
+- Detail the goal of the project and the specific parts you are working on and what is required by the client for you to do your work.
+- If the project has an intricate codebase or list of features, detail what you will work on and what you will not work on.
+- List the languages, technologies, libraries, frameworks required.
+
+### Browser testing
+
+- Be clear that browser testing is about allowing a similar experience on all browsers, not a pixel perfect render as it's impossible.
+- List the browsers used for the tests, and which one won't be tested.
+- If the client needs to support an old browser (ex: IE11) then the development rate should be higher and it should be clear on the quote (some clients abandon this idea once they see it's more expensive).
+
+### Tech support
+
+- If you don't provide website hosting be clear about it. If the client want you to open an account for hosting their project and put it online, add it to the quote. Be clear that outside installing the website, you are not the tech support for upcoming updates or problems.
+- If you do provide hosting, list what is required by the client (domain name, type of hosting, mails) and what is not.
+
+### SEO
+
+- Be clear that even you can't guarantee increases in search engine rankings, even if you work in the SEO business.
+
+## Contract
+
+When the quote is accepted, provide a contract to the client. It's the last moment you can set rules with him about how things are going to work out.
+
+Be sure the client knows that:
+
+- The project can only progress if he is involved and that any lack of feedback required for the continuation of the project may halt it.
+- The freelancer can't be responsible for any delay due to the lack of feedback from the client.
+- He can change its mind but that an additionnal quote will be made.
+- If he is not satisfied he can terminate the contract but will have to pay the time already spent working on the project.
+- Any legal stuff that you think is important (liability, payment schedule, intellectual property rights, work display)
+
+## Working with clients
+
+When clients hire a freelancer they basically want a facilitator, so everything should be done to keep the client reassured.
+
+To avoid problems and facilitate the work:
+
+- Get as much scope as you can.
+- Communicate to get all the steps of the projects.
+- Find at which step of the project you have to intervene.
+- Provide a ready-made benefit.
+- If you have to work with a team, choose the people you want to work with.
+- Never put yourself in a position where you can be faulted.
+
+Transparency and communication are keys to a good working relationship. 
+
+- Give daily feedback and/or deliveries.
+- No need to write a novel each day, just a short notice is enough.
+- Ask the client if everything is OK on his side.
+- If you need feedback and mails are not working, make a voice call.
+- Never apologise of being communicative.
+- If you are working remotely, never apologise for working remotely.
+
+When something is going bad, for example budget is exploding or demands are increasing, impose your way of working by saying _no_ but provide _options_. Never come with empty hands as the goal is to simplify the process and save time.
+
+## Type of company
+
+Each country has its own rules about freelancing. However european freelancers can have a company in Estony with an e-residency certificate. It costs around 100 euros a month and provides services for everything like invoices and payment. You may still have to pay your residency country charges.
+
+====
+
+NAME: Raspberry Pi Distros
+HOST: Knowledge
+BREF: Distros I tested with for a Raspberry Pi
+PRIV: false
+BODY:
+
+# Raspberry Pi distributions
+
+Despite the hype around the fourth version of the Pi, most desktop distributions run very slowly on it and provide poor user experience. I've tried all the distros listed below and gave them ratings on these topics:
+
+- User Experience
+- Responsiveness
+- Software support
+- Easy to install
+
+The ratings are:
+
+- Perfect
+- Average
+- Poor
+- Terrible
+
+## Raspbian (Raspberry Pi OS)
+
+? User Experience : *Average* It's ugly but coherent and easy to use
+? Responsiveness : *Average* Most things are fast but some programs (mostly Electron apps) struggle
+? Software support : *Perfect* It's an Ubuntu base and the official OS
+? Easy to install : *Perfect* Plug and play and follow the guide
+
+Raspbian excels in nothing but is not terrible in anything. It's too bad it struggles with Electron apps. Supports hardware acceleration.
+
+## Dietpi
+
+? User Experience : *Poor* Dietpi proposes ready-made basic desktops (Mate, XFCE, LXQTm, LXDE) that are ugly and sometimes does not work (sound cursor in XFCE).
+? Responsiveness : *Perfect* Everything is fast or fast enough, even Electron Apps are usable
+? Software support : *Perfect* It's based on Raspbian and comes with it's own list of ready-made software
+? Easy to install : *Poor* Small iso but very long install with terminal based menus, takes a lot of time and not everything is clear
+
+Dietpi is probably the best in performance, but only for people with some skills at setting up their own environnement. Supports hardware acceleration.
+
+## Manjaro
+
+? User Experience : *Perfect* It's beautiful, coherent and easy to use
+? Responsiveness : *Poor* It's still usable but worse than Raspbian, no hardware acceleration support for video
+? Software support : *Average* Based on Arch Linux, most things are available but most configuration tweaks are for Raspbian/Ubuntu
+? Easy to install : *Average* There's a few terminal screens but it's quick and works fine
+
+If Manjaro was a bit snappier and did not lack some performance tweaks available to Ubuntu based distros (like hardware acceleration) it would be my default distribution.
+
+## Ubuntu
+
+? User Experience : *Average* The classic gnome Ubuntu
+? Responsiveness : *Terrible* It's so slow for everything it's almost unusable 
+? Software support : *Perfect* It's Ubuntu so everything is there
+? Easy to install : *Perfect* The classic Ubuntu install experience, everything is clear
+
+Ubuntu is so slow I could not be bothered to use it for anything. Also it's strange because hardware acceleration is supported but I could not make it work inside chrome for video decoding.
+
+====
+
+NAME: Raspberry Pi
+HOST: Knowledge
+BREF: My Raspberry Pi configuration
+PRIV: false
+BODY:
+
+## My Raspberry Pi configuration
+
+
+I've been trying to use  a Raspberry Pi as small development machine for personal projects. The overall goal is to spend less time on the computer by creating a distraction free machine with limited capabilities.
+
+I use a Raspberry Pi 4 with 8 gigs or ram and an aluminium heatsink.
+
+[/media/pi.jpg, "Pi 4 with a heatsink"]
+
+After a lot of {raspberry-pi-distros.html, "testing"} I ended using *Dietpi*. The install experience is poor but compensated by the large amount of tweaks and software proposed. It's probably better to create your own user experience by installing and tweaking the window manager and file manager that suits you. 
+
+But what is amazing with Dietpi is how responsive it is considering it's running on a Raspberry Pi. I installed i3 window manager and thunar and almost everything launches instantly. Even an Electron app like Visual Studio Code is usable as there's no lag when typing (but startup and syntax color can be a bit slow).
+
+I use the 32bit version as the 64bit has bugs.
+
+[/media/i3.jpg, "A screenshot of my i3 Desktop"]
+
+## Dietpi installation guide
+
+This guide is mostly for my own use but feel free to use it.
+
+### Basic setup
+
+- If you are on Wifi, edit the `dietpi` and `dietpi-wifi` files in the boot folder before inserting the sd card, as dietpi will trigger `apt update` and `apt upgrade` on launch.
+- Use `dietpi-config` in the command line and activate the sound in the audio options and bluetooth (if needed) in the advaned options (note that activating bluetooth somettimes returns an error, but it's working).
+- Configure the language, keyboard and locale.
+- Using `dietpi-software` from the command line launches a menu with ready to use software install. The `Optimized software` contains the window managers, the `additional software` contains things like `git`, `openssh`, `vim` and other tools.
+- If you want to use i3, install `i3`, `i3lock`, `i3status` and `suckless-tools`.
+- By default dietpi launches in the terminal. To launch to the window manager, use `dietpi-config`, go to `autostart options`. You'll see a list, go `Desktops` and press Enter on `LightDM Login Mask`, then select the user (probably dietpi) and exit. The next time you'll reboot you will boot on LightDM and will be able to choose your window manager.
+
+### Other programs
+
+- `thunar` as a file manager.
+- `chromium-browser` for browsing
+- Hardware acceleration following this {https://www.dedoimedo.com/computers/rpi4-ubuntu-mate-hw-video-acceleration.html, "tutorial"}
+- `blueman` to manager bluetooth devices
+- `mps-youtube` and `youtube-dl` to play youtube music in the terminal. The `youtube-dl` package is old, you have to update it using pip3: `pip3 install --upgrade youtube-dl` and use your own Youtube V3 Api Key. Set it inside mps-youtube with `set api_key KEY`.
+- By default dietpi has no emoji support or foreign languages like Japanese, you might want to install fonts to support them.
+- I use `feh` to randomize wallpapers (it's inside my i3 config file)
+
+### Chrome extensions
+
+- Ublock original
+- Noscript
+- Ninja cookie
+- 1PasswordX
+- h264ify
+
+### i3 config file
+
+My config file is available on {https://gist.githubusercontent.com/Thomasorus/89322ec9b0913e680616548265f5346f/raw/ccfd72704a6fced96ab6642477397c2ef6fa2efc/i3-config.txt, "github"}.
+
+====
+
+NAME: I removed the computer
+HOST: Home
+BREF: I removed my main computer from my desk
+PRIV: false
+BODY:
+
+# I removed the computer
+
+My family had its first computer 20 years ago. Each day I would come back from school to spend hours on it. When I turned eighteen I bought my first computer. I installed it on my desk where I usually did homeworks, and since that time a computer has always been on my desk. I coded, wrote, recorded podcasts, read, played... It didn't change during my art school years, as I had a dedicated desk to paint at school. Once I graduated, I basically stopped painting because I was fed up with art. I started many projects that were exclusively made on a computer and had a lot of fun. I thought it would be this way forever.
+
+But one day, it changed.
+
+Sitting at as desk never botherred me that much. It was a position where I could watch a movie, play video games or write, and feel comfortable. Five years ago I went from working in a shop, standing all day, to being a web developper, sitting all day. From this moment onward sitting at a desk felt like a _work position_. It wasn't a problem when I was doing _productive_ hobbies like recording, writing or coding, but it became harder to play video games, and impossible to watch a movie or a show. Due to chronicle occipital neuralgia I can't be in a relaxed position while sitting at a desk, I need to sit straight.
+
+The desire to draw and paint also came back and with it, the constant frustration of not having a dedicated space for these activities. Mixing electronics and art furniture (ink, water, giant sheets of paper) is a bad idea when you are as clumsy as I am. Cables from peripherals are on the way. When I lean to draw the screen is in my face. You can't have both in the same space unless you have a giant desk.
+
+And there's this procrastination problem. When I don't feel like doing anything, I sit at my desk, and I _use_ it. I refresh my feeds, I launch programs, I mindlessly seek _something_ that could free me from this anxious state I'm in. Of course it never works and I sometimes leave the desk frustrated. _I had free time and did nothing, I didn't even relax_ is a common feeling.  
+
+So today I removed the computer from my desk. It is now in the living room, under the TV, with a wireless keyboard and trackpad. I plan to use a gamepad to play, in a relaxing position, all these games I accumulated. As I needed a way to write, code and record podcasts, I bought a Raspberry Pi and took several hours to {raspberry-pi.html, "create a setup "} that is both productive and limited. I can code, write and record (even if I still have sound issues). But being a 32bit ARM computer, I can't install Slack, Discord, Steam or anything else. The only source of distraction is the browser and it can barely run a 1080p video and navigate the web without struggling.
+
+I hid the Raspberry Pi behind the screen, who now floats above the desk thanks to an arm support. Most importantly, it can be moved out to the side in a few seconds to regain the full depth of the desk. I installed my pencils, brushes and notebooks and hope that, in the future, if I feel the need to procrastinate, I will do it with paper instead.
+
+Changing a 16 year old habit isn't easy. I don't know if that will work. I fear that the Raspberry Pi might be too limited for some of my projects, but using a more powerful computer brings the risk of more distraction. We'll see how it works.
+
+_15/11/2020_
+
+====
+
+NAME: Renovation journal
+HOST: Home
+BREF: A journal about the restoration of my apartment
+PRIV: false
+BODY:
+
+# Renovation journal
+
+This is the journal of my apartment renovation. 
+
+## November 16th 2020
+
+First day of renovations!
+
+This day was one made for discovery. First I went to the do-it-yourself store. I bought gloves, scrappers, glue solvent, ground protection canvas, a bucket, masks and several other little things I needed to start. I spent more time in the store than I wanted and arrived mid-afternoon in the apartment.
+
+I had to remove plates of polystyrene glued to the entrance and the corridor ceiling and remove the wallpaper from the entrance hall.
+
+I started with the ceiling plates, removing them one by one and stuffing them inside a trash bag. The risk with the ceiling was that the glue used to stick the plates would rip off the plaster. Fortunately for me, coating was used as glue and most polystyrene plates came off easily, only leaving coated dots. I did the entrance hall and the whole corridor. Once I was finished my arms hurt.
+
+To recover some strength I decided to continue with the entrance wallpapers. I pierced little holes in it with a special tool. Then I soaked the wall with a glue solvent, using a sponge. Most of the paper came off easily but some parts needed two passes. Under it, the wall is in a correct state but obviously it will need a new plaster before painting. I removed the paper from the first wall, finding my marks as I was doing it.
+
+While doing this, I worried about the ceiling's coated dots. I tried to sand them but it was too hard, nothing came off. Discouraged, I took a metal scraper and a hammer and started going under. It took some trials and errors but I found a good technique: bend the scraper at 45 degrees, hammer once, then go closer to the ceiling little by little, each time hammering. This way the whole coated dots came of in one to three parts. Doing it this way added marks and little holes in the ceiling but it will be faster to re-coat the holes than sand what's there. I removed half of the dots in the entrance all this day.
+
+I think I spent around 3 hours and half between the store and the work this day. I went home happy but a bit worried about the time needed to do the ceiling.
+
+## November 17th 2020
+
+Second day of work! This time I came earlier in the afternoon and continued the work in the entrance hall. I had to remove the interphone, the ring bell, an electricity box, curtains that were hiding the entrance door, as well as the curtains bar. It took a bit of time, as well as removing the paper around the door.
+
+I started feeling dizzy, soaking some wall there, another one there, forgetting about scrapping the first one and having to soak it again. Overall I wasn't happy it took me so much time to do this, I felt it was supposed to go faster. I finished removing the dots from the ceiling in the entrance hall and went home exhausted with arms hurting.
+
+## November 19th 2020
+
+I didn't go to the apartment yesterday as I was sick. I arrived defeated and felt I was not going to be able to do anything. I decided to put some music to help me focus and started listening to _L'école du micro d'argent_ from *IAM*. The {https://www.youtube.com/watch?v=x4uHgwHdXOA, "first song"} starts this way:
+
+```
+Assis en tailleur, voilà des heures que je médite
+Sur ma montagne et je n'arrive pas à faire le vide
+Je focalise sur le diaphragme, j'augmente mon énergie
+Réveille la bête qui dans mon âme est tapie
+```
+
+This song gave me a burst of motivation and confidence and I decided I wasn't going let a damn ceiling dictate my life! _Eat that frog_ they say, so I was going to eat this damn ceiling. I moved my stepladder in the corridor and started going hard on the coating dots while singing. It took me almost 2 hours with a few breaks to rest my harms but in the end I did it, the ceiling is now free of coating dots!
+
+Feeling confident, I decided I should try removing the corridor wallpaper. I picked a little piece in my hand, pulled it and... Everything came off easily, in a single pull, without any glue solvent! The sound of wallpaper being teared off from the wall is so satisfying. The larger the piece, the deeper the sound, the most satisfaction it procures.
+
+In around 30 minutes the whole corridor was wallpaper free. It felt sooooo good to see it naked! I thought I would spend two days on this, and I was already done.
+
+I managed to talk with the renovation contractor to fix a date for the walls demolition. He said to me _is Saturday ok_ and I answered _wait what this Saturday_ and eventually that's how I learned three men were coming the day after tomorrow to smash the wall in my new apartment. Knowing how noisy it would be, I knocked to the door of all my neighbors to warn them that Saturday wasn't a good day for a morning sleep-in.
+
+## November 20th 2020
+
+This day I wasn't alone! Coralie wasn't working and came to help. We decided she would tear off some wallpaper while I was preparing the place for the contractors. She started peeling the paper in my future bedroom while I was removing electrical outlets, light switches and more wallpaper. Since the contractors are going to remove walls and then fix the walls, ceilings and grounds, I try to remove anything that would slow them down.
+
+I also wrote notes on paper to warn the neighbors I could not meet. The most important one, right below my apartment, wasn't there again and stuck a note in his door basically saying _SORRY IT'S GONNA BE NOISY AS HELL FOR A DAY_. We went home and eat soba.
+
+## November 21th 2020
+
+My alarm wakes me at 7am. I haven't woken up so early in months and I feel like sleeping more. Coralie came to check I was awake, admitting that she was very stressed by the idea of me not waking up. I took a breakfast and prepared a thermos of coffee for the contractors. A friend who renovated his house gave me some advices: be clear in your instructions, stay calm if something goes wrong, stay firm if contractors try to negotiate. And that bringing some coffee was always welcome.
+
+I met them at the apartment, and they were nice folks. One of them is around 30 and the other is older, around 45 if I have to guess. We talked a bit, drank coffee, discussed the remodeling and what I was planning for the apartment. They grab a lot of tools, put blankets on the ground.
+
+Then, one of them picked a hammer and started smashing on a wall. That was both frightening and super cool. Friends asked me why I didn't try it myself but I didn't want to exhaust myself as I had a lot to do today too. The second contractor started smashing the walls too. I was in the kitchen, disassembling furniture and hearing the sound of bricks, stones, plaster raining on the floor. It was quite something!
+
+When they stopped I opened the kitchen door and saw... nothing. There was no wall left, only the door frame. I could see the whole living room from the kitchen. The whole thing was so spacious and luminous, it was amazing! I was relieved seeing it was as good as I hope. The contractors then started the hard work of removing the debris from the ground. They filled around then 100 litters garbage bins and took them down by the stairs. The poor guys were sweating hard. We took another coffee and discussed the result. I apologized for making them suffer like this. They said it was ok and that they were used to it.
+
+Once they were done they smashed another wall. The corridor ends with a big, two meters square closet that is right next the smallest bedroom. I wanted it removed, as well as the door frames. Another door will be added at the end of the corridor.
+
+Lunchtime arrived, they went to eat something and I went home. All morning I was texting photos and videos of the remodeling to Coralie and my family. I added some details in message apps, rested a little, then went back around 2pm. The contractors were, once again, filling garbage bins and taking them down by the stairs. On my side of things I managed to remove all kitchen cabinets from the walls and the ground. The previous owner was the uncle Scrooge type. To avoid buying enough metal feet for the cabinets, he only gave two to each and then fixed all the cabinets together with _dozens_ of screws! It took me hours to remove them all!
+
+In the middle of the afternoon the contractors were done moving debris and went to the bathroom to empty it. They removed the furniture and struggled with the tub. Meanwhile, I went to the now extended room and decided it was time to remove this ugly wood paneling. Wood paneling is often serves two purposes: first it isolates the room by creating a small space between the wood and the wall ; and secondly it hides ugly walls. It was the only unknown in the apartment.
+
+And _oh boy_. As I was removing the wood panels, I discovered an ugly and humid wall, with swelling plaster all around it. The wall is basically unusable and cannot be re-plastered directly. It needs scraping, a lot of it, to go back to reach the concrete wall behind. The fake wooden floor isn't even going to the wall! There're 3 centimeters between the floor and the wall! I became super worried about the time and cost those walls were going to cost me.
+
+I asked the contractors about it, and they said it was probably wiser and cheaper to clean the wall a bit then glue plasterboard. They explained some types came with an insulation layer that prevents humidity from reaching the plaster side and the painting. I phoned the company, explaining them my discovery. They took measures and then updated the invoice, which grew by a substantial margin.
+
+I already knew when I started this project that _things don't go as planned and always cost more than you think_, so I wasn't that angry or stressed. Plus adding an insulation layer will reduce the heating cost so in the long run it's worth it. I asked for advice to friends and family who were in this situation before and all said the same ting: do it.
+
+I went home around 6pm, showered, took the car again to get us Bò Búns. We started watching my _Yamada neighbors_, but I was so tired I went to bed in the middle. I fell asleep instantly.
+
+## November 22 2020
+
+I woke up late after a strange dream where a long-time lost friend and I were kidnapping Trump and evacuating him from a location (a golden maze like mansion, very fitting) using exhaust pipes. I remember he stayed stuck inside, so we had to flush several toilets to make him go down. It was very satisfying.
+
+My body was numb and painful. The day before was hard and I wasn't doing any sport before this so it was kind of logical. Got up and went to the bakery by a fresh charcoal baguette for me, buckwheat bread for Coralie and chocolate viennese for the two of us. Also bought eggs and crêpes. We had breakfast while watching The Mandalorian, then went back to the apartment.
+
+Coralie was frustrated she could not help yesterday because of her handicap. She came determined to be useful and started peeling the kitchen wallpaper (she loves doing it, she says it's like removing dead skins). Meanwhile, I started removing all the electrical gutters. There were so many of them! Some of them were even empty! What happened in this place before?!
+
+But removing them allowed me to make a wonderful discovery! The building is from the sixties and in this period, they didn't have ground connection. When buying an apartment of this period, it's always the lottery. I knew the kitchen and bathroom had the ground connection because that's mandatory, but I wasn't sure about the other rooms. Well turns out all of them have it!
+
+
+The apartment is on the last floor and the previous owner used the attic to pass a ground cable from the fuse box to all the rooms. It was done poorly and cheaply, with holes in the ceilings and cables hidden in ugly plastic electrical gutters. If I'm not happy about the ugliness, I'm super happy I won't have to do it myself. Now all I have to do to make it pretty is adding hollow plinths to hide the cables. I'll also try to add gigabit Ethernet cables and sockets in each room.
+
+Coralie managed to finish peeling the kitchen walls and targeted a new victim: the last bedroom. This one was frightening to us. A thick wallpaper that was repaint loosely. I managed to catch a little piece, pulled and... _EVERYTHING CAME IN A SINGLE SHEET_. Apparently the wallpaper and glue were the same as in the corridor. We removed everything in 20 minutes then went to toilets and started doing the same. Unfortunately it wasn't as easy but most of it came off nicely.
+
+Finally, we discussed our discoveries of the day. When removing the wallpaper, we realized there was moisture traces on the plaster in the last bedroom. Not on all walls, only the one facing the outside. It was the same traces as the wood paneled wall. Worried, I went to the second bedroom that I thought was in correct shape. I started knocking at the walls and realized that one of them made a hollow sound. Using a flat screw diver, I dig a little in the wall and realized it had the same problem, only minimized by a second plaster coat and paint.
+
+This room is oriented to the north and already had mild moisture traces in a ceiling corner. We knew this room was a bit cold and humid, because the previous owner added a controlled mechanical ventilation to the ceiling. I started asking myself if we shouldn't isolate and plasterboard all the bedroom walls facing outside. Between the first room and this one, it would probably double the initial invoice.
+
+I asked my father about it, and he said I should do it. He was right to say that once we will be installed, if we feel the cold, we're not going to empty the room again to plasterboard it, and we'll end up not liking the apartment. Adding insulation will also reduce the cost of heating the rooms.
+
+Right now I feel like a builder in the _Grand Design_ show. In this show each time people go over budget and feel terrible about it. Fortunately for me, I knew it would happen and planned it, but it's still a shock. We'll see with the contractor tomorrow.
+
+## November 23 2020
+
+Woke up early again and went to the apartment to meet with the main contractor. We made a tour and talked about the need to insulate the walls, he agreed with me it would probably be better. I also explained I needed time to check the electrical installation with a pro before positionning the plasterboards. It annoyed him a little bit, but he accepted that we postpone the rest of the renovation when I told him we could continue either in December or January as I'm not moving in until February.
+
+He called an electrician he works with regulargly, who accepted to meet with me tomorrow. I went back home around 10am for a video call. Once it was done I made lunch and suddenly felt super tired. I decided I should rest today and go back tomorrow. I have to make phone calls to get electricity anyway.
+
+====
+
+NAME: Links
+HOST: Home
+BREF: Links I gather
+PRIV: true
+BODY:
+
+# Links
