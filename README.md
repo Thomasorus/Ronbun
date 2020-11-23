@@ -1,12 +1,10 @@
 # Ronbun 論文
 
-Ronbun is my static site generator. It's written in nodejs, uses Kaku as a text parser, image magick for image compression and `entr` for development.
+Ronbun (paper) is my static site generator. It's built with nodejs and uses [Kaku](https://thomasorus.com/kaku.html) as a markup language and [imagemagick](https://imagemagick.org/index.php) on the server to process images. It also process time tracking and presents it as graphics.
 
-Ronbun is still in early development.
+Ronbun uses a single file as a source of content and a text file for time recordings. It parses files and generates HTML using a template. Ronbun and the Kaku parser try as much as possible to provide light and accessible pages by using standard HTML techniques.
 
-## Philosophy
-
-The goal is to create a simple html generator entirely driven by my needs, thus why it doesn't use markdown, why there's a single content file, why navigation is simplified.
+Ronbun was created as a self discovery project following my [philosophy](https://thomasorus.com/tools.html) about personal projects.
 
 ## License
 
@@ -20,29 +18,36 @@ Ronbun requires is developed and built on a linux machine, it requires:
 - Imagemagick
 - entr
 
+## How to install
+
+```
+git clone repo folder
+cd folder
+git submodule init
+git submodule update --recursive --remote
+```
+
 ## How to develop or build the website
 
-- `./server.sh` will create a node server (go to local ip /page.html)
-- `./dev.sh` will watch for file changes and compile html + process images
-- `./build.sh` will compile html and process images
+- `./dev.sh` will create a node server, watch for file changes and compile html, xml and process images.
+- `./build.sh` will compile html, xml and process images.
+- `./server.sh` triggers the local server if you want to locally visit the website.
+
 Don't forget to use - `chmod +x ./*.sh` to allow scripts execution.
 
 ## How it works
 
-`builder.mjs` is the building script. It loads:
-
-- `fs` for accessing to files
-- `child process` to execute bash scripts
-- `Kaku.mjs` as a text parser (can be changed by another like a markdown parser)
-- `time.mjs` as a time parser and graph builder
+- `config.mjs` contains the local paths used by the generator (images, data).
+- `builder.mjs` is the main building script. It builds the data from the files using the other scripts and creates the html and xml files.
+- `utils.mjs` contains utility functions used by the builder.
+- `Kaku.mjs` is the text parser (it can be changed by another like a markdown parser)/
+- `time.mjs` is the time parser and graph builder.
 
 Look at the `generateAll()` function to get a sense of the build process.
 
 ## Folders
 
 - `assets` contain css files and html partials used for the build.
-- `data` contains the data files.
+- `data` contains the data and media files. They are private and located in a submodule.
 - `src` contains de building files.
-- `media` contains the image, audio and video files that are to be process or copied during build.
-- `old` contains older versions of the builder written in js and python, as well as content has to be transferred into the `content.kaku` file.
-- `www` is the built website.
+- `www` contains the current built version of the site. It's located in a submodule.
