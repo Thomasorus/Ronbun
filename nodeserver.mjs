@@ -5,8 +5,8 @@ import * as path from 'path'
 http.createServer(function (request, response) {
   console.log('request ', request.url)
 
-  let filePath = './www/' + request.url
-  if (filePath === './www/') {
+  let filePath = './www' + request.url
+  if (filePath === './www') {
     filePath = './www/home.html'
   }
 
@@ -34,7 +34,7 @@ http.createServer(function (request, response) {
   fs.readFile(filePath, function (error, content) {
     if (error) {
       if (error.code === 'ENOENT') {
-        fs.readFile('./404.html', function (error, content) {
+        fs.readFile('./www/home.html', function (error, content) {
           response.writeHead(404, { 'Content-Type': 'text/html' })
           response.end(content, 'utf-8')
           if (error) {
@@ -50,5 +50,5 @@ http.createServer(function (request, response) {
       response.end(content, 'utf-8')
     }
   })
-}).listen(8080)
-console.log('Server running at http://localhost:8080/')
+}).listen(8000)
+console.log('Server running at http://localhost:8000/')
