@@ -13,12 +13,18 @@ const patterns = [
   'pattern-quarter-circles',
   'pattern-seigaiha',
   'pattern-checkerboard-diagonal',
-  'pattern-zig-zag',
+  'pattern-moon',
   'pattern-vertical-lines',
   'pattern-horizontal-lines',
   'pattern-grey-lines',
   'pattern-wave',
-  'pattern-yin'
+  'pattern-yin',
+  'pattern-circles',
+  'pattern-isometric',
+  'pattern-paper',
+  'pattern-cross',
+  'pattern-zig-zag',
+  'pattern-boxes'
 ]
 
 async function parseTime (timeToParse) {
