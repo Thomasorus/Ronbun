@@ -11,22 +11,25 @@
     --text: white;
     --background: black;
     --link: #f0f0f0;
-  --visited: #d0d0d0;
-  --hover: #e0e0e0;
+    --visited: #d0d0d0;
+    --hover: #e0e0e0;
   }
-  header svg, footer svg, footer img {
-    filter:invert(100%);
+
+  header svg,
+  footer svg,
+  footer img {
+    filter: invert(100%);
   }
 }
 
 @media (prefers-color-scheme: light) {
- :root{
-  --text: black;
-  --background: white;
-  --link: #111;
-  --visited: #333;
-  --hover: #555;
- }
+  :root {
+    --text: black;
+    --background: white;
+    --link: #111;
+    --visited: #333;
+    --hover: #555;
+  }
 }
 
 html {
@@ -93,15 +96,15 @@ pre {
   background: var(--text);
   white-space: pre-wrap;
   padding: 10px;
-  
+
 }
 
 code {
   background: var(--text);
-  color:var(--background);
+  color: var(--background);
   font-size: 1.6rem;
   padding: 1px 2px;
-  
+
 }
 
 ul {
@@ -109,11 +112,12 @@ ul {
 }
 
 nav {
-  max-width:540px;
-  margin:10px auto;
+  max-width: 540px;
+  margin: 10px auto;
 }
 
-footer nav, footer aside {
+footer nav,
+footer aside {
   margin: 10px 0;
 }
 
@@ -157,23 +161,23 @@ blockquote footer {
 footer {
   margin: 30px auto;
   max-width: 540px;
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 
 footer aside {
-  line-height:1;
-  font-size:13px;
+  line-height: 1;
+  font-size: 13px;
 
 }
 
 footer aside p {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 footer ul {
-  margin:0;
+  margin: 0;
 }
 
 .footer-nav {
@@ -466,17 +470,18 @@ footer ul {
   background-size: 10px 10px;
 }
 
-.pattern-zig-zag {
-  background-image: -o-repeating-linear-gradient(49deg, black, black 1px, transparent 4px, transparent 8px);
-  background-image: repeating-linear-gradient(-319deg, black, black 1px, transparent 4px, transparent 8px);
-  background-size: 4px;
+.pattern-moon {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: radial-gradient( ellipse farthest-corner at 9px 9px , #000000, #000000 50%, #ffffff 50%);
+  background-size: 9px 9px;
 }
 
 .pattern-grey-lines {
-  background-color:white;
-  background-image: linear-gradient(90deg, rgba(0,0,0,.5) 50%, transparent 50%),
-  linear-gradient(rgba(0,0,0,.5) 50%, transparent 50%);
-  background-size:6px 6px;
+  background-color: white;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, .5) 50%, transparent 50%),
+    linear-gradient(rgba(0, 0, 0, .5) 50%, transparent 50%);
+  background-size: 6px 6px;
 }
 
 .pattern-wave {
@@ -502,6 +507,48 @@ footer ul {
   background-size: 20px 21px;
 }
 
+.pattern-circles {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: radial-gradient(circle at center center, #000000, #ffffff), repeating-radial-gradient(circle at center center, #000000, #000000, 4px, transparent 8px, transparent 4px);
+  background-blend-mode: multiply;
+}
+
+.pattern-isometric {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(30deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(150deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(30deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(150deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(60deg, #00000077 25%, transparent 25.5%, transparent 75%, #00000077 75%, #00000077), linear-gradient(60deg, #00000077 25%, transparent 25.5%, transparent 75%, #00000077 75%, #00000077);
+  background-size: 14px 25px;
+  background-position: 0 0, 0 0, 7px 12px, 7px 12px, 0 0, 7px 12px;
+}
+
+.pattern-cross {
+  background-color: #ffffff;
+  opacity: 1;
+  background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 15px 15px, linear-gradient(#000000 1.2000000000000002px, transparent 1.2000000000000002px) 0 -0.6000000000000001px, linear-gradient(90deg, #000000 1.2000000000000002px, #ffffff 1.2000000000000002px) -0.6000000000000001px 0;
+  background-size: 30px 30px, 30px 30px, 15px 15px, 15px 15px;
+}
+
+.pattern-paper {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(#000000 1.6px, transparent 1.6px), linear-gradient(90deg, #000000 1.6px, transparent 1.6px), linear-gradient(#000000 0.8px, transparent 0.8px), linear-gradient(90deg, #000000 0.8px, #ffffff 0.8px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  background-position: -1.6px -1.6px, -1.6px -1.6px, -0.8px -0.8px, -0.8px -0.8px;
+}
+
+.pattern-zig-zag {
+  background-color: #ffffff;
+  opacity: 1;
+  background: linear-gradient(135deg, #00000055 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(225deg, #000000 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(315deg, #00000055 25%, transparent 25%) 0px 0/ 16px 16px, linear-gradient(45deg, #000000 25%, #ffffff 25%) 0px 0/ 16px 16px;
+}
+
+.pattern-boxes {
+  background-color: #ffffff;
+opacity: 1;
+background-image:  linear-gradient(#000000 1.1px, transparent 1.1px), linear-gradient(to right, #000000 1.1px, #ffffff 1.1px);
+background-size: 22px 22px;
+}
 
 @media (max-width: 600px) {
   body {
