@@ -152,7 +152,13 @@ async function generateAssets (buildAssetsDir, srcAssetsDir) {
     srcAssetsDir,
     'style.css'
   )
-  return !!(logoChange || templateChange || styleChange)
+
+  const patternsChange = await utils.copyAsset(
+    buildAssetsDir,
+    srcAssetsDir,
+    'moyo.css'
+  )
+  return !!(logoChange || templateChange || styleChange || patternsChange)
 }
 
 async function generateData (textContentArray, timeContent) {
