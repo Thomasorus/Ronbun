@@ -4,6 +4,24 @@
   --link: #111;
   --visited: #333;
   --hover: #555;
+  --ratio: 1.5;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  font-size: calc(1rem + 0.5vw);
+  font-family: serif;
+  hyphens: auto;
+  box-sizing: border-box;
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1.5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,25 +50,21 @@
   }
 }
 
-html {
-  font-size: 10px;
-  /* font-size: 2.4vw;
-  font-size: 10px; */
-}
-
 body {
-  padding: 0;
-  font-size: 1.8rem;
-  font-variant-numeric: oldstyle-nums;
+  margin: 0;
   background-color: var(--background);
   color: var(--text);
-  margin: 30px auto;
-  padding: 0 10px;
-  font-family: serif;
-  line-height: 1.4;
-  hyphens: auto;
+  overflow-x: hidden;
 }
 
+body > * {
+  margin-top: 0;
+  margin-bottom: 0;
+} 
+
+body > * + * {
+  margin-top: var(--s1);
+}
 
 a {
   color: var(--link);
@@ -64,134 +78,141 @@ a:hover {
   color: var(--hover);
 }
 
-p {
-  margin-bottom: 1em;
-}
-
 img {
   max-width: 100%;
 }
 
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover {
-  background-color: initial;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+}
+h1 {
+  font-size: 2.5rem;
 }
 
-h1 {
-  font-size: 3.2rem;
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: -1rem;
+}
+
+h6 {
+  font-size: -1.5rem;
+}
+
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover {
+  color: var(--link);
 }
 
 header {
-  height: 90px;
-  display: flex;
-  max-width: 540px;
-  margin: auto;
+  text-align: center;
+  margin:var(--s0) auto var(--s0) auto;
 }
 
-pre {
-  background: var(--text);
-  white-space: pre-wrap;
-  padding: 10px;
-
-}
-
-code {
-  background: var(--text);
-  color: var(--background);
-  font-size: 1.6rem;
-  padding: 1px 2px;
-
-}
-
-ul {
-  padding: 0 0 0 16px;
-}
-
-nav {
-  max-width: 540px;
-  margin: 10px auto;
-}
-
-footer nav,
-footer aside {
-  margin: 10px 0;
-}
-
-article {
-  max-width: 540px;
-  margin: auto;
-}
-
-.full {
-  max-width: 100vw;
-}
-
-.full .time-graph {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.full>*:not(.time-graph-container) {
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.time-graph-container h3 {
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
+header svg {
+  width:var(--s5);
 }
 
 blockquote {
-  padding-left: 3em;
-  margin: 0;
-  font-size: 0.95em;
-  line-height: 1.3;
+  font-size: 1.4rem;
 }
 
 blockquote footer {
-  margin: 1em;
+  font-size: 1.2rem;
+}
+
+pre {
+  background-color: var(--text);
+  padding:var(--s0);
+}
+
+code {
+  background-color: var(--text);
+  color:var(--background);
+  font-size: var(--s0);
+  white-space: pre-wrap;
+}
+
+ul, ol, dl {
+  padding:0;
+}
+
+nav {
+  max-width: 50ch;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 0 var(--s1);
+}
+
+
+article {
+  --space: var(--s1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 50ch;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 0 var(--space);
+}
+
+article > * {
+  margin-top: 0;
+  margin-bottom: 0;
+} 
+
+article > * + * {
+  margin-top: var(--space);
 }
 
 footer {
-  margin: 30px auto;
-  max-width: 540px;
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: var(--s1);
+}
+
+footer > * + * {
+  margin-top: var(--s1);
+}
+
+footer svg, footer img {
+  width: var(--s1)
 }
 
 footer aside {
-  line-height: 1;
-  font-size: 13px;
-
-}
-
-footer aside p {
-  margin: 0;
-  padding: 0;
+  text-align: center;
 }
 
 footer ul {
-  margin: 0;
-}
-
-.footer-nav {
-  margin: 0;
-  padding: 0;
   display: flex;
-  list-style-type: none;
+  justify-content: center;
+  list-style: none;
+  padding-left: 0;
+  margin:auto;
 }
 
-.footer-nav li {
-  height: 20px;
-  width: 20px;
-  margin: 5px;
+footer ul > * + * {
+  margin-left: var(--s-1);
 }
+
+
 
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -203,13 +224,25 @@ footer ul {
   width: 1px;
 }
 
+
+.time-graph-container {
+  box-sizing: border-box;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: var(--s2);
+  padding-right: var(--s2);
+}
+
+.time-graph-container h3 {
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .time-graph {
-  margin: 0;
-  padding: 0;
   width: 100%;
-  text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 25px);
+  grid-template-columns: repeat(auto-fit, calc(var(--s0) * 1.2));
   grid-gap: 3px;
   border-collapse: collapse;
   font-variant-numeric: oldstyle-nums;
@@ -218,23 +251,22 @@ footer ul {
 
 .time-graph__text {
   align-self: flex-end;
-  margin: 10px 0;
+  margin: var(--s0) 0;
 }
 
 .time-graph__hours {
   background: var(--background);
   color: var(--text);
   padding: 1px 3px 0 1px;
-  font-weight: 800;
   letter-spacing: -2px;
   font-family: monospace;
-
+  font-size: 0.6rem;
 }
 
-.time-graph ul,
-.time-graph li {
+.time-graph ul{
   list-style: none;
 }
+
 
 .time-graph__week {
   width: 100%;
@@ -243,13 +275,17 @@ footer ul {
   display: flex;
   flex-flow: column-reverse nowrap;
   flex: 1 1 auto;
+  letter-spacing: -2px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: monospace;
 }
 
 .time-graph__activity {
   margin: 1.5px;
   padding: 0;
   box-shadow: 0 0 0 1px var(--text);
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   line-height: 1;
   display: flex;
   align-items: flex-start;
@@ -270,7 +306,12 @@ footer ul {
   position: absolute;
   border: 1px solid var(--text);
   z-index: 1;
+  font-size: 0.6rem;
+  font-family: sans-serif;
+  letter-spacing: normal;
 }
+
+
 
 .time-graph__legend-list {
   margin: 10px auto 20px auto;
@@ -278,6 +319,7 @@ footer ul {
   flex-flow: row wrap;
   justify-content: center;
   padding: 0;
+  font-family: 1rem;
 }
 
 .time-graph__legend {
@@ -292,7 +334,7 @@ footer ul {
   flex-flow: row nowrap;
   align-items: center;
   margin: 5px 0;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
   font-family: monospace;
 }
 
@@ -307,8 +349,8 @@ footer ul {
 }
 
 .time-graph__pattern {
-  height: 15px;
-  min-width: 15px;
+  height: 1.4em;
+  width: 1.4em;
   border: 1px solid var(--text);
   display: inline-block;
   margin-right: 4px;
@@ -319,8 +361,7 @@ footer ul {
 .code-example {
   background: var(--background);
   border: 1px solid var(--text);
-  margin-bottom: 30px;
-  min-height: 70px;
+  min-height: var(--s5);
 }
 
 .code-example-value {
@@ -328,15 +369,12 @@ footer ul {
   background: var(--background);
   color: var(--text);
   padding: 1px 5px 0 5px;
-  font-weight: 800;
-  letter-spacing: -2px;
   font-family: monospace;
-  font-size: 1.4rem;
 }
 
 .code-example-children {
-  height: 40px;
-  width: 40px;
+  height: var(--s2);
+  width: var(--s2);
   border: 1px solid var(--text);
 }
 
@@ -357,182 +395,4 @@ footer ul {
   width: 100%;
   height: 200px;
   border: 1px solid var(--text);
-}
-
-
-/* Patterns collection */
-.pattern-checks {
-  background-image: linear-gradient(45deg, white 25%, transparent 25%), linear-gradient(-45deg, white 25%, transparent 25%), linear-gradient(45deg, transparent 75%, white 75%), linear-gradient(-45deg, black 75%, white 75%);
-  background-size: 10px 10px;
-  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
-}
-
-.pattern-grid {
-  background-image: linear-gradient(currentColor 1px, transparent 1px), linear-gradient(to right, currentColor 1px, transparent 1px);
-  background-size: 4px 4px;
-  background-position: -1px;
-}
-
-.pattern-grid--medium {
-  background-image: linear-gradient(currentColor 1px, transparent 1px), linear-gradient(to right, currentColor 1px, transparent 1px);
-  background-size: 12px 12px;
-  background-position: -1px;
-}
-
-.pattern-dots {
-  background-image: radial-gradient(currentColor .25px, transparent .25px);
-  background-size: calc(5 * .3px) calc(5 * .3px)
-}
-
-.pattern-cross-dots {
-  background-image: radial-gradient(currentColor 1px, transparent 1px), radial-gradient(currentColor 1px, transparent 1px);
-  background-size: calc(4 * 1px) calc(4 * 1px);
-  background-position: 0 0, calc(2 * 1px) calc(2 * 1px)
-}
-
-.pattern-vertical-lines {
-  background-image: repeating-linear-gradient(to right, currentColor, currentColor 1px, transparent 1px, transparent);
-  background-size: 4px 4px
-}
-
-.pattern-horizontal-lines {
-  background-image: repeating-linear-gradient(0deg, currentColor, currentColor 1px, transparent 1px, transparent);
-  background-size: 4px 4px
-}
-
-.pattern-diagonal-lines--left {
-  background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
-  background-size: 6px 6px
-}
-
-.pattern-diagonal-lines--right {
-  background-image: repeating-linear-gradient(-45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
-  background-size: 6px 6px
-}
-
-.pattern-vertical-stripes {
-  background-image: linear-gradient(90deg, transparent 50%, currentColor 50%);
-  background-size: 6px 6px;
-  background-position: -2px;
-}
-
-.pattern-horizontal-stripes {
-  background-image: linear-gradient(0deg, transparent 50%, currentColor 50%);
-  background-size: 8px 8px
-}
-
-.pattern-diagonal-stripes--left {
-  background: repeating-linear-gradient(45deg, transparent, transparent 4px, currentColor 4px, currentColor calc(2 * 4px))
-}
-
-.pattern-diagonal-stripes--right {
-  background: repeating-linear-gradient(-45deg, transparent, transparent 4px, currentColor 4px, currentColor calc(2 * 4px))
-}
-
-.pattern-zigzag {
-  background: linear-gradient(135deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(225deg, currentColor 25%, transparent 25%) -5px 0, linear-gradient(315deg, currentColor 25%, transparent 25%), linear-gradient(45deg, currentColor 25%, transparent 25%);
-  background-size: calc(2 * 5px) calc(2 * 5px)
-}
-
-.pattern-triangles {
-  background-image: linear-gradient(45deg, currentColor 50%, transparent 50%);
-  background-size: 8px 8px;
-}
-
-
-.pattern-double-diagonal-stripes {
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, white 5px, white 50%), repeating-linear-gradient(45deg, black, black 5px, gray 5px, gray 50%);
-  background-size: 13px 13px;
-}
-
-
-.pattern-quarter-circles {
-  background-image: radial-gradient(ellipse farthest-corner at 11px 11px, currentColor, currentColor 50%, transparent 50%);
-  background-size: 12px 12px;
-}
-
-
-.pattern-seigaiha {
-  background-color: black;
-  background-image: radial-gradient(circle at 100% 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, black 25%, white 25%, white 29%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent), radial-gradient(circle at 50% 100%, white 10%, black 10%, black 23%, white 23%, white 30%, black 30%, black 43%, white 43%, white 50%, black 50%, black 63%, white 63%, white 70%, transparent 70%, transparent), radial-gradient(circle at 100% 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent), radial-gradient(circle at 0 50%, white 5%, black 5%, black 15%, white 15%, white 20%, black 20%, black 30%, white 30%, white 35%, black 35%, black 45%, white 45%, white 50%, transparent 50%, transparent);
-  background-size: 30px 15px;
-}
-
-.pattern-checks-diagonal {
-  background-color: transparent;
-  background-image: linear-gradient(45deg, currentcolor 25%, transparent 25%, transparent 75%, currentcolor 75%, currentcolor), linear-gradient(-45deg, currentcolor 25%, transparent 25%, transparent 75%, currentcolor 75%, currentcolor);
-  background-size: 11px 11px;
-}
-
-.pattern-grey-lines {
-  background-color: white;
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, .5) 50%, transparent 50%),
-    linear-gradient(rgba(0, 0, 0, .5) 50%, transparent 50%);
-  background-size: 8px 8px;
-}
-
-.pattern-wave {
-  background-image: radial-gradient(circle at center top, transparent, transparent 4px, currentcolor 4px, currentcolor 5px, transparent 5px, transparent), radial-gradient(circle at right bottom, transparent, transparent 4px, currentcolor 4px, currentcolor 5px, transparent 5px, transparent), radial-gradient(circle at left bottom, transparent, transparent 4px, currentcolor 4px, currentcolor 5px, transparent 5px, transparent);
-  background-size: 20px 10px;
-}
-
-.pattern-yin-yang {
-  background:
-    radial-gradient(circle at 50% 59%, white 3%, black 4%, black 11%, rgba(54, 78, 39, 0) 12%, rgba(54, 78, 39, 0)) 50px 0,
-    radial-gradient(circle at 50% 41%, black 3%, currentcolor 4%, currentcolor 11%, rgba(210, 202, 171, 0) 12%, rgba(210, 202, 171, 0)) 50px 0,
-    radial-gradient(circle at 50% 59%, currentcolor 3%, black 4%, black 11%, rgba(54, 78, 39, 0) 12%, rgba(54, 78, 39, 0)) 0 50px,
-    radial-gradient(circle at 50% 41%, black 3%, currentcolor 4%, currentcolor 11%, rgba(210, 202, 171, 0) 12%, rgba(210, 202, 171, 0)) 0 50px,
-    radial-gradient(circle at 100% 50%, currentcolor 16%, rgba(210, 202, 171, 0) 17%),
-    radial-gradient(circle at 0% 50%, black 16%, rgba(54, 78, 39, 0) 17%),
-    radial-gradient(circle at 100% 50%, currentcolor 16%, rgba(210, 202, 171, 0) 17%) 50px 50px,
-    radial-gradient(circle at 0% 50%, black 16%, rgba(54, 78, 39, 0) 17%) 50px 50px;
-  background-color: grey;
-  background-size: 20px 21px;
-}
-
-.pattern-circles {
-  opacity: 1;
-  background-image: radial-gradient(circle at center center, transparent, currentColor), repeating-radial-gradient(circle at center center, black, black, 4px, transparent 8px, transparent 4px);
-  background-blend-mode: hue;
-}
-
-.pattern-isometric-cubes {
-  background-color: white;
-  opacity: 1;
-  background-image: linear-gradient(30deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black), linear-gradient(150deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black), linear-gradient(30deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black), linear-gradient(150deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black), linear-gradient(60deg, grey 25%, transparent 25.5%, transparent 75%, grey 75%, grey), linear-gradient(60deg, grey 25%, transparent 25.5%, transparent 75%, grey 75%, grey);
-  background-size: 14px 24px;
-  background-position: 0 0, 0 0, 7px 12px, 7px 12px, 0 0, 7px 12px;
-}
-
-.pattern-crosses {
-  background-color: white;
-  opacity: 1;
-  background: radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent) 15px 15px, linear-gradient(black 1.2px, transparent 1.2px) 0 -0.6px, linear-gradient(90deg, black 1.2px, currentColor 1.2px) -0.6px 0;
-  background-size: 30px 30px, 30px 30px, 15px 15px, 15px 15px;
-}
-
-.pattern-paper {
-  background-color: white;
-  opacity: 1;
-  background-image: linear-gradient(black 1.6px, transparent 1.6px), linear-gradient(90deg, black 1.6px, transparent 1.6px), linear-gradient(black 0.8px, transparent 0.8px), linear-gradient(90deg, black 0.8px, white 0.8px);
-  background-size: 20px 20px, 20px 20px, 4px 4px, 4px 4px;
-  background-position: -1.6px -1.6px, -1.6px -1.6px, -0.8px -0.8px, -0.8px -0.8px;
-}
-
-.pattern-zigzag--3d {
-  background-color: white;
-  opacity: 1;
-  background: linear-gradient(135deg, grey 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(225deg, black 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(315deg, grey 25%, transparent 25%) 0px 0/ 16px 16px, linear-gradient(45deg, black 25%, white 25%) 0px 0/ 16px 16px;
-}
-
-
-
-@media (max-width: 600px) {
-  body {
-    margin: 10px;
-  }
-
-  header {
-    height: 50px;
-  }
 }
