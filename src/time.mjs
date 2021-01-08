@@ -258,35 +258,36 @@ async function createLegend (array, hours) {
   return `${legendTlp}</ul></div>`
 }
 
-async function createHours (allEntries, type) {
+async function createHours (allEntries, type, year) {
   const hours = []
 
   for (let i = 0; i < allEntries.length; i++) {
     const el = allEntries[i]
-
-    let entryObj = {}
-    if (type === 'activity') {
-      entryObj = {
-        dataType: el[2],
-        hours: parseInt(el[4])
+    if (year === el[0]) {
+      let entryObj = {}
+      if (type === 'activity') {
+        entryObj = {
+          dataType: el[2],
+          hours: parseInt(el[4])
+        }
+      } else if (type === 'project') {
+        entryObj = {
+          dataType: el[3],
+          hours: parseInt(el[4])
+        }
       }
-    } else if (type === 'project') {
-      entryObj = {
-        dataType: el[3],
-        hours: parseInt(el[4])
-      }
-    }
-    if (entryObj.dataType !== 'null') {
-      if (!hours.length) {
-        hours.push(entryObj)
-      } else {
-        const result = hours.find(
-          ({ dataType }) => dataType === entryObj.dataType
-        )
-        if (!result) {
+      if (entryObj.dataType !== 'null') {
+        if (!hours.length) {
           hours.push(entryObj)
-        } else if (result.dataType === entryObj.dataType) {
-          result.hours = result.hours + entryObj.hours
+        } else {
+          const result = hours.find(
+            ({ dataType }) => dataType === entryObj.dataType
+          )
+          if (!result) {
+            hours.push(entryObj)
+          } else if (result.dataType === entryObj.dataType) {
+            result.hours = result.hours + entryObj.hours
+          }
         }
       }
     }
@@ -344,9 +345,13 @@ async function generateTime (textContent) {
       'project'
     )
 
+    // console.log(allEntries)
+
     // //Create hours for each activity and project
-    const activitiesHours = await createHours(allEntries, 'activity')
-    const projectsHours = await createHours(allEntries, 'project')
+    const activitiesHours = await createHours(allEntries, 'activity', year)
+    const projectsHours = await createHours(allEntries, 'project', year)
+
+    // console.log(projectsHours)
 
     // //Create graph legends
     const activitiesLegend = await createLegend(
