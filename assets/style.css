@@ -57,12 +57,12 @@ body {
   overflow-x: hidden;
 }
 
-body > * {
+body>* {
   margin-top: 0;
   margin-bottom: 0;
-} 
+}
 
-body > * + * {
+body>*+* {
   margin-top: var(--s1);
 }
 
@@ -90,6 +90,7 @@ h5,
 h6 {
   line-height: 1.25;
 }
+
 h1 {
   font-size: 2.5rem;
 }
@@ -125,11 +126,11 @@ h6:hover {
 
 header {
   text-align: center;
-  margin:var(--s0) auto var(--s0) auto;
+  margin: var(--s0) auto var(--s0) auto;
 }
 
 header svg {
-  width:var(--s5);
+  width: var(--s5);
 }
 
 blockquote {
@@ -142,24 +143,26 @@ blockquote footer {
 
 pre {
   background-color: var(--text);
-  padding:var(--s0);
+  padding: var(--s0);
 }
 
 code {
   background-color: var(--text);
-  color:var(--background);
+  color: var(--background);
   font-size: var(--s0);
   white-space: pre-wrap;
 }
 
-ul, ol, dl {
-  padding:0;
+ul,
+ol,
+dl {
+  padding: 0;
 }
 
 nav {
   max-width: 50ch;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 var(--s1);
 }
 
@@ -170,17 +173,17 @@ article {
   flex-direction: column;
   justify-content: flex-start;
   max-width: 50ch;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 var(--space);
 }
 
-article > * {
+article>* {
   margin-top: 0;
   margin-bottom: 0;
-} 
+}
 
-article > * + * {
+article>*+* {
   margin-top: var(--space);
 }
 
@@ -188,11 +191,12 @@ footer {
   margin-bottom: var(--s1);
 }
 
-footer > * + * {
+footer>*+* {
   margin-top: var(--s1);
 }
 
-footer svg, footer img {
+footer svg,
+footer img {
   width: var(--s1)
 }
 
@@ -205,10 +209,10 @@ footer ul {
   justify-content: center;
   list-style: none;
   padding-left: 0;
-  margin:auto;
+  margin: auto;
 }
 
-footer ul > * + * {
+footer ul>*+* {
   margin-left: var(--s-1);
 }
 
@@ -263,7 +267,7 @@ footer ul > * + * {
   font-size: 0.6rem;
 }
 
-.time-graph ul{
+.time-graph ul {
   list-style: none;
 }
 
