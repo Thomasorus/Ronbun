@@ -151,6 +151,7 @@ code {
   color: var(--background);
   font-size: var(--s0);
   white-space: pre-wrap;
+  padding: 2px;
 }
 
 ul,
