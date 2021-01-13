@@ -1,20 +1,15 @@
 const pregReplace = function (a, b, c, d) {
-  undefined === d && (d = -1)
-  const e = a.substr(a.lastIndexOf(a[0]) + 1)
-  const f = a.substr(1, a.lastIndexOf(a[0]) - 1)
-  const g = RegExp(f, e)
-  const i = []
-  let j = 0
-  let k = 0
-  let l = c
-  let m = []
+  void 0 === d && (d = -1)
+  let e = a.substr(a.lastIndexOf(a[0]) + 1)
+        var f = a.substr(1, a.lastIndexOf(a[0]) - 1)
+        var g = RegExp(f, e)
+        var i = []
+        var j = 0
+        var k = 0
+        var l = c
+        var m = []
   if (d === -1) {
-    while (m !== null && e.indexOf('g') !== -1) {
-      m = g.exec(c)
-      if (m !== null) {
-        i.push(m)
-      }
-    }
+    do m = g.exec(c), m !== null && i.push(m); while (m !== null && e.indexOf('g') !== -1)
   } else i.push(g.exec(c))
   for (j = i.length - 1; j > -1; j--) {
     for (m = b, k = i[j].length; k > -1; k--) m = m.replace('${' + k + '}', i[j][k]).replace('$' + k, i[j][k]).replace('\\' + k, i[j][k])
@@ -171,27 +166,23 @@ function extractText (text) {
 }
 
 function createImages (item) {
-  let el = item
-  el = el.replace('[', '').replace(']', '')
+  const el = item
   const imgArr = el.split(',')
   let imgHtml = ''
+  const imgUrl = imgArr[0].replace(/(\.(?:jpe?g|png|gif))$/, '')
 
-  if (imgArr.length === 1) {
-    imgHtml = `<img loading="lazy" src="${imgArr[0]}">`
-  }
+  let alt = ''
+  let caption = ''
 
-  if (imgArr.length === 2) {
-    const alt = ` alt="${imgArr[1].trim()}"`
-    imgHtml = `<img loading="lazy" src="${imgArr[0].trim()}"${alt}>`
+  if (imgArr.length >= 2) {
+    alt = `alt="${imgArr[1].trim()}" `
   }
 
   if (imgArr.length === 3) {
-    const alt = ` alt="${imgArr[1].trim()}"`
-    imgHtml = `<img loading="lazy" src="${imgArr[0]}"${alt}>`
-    const caption = `<figcaption>${extractText(el)}</figcaption>`
-    imgHtml = `<figure>${imgHtml}${caption}</figure>`
+    caption = `<figcaption>${extractText(el)}</figcaption>`
   }
 
+  imgHtml = `${caption ? '<figure>' : ''}<picture><source type="image/webp" srcset="${imgUrl}-240.webp 300w, ${imgUrl}-680.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}.webp 1200w" /><img loading="lazy" ${alt ? ` data-${alt}` : ''} srcset="${imgUrl}-240.jpg 300w, ${imgUrl}-680.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}.jpg 1200w" data-src="${imgUrl}.jpg"></picture>${caption} ${caption ? '</figure>' : ''}<noscript> ${caption ? '<figure>' : ''} <picture> <source type="image/webp" srcset="${imgUrl}-240.webp 300w, ${imgUrl}-680.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}.webp 1200w" /> <img loading="lazy" ${alt ? ` ${alt}` : ''} srcset="${imgUrl}-240.jpg 300w, ${imgUrl}-680.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}.jpg 1200w" src="${imgUrl}.jpg"> </picture> ${caption} ${caption ? '</figure>' : ''} </noscript>`
   return imgHtml
 }
 
@@ -273,4 +264,3 @@ function toKebab (text) {
   return toKebabCase
 }
 export { parser as default }
-
