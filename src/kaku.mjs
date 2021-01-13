@@ -34,11 +34,11 @@ var parser = function (str) {
                 return `<code>${code}</code>`
             }],
             // images
-            ['/\\[([^\\[]+)\\]/g', function (item) {
+            ['/\\n\\[([^\\[]+)\\]/g', function (item) {
                 return createImages(item)
             }],
             // videos
-            ['/\\|([^\\|]+)\\|/g', function (item) {
+            ['/\\n\\|([^\\|]+)\\|/g', function (item) {
                 return createMultimedia(item)
             }],
             // link
@@ -74,7 +74,8 @@ var parser = function (str) {
                     if (line.includes("<")) {
                         line = line.replace(/\</g, "<span><</span>")
                         return line
-                    } else {
+                    }
+                    else {
                         return line;
                     }
                 }
@@ -90,7 +91,12 @@ var parser = function (str) {
             ['/<\\/ol>\n<ol>/g', '\n'],
             ['/<\\/dl>\n<dl>/g', '\n'],
             ['/<\\/blockquote>\n<blockquote>/g', "\n"],
-            ['/<pre><code>\n/g', "<pre><code>"]
+            ['/<pre><code>\n/g', "<pre><code>"],
+            ['/<em><\\/em>/g', '&#95;&#95;'],
+            ['/<span><</span>em><span><</span>/em>/g', '&#95;&#95;'],
+            ['/ <span><</span>strong> /g', ' * '],
+            ['/ <span><</span>\\/strong> /g', ' * '],
+            ['/&nbsp;/g', '&nbsp;&nbsp;&nbsp;']
         ];
 
     var codeblock = false
