@@ -94,7 +94,7 @@ const parser = function (str) {
     ['/<span><</span>em><span><</span>/em>/g', '&#95;&#95;'],
     ['/ <span><</span>strong> /g', ' * '],
     ['/ <span><</span>\\/strong> /g', ' * '],
-    ['/&nbsp;/g', '&nbsp;&nbsp;&nbsp;']
+    // ['/&nbsp;/g', '&nbsp;&nbsp;&nbsp;']
   ]
 
   let codeblock = false
