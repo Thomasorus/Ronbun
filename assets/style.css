@@ -184,6 +184,11 @@ article>* {
   margin-bottom: 0;
 }
 
+article figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 article>*+* {
   margin-top: var(--space);
 }
