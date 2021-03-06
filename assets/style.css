@@ -189,6 +189,10 @@ article figure {
   margin-right: 0;
 }
 
+figcaption {
+  font-size: var(--s-1);
+}
+
 article>*+* {
   margin-top: var(--space);
 }
