@@ -1,33 +1,35 @@
 const patterns = [
-  'pattern-dots',
-  'pattern-grid',
-  'pattern-checks',
-  'pattern-cross-dots',
-  'pattern-diagonal-lines--left',
-  'pattern-vertical-stripes',
-  'pattern-horizontal-stripes',
-  'pattern-diagonal-stripes--left',
-  'pattern-zigzag',
-  'pattern-triangles',
-  'pattern-double-diagonal-stripes',
-  'pattern-quarter-circles',
-  'pattern-seigaiha',
-  'pattern-checks-diagonal',
-  'pattern-vertical-lines',
-  'pattern-horizontal-lines',
-  'pattern-grey-lines',
-  'pattern-wave',
-  'pattern-yin-yang',
-  'pattern-circles',
-  'pattern-isometric-cubes',
-  'pattern-paper',
-  'pattern-crosses',
-  'pattern-zigzag--3d',
-  'pattern-grid--medium',
-  'pattern-diagonal-stripes--right'
+  'moyo-checks',
+  'moyo-checks-diagonal',
+  'moyo-grid',
+  'moyo-grid-medium',
+  'moyo-cross-dots',
+  'moyo-vertical-lines',
+  'moyo-horizontal-lines',
+  'moyo-diagonal-lines-left',
+  'moyo-diagonal-lines-right',
+  'moyo-vertical-stripes​',
+  'moyo-horizontal-stripes',
+  'moyo-diagonal-stripes-left',
+  'moyo-diagonal-stripes-right',
+  'moyo-double-diagonal-stripes',
+  'moyo-zig-zag',
+  'moyo-zig-zag-3d',
+  'moyo-triangles',
+  'moyo-quarter-circles',
+  'moyo-seigaiha',
+  'moyo-wave',
+  'moyo-yinyang',
+  'moyo-circles-small',
+  'moyo-circles-medium',
+  'moyo-circles-large',
+  'moyo-stars',
+  'moyo-squares',
+  'moyo-paper',
+  'moyo-cubes'
 ]
 
-async function parseTime (timeToParse) {
+async function parseTime(timeToParse) {
   const cleanedEntries = []
   const splittedEntries = timeToParse.split(/\r?\n/)
   for (let i = 0; i < splittedEntries.length; i++) {
@@ -39,7 +41,7 @@ async function parseTime (timeToParse) {
   return cleanedEntries
 }
 
-async function cleanEntry (entry) {
+async function cleanEntry(entry) {
   const newEntry = entry.split(' ')
   const result = newEntry.map((s) => s.trim())
   const weekNum = result[1]
@@ -50,7 +52,7 @@ async function cleanEntry (entry) {
   }
 }
 
-async function createWeeks (allWeeks) {
+async function createWeeks(allWeeks) {
   const years = []
 
   // Splitting activities by years
@@ -65,13 +67,17 @@ async function createWeeks (allWeeks) {
       years.push(yearObj)
       years[0].entries.push(activity)
     } else {
-      const neededYear = years.find(({ year }) => year === activity[0])
+      const neededYear = years.find(({
+        year
+      }) => year === activity[0])
 
       if (neededYear) {
         neededYear.entries.push(activity)
       } else {
         years.push(yearObj)
-        const newNeededYear = years.find(({ year }) => year === activity[0])
+        const newNeededYear = years.find(({
+          year
+        }) => year === activity[0])
         newNeededYear.entries.push(activity)
       }
     }
@@ -100,7 +106,9 @@ async function createWeeks (allWeeks) {
       if (!acc.length) {
         acc.push(weekObj)
       } else {
-        const result = acc.find(({ week }) => week === weekNumber)
+        const result = acc.find(({
+          week
+        }) => week === weekNumber)
 
         if (!result) {
           acc.push(weekObj)
@@ -119,7 +127,7 @@ async function createWeeks (allWeeks) {
   return years
 }
 
-async function createGraph (yearsData, graphs, type) {
+async function createGraph(yearsData, graphs, type) {
   let template = `<h3>Time by ${type}</h3><div class='time-graph'>`
   for (let i = 0; i < yearsData.length; i++) {
     const weekData = yearsData[i]
@@ -181,7 +189,7 @@ async function createGraph (yearsData, graphs, type) {
   return template
 }
 
-async function createActivitiesPatterns (yearsData) {
+async function createActivitiesPatterns(yearsData) {
   const act = []
 
   for (let i = 0; i < yearsData.length; i++) {
@@ -209,7 +217,7 @@ async function createActivitiesPatterns (yearsData) {
   return activitiesPatterns
 }
 
-async function createProjectsPatterns (yearsData) {
+async function createProjectsPatterns(yearsData) {
   const proj = []
 
   for (let i = 0; i < yearsData.length; i++) {
@@ -236,7 +244,7 @@ async function createProjectsPatterns (yearsData) {
   return projectsPatterns
 }
 
-async function createLegend (array, hours) {
+async function createLegend(array, hours) {
   let legendTlp =
     "<div class='time-graph__legend-container'><ul class='time-graph__legend-list'>"
 
@@ -244,7 +252,9 @@ async function createLegend (array, hours) {
     const el = array[i]
     const key = Object.keys(el).toString()
 
-    const time = hours.find(({ dataType }) => dataType === key)
+    const time = hours.find(({
+      dataType
+    }) => dataType === key)
 
     const definition = Object.keys(el)
     const legend = `<li class="time-graph__legend"><span  class="time-graph__pattern ${Object.values(
@@ -258,7 +268,7 @@ async function createLegend (array, hours) {
   return `${legendTlp}</ul></div>`
 }
 
-async function createHours (allEntries, type, year) {
+async function createHours(allEntries, type, year) {
   const hours = []
 
   for (let i = 0; i < allEntries.length; i++) {
@@ -281,7 +291,9 @@ async function createHours (allEntries, type, year) {
           hours.push(entryObj)
         } else {
           const result = hours.find(
-            ({ dataType }) => dataType === entryObj.dataType
+            ({
+              dataType
+            }) => dataType === entryObj.dataType
           )
           if (!result) {
             hours.push(entryObj)
@@ -295,7 +307,7 @@ async function createHours (allEntries, type, year) {
   return hours
 }
 
-async function createTotalHours (
+async function createTotalHours(
   yearsData,
   totalActivities,
   totalProjects,
@@ -315,7 +327,7 @@ async function createTotalHours (
   return `<p>I spent <strong>${total} hours</strong> on <strong>${totalActivities} activities</strong> for <strong>${totalProjects} projects</strong>. On <strong>week ${weeks}</strong> of <strong>${year}</strong>, my personal projects took me around <strong>${perWeek} hours each week</strong>.</p>`
 }
 
-async function generateTime (textContent) {
+async function generateTime(textContent) {
   // Parsing file
   const allEntries = await parseTime(textContent)
 
@@ -387,4 +399,7 @@ async function generateTime (textContent) {
   return graph
 }
 
-export { generateTime as default }
+export {
+  generateTime as
+  default
+}

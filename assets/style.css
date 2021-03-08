@@ -38,6 +38,7 @@
   footer img {
     filter: invert(100%);
   }
+
 }
 
 @media (prefers-color-scheme: light) {
@@ -407,6 +408,18 @@ footer ul>*+* {
 
 .pattern-demo {
   width: 100%;
-  height: 200px;
+  height: 100px;
+  border: 1px solid var(--text);
+  background: white;
+}
+
+.svg-demo>*,
+.pattern-demo>* {
+  margin-bottom: var(--s0);
+}
+
+.svg-demo svg {
+  width: 100%;
+  height: 100px;
   border: 1px solid var(--text);
 }
