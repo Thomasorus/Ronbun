@@ -21,7 +21,7 @@ const pregReplace = function (a, b, c, d) {
 const parser = function (str) {
   const rules = [
     // headers
-    ['/(#+)(.*)/g', function (chars, item) {
+    ['/\n(#+)(.*)/g', function (chars, item) {
       const level = chars.length
       return createTitle(level, item)
     }],
