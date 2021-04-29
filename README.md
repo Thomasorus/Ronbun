@@ -16,7 +16,6 @@ Ronbun requires is developed and built on a linux machine, it requires:
 
 - NodeJS 14
 - Imagemagick
-- entr
 
 ## How to install
 
@@ -29,9 +28,9 @@ git submodule update --recursive --remote
 
 ## How to develop or build the website
 
-- `./dev.sh` will create a node server, watch for file changes and compile html, xml and process images.
+- `./dev.sh` will watch for file changes and compile html, xml and process images.
 - `./build.sh` will compile html, xml and process images.
-- `./server.sh` triggers the local server if you want to locally visit the website.
+- `./server` creates a local server if you want to locally visit the website.
 
 Don't forget to use - `chmod +x ./*.sh` to allow scripts execution.
 
