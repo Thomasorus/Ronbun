@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 import * as utils from './utils.mjs'
 import { config } from './config.mjs'
+import textParser from './kaku.mjs'
 
 class Entry {
   constructor() {
@@ -12,7 +13,9 @@ class Entry {
     this.categoryName
     this.categorySlug
     this.bref
+    this.isPrivate
     this.body
+    this.parsedText
     this.startWeek
     this.startYear
     this.endWeek
@@ -53,8 +56,13 @@ function generate(config) {
       let bref = el.match(/(?:BREF:)((?:\\[\s\S]|[^\\])+?)\n/g)
       entry.bref = bref[0].substr(5).trim()
 
+      let isPrivate = el.match(/(?:PRIV:)((?:\\[\s\S]|[^\\])+?)\n/g)
+      entry.isPrivate = isPrivate[0].substr(5).trim()
+      console.log(entry.isPrivate)
+
       let body = el.match(/(?:BODY:)((?:\\[\s\S]|[^\\])+?)$/g)
       entry.body = body[0].substr(5).trim()
+      entry.parsedText = textParser(entry.body)
 
       allEntries.push(entry)
     }
@@ -111,5 +119,23 @@ function generate(config) {
       allEntries.push(entry)
     }
   }
+
+  const htmlTemplate = utils.readFile(config.buildAssetsDir + "/" + config.htmlTemplate)
+
+  for (var i = 0; i < allEntries.length; i++) {
+    const el = allEntries[i]
+
+     if (el.titleSlug !== el.categorySlug && el.category !== null) {
+      el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.hostSlug}.html">${el.host}</a></i></nav>`
+    }
+
+    let page = htmlTemplate
+
+    page = page.replace(/pageTitle/g, `${el.title}`)
+    page = page.replace(/metaDescription/g, el.bref)
+    page = page.replace(/breadCrumb/g, el.hostNav)
+    page = page.replace(/pageBody/g, el.parsedText)
+  }
+
 }
 generate(config)
