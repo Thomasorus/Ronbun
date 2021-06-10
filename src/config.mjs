@@ -3,9 +3,9 @@ export const config = {
   srcAssetsDir: './assets',
   srcMediaDir: './data/media',
 
-  buildDir: './www',
-  buildAssetsDir: './www/assets',
-  buildMediaDir: './www/media',
+  buildDir: './www2',
+  buildAssetsDir: './www2/assets',
+  buildMediaDir: './www2/media',
 
   contentFile: 'content.kaku',
   timeFile: 'time.kaku',

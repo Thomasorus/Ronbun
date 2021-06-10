@@ -6,6 +6,7 @@ import textParser from './kaku.mjs'
 class Entry {
   constructor() {
     this.key
+    this.type
     this.title
     this.htmlTitle
     this.titleSlug
@@ -21,8 +22,8 @@ class Entry {
     this.endWeek
     this.endYear
     this.totalTime = 0
-    this.activity
-    this.project
+    this.activity = []
+    this.project = []
   }
 }
 
@@ -43,6 +44,7 @@ function generate(config) {
 
   const allEntries = []
 
+  // Creating all pages from content file
   for (let i = 0; i < contentArray.length; i++) {
     const el = contentArray[i]
     if (el !== '') {
@@ -70,16 +72,21 @@ function generate(config) {
       entry.body = body[0].substr(5).trim()
       entry.parsedText = textParser(entry.body)
 
+      entry.type = 'content'
+
       allEntries.push(entry)
     }
   }
 
+  //Creating time pages from time file
   for (let i = 0; i < timeArray.length; i++) {
     const timeEl = timeArray[i].split(' ')
     let contentExists = false
 
+    //Checking if time and content can be linked
     for (let u = 0; u < allEntries.length; u++) {
       const contentEl = allEntries[u]
+      // Check either in content or project
       if (contentEl.key === timeEl[3].toLowerCase()) {
         if (!contentEl.startYear) {
           contentEl.startYear = timeEl[0]
@@ -89,41 +96,87 @@ function generate(config) {
           contentEl.endYear = timeEl[0]
           contentEl.endWeek = timeEl[1]
         }
-        if (!contentEl.activity) {
-          contentEl.activity = timeEl[2]
+        if (!contentEl.activity.includes(timeEl[2].replace(/_/g, " "))) {
+          contentEl.activity.push(timeEl[2].replace(/_/g, " "))
         }
-        if (!contentEl.project) {
-          contentEl.activity = timeEl[3]
+        // if (!contentEl.project.includes(timeEl[3].replace(/_/g, " "))) {
+        //   contentEl.project.push(timeEl[3].replace(/_/g, " "))
+        // }
+        if (timeEl[4]) {
+          contentEl.totalTime += Number(timeEl[4])
+        }
+        contentExists = true
+      }
+      if (contentEl.key === timeEl[2].toLowerCase()) {
+        if (!contentEl.startYear) {
+          contentEl.startYear = timeEl[0]
+          contentEl.startWeek = timeEl[1]
+        }
+        if (contentEl.startYear) {
+          contentEl.endYear = timeEl[0]
+          contentEl.endWeek = timeEl[1]
+        }
+        // if (!contentEl.activity.includes(timeEl[2].replace(/_/g, " "))) {
+        //   contentEl.activity.push(timeEl[2].replace(/_/g, " "))
+        // }
+        if (!contentEl.project.includes(timeEl[3].replace(/_/g, " "))) {
+          contentEl.project.push(timeEl[3].replace(/_/g, " "))
         }
         if (timeEl[4]) {
           contentEl.totalTime += Number(timeEl[4])
         }
         contentExists = true
       }
-    }
-    if(!contentExists) {
 
-      const entry = new Entry()
-      entry.key = timeEl[3].toLowerCase()
-      if (!entry.startYear) {
-        entry.startYear = timeEl[0]
-        entry.startWeek = timeEl[1]
+    }
+
+    // If time data has no page, create a new one for the project
+    if(!contentExists) {
+      const project = new Entry()
+      project.key = timeEl[3].toLowerCase()
+      if (!project.startYear) {
+        project.startYear = timeEl[0]
+        project.startWeek = timeEl[1]
       }
-      if (entry.startYear) {
-        entry.endYear = timeEl[0]
-        entry.endWeek = timeEl[1]
+      if (project.startYear) {
+        project.endYear = timeEl[0]
+        project.endWeek = timeEl[1]
       }
-      if (!entry.activity) {
-        entry.activity = timeEl[2]
+      if (!project.activity.includes(timeEl[2])) {
+        project.activity.push(timeEl[2].replace(/_/g, " "))
       }
-      if (!entry.project) {
-        entry.project = timeEl[3]
-        entry.projectSlug = entry.project.toLowerCase().replace("_", "-").replace(/\b \b/g, '')
+      if (!project.project.includes(timeEl[3].replace(/_/g, " "))) {
+        project.project.push(timeEl[3].replace(/_/g, " "))
+        project.timeSlug = timeEl[3].toLowerCase().replace(/_/g, "-").replace(/\b \b/g, '')
       }
       if (timeEl[4]) {
-        entry.totalTime += Number(timeEl[4])
+        project.totalTime += Number(timeEl[4])
       }
-      allEntries.push(entry)
+      project.type = 'project'
+      allEntries.push(project)
+
+      const activity = new Entry()
+      activity.key = timeEl[2].toLowerCase()
+      if (!activity.startYear) {
+        activity.startYear = timeEl[0]
+        activity.startWeek = timeEl[1]
+      }
+      if (activity.startYear) {
+        activity.endYear = timeEl[0]
+        activity.endWeek = timeEl[1]
+      }
+      if (!activity.activity.includes(timeEl[2])) {
+        activity.activity.push(timeEl[2].replace(/_/g, " "))
+        activity.timeSlug = timeEl[2].toLowerCase().replace(/_/g, "-").replace(/\b \b/g, '')
+      }
+      if (!activity.project.includes(timeEl[3].replace(/_/g, " "))) {
+        activity.project.push(timeEl[3].replace(/_/g, " "))
+      }
+      if (timeEl[4]) {
+        activity.totalTime += Number(timeEl[4])
+      }
+      activity.type = 'activity'
+      allEntries.push(activity)
     }
   }
 
@@ -132,7 +185,6 @@ function generate(config) {
 
   for (var i = 0; i < allEntries.length; i++) {
     const el = allEntries[i]
-    console.log(el.titleSlug, el.project)
     if (el.titleSlug !== el.categorySlug && el.category !== null) {
       el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.categorySlug}.html">${el.categoryName}</a></i></nav>`
     }
@@ -140,7 +192,15 @@ function generate(config) {
       el.timeSection = `<p>Time spent: ${el.totalTime} hours.<br>Started week ${el.startWeek} of ${el.startYear}.<br>Last update week ${el.endWeek} of ${el.endYear}.</p>`
     }
     if(!el.titleSlug) {
-      el.parsedText = `<h1>${el.project}</h1><p><p>This page presents statictics related to ${el.project} and was automatically generated by the time tracker.</p>`
+      if(el.type === "project") {
+        el.parsedText = `<h1>${el.project}</h1><p><p>This page presents statictics related to the ${el.project} project and was automatically generated by the time tracker.</p>`
+        for(i = 0; i < el.activity) {
+          
+        }
+      }
+      if(el.type === "activity") {
+        el.parsedText = `<h1>${el.activity}</h1><p><p>This page presents statictics related to the ${el.activity} activities and was automatically generated by the time tracker.</p>`
+      }
     }
 
     let page = htmlTemplate
@@ -151,8 +211,17 @@ function generate(config) {
     page = page.replace(/timeSection/g, el.timeSection ? `<aside>${el.timeSection}</aside>` : "")
     page = page.replace(/pageBody/g, el.parsedText ? el.parsedText : "")
 
-    utils.createFile(`${config.buildDir}/${el.titleSlug ? el.titleSlug : el.projectSlug}.html`, page)
+    utils.createFile(`${config.buildDir}/${el.titleSlug ? el.titleSlug : el.timeSlug}.html`, page)
   }
 
 }
 generate(config)
+
+
+// NEXT 
+// Stocker les activités dans les pages projets 
+// Créer les pages pour les activités et y stocker les projets 
+// L'instance de la classe pourra ainsi être utilisée par le time tracker
+// Créer la page de time tracking en utilisant des SVG au lieu du html
+// Générer le flux RSS -> Attention aux pages privées, ne pas indexer les pages du time tracker
+// Générer le sitemap -> Attention aux pages privées, ne pas indexer les pages du time tracker
