@@ -2,6 +2,7 @@ import * as fs from 'fs'
 import * as utils from './utils.mjs'
 import { config } from './config.mjs'
 import textParser from './kaku.mjs'
+import timeParser from './time.mjs'
 
 class Entry {
   constructor() {
@@ -27,7 +28,7 @@ class Entry {
   }
 }
 
-function generate(config) {
+async function generate(config) {
 
   utils.mkDir(config.buildDir)
   utils.mkDir(config.buildAssetsDir)
@@ -195,6 +196,8 @@ function generate(config) {
     if(el.totalTime > 0) {
       el.timeSection = `<p>Time spent: ${el.totalTime} hours.<br>Started week ${el.startWeek} of ${el.startYear}.<br>Last update week ${el.endWeek} of ${el.endYear}.</p>`
     }
+
+    // TODO > REFACTOR THIS
     if(!el.titleSlug) {
       el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="time.html">Time</a></i></nav>`
       if(el.type === "project") {
@@ -223,11 +226,18 @@ function generate(config) {
           el.parsedText += `<p>The <a href="${el.activity[0].toLowerCase().replace(/\b \b/g, '-')}.html">${el.activity[0]}</a> project is part of this activity.</p>`
         }
       }
+    } 
+
+        let page = htmlTemplate
+
+
+    if (el.titleSlug === "time") {
+      page = page.replace('<article>', "<article class='full'>")
+      el.parsedText += await timeParser(utils.readFile(config.srcDataDir + '/' + config.timeFile))
     }
 
-    let page = htmlTemplate
 
-    page = page.replace(/pageTitle/g, `${el.title ? el.title : el.project}`)
+    page = page.replace(/pageTitle/g, `${el.title ? el.title : el.project} | Thomasorus`)
     page = page.replace(/metaDescription/g, el.bref ? el.bref : "")
     page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "")
     page = page.replace(/timeSection/g, el.timeSection ? `<aside>${el.timeSection}</aside>` : "")
@@ -236,6 +246,8 @@ function generate(config) {
     utils.createFile(`${config.buildDir}/${el.titleSlug ? el.titleSlug : el.timeSlug}.html`, page)
 
   }
+
+
 
 }
 generate(config)
