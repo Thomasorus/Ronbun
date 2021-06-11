@@ -1,32 +1,32 @@
 const patterns = [
-  'moyo-checks',
-  'moyo-checks-diagonal',
-  'moyo-grid',
-  'moyo-grid-medium',
-  'moyo-cross-dots',
-  'moyo-vertical-lines',
-  'moyo-horizontal-lines',
-  'moyo-diagonal-lines-left',
-  'moyo-diagonal-lines-right',
-  'moyo-vertical-stripes​',
-  'moyo-horizontal-stripes',
-  'moyo-diagonal-stripes-left',
-  'moyo-diagonal-stripes-right',
-  'moyo-double-diagonal-stripes',
-  'moyo-zig-zag',
-  'moyo-zig-zag-3d',
-  'moyo-triangles',
-  'moyo-quarter-circles',
-  'moyo-seigaiha',
-  'moyo-wave',
-  'moyo-yinyang',
-  'moyo-circles-small',
-  'moyo-circles-medium',
-  'moyo-circles-large',
-  'moyo-stars',
-  'moyo-squares',
-  'moyo-paper',
-  'moyo-cubes'
+  'checks',
+  'checks-diagonal',
+  'grid',
+  'grid-medium',
+  'cross-dots',
+  'vertical-lines',
+  'horizontal-lines',
+  'diagonal-lines-left',
+  'diagonal-lines-right',
+  'vertical-stripes',
+  'horizontal-stripes',
+  'diagonal-stripes-left',
+  'diagonal-stripes-right',
+  'double-diagonal-stripes',
+  'zig-zag',
+  'zig-zag-3d',
+  'triangles',
+  'quarter-circles',
+  'seigaiha',
+  'wave',
+  'yinyang',
+  'circles-small',
+  'circles-medium',
+  'circles-large',
+  'stars',
+  'squares',
+  'paper',
+  'cubes'
 ]
 
 async function parseTime(timeToParse) {
@@ -161,9 +161,8 @@ async function createGraph(yearsData, graphs, type) {
       }
 
       let tempLi = ''
-
       if (hours > 0) {
-        tempLi = `<li style="height:${size}px;" class="time-graph__activity ${pattern}"><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="time-graph__tooltip" aria-hidden="true">${activity.replace(
+        tempLi = `<li class="time-graph__activity ${pattern}"><svg  height="${size}" width="22"><rect style="fill: url(#${pattern});" height="100%" width="100%"></rect></svg><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="time-graph__tooltip" aria-hidden="true">${activity.replace(
           /_/g,
           ' '
         )} on ${project.replace(
@@ -257,12 +256,7 @@ async function createLegend(array, hours) {
     }) => dataType === key)
 
     const definition = Object.keys(el)
-    const legend = `<li class="time-graph__legend"><span  class="time-graph__pattern ${Object.values(
-      el
-    )}"></span><span class="time-graph__definition">${definition[0].replace(
-      /_/g,
-      ' '
-    )}: ${time.hours} hours</span></li>`
+    const legend = `<li class="time-graph__legend"><svg aria-hidden="true" height="18" width="18"><rect style="fill: url(#${Object.values(el)});" height="100%" width="100%"></rect></svg></span><span class="time-graph__definition"> <a href="${definition[0].toLowerCase().replace(/_/g, "-")}.html">${definition[0].replace(/_/g, " ")}: ${time.hours} hours</a></span></li>`
     legendTlp = legendTlp + legend
   }
   return `${legendTlp}</ul></div>`
