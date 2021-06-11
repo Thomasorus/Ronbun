@@ -65,7 +65,7 @@ export async function moveAssets(sourceDir, destinationDir) {
     const dir = await fs.promises.opendir(sourceDir)
     for await (const file of dir) {
       if(!fs.existsSync(`${destinationDir}/${file.name}`)) {
-        console.log(`Copying new asset ${file.name}`)
+        console.log(`+ Copying new asset ${file.name}`)
        fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
           if (err) {
             throw err
@@ -77,7 +77,7 @@ export async function moveAssets(sourceDir, destinationDir) {
         // const gitSize = await execSync(`git ls-tree -r  -l HEAD ${sourceDir}/${file.name}`).toString().replace(`${sourceDir}/${file.name}`.substring(2), '').substring(52).trim()
 
         if(sourceSize !== destSize) {
-          console.log(`Updating ${file.name.trim()}`)
+          console.log(`+ Updating ${file.name.trim()}`)
           fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
             if (err) {
               throw err
