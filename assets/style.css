@@ -276,6 +276,9 @@ footer ul>*+* {
   letter-spacing: -2px;
   font-family: monospace;
   font-size: 0.6rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .time-graph ul {
@@ -302,9 +305,6 @@ footer ul>*+* {
   box-shadow: 0 0 0 1px var(--text);
   font-size: 0.8rem;
   line-height: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   position: relative;
 }
 
@@ -341,6 +341,7 @@ footer ul>*+* {
   list-style-type: none;
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
   margin: 5px 10px;
 }
 
@@ -355,12 +356,13 @@ footer ul>*+* {
 
 .time-graph__value {
   margin-left: 2px;
-  margin-right: 20px;
 }
 
 .time-graph__definition {
   padding-top: 2px;
+  margin-left: 5px;
   white-space: nowrap;
+  letter-spacing: -1px;
 }
 
 .time-graph__pattern {
