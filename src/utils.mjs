@@ -89,3 +89,8 @@ export async function moveAssets(sourceDir, destinationDir) {
       }
     }
 }
+
+export async function gitDate(folder, file) {
+  const gitSize = await execSync(`cd ${folder} && git log -1 --format="%ci" './${file}'`).toString().trim()
+  return gitSize
+}

@@ -7,6 +7,7 @@ import timeParser from './time.mjs'
 class Entry {
   constructor() {
     this.key
+    this.date
     this.type
     this.title
     this.htmlTitle
@@ -25,6 +26,7 @@ class Entry {
     this.totalTime = 0
     this.activity = []
     this.project = []
+    this.timeSection = ""
   }
 }
 
@@ -73,6 +75,7 @@ async function generate(config) {
       entry.body = body[0].substr(5).trim()
       entry.parsedText = textParser(entry.body)
 
+      entry.date = await utils.gitDate(config.buildDir, `${entry.titleSlug}.html`)
       entry.type = 'content'
 
       allEntries.push(entry)
@@ -196,6 +199,9 @@ async function generate(config) {
     if(el.totalTime > 0) {
       el.timeSection = `<p>Time spent: ${el.totalTime} hours.<br>Started week ${el.startWeek} of ${el.startYear}.<br>Last update week ${el.endWeek} of ${el.endYear}.</p>`
     }
+    el.timeSection += `<small>Page generated ${el.date}</small>`
+
+    
 
     // TODO > REFACTOR THIS
     if(!el.titleSlug) {
@@ -237,11 +243,13 @@ async function generate(config) {
     }
 
 
-    page = page.replace(/pageTitle/g, `${el.title ? el.title : el.project} | Thomasorus`)
+    page = page.replace(/pageTitle/g, `${el.title ? el.title : el.project} - Thomasorus`)
     page = page.replace(/metaDescription/g, el.bref ? el.bref : "")
     page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "")
     page = page.replace(/timeSection/g, el.timeSection ? `<aside>${el.timeSection}</aside>` : "")
     page = page.replace(/pageBody/g, el.parsedText ? el.parsedText : "")
+    // page = page.replace(/pageTimeContent/g, el.date ? el.date : "")
+
 
     utils.createFile(`${config.buildDir}/${el.titleSlug ? el.titleSlug : el.timeSlug}.html`, page)
 
