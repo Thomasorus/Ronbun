@@ -162,7 +162,7 @@ async function createGraph(yearsData, graphs, type) {
 
       let tempLi = ''
       if (hours > 0) {
-        tempLi = `<li class="time-graph__activity ${pattern}"><svg  height="${size}" width="22"><rect style="fill: url(#${pattern});" height="100%" width="100%"></rect></svg><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="time-graph__tooltip" aria-hidden="true">${activity.replace(
+        tempLi = `<li class="time-graph__activity"><svg  height="${size}" width="100%"><rect style="fill: url(#${pattern});" height="100%" width="100%"></rect></svg><span class="time-graph__hours" aria-hidden="true">${hours}</span><span class="time-graph__tooltip" aria-hidden="true">${activity.replace(
           /_/g,
           ' '
         )} on ${project.replace(

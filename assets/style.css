@@ -279,6 +279,8 @@ footer ul>*+* {
   position: absolute;
   top: 0;
   left: 0;
+    line-height: 1;
+
 }
 
 .time-graph ul {
@@ -303,9 +305,8 @@ footer ul>*+* {
   margin: 1.5px;
   padding: 0;
   box-shadow: 0 0 0 1px var(--text);
-  font-size: 0.8rem;
-  line-height: 1;
   position: relative;
+  line-height: 0;
 }
 
 .time-graph__tooltip {
@@ -319,11 +320,14 @@ footer ul>*+* {
   display: block;
   padding: 5px;
   position: absolute;
+  top: 20%;
   border: 1px solid var(--text);
   z-index: 1;
   font-size: 0.6rem;
   font-family: sans-serif;
   letter-spacing: normal;
+  line-height:1;
+  min-width: 10px;
 }
 
 
