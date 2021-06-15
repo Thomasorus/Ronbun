@@ -91,6 +91,14 @@ export async function moveAssets(sourceDir, destinationDir) {
 }
 
 export async function gitDate(folder, file) {
-  const gitSize = await execSync(`cd ${folder} && git log -1 --format="%ci" './${file}'`).toString().trim()
-  return gitSize
+  if(fs.existsSync(`${folder}/${file}`)) {
+    const gitDate = await execSync(`cd ${folder} && git log -1 --format="%ci" './${file}'`).toString().trim()
+    const date = new Date(gitDate);
+    return date
+  } else {
+      return new Date()
+  }
+
 }
+
+
