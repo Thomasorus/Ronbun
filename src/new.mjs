@@ -27,6 +27,7 @@ class Entry {
     this.activity = []
     this.project = []
     this.timeSection = ""
+    this.children = []
   }
 }
 
@@ -68,7 +69,7 @@ async function generate(config) {
       let category = el.match(/(?:HOST:)((?:\\[\s\S]|[^\\])+?)\n/g)
       entry.category = category[0].substr(5).trim()
       entry.categoryName =
-        entry.category.charAt(0).toUpperCase() + entry.category.slice(1)
+      entry.category.charAt(0).toUpperCase() + entry.category.slice(1)
       entry.categorySlug = entry.category.toLowerCase().replace(/\b \b/g, '-')
 
       let bref = el.match(/(?:BREF:)((?:\\[\s\S]|[^\\])+?)\n/g)
@@ -275,6 +276,8 @@ async function generate(config) {
   }
 
 
+
+
   // Generate RSS
   const itemsString = rssArray.join('\n')
   const event = new Date()
@@ -302,40 +305,15 @@ async function generate(config) {
   }
 
 
-
-  //Generate sitemap
-
-  
+  const tree = await utils.sitemap(allEntries)
+  utils.createFile(`${config.buildDir}/sitemap.html`, tree)
 
   
-  // console.log(sitemapArray)
-  // let sitemapPage = `<h1>Sitemap</h1>`
-
-  // function generateSitemap() {
-  //   for (var i = 0; i < sitemapArray.length; i++) {
-  //     const cat = sitemapArray[i]
-  //     console.log(cat)
-  //     let item = `<ul><li><a href="${cat}.html">${cat.replace(/-/g, " ")}</a><ul>`
-  //     let result = allEntries.filter(allEntries => allEntries.categorySlug === cat)
-  //     // Generate pages
-  //     for (var u = 0; u < result.length; u++) {
-  //         const el = result[u]
-  //         if(el.titleSlug !== cat) {
-  //           item += `<li><a href="${el.titleSlug}.html">${el.title}</a>`
-  //           generateSitemap()
-  //         }
-  //     }
-  //     item += "</ul></li></ul>"
-  //     sitemapPage += item
-  //   }
-  // }
-  // generateSitemap()
   
-  // utils.createFile(`${config.buildDir}/sitemap.html`, sitemapPage)
 
 }
 generate(config)
 
 
 // NEXT 
-Générer le sitemap -> Attention aux pages privées, ne pas indexer les pages du time tracker
+// Générer le sitemap -> Attention aux pages privées, ne pas indexer les pages du time tracker

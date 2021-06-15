@@ -101,4 +101,56 @@ export async function gitDate(folder, file) {
 
 }
 
+export async function sitemap(arr) {
+  var tree = [],
+      mappedArr = {},
+      arrElem,
+      mappedElem;
 
+  // First map the nodes of the array to an object -> create a hash table.
+  for(var i = 0, len = arr.length; i < len; i++) {
+    arrElem = arr[i];
+    if(arrElem.titleSlug !== undefined) {
+      //Give key from titleSlug
+      mappedArr[arrElem.titleSlug] = arrElem
+      // Add the children empty array
+      mappedArr[arrElem.titleSlug]['children'] = [];
+    }
+  }
+
+  
+  for (var id in mappedArr) {
+    if (mappedArr.hasOwnProperty(id)) {
+      mappedElem = mappedArr[id];
+      // If the element is not at the root level, add it to its parent array of children.
+      if (mappedElem.categorySlug) {
+        mappedArr[mappedElem['categorySlug']]['children'].push(mappedElem);
+      }
+      // If the element is at the root level, add it to first level elements array.
+      else {
+        tree.push(mappedElem);
+      }
+    }
+  }
+  return makeUL(tree)
+}
+
+function makeUL(tree) {
+    let html = '<ul>'
+    tree.forEach(function(el) {
+      let list = makeLI(el)
+      html += list
+    })
+    html += '</ul>'
+    return html
+}
+                
+function makeLI(elem) {
+    let html = "<li>"
+    html += `<a href="${elem.titleSlug}.html">${elem.title}</a>`
+    if (elem.children.length > 0) {
+      html += makeUL(elem.children)
+    }
+    html += '</li>'
+    return html
+}
