@@ -101,7 +101,7 @@ export async function gitDate(folder, file) {
 
 }
 
-export async function sitemap(arr) {
+export async function toTree(arr) {
   var tree = [],
       mappedArr = {},
       arrElem,
@@ -110,7 +110,7 @@ export async function sitemap(arr) {
   // First map the nodes of the array to an object -> create a hash table.
   for(var i = 0, len = arr.length; i < len; i++) {
     arrElem = arr[i];
-    if(arrElem.titleSlug !== undefined) {
+    if(arrElem.titleSlug !== undefined && arrElem.isPrivate !== "true") {
       //Give key from titleSlug
       mappedArr[arrElem.titleSlug] = arrElem
       // Add the children empty array
@@ -118,7 +118,6 @@ export async function sitemap(arr) {
     }
   }
 
-  
   for (var id in mappedArr) {
     if (mappedArr.hasOwnProperty(id)) {
       mappedElem = mappedArr[id];
@@ -132,25 +131,42 @@ export async function sitemap(arr) {
       }
     }
   }
-  return makeUL(tree)
+  return tree
 }
 
-function makeUL(tree) {
-    let html = '<ul>'
+export function createRecursiveList(tree) {
+    let html = '<ul role="sitemap">'
     tree.forEach(function(el) {
-      let list = makeLI(el)
+      let list = createRecursiveItem(el)
       html += list
     })
     html += '</ul>'
     return html
 }
                 
-function makeLI(elem) {
+function createRecursiveItem(elem) {
     let html = "<li>"
     html += `<a href="${elem.titleSlug}.html">${elem.title}</a>`
     if (elem.children.length > 0) {
-      html += makeUL(elem.children)
+      html += createRecursiveList(elem.children)
     }
     html += '</li>'
     return html
+}
+
+export async function setMainCategories(arr, category) {
+  for (var i = 0; i < arr.length; i++) {
+    const el = arr[i]
+
+    if(el.categorySlug === undefined) {
+      category = el.titleSlug
+      el.mainCategory = el.titleSlug
+    } else {
+      el.mainCategory = category
+    }
+    if(el.children.length > 0) {
+      await setMainCategories(el.children, category)
+    }
+  }
+  return arr
 }
