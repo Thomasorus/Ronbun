@@ -168,7 +168,10 @@ export async function setMainCategories(arr, category) {
     if(el.categorySlug === undefined) {
       category = el.titleSlug
       el.mainCategory = el.titleSlug
-    } else {
+    } else if (el.categorySlug === "home") {
+      el.mainCategory = el.titleSlug
+    }
+    else {
       el.mainCategory = category
     }
     if(el.children.length > 0) {
