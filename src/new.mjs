@@ -207,6 +207,11 @@ async function generate(config) {
       if (!activity.project.includes(timeEl[3].replace(/_/g, " "))) {
         activity.project.push(timeEl[3].replace(/_/g, " "))
       }
+      if(!activity.category) {
+          activity.category = "time"
+          activity.categoryName = "Time"
+          activity.categorySlug = "time"
+      }
       if (timeEl[4]) {
         activity.totalTime += Number(timeEl[4])
       }
@@ -284,6 +289,7 @@ async function generate(config) {
 
       if (el.titleSlug === "time") {
         page = page.replace('<article>', "<article class='full'>")
+        // page = page.replace(`colorCat`, about">`)
       }
 
       if (el.titleSlug === "sitemap") {

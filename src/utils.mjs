@@ -110,11 +110,18 @@ export async function toTree(arr) {
   // First map the nodes of the array to an object -> create a hash table.
   for(var i = 0, len = arr.length; i < len; i++) {
     arrElem = arr[i];
-    if(arrElem.titleSlug !== undefined && arrElem.isPrivate !== "true") {
-      //Give key from titleSlug
-      mappedArr[arrElem.titleSlug] = arrElem
-      // Add the children empty array
-      mappedArr[arrElem.titleSlug]['children'] = [];
+    if(arrElem.timeSlug === "auger") {
+      console.log(arrElem)
+    }
+    if(arrElem.isPrivate !== "true") {
+      //Give key from titleSlug or timeSlug
+      if(arrElem.titleSlug !== undefined) {
+        mappedArr[arrElem.titleSlug] = arrElem
+        mappedArr[arrElem.titleSlug]['children'] = [];
+      } else {
+        mappedArr[arrElem.timeSlug] = arrElem
+        mappedArr[arrElem.timeSlug]['children'] = [];
+      }
     }
   }
 
