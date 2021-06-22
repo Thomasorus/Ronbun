@@ -50,6 +50,8 @@ const parser = function (str) {
     ['/(\\_)(.*?)\\1/g', '<em>\\2</em>'],
     // strike
     ['/(\\~)(.*?)\\1/g', '<del>\\2</del>'],
+    // hr
+    ['/\-\-\-\-\/g', '<hr>'],
     // unordered list
     ['/\\n\\-(.*)/g', function (item) {
       return '<ul>\n<li>' + item.trim() + '</li>\n</ul>'
