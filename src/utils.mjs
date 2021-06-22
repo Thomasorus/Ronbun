@@ -144,8 +144,10 @@ export async function toTree(arr) {
 export function createRecursiveList(tree) {
     let html = '<ul role="sitemap">'
     tree.forEach(function(el) {
-      let list = createRecursiveItem(el)
+      if(el.titleSlug) {
+        let list = createRecursiveItem(el)
       html += list
+      }
     })
     html += '</ul>'
     return html
@@ -169,6 +171,7 @@ export async function setMainCategories(arr, category) {
       category = el.titleSlug
       el.mainCategory = el.titleSlug
     } else if (el.categorySlug === "home") {
+      category = el.titleSlug
       el.mainCategory = el.titleSlug
     }
     else {
