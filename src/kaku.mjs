@@ -205,9 +205,10 @@ function createQuote (item) {
   el = el.replace(citation, '')
   el = el.split(',')
   const url = el[3] ? ` cite="${el[3].trim()}"` : ''
-  const source = el[2] ? `, <cite>${el[2]}</cite>` : ''
-  const author = el[1] ? `<footer>—${el[1].trim()}${source}</footer>` : ''
-  const html = `<blockquote${url}><p>${citation}</p>${author}</blockquote>`
+  let source = el[2] && !el[3] ? `, <cite>${el[2]}</cite>` : ''
+  source = el[2] && el[3] ? `, <cite><a href="${el[3].trim()}" target="_blank">${el[2]}</a></cite>` : ''
+  const author = el[1] ? `<figcaption>—${el[1].trim()}${source}</figcaption>` : ''
+  const html = ` <figure><blockquote${url}><p>${citation}</p></blockquote>${author}</figure>`
   return html
 }
 
