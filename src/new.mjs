@@ -247,12 +247,51 @@ async function generate(config) {
         el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.categorySlug}.html">${el.categoryName}</a></i></nav>`
       }
       if(el.totalTime > 0) {
-        el.timeSection = `<p>Time spent: ${el.totalTime} hours.<br>Started week ${el.startWeek} of ${el.startYear}.<br>Last update week ${el.endWeek} of ${el.endYear}.</p>`
-      }
-      if(el.date) {
-        el.timeSection += `<small>Page generated ${el.date.toUTCString()}</small>`
-      }
+        let timeSectionTitle = ""
+        if(el.type === "project") {
+          timeSectionTitle = el.project
+        }
+        else if(el.type === "activity") {
+          timeSectionTitle = el.activity
+        }
+        else {
+          timeSectionTitle = el.title
+        }
 
+        if(timeSectionTitle.length >= 20) {
+          timeSectionTitle = el.title.slice(0, 20) + "..."
+        }
+        el.timeSection = `
+        <section role="complementary">
+          <details>
+            <summary class="time-row">
+                <span class="time-row__title">${timeSectionTitle}</span>
+                <span> Last edit
+                    <span aria-hidden="true">→</span>
+                    ${el.date ? el.date.toUTCString() : "?"}
+                </span>
+            </summary>
+            <dl class="time-row-more">
+                <dt>
+                    Time spent
+                    <span aria-hidden="true">→</span>
+                </dt>
+                <dd>${el.totalTime} hours total</dd>
+                <dt>
+                    Started
+                    <span aria-hidden="true">→</span>
+                </dt>
+                <dd>Week ${el.startWeek} of ${el.startYear}</dd>
+                <dt>
+                    Last update
+                    <span aria-hidden="true">→</span>
+                </dt>
+                <dd>Week ${el.endWeek} of ${el.endYear}</dd>
+                </dl>
+        </details>
+        </section>
+        `
+      }
       
       // TODO > REFACTOR THIS
       if(!el.titleSlug) {
@@ -299,7 +338,7 @@ async function generate(config) {
       page = page.replace(/pageTitle/g, `${el.title ? el.title : el.project} - Thomasorus`)
       page = page.replace(/metaDescription/g, el.bref ? el.bref : "")
       page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "")
-      page = page.replace(/timeSection/g, el.timeSection ? `<aside>${el.timeSection}</aside>` : "")
+      page = page.replace(/timeSection/g, el.timeSection ? el.timeSection : "")
       page = page.replace(/pageBody/g, el.parsedText ? el.parsedText : "")
       page = page.replace(/colorCat/g, el.mainCategory ? el.mainCategory : "")
 
