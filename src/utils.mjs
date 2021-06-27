@@ -110,9 +110,6 @@ export async function toTree(arr) {
   // First map the nodes of the array to an object -> create a hash table.
   for(var i = 0, len = arr.length; i < len; i++) {
     arrElem = arr[i];
-    if(arrElem.timeSlug === "auger") {
-      console.log(arrElem)
-    }
     if(arrElem.isPrivate !== "true") {
       //Give key from titleSlug or timeSlug
       if(arrElem.titleSlug !== undefined) {
