@@ -180,3 +180,9 @@ export async function setMainCategories(arr, category) {
   }
   return arr
 }
+
+export async function parseXml(xmlTerm, xmlText) {
+  const fullTerm = RegExp(`<${xmlTerm}>((.|\n)*?)<\/${xmlTerm}>`, 'g');
+  const match = fullTerm.exec(xmlText)
+  return match[1]
+}
