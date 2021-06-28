@@ -379,25 +379,25 @@ dl dd {
 h6 {
     font-size: var(--title-scale-6);
     line-height:var(--title-line-height-6);
-    margin:var(--title-margin-6) 0;
+    margin:var(--title-margin-6) 0!important;
     max-width: 30ch;
 } 
 h5 {
     font-size: var(--title-scale-5);
     line-height:var(--title-line-height-5);
-    margin:var(--title-margin-5) 0;
+    margin:var(--title-margin-5) 0!important;
     max-width: 30ch;
 } 
 h4 {
     font-size: var(--title-scale-4);
     line-height:var(--title-line-height-4);
-    margin:var(--title-margin-4) 0;
+    margin:var(--title-margin-4) 0!important;
     max-width: 30ch;
 } 
 h3 {
     font-size: var(--title-scale-3);
     line-height:var(--title-line-height-3);
-    margin:var(--title-margin-3) 0;
+    margin:var(--title-margin-3) 0!important;
     max-width: 30ch;
 } 
 h2 {
@@ -409,11 +409,10 @@ h2 {
 h1 {
     font-size: var(--title-scale-1);
     line-height:var(--title-line-height-1);
-    margin:var(--title-margin-1) 0;
+    margin:var(--title-margin-1) 0!important;
 } 
 h1, h2, h3, h4, h5, h6{
     font-family: "Editorial New Regular", serif;
-    display: inline-block;
 } 
 h1:hover a, 
 h2:hover a, 
