@@ -30,23 +30,15 @@
 
 .time-graph-container {
   box-sizing: border-box;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding-left: var(--s2);
-  padding-right: var(--s2);
+  font-size: calc(var(--base-font-size) + 1em);
 }
 
-.time-graph-container h3 {
-  max-width: 50ch;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .time-graph {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, calc(var(--s0) * 1.2));
-  grid-gap: 3px;
+  grid-template-columns: repeat(auto-fit, calc(var(--base-font-size) * 1.2));
+  grid-gap: 0.15em;
   border-collapse: collapse;
   font-variant-numeric: oldstyle-nums;
   justify-content: center;
@@ -82,7 +74,6 @@
   padding: 0;
   display: flex;
   flex-flow: column-reverse nowrap;
-  flex: 1 1 auto;
   letter-spacing: -2px;
   text-align: center;
   font-size: 0.8rem;
@@ -91,10 +82,11 @@
 
 .time-graph__activity {
   margin: 1.5px;
-  padding: 0;
+  padding: 0!important;
   box-shadow: 0 0 0 1px var(--text);
   position: relative;
   line-height: 0;
+  width: 100%;
 }
 
 .time-graph__tooltip {
@@ -127,6 +119,7 @@
   justify-content: center;
   padding: 0;
   font-family: 1rem;
+  max-width: 100%;
 }
 
 .time-graph__legend {
