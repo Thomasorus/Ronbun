@@ -1,3 +1,3 @@
 #!/bin/sh
-node src/new.mjs
+node src/builder.mjs
 src/images.sh
