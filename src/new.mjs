@@ -306,8 +306,11 @@ async function generate(config) {
       }
       if(el.date === undefined) {
         const today = new Date;
-            el.date = today.toUTCString()
+        el.date = today.toUTCString()
       }
+    } else if(el.date === undefined) {
+      const today = new Date;
+      el.date = today.toUTCString()
     }
   }
 
