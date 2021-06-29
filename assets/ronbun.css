@@ -146,7 +146,7 @@
 .time-graph__definition {
   padding-top: 2px;
   margin-left: 5px;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   letter-spacing: -1px;
 }
 
