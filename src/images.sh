@@ -60,15 +60,15 @@ function resize () {
         # resize only  if original image is greater than or equal to (ge) the current size
         width=$(identify -format "%w" "$file")> /dev/null
 
-        if [[ $width -ge $size ]]; then
+        # if [[ $width -ge $size ]]; then
           echo -n "| ${size} "
 
           convert $file -resize $size -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off $output
               
           convert $file -resize $size -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define webp:lossless=true -define webp:auto-filter=true $outputwebp
 
-        else echo -n "| ----- "
-  		  fi
+        # else echo -n "| ----- "
+  		  # fi
       else echo -n "| ----- "
       fi
     done
