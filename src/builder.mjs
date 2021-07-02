@@ -52,8 +52,8 @@ async function generate(config) {
   const sitemapArray = []
 
   const xmlString = utils.readFile(`${config.buildDir}/feed.xml`)
-  const splitString = xmlString.split("</image>\n<item>")
-  const feedArray = splitString[1].split("</item>\n<item>")
+  const splitString = xmlString.replace(/\n/g, "").split("</image><item>")
+  const feedArray = splitString[1].split("</item><item>")
 
   const htmlTemplate = utils.readFile(`${config.srcAssetsDir}/${config.htmlTemplate}`)
   const rssItemTemplate = utils.readFile(config.srcAssetsDir + '/' + config.itemTemplate)
@@ -89,25 +89,6 @@ async function generate(config) {
       let body = el.match(/(?:BODY:)((?:\\[\s\S]|[^\\])+?)$/g)
       entry.body = body[0].substr(5).trim()
       entry.parsedText = textParser(entry.body)
-
-      // entry.date = await utils.gitDate(config.buildDir, `${entry.titleSlug}.html`)
-
-      // const today = new Date()
-      // entry.date = today
-
-      // if (entry.date.toString() === "Invalid Date") {
-      //   const today = new Date()
-      //   entry.date = today
-      // }
-
-      // if (entry.isPrivate === 'false') {
-      //   let template = rssItemTemplate
-      //   template = template.replace(/{{TITLE}}/g, entry.title)
-      //   template = template.replace(/{{GUID}}/g, entry.titleSlug)
-      //   template = template.replace(/{{DATE}}/g, entry.date.toUTCString())
-      //   template = template.replace(/{{CONTENT}}/g, entry.parsedText)
-      //   entry.rssItem = template
-      // }
 
       entry.type = 'content'
       allEntries.push(entry)
@@ -286,15 +267,21 @@ async function generate(config) {
     if(el.type === "content") {
       for (let i = 0; i < feedArray.length; i++) {
         const feedEl = feedArray[i];
-        const link = `${el.titleSlug}</guid>`
 
-        if(feedEl.match(link)) {
+        const guidRegex = RegExp(`<guid isPermaLink="false">${el.titleSlug}</guid>`, 'g');
+        const match = guidRegex.test(feedEl)
+        
+        if(match) {
           const date = await utils.parseXml("pubDate", feedEl)
-          const content = await utils.parseXml("description", feedEl)
-          const cleanedContent = content.replace("]]>\n", "").replace("<![CDATA[", "")
 
+          const content = await utils.parseXml("description", feedEl)
+          const cleanedContent = content.replace(/]]>/g, "").replace(/<!\[CDATA\[/g, "")
           const trimedContent = cleanedContent.replace(/\n/g, "").replace(/\s/g, "")
+
           const trimedParsedText = el.parsedText.replace(/\n/g, "").replace(/\s/g, "")
+
+          const lol1 = trimedParsedText.length
+          const lol2 = trimedContent.length
 
           if(trimedContent === trimedParsedText) {
             el.date = date
@@ -463,61 +450,3 @@ async function generate(config) {
 
 
 generate(config)
-
-
-
-// for (let i = 0; i < allEntries.length; i++) {
-//   const el = allEntries[i];
-//   let error = null
-//   let existingPage
-//   console.log("DAAAAAAAAAAAATE ", el.date, el.titleSlug)
-
-//   try {
-//     existingPage = utils.readFile(`${config.buildDir}/${el.titleSlug ? el.titleSlug : el.timeSlug}.html`)
-//   } catch (err) {
-//     error = err.code
-//   }
-//   if(existingPage) {
-//     let existingArticle = existingPage.match(/<article>(.|\n)*?<\/article>/g)
-
-//     if(existingArticle && existingArticle !== undefined) {
-//       const trimmedArticle = existingArticle[0].replace("<article>", "").replace("<\/article>", "").replace(/\n/gm, "").replace(/\s/gm, "")
-//       const newArticle = el.parsedText.replace(/\n/gm, "").replace(/\s/gm, "")    
-
-//       //If content did not change
-//       if (trimmedArticle === newArticle) {
-//         console.log("Content is the same")
-//         //Check if existing date in the page
-//         const existingDate = existingPage.match(/<time>(.*)<\/time>/g)
-
-//         //If existing date, reuse it
-//         if(existingDate !== null && existingDate !== undefined) {
-//           const cleanedDate = existingDate[0].replace("<time>", "").replace("</time>", "")
-//           console.log("Date exists: ", cleanedDate) 
-          
-//           if(cleanedDate.match(/\//g)) {
-//             console.log("Old date format, converting: ", cleanedDate)
-//             const splitDate = cleanedDate.split("/")
-//             const yearTime = splitDate[2].split(" ")
-//             const isoDate = `${yearTime[0]}-${splitDate[1]}-${splitDate[0]}-${yearTime[1]}`
-//             const tempDate = isoDate.replace("/", "-").replace(" ", "T") + "Z"
-//             const newDate = new Date(tempDate);
-//             console.log("Converted to: ", newDate)
-//             el.date = newDate
-//           } else {
-//             console.log("No format: ", cleanedDate)
-//             el.date = cleanedDate
-//           }
-          
-//         } else {
-//           // Else keep new date created earlier
-//           console.log("Date does not exist, new date is: ", el.date)
-//         }
-//       } else {
-//         // If content changed
-//         console.log("Content is different, new date is: ", el.date)
-//         el.date = el.date
-//       }
-//     }
-//   }
-// }
