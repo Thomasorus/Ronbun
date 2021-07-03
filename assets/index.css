@@ -591,6 +591,68 @@ blockquote + figcaption {
     --blockquote-padding-y: calc(((var(--blockquote-padding-y-s-min) / 16) * 1rem) + (var(--blockquote-padding-y-s-max) - var(--blockquote-padding-y-s-min)) * var(--fluid-bp));
   
 } 
+:root {
+    --figcaption-smin: (var(--f-0-min, 11)); 
+    --figcaption-smax: (var(--f-0-max, 14));
+      --figcaption-s: calc(((var(--figcaption-smin) / 16) * 1rem) + (var(--figcaption-smax) - var(--figcaption-smin)) * var(--fluid-bp));
+    --figcaption-f: clamp(0.69rem, 0.60rem + 0.45vw, 1.00rem);
+} 
+figure > figcaption {
+    background-color: var(--accent);
+    font-size: var(--figcaption-f);
+    padding: var(--figcaption-s);
+    min-width:100%;
+    border-bottom-left-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+} 
+picture img {
+    display: block;
+    border: 4px solid var(--accent);
+} 
+figure img {
+    border-bottom: none;
+} 
+button {
+    min-height: 40px;
+    min-width: 120px;
+    max-width: 20ch;
+    border: 1px solid var(--text);
+    background-color: var(--background);
+    border-radius: var(--radius-sm);
+    line-height: 1.5;
+    font-weight: 700;
+    padding:5px 19px;
+    color:var(--text);
+    transition: 0.25s;
+} 
+button:hover {
+    color:var(--background);
+    border: 1px solid var(--background);
+    background-color: var(--text);
+    cursor: pointer;
+} 
+button:active {
+    color:var(--text);
+    border: 1px solid var(--text);
+    background-color: var(--accent);
+    cursor: pointer;
+} 
+[theme="dark"] button {
+    color:var(--accent);
+    border: 1px solid var(--accent);
+} 
+[theme="dark"] button:hover {
+    color:var(--background);
+    border: 1px solid var(--background);
+    background-color: var(--text);
+    cursor: pointer;
+} 
+[theme="dark"] button:active {
+    color:var(--background);
+    border: 1px solid var(--text);
+    background-color: var(--accent);
+    cursor: pointer;
+} 
 .color-picker {
     margin:0;
     padding:0;
@@ -604,10 +666,10 @@ blockquote + figcaption {
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: var(--accent);
     padding:1px;
     cursor: pointer;
-    border:1px solid transparent;
+    border:1px solid var(--text);
+    color:var(--text);
 } 
 .color-picker > summary > svg {
     height: 25px;
@@ -659,13 +721,11 @@ blockquote + figcaption {
     height: auto;
 } 
 .color-button {
-    border:none;
-    background:transparent;
     height: 30px;
     width: 30px;
+    min-width: initial;
+    min-height: initial;
     border-radius: 50%;
-    cursor: pointer;
-    background:var(--accent);
     padding:0;
     display: flex;
     justify-content: center;
@@ -673,6 +733,8 @@ blockquote + figcaption {
 } 
 .color-button:hover {
     background-color: var(--text);
+    border-radius: 50%;
+
 } 
 .color-buttons svg {
     height: 30px;
@@ -680,72 +742,6 @@ blockquote + figcaption {
 } 
 .color-button:hover svg {
     fill: var(--background);
-} 
-:root {
-    --figcaption-smin: (var(--f-0-min, 11)); 
-    --figcaption-smax: (var(--f-0-max, 14));
-      --figcaption-s: calc(((var(--figcaption-smin) / 16) * 1rem) + (var(--figcaption-smax) - var(--figcaption-smin)) * var(--fluid-bp));
-    --figcaption-f: clamp(0.69rem, 0.60rem + 0.45vw, 1.00rem);
-} 
-figure > figcaption {
-    background-color: var(--accent);
-    font-size: var(--figcaption-f);
-    padding: var(--figcaption-s);
-    min-width:100%;
-    border-bottom-left-radius: var(--radius-sm);
-    border-bottom-right-radius: var(--radius-sm);
-} 
-picture img {
-    display: block;
-    border: 4px solid var(--accent);
-} 
-figure img {
-    border-bottom: none;
-} 
-button {
-    min-height: 40px;
-    min-width: 120px;
-    max-width: 20ch;
-    border: 1px solid var(--text);
-    background-color: var(--background);
-    border-radius: var(--radius-sm);
-    line-height: 1.5;
-    font-weight: 700;
-    padding:5px 19px;
-    color:var(--text);
-    transition: 0.25s;
-} 
-button:hover {
-    color:var(--background);
-    border: 1px solid var(--background);
-    background-color: var(--text);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-} 
-button:active {
-    color:var(--text);
-    border: 1px solid var(--text);
-    background-color: var(--accent);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-} 
-[theme="dark"] button {
-    color:var(--accent);
-    border: 1px solid var(--accent);
-} 
-[theme="dark"] button:hover {
-    color:var(--background);
-    border: 1px solid var(--background);
-    background-color: var(--text);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-} 
-[theme="dark"] button:active {
-    color:var(--background);
-    border: 1px solid var(--text);
-    background-color: var(--accent);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
 } 
 header {
     width: 100%;
