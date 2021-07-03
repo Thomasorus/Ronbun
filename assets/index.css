@@ -597,7 +597,7 @@ blockquote + figcaption {
       --figcaption-s: calc(((var(--figcaption-smin) / 16) * 1rem) + (var(--figcaption-smax) - var(--figcaption-smin)) * var(--fluid-bp));
     --figcaption-f: clamp(0.69rem, 0.60rem + 0.45vw, 1.00rem);
 } 
-figure > figcaption {
+figure > picture + figcaption {
     background-color: var(--accent);
     font-size: var(--figcaption-f);
     padding: var(--figcaption-s);
