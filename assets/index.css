@@ -638,8 +638,8 @@ button:active {
     cursor: pointer;
 } 
 [theme="dark"] button {
-    color:var(--accent);
-    border: 1px solid var(--accent);
+    color:var(--text);
+    border: 1px solid var(--text);
 } 
 [theme="dark"] button:hover {
     color:var(--background);
@@ -675,6 +675,7 @@ button:active {
     height: 25px;
     width: 25px;
     font-size: 1.8em;
+    fill: var(--text);
 } 
 .color-picker svg {
     fill: var(--background);
@@ -739,6 +740,9 @@ button:active {
 .color-buttons svg {
     height: 30px;
     width: 30px;
+} 
+.color-button svg {
+    fill: var(--text);
 } 
 .color-button:hover svg {
     fill: var(--background);
