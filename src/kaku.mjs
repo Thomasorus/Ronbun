@@ -1,263 +1,157 @@
-const pregReplace = function (a, b, c, d) {
-  void 0 === d && (d = -1)
-  let e = a.substr(a.lastIndexOf(a[0]) + 1)
-        var f = a.substr(1, a.lastIndexOf(a[0]) - 1)
-        var g = RegExp(f, e)
-        var i = []
-        var j = 0
-        var k = 0
-        var l = c
-        var m = []
-  if (d === -1) {
-    do m = g.exec(c), m !== null && i.push(m); while (m !== null && e.indexOf('g') !== -1)
-  } else i.push(g.exec(c))
-  for (j = i.length - 1; j > -1; j--) {
-    for (m = b, k = i[j].length; k > -1; k--) m = m.replace('${' + k + '}', i[j][k]).replace('$' + k, i[j][k]).replace('\\' + k, i[j][k])
-    l = l.replace(i[j][0], m)
-  }
-  return l
-}
+function parser(text) {
+  const blocks = text.split(/\n\n/g)
+  let parsedText = ''
+  for (let i = 0; i < blocks.length; i++) {
+      const el = blocks[i];
+      const codeRegex = new RegExp("^\`\`\`(.*$)", 'gim')
+      const codeTest = codeRegex.test(el)
 
-const parser = function (str) {
-  const rules = [
-    // headers
-    ['/\n(#+)(.*)/g', function (chars, item) {
-      const level = chars.length
-      return createTitle(level, item)
-    }],
-    // code fences
-    ['/`{3,}(?!.*`)/g', '<pre><code>', '</pre></code>'],
-    // code
-    ['/(\\`)(.*?)\\1/g', function (char, item) {
-      const code = item.replace(/</g, '<span><</span>')
-      return `<code>${code}</code>`
-    }],
-    // images
-    ['/\\n\\[([^\\[]+)\\]/g', function (item) {
-      return createImages(item)
-    }],
-    // videos
-    ['/\\n\\|([^\\|]+)\\|/g', function (item) {
-      return createMultimedia(item)
-    }],
-    // link
-    ['/\\{([^\\{]+)\\}/g', function (item) {
-      return createLink(item)
-    }],
-    // bold
-    ['/(\\*)(.*?)\\1/g', '<strong>\\2</strong>'],
-    // emphasis
-    ['/(\\_)(.*?)\\1/g', '<em>\\2</em>'],
-    // strike
-    ['/(\\~)(.*?)\\1/g', '<del>\\2</del>'],
-    // hr
-    ['/\-\-\-\-\/g', '<hr>'],
-    // unordered list
-    ['/\\n\\-(.*)/g', function (item) {
-      return '<ul>\n<li>' + item.trim() + '</li>\n</ul>'
-    }],
-    // ordered list
-    ['/\\n\\+(.*)/g', function (item) {
-      return '<ol>\n<li>' + item.trim() + '</li>\n</ol>'
-    }],
-    // definition list
-    ['/\\n\\?(.*)/g', function (item) {
-      return createDefinitionList(item)
-    }],
-    // blockquote
-    ['/\\n\\>(.*)/g', function (item) {
-      return createQuote(item)
-    }],
-    // paragraphs
-    ['/\\n[^\\n]+\\n/g', function (line) {
-      if (codeblock) {
-        line = line.trimStart()
-        if (line.includes('<')) {
-          line = line.replace(/</g, '<span><</span>')
-          return line
-        } else {
-          return line
-        }
-      }
-      line = line.trim()
-      if (line[0] === '<' && !codeblock) {
-        return line
-      }
-      return `\n<p>${line}</p>\n`
-    }]
-  ]
-  const fixes = [
-    ['/<\\/ul>\n<ul>/g', '\n'],
-    ['/<\\/ol>\n<ol>/g', '\n'],
-    ['/<\\/dl>\n<dl>/g', '\n'],
-    ['/<\\/blockquote>\n<blockquote>/g', '\n'],
-    ['/<pre><code>\n/g', '<pre><code>'],
-    ['/<em><\\/em>/g', '&#95;&#95;'],
-    ['/<span><</span>em><span><</span>/em>/g', '&#95;&#95;'],
-    ['/ <span><</span>strong> /g', ' * '],
-    ['/ <span><</span>\\/strong> /g', ' * '],
-    // ['/&nbsp;/g', '&nbsp;&nbsp;&nbsp;']
-  ]
+      if(!codeTest) {
+          let tempText = el
+              .replace(/^(#) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h1 tag
+              .replace(/^(##) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h2 tag
+              .replace(/^(###) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h3 tag
+              .replace(/^(####) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h4 tag
+              .replace(/^(#####) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h5 tag
+              .replace(/^(######) (.*$)/gim, function (char, item, item2) { return parseTitles(item, item2) }) // h6 tag
+              .replace(/^----$/gim, '<hr>') // hr tag
+              .replace(/\_(.*?)\_/gim, '<em>$1</em>') // em text
+              .replace(/\*(.*?)\*/gim, '<strong>$1</strong>') // strong text
+              .replace(/\`(.*?)\`/gim, function(char, item) { 
+                if (item.includes('<')) {
+                  return `<code>${item.replace(/</g, '<span><</span>')}</code>`
+                } else {
+                  return `<code>${item}</code>`
+              }}) // strong text
+              .replace(/\~(.*?)\~/gim, '<del>$1</del>') // strike text
+              .replace(/^- (.*$)/gim, '<ul><li>$1</li></ul>\n\n') // strike text
+              .replace(/^\+ (.*$)/gim, '<ol><li>$1</li></ol>\n\n') // strike text
+              .replace(/^\? (.*) : (.*$)/gim, '<dl><dt>$1</dt><dd>$2</dd></dl>\n\n') // strike text
+              .replace(/\(link:(.*?)\)/gim, function (char, item) { return parseLinks(item) }) // links
+              .replace(/\(image:(.*?)\)/gim, function (char, item) { return parseImage(item) }) // image
+              .replace(/\(video:(.*?)\)/gim, function (char, item) { return parseVideo(item) }) // links
+              .replace(/\(audio:(.*?)\)/gim, function (char, item) { 
+                  const mp3 = item.trim()
+                  return `<audio controls src="${mp3}" type="audio/mpeg" preload="metadata"></audio>`
+               }) // links
+              .replace(/\(quote:(.*)\)/gim, function (char, item) {return parseQuote(item) }) // blockquote
 
-  let codeblock = false
+          const htmlRegex = new RegExp("^\<(.*)\>", 'gim')
+          const htmlTest = htmlRegex.test(tempText)
 
-  const parseLine = function (str) {
-    str = `\n${str.trim()}\n`
+          if(!htmlTest) {
+              tempText = `<p>${tempText.trim()}</p>\n\n`
+          }
 
-    for (let i = 0, j = rules.length; i < j; i++) {
-      if (typeof rules[i][1] === 'function') {
-        const _flag = rules[i][0].substr(rules[i][0].lastIndexOf(rules[i][0][0]) + 1)
-        const _pattern = rules[i][0].substr(1, rules[i][0].lastIndexOf(rules[i][0][0]) - 1)
-        const reg = new RegExp(_pattern, _flag)
-
-        const matches = [...str.matchAll(reg)]
-
-        if (matches.length > 0) {
-          matches.forEach(match => {
-            // If more than one occurence on the same line
-            if (matches.length > 1) {
-              const rule = rules[i][0].slice(0, -1)
-              if (match.length > 1) {
-                str = pregReplace(rule, rules[i][1](match[1], match[2]), str)
-              } else {
-                str = pregReplace(rule, rules[i][1](match[0]), str)
+          if(tempText) {
+              parsedText += tempText
+          }
+      } else if (codeTest) {
+          const splitCode = el.trim().split("\n")
+          splitCode.shift()
+          splitCode.pop()
+          const cleanedCode = []
+          splitCode.forEach(el => {
+              if (el.includes('<')) {
+                  cleanedCode.push(el.replace(/</g, '<span><</span>'))
+                } else {
+                  cleanedCode.push(el)
               }
-            } else {
-              // If only one occurence on the same line
-              if (match.length > 1) {
-                str = pregReplace(rules[i][0], rules[i][1](match[1], match[2]), str)
-              } else {
-                str = pregReplace(rules[i][0], rules[i][1](match[0]), str)
-              }
-            }
           })
-        }
-      } else {
-        if (str === '\n```\n' && codeblock) {
-          str = rules[i][2]
-          codeblock = false
-        } else if (str === '\n```\n' && !codeblock) {
-          str = rules[i][1]
-          codeblock = true
-        } else {
-          str = pregReplace(rules[i][0], rules[i][1], str)
-        }
+          const tempText = `<pre><code>${cleanedCode.join("\n")}\n</code></pre>\n\n`
+          if(tempText) {
+              parsedText += tempText
+          }
       }
-    }
-    return str.trim()
   }
 
-  str = str.split('\n')
-  let rtn = []
-  for (let i = 0, j = str.length; i < j; i++) {
-    rtn.push(parseLine(str[i]))
-  }
-  rtn = rtn.join('\n')
+  const cleanedText = parsedText
+      .replace(/<\/ul>\n\n\n<ul>/g, '')
+      .replace(/<\/ol>\n\n\n<ol>/g, '')
+      .replace(/<\/dl>\n\n\n<dl>/g, '')
+      .replace(/<p>[\s\S\n]<\/p>/gim, '')
+      .replace(/<p><\/p>/g, '')
+      .replace(/<\/li><li>/g, '</li>\n<li>')
 
-  for (let i = 0, j = fixes.length; i < j; i++) {
-    rtn = pregReplace(fixes[i][0], fixes[i][1], rtn)
-  }
-
-  return rtn
+  return cleanedText
 }
 
-function extractText (text) {
-  const regexuuu = /"((?:\\[\s\S]|[^\\])+?)"(?!\*)/g
-  const match = text.match(regexuuu)[0].replace(/"/g, '').trim()
-  return match
-}
-
-function createImages (item) {
-  const el = item
-  const imgArr = el.split(',')
-  let imgHtml = ''
-  const imgUrl = imgArr[0].replace(/(\.(?:jpe?g|png|gif))$/, '')
-
-  let alt = ''
-  let caption = ''
-
-  if (imgArr.length >= 2) {
-    alt = `alt="${imgArr[1].trim()}" `
-  }
-
-  if (imgArr.length === 3) {
-    caption = `<figcaption>${extractText(el)}</figcaption>`
-  }
-
-  imgHtml = `${caption ? '<figure>' : ''}<picture><source type="image/webp" srcset="${imgUrl}-240.webp 300w, ${imgUrl}-680.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}.webp 1200w" /><img loading="lazy" ${alt ? ` data-${alt}` : ''} srcset="${imgUrl}-240.jpg 300w, ${imgUrl}-680.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}.jpg 1200w" data-src="${imgUrl}.jpg"></picture>${caption} ${caption ? '</figure>' : ''}<noscript> ${caption ? '<figure>' : ''} <picture> <source type="image/webp" srcset="${imgUrl}-240.webp 300w, ${imgUrl}-680.webp 600w, ${imgUrl}-900.webp 900w, ${imgUrl}.webp 1200w" /> <img loading="lazy" ${alt ? ` ${alt}` : ''} srcset="${imgUrl}-240.jpg 300w, ${imgUrl}-680.jpg 600w, ${imgUrl}-900.jpg 900w, ${imgUrl}.jpg 1200w" src="${imgUrl}.jpg"> </picture> ${caption} ${caption ? '</figure>' : ''} </noscript>`
-  return imgHtml
-}
-
-function createLink (item) {
-  let el = item
-  el = el.replace('{', '').replace('}', '')
-  const textLink = extractText(el)
-  const linkElem = el.split(',')
-  const aria = linkElem.length > 2 ? ` title="${linkElem[2].trim()}" aria-label="${linkElem[2].trim()}"` : ''
-  const html = `<a href="${linkElem[0]}"${aria}>${textLink}</a>`
+function parseTitles(character, titleContent) {
+  const lvl = character.length
+  const titleId = toKebab(titleContent).trim()
+  const html = `<h${lvl} id="${titleId}" style="position:relative;"><a href="#${titleId}" aria-label="${titleContent.trim()} permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>${titleContent.trim()}</h${lvl}>\n\n`
   return html
 }
 
-function createQuote (item) {
-  let el = item
-  el = el.replace(/~/g, '')
-  const citation = extractText(el)
-  el = el.replace(citation, '')
-  el = el.split(',')
-  const url = el[3] ? ` cite="${el[3].trim()}"` : ''
-  let source = el[2] && !el[3] ? `, <cite>${el[2]}</cite>` : ''
-  source = el[2] && el[3] ? `, <cite><a href="${el[3].trim()}" target="_blank">${el[2]}</a></cite>` : ''
-  const author = el[1] ? `<figcaption>—${el[1].trim()}${source}</figcaption>` : ''
-  const html = ` <figure><blockquote${url}><p>${citation}</p></blockquote>${author}</figure>`
+function parseLinks(linkContent) {
+  const linkData = /^(.+?(?=text:|title:|label:|$))/.exec(linkContent)
+  const textData = /text:(.+?(?=title:|label:|$))/.exec(linkContent)
+  const titleData = /title:(.+?(?=text:|label:|$))/.exec(linkContent)
+  const labelData = /label:(.+?(?=text:|title:|$))/.exec(linkContent)
+  const link = linkData ? `href="${linkData[1].trim()}"` : ""
+  const text = textData ? textData[1].trim() : linkData[1].trim()
+  const title = titleData ? ` title="${titleData[1].trim()}"` : ""
+  const label = labelData ?  ` aria-label="${labelData[1].trim()}"` : ""
+  const html = `<a ${link}${title}${label}>${text}</a>`
   return html
 }
 
-function createDefinitionList (item) {
-  item = item.split(':')
-  const term = item[0].trim()
-  const definition = item[1].trim()
-  const html = `<dl><dt>${term}</dt><dd>${definition}</dd></dl>`
+function parseImage(imgContent) {    
+  const linkData = /^(.+?(?=figcaption|.jpg|.jpeg|.png|$))/.exec(imgContent)
+
+  const altData = /alt:(.+?(?=figcaption|$))/.exec(imgContent)
+  const figcaptionData = /figcaption:(.+?(?=alt|$))/.exec(imgContent)
+  const matches = imgContent.split(/alt:(\.+?(?=( figcaption:|\)$)))|figcaption:(\.+?(?=( alt:|\)$)))/g)
+  const link = linkData ? linkData[1].trim() : ""
+  const alt = altData ? `alt="${altData[1].trim()}"` : ""
+  const figcaption = figcaptionData ? `<figcaption>${figcaptionData[1].trim()}</figcaption>` : false
+
+  const html = `${figcaption ? '<figure>' : ''}<picture><source type="image/webp" srcset="${link}-240.webp 300w, ${link}-680.webp 600w, ${link}-900.webp 900w, ${link}.webp 1200w" /><img loading="lazy" ${alt ? ` ${alt}` : ''} srcset="${link}-240.jpg 300w, ${link}-680.jpg 600w, ${link}-900.jpg 900w, ${link}.jpg 1200w" src="${link}.jpg"></picture>${figcaption} ${figcaption ? '</figure>' : ''}`
+
   return html
 }
 
-function createMultimedia (item) {
-  let el = item
-  el = el.split(',')
-  const url = el[0].trim()
-  let param = el[1] ? el[1].trim() : ''
-  const mediaType = url.slice(-1)
-  if (param) {
-    if (param === 'g') {
-      param = 'autoplay="true" playsinline="true" loop="true" mute="true" preload="metadata"'
-    } else {
-      param = 'controls preload="metadata"'
-    }
-  } else {
-    param = 'controls preload="metadata"'
+function parseVideo(videoContent) {
+  const array = videoContent.trim().split(" ")
+  const link = array[0] ? `src="${array[0].trim()}"` : ""
+  const controls = array[1] === "autoplay" ? "autoplay playsinline loop mute" : "controls playsinline"
+  const format = /\.mp4|\.webm|\.mov/.exec(array[0])
+  const source = `type="video/${format.toString().slice(1)}"`
+  const figcaption = array[1] !== "autoplay" || array[2] ? `<figcaption>${array.slice(3).join(" ").trim()}</figcaption>` : ""
+  const html = `${figcaption ? '<figure>' : ''}<video ${controls} preload="metadata" ${link} ${source}></video>${figcaption}${figcaption ? "</figure>" : ""}`
+  return html
+}
+
+function parseQuote(quoteContent) {
+  const quoteData = /^(.+?(?=author|source|link|$))/.exec(quoteContent)
+  const authorData = /author:(.+?(?=source|link|$))/.exec(quoteContent)
+  const sourceData = /source:(.+?(?=author|link|$))/.exec(quoteContent)
+  const linkData = /link:(.+?(?=author|source|$))/.exec(quoteContent)
+  const quote = quoteData ? quoteData[1].trim() : false
+  const author = authorData ? authorData[1].trim() : false
+  const source = sourceData ? sourceData[1].trim() : false
+  const link = linkData ? linkData[1].trim() : false
+  const cite = link ? `cite="${link}"` : ""
+
+  let figcaption = ""
+  if(author && !source && !link) {
+      figcaption = `<figcaption>— ${author}</figcaption>`
+  } else if (author && source && !link) {
+      figcaption = `<figcaption>— ${author}, ${source}</figcaption>`
+  } else if (author && source && link) {
+      figcaption =`<figcaption>— ${author}, <a href="${link}">${source}</a></figcaption>` 
+  } else if (!author && source && link) {
+      figcaption =`<figcaption><a href="${link}">${source}</a></figcaption>` 
+  } else if (!author && !source && link) {
+      figcaption =`<figcaption><a href="${link}">${link}</a></figcaption>` 
+  }  else if (!author && source && !link) {
+      figcaption =`<figcaption>${source}</figcaption>` 
   }
 
-  let html = ''
-  switch (mediaType) {
-    case '4':
-      html = `<video ${param} src="${url}" type="video/mp4"></video>`
-      break
-    case '3':
-      html = `<audio ${param} src="${url}" type="audio/mpeg"></audio>`
-      break
-    default:
-      break
-  }
+  const html = `<figure><blockquote ${cite}>${quote}</blockquote>${figcaption}</figure>`
   return html
 }
 
-function createTitle (level, item) {
-  const count = level
-  const title = item.trim()
-  const kebab = toKebab(title)
-  const link = `<a href="#${kebab}" aria-label="${title} permalink" style="display: inline-block;width: 100%;height: 100%;position: absolute;"></a>`
-  const html = `<h${count} id="${kebab}" style="position:relative;">${link}${title}</h${count}>`
-  return html
-}
 
 function toKebab (text) {
   const toKebabCase = text && text
@@ -266,4 +160,5 @@ function toKebab (text) {
     .join('-')
   return toKebabCase
 }
+
 export { parser as default }
