@@ -530,6 +530,7 @@ ol:not([role="list"]) li {
 } 
 ol li::marker{
     font-size: var(--base-font-size);
+    font-weight: 600;
 } 
 [theme="color"] ol li::marker{
     --number-color: var(--accent);
@@ -760,6 +761,7 @@ article > *+* {
     margin-top: var(--base-font-size);
     position: relative;
 } 
+article h1 + figure, 
 article h1 + picture {
     position: absolute;
     margin:0;
@@ -771,7 +773,8 @@ article h1 + picture img {
     border:none!important;
 } 
 @media screen and (max-width: 1100px) {
-    article h1 + picture {
+    article h1 + picture,
+    article h1 + figure {
         position: static;
         margin:inherit;
         max-width: 60ch;

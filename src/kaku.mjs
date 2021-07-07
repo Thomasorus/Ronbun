@@ -124,19 +124,19 @@ function parseImage(imgContent) {
   const link = linkData ? linkData[0].trim() : ""
   const extension = linkData[1] || linkData[2] || linkData[3] ? linkData[1] || linkData[2] || linkData[3] : ""
   const alt = altData ? `alt="${altData[1].trim()}"` : ""
-  const figcaption = figcaptionData ? `<figcaption>${figcaptionData[1].trim()}</figcaption>` : false
+  const figcaption = figcaptionData ? `<figcaption>${figcaptionData[1].trim()}</figcaption>` : ''
 
   // Uncomment this for picture + srcset
-  // const html = `${figcaption ? '<figure>' : ''}<picture><source type="image/webp" srcset="${link}-240.webp 300w, ${link}-680.webp 600w, ${link}-900.webp 900w, ${link}.webp 1200w" /><img loading="lazy" ${alt ? ` ${alt}` : ''} srcset="${link}-240${extension} 300w, ${link}-680${extension} 600w, ${link}-900${extension} 900w, ${link}${extension} 1200w" src="${link}${extension}"></picture>${figcaption} ${figcaption ? '</figure>' : ''}`
-  // return html
+  const html = `${figcaption ? '<figure>' : ''}<picture><source type="image/webp" srcset="${link}-240.webp 300w, ${link}-680.webp 600w, ${link}-900.webp 900w, ${link}.webp 1200w" /><img loading="lazy" ${alt ? ` ${alt}` : ''} srcset="${link}-240${extension} 300w, ${link}-680${extension} 600w, ${link}-900${extension} 900w, ${link}${extension} 1200w" src="${link}${extension}"></picture>${figcaption} ${figcaption ? '</figure>' : ''}`
+  return html
 
-  if (figcaption) {
-    const html = `<figure><img loading="lazy" src="${link}${extension}" ${alt}>${figcaption}</figure>`
-    return html
-  } else {
-    const html = `<img loading="lazy" src="${link}${extension}" ${alt}>`
-    return html
-  }
+  // if (figcaption) {
+  //   const html = `<figure><img loading="lazy" src="${link}${extension}" ${alt}>${figcaption}</figure>`
+  //   return html
+  // } else {
+  //   const html = `<img loading="lazy" src="${link}${extension}" ${alt}>`
+  //   return html
+  // }
 }
 
 function parseVideo(videoContent) {
