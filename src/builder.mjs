@@ -6,7 +6,7 @@ import {
 import textParser from './kaku.mjs'
 import timeParser from './time.mjs'
 
-const htmlTemplate = utils.readFile(`${config.srcAssetsDir}/${config.htmlTemplate}`)
+const htmlTemplate = utils.readFile(config.htmlTemplate)
 
 
 const text = utils.readFile(config.content)

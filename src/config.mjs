@@ -3,9 +3,9 @@ export const config = {
   buildAssetsDir: './www/assets',
   buildMediaDir: './www/media',
 
-  htmlTemplate: 'main.html',
-  rssTemplate: 'rss.xml',
-  itemTemplate: 'item.xml',
+  htmlTemplate: './assets/main.html',
+  rssTemplate: './assets/rss.xml',
+  itemTemplate: './assets/item.xml',
 
   contentSplitter: '====',
   content: "./data/content/content.kaku",
