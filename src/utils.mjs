@@ -1,17 +1,27 @@
 import * as fs from 'fs'
-import {execSync} from 'child_process'
+import {
+  execSync
+} from 'child_process'
 
 
-export function mkDir (dir) {
+export function mkDir(dir) {
   if (fs.existsSync(dir)) {
-    console.log(` Skipping ${dir} directory`)
+    fs.rmdirSync(dir, {
+      recursive: true
+    }, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log(`${dir} is deleted!`);
+    })
+    fs.mkdirSync(dir)
   } else {
     console.log(`+ Creating ${dir} directory`)
     fs.mkdirSync(dir)
   }
 }
 
-export function createFile (path, file) {
+export function createFile(path, file) {
   fs.writeFileSync(path, file, err => {
     if (err) {
       console.log(err)
@@ -20,13 +30,13 @@ export function createFile (path, file) {
   })
 }
 
-export function readFile (path) {
+export function readFile(path) {
   const file = fs.readFileSync(path, 'utf8')
   return file
 }
 
 
-export async function compareStrings (oldPage, item, reg) {
+export async function compareStrings(oldPage, item, reg) {
   const regex = RegExp(reg)
   const content = regex.exec(oldPage)
   console.log(regex)
@@ -35,7 +45,7 @@ export async function compareStrings (oldPage, item, reg) {
   return content
 }
 
-export async function toIsoDate (date) {
+export async function toIsoDate(date) {
   const splitDate = date.split(' ')
   const hour = splitDate[1].split(':')
   const fixedHour = hour.map(function (h) {
@@ -62,57 +72,57 @@ export async function toIsoDate (date) {
 
 
 export async function moveAssets(sourceDir, destinationDir) {
-    const dir = await fs.promises.opendir(sourceDir)
-    for await (const file of dir) {
-      if(!fs.existsSync(`${destinationDir}/${file.name}`)) {
-        console.log(`+ Copying new asset ${file.name}`)
-       fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
+  const dir = await fs.promises.opendir(sourceDir)
+  for await (const file of dir) {
+    if (!fs.existsSync(`${destinationDir}/${file.name}`)) {
+      console.log(`+ Copying new asset ${file.name}`)
+      fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
+        if (err) {
+          throw err
+        }
+      })
+    } else {
+      const destSize = fs.statSync(`${destinationDir}/${file.name}`).size.toString().trim()
+      const sourceSize = fs.statSync(`${sourceDir}/${file.name}`).size.toString().trim()
+      // const gitSize = await execSync(`git ls-tree -r  -l HEAD ${sourceDir}/${file.name}`).toString().replace(`${sourceDir}/${file.name}`.substring(2), '').substring(52).trim()
+
+      if (sourceSize !== destSize) {
+        console.log(`+ Updating ${file.name.trim()}`)
+        fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
           if (err) {
             throw err
           }
         })
       } else {
-        const destSize = fs.statSync(`${destinationDir}/${file.name}`).size.toString().trim()
-        const sourceSize = fs.statSync(`${sourceDir}/${file.name}`).size.toString().trim()
-        // const gitSize = await execSync(`git ls-tree -r  -l HEAD ${sourceDir}/${file.name}`).toString().replace(`${sourceDir}/${file.name}`.substring(2), '').substring(52).trim()
-
-        if(sourceSize !== destSize) {
-          console.log(`+ Updating ${file.name.trim()}`)
-          fs.copyFile(`${sourceDir}/${file.name}`, `${destinationDir}/${file.name}`, err => {
-            if (err) {
-              throw err
-            }
-          })
-        } else {
-          console.log(` Skipping ${file.name}`)
-        }
+        console.log(` Skipping ${file.name}`)
       }
     }
+  }
 }
 
 export async function gitDate(folder, file) {
-  if(fs.existsSync(`${folder}/${file}`)) {
+  if (fs.existsSync(`${folder}/${file}`)) {
     const gitDate = await execSync(`cd ${folder} && git log -1 --format="%ci" './${file}'`).toString().trim()
     const date = new Date(gitDate);
     return date
   } else {
-      return new Date()
+    return new Date()
   }
 
 }
 
 export async function toTree(arr) {
   var tree = [],
-      mappedArr = {},
-      arrElem,
-      mappedElem;
+    mappedArr = {},
+    arrElem,
+    mappedElem;
 
   // First map the nodes of the array to an object -> create a hash table.
-  for(var i = 0, len = arr.length; i < len; i++) {
+  for (var i = 0, len = arr.length; i < len; i++) {
     arrElem = arr[i];
-    if(arrElem.isPrivate !== "true") {
+    if (arrElem.isPrivate !== "true") {
       //Give key from titleSlug or timeSlug
-      if(arrElem.titleSlug !== undefined) {
+      if (arrElem.titleSlug !== undefined) {
         mappedArr[arrElem.titleSlug] = arrElem
         mappedArr[arrElem.titleSlug]['children'] = [];
       } else {
@@ -139,42 +149,41 @@ export async function toTree(arr) {
 }
 
 export function createRecursiveList(tree) {
-    let html = '<ul role="sitemap">'
-    tree.forEach(function(el) {
-      if(el.titleSlug) {
-        let list = createRecursiveItem(el)
+  let html = '<ul role="sitemap">'
+  tree.forEach(function (el) {
+    if (el.titleSlug) {
+      let list = createRecursiveItem(el)
       html += list
-      }
-    })
-    html += '</ul>'
-    return html
-}
-                
-function createRecursiveItem(elem) {
-    let html = "<li>"
-    html += `<a href="${elem.titleSlug}.html">${elem.title}</a>`
-    if (elem.children.length > 0) {
-      html += createRecursiveList(elem.children)
     }
-    html += '</li>'
-    return html
+  })
+  html += '</ul>'
+  return html
+}
+
+function createRecursiveItem(elem) {
+  let html = "<li>"
+  html += `<a href="${elem.titleSlug}.html">${elem.title}</a>`
+  if (elem.children.length > 0) {
+    html += createRecursiveList(elem.children)
+  }
+  html += '</li>'
+  return html
 }
 
 export async function setMainCategories(arr, category) {
   for (var i = 0; i < arr.length; i++) {
     const el = arr[i]
 
-    if(el.categorySlug === undefined) {
+    if (el.categorySlug === undefined) {
       category = el.titleSlug
       el.mainCategory = el.titleSlug
     } else if (el.categorySlug === "home") {
       category = el.titleSlug
       el.mainCategory = el.titleSlug
-    }
-    else {
+    } else {
       el.mainCategory = category
     }
-    if(el.children.length > 0) {
+    if (el.children.length > 0) {
       await setMainCategories(el.children, category)
     }
   }
@@ -185,4 +194,27 @@ export async function parseXml(xmlTerm, xmlText) {
   const fullTerm = RegExp(`<${xmlTerm}>((.|\n)*?)<\/${xmlTerm}>`, 'g');
   const match = fullTerm.exec(xmlText)
   return match[1]
+}
+
+
+
+export function merge(obj1, obj2) {
+  var args = [].slice.call(arguments);
+  var arg;
+  var i = args.length;
+  while (((arg = args[i - 1]), i--)) {
+    if (!arg || (typeof arg != 'object' && typeof arg != 'function')) {
+      throw new Error('expected object, got ' + arg);
+    }
+  }
+  var result = args[0];
+  var extenders = args.slice(1);
+  var len = extenders.length;
+  for (var i = 0; i < len; i++) {
+    var extender = extenders[i];
+    for (var key in extender) {
+      result[key] = extender[key];
+    }
+  }
+  return result;
 }
