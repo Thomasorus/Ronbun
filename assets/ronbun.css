@@ -1,212 +1,212 @@
 :root {
     --ratio: 1.5;
-  --s-5: calc(var(--s-4) / var(--ratio));
-  --s-4: calc(var(--s-3) / var(--ratio));
-  --s-3: calc(var(--s-2) / var(--ratio));
-  --s-2: calc(var(--s-1) / var(--ratio));
-  --s-1: calc(var(--s0) / var(--ratio));
-  --s0: 1rem;
-  --s1: calc(var(--s0) * var(--ratio));
-  --s2: calc(var(--s1) * var(--ratio));
-  --s3: calc(var(--s2) * var(--ratio));
-  --s4: calc(var(--s3) * var(--ratio));
-  --s5: calc(var(--s4) * var(--ratio));
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
 }
 
 /*svg {
-  fill: var(--text);
+  fill: var(--text);c
 }
 */
 .visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 
 .time-graph-container {
-  box-sizing: border-box;
-  font-size: calc(var(--base-font-size) + 1em);
+    box-sizing: border-box;
+    font-size: calc(var(--base-font-size) + 1em);
 }
 
 
 .time-graph {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, calc(var(--base-font-size) * 1.2));
-  grid-gap: 0.15em;
-  border-collapse: collapse;
-  font-variant-numeric: oldstyle-nums;
-  justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, calc(var(--base-font-size) * 1.2));
+    grid-gap: 0.15em;
+    border-collapse: collapse;
+    font-variant-numeric: oldstyle-nums;
+    justify-content: center;
 }
 
 .time-graph__text {
-  align-self: flex-end;
-  margin: var(--s0) 0;
+    align-self: flex-end;
+    margin: var(--s0) 0;
 }
 
 .time-graph__hours {
-  background: var(--background);
-  color: var(--text);
-  padding: 1px 3px 0 1px;
-  letter-spacing: -2px;
-  font-family: monospace;
-  font-size: 0.6rem;
-  position: absolute;
-  top: 0;
-  left: 0;
+    background: var(--background);
+    color: var(--text);
+    padding: 1px 3px 0 1px;
+    letter-spacing: -2px;
+    font-family: monospace;
+    font-size: 0.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
     line-height: 1;
 
 }
 
 .time-graph ul {
-  list-style: none;
+    list-style: none;
 }
 
 
 .time-graph__week {
-  width: 100%;
-  margin: 10px 0;
-  padding: 0;
-  display: flex;
-  flex-flow: column-reverse nowrap;
-  letter-spacing: -2px;
-  text-align: center;
-  font-size: 0.8rem;
-  font-family: monospace;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    letter-spacing: -2px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-family: monospace;
 }
 
 .time-graph__activity {
-  margin: 1.5px;
-  padding: 0!important;
-  box-shadow: 0 0 0 1px var(--text);
-  position: relative;
-  line-height: 0;
-  width: 100%;
+    margin: 1.5px;
+    padding: 0 !important;
+    box-shadow: 0 0 0 1px var(--text);
+    position: relative;
+    line-height: 0;
+    width: 100%;
 }
 
 .time-graph__tooltip {
-  display: none;
+    display: none;
 }
 
 .time-graph__activity:hover>.time-graph__tooltip {
-  margin-top: 15px;
-  margin-left: 50%;
-  background-color: var(--background);
-  display: block;
-  padding: 5px;
-  position: absolute;
-  top: 20%;
-  border: 1px solid var(--text);
-  z-index: 1;
-  font-size: 0.6rem;
-  font-family: sans-serif;
-  letter-spacing: normal;
-  line-height:1;
-  min-width: 10px;
+    margin-top: 15px;
+    margin-left: 50%;
+    background-color: var(--background);
+    display: block;
+    padding: 5px;
+    position: absolute;
+    top: 20%;
+    border: 1px solid var(--text);
+    z-index: 1;
+    font-size: 0.6rem;
+    font-family: sans-serif;
+    letter-spacing: normal;
+    line-height: 1;
+    min-width: 10px;
 }
 
 
 
 .time-graph__legend-list {
-  margin: 10px auto 20px auto;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  padding: 0;
-  font-family: 1rem;
-  max-width: 100%;
+    margin: 10px auto 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0;
+    font-family: 1rem;
+    max-width: 100%;
 }
 
 .time-graph__legend {
-  list-style-type: none;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  margin: 5px 10px;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 5px 10px;
 }
 
 .time-graph__legend-container {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  margin: 5px 0;
-  font-size: 0.7rem;
-  font-family: monospace;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 0.7rem;
+    font-family: monospace;
 }
 
 .time-graph__value {
-  margin-left: 2px;
+    margin-left: 2px;
 }
 
 .time-graph__definition {
-  padding-top: 2px;
-  margin-left: 5px;
-  /* white-space: nowrap; */
-  letter-spacing: -1px;
+    padding-top: 2px;
+    margin-left: 5px;
+    /* white-space: nowrap; */
+    letter-spacing: -1px;
 }
 
 .time-graph__pattern {
-  height: 1.4em;
-  width: 1.4em;
-  border: 1px solid var(--text);
-  display: inline-block;
-  margin-right: 4px;
+    height: 1.4em;
+    width: 1.4em;
+    border: 1px solid var(--text);
+    display: inline-block;
+    margin-right: 4px;
 }
 
 
 /* Code examples for html tips*/
 .code-example {
-  background: var(--background);
-  border: 1px solid var(--text);
-  min-height: var(--s5);
+    background: var(--background);
+    border: 1px solid var(--text);
+    min-height: var(--s5);
 }
 
 .code-example-value {
-  display: inline;
-  background: var(--background);
-  color: var(--text);
-  padding: 1px 5px 0 5px;
-  font-family: monospace;
+    display: inline;
+    background: var(--background);
+    color: var(--text);
+    padding: 1px 5px 0 5px;
+    font-family: monospace;
 }
 
 .code-example-children {
-  height: var(--s2);
-  width: var(--s2);
-  border: 1px solid var(--text);
+    height: var(--s2);
+    width: var(--s2);
+    border: 1px solid var(--text);
 }
 
 .code-example-children-grid {
-  border: 1px solid var(--text);
+    border: 1px solid var(--text);
 }
 
 .code-example-grid-star {
-  display: grid;
+    display: grid;
 
-  grid-template-areas:
-    "lefttop . righttop"
-    ". center . "
-    "leftbottom . rightbottom";
+    grid-template-areas:
+        "lefttop . righttop"
+        ". center . "
+        "leftbottom . rightbottom";
 }
 
 .pattern-demo {
-  width: 100%;
-  height: 100px;
-  border: 1px solid var(--text);
-  background: white;
+    width: 100%;
+    height: 100px;
+    border: 1px solid var(--text);
+    background: white;
 }
 
 .svg-demo>*,
 .pattern-demo>* {
-  margin-bottom: var(--s0);
+    margin-bottom: var(--s0);
 }
 
 .svg-demo svg {
-  width: 100%;
-  height: 100px;
-  border: 1px solid var(--text);
+    width: 100%;
+    height: 100px;
+    border: 1px solid var(--text);
 }
