@@ -214,7 +214,7 @@ export function createTimeSection(el) {
                   </dt>
                   <dd>${el.last}</dd>
               </dl>
-              ${createGraph(el.entries)}
+              ${createGraph(el.entries.reverse())}
               <table>
                 <caption>All times entries for this page</caption>
                 <thead>
@@ -286,6 +286,7 @@ function createGraph(data) {
     el.numbers += '</svg></g>'
     el.svg = `
           <div aria-hidden="true" style="overflow-x: auto;">
+              <p style="text-align:center; max-width: ${el.scaleX}px; margin-left:${el.scaleY / chartScale}px;">${el.year}</p>
               <div style="font-size:12px; text-align:center; width:10px; display:inline-block; transform:rotate(-90deg) translateX(${(el.scaleY - chartScale) / 2}px);">hours</div>
                   <svg viewbox="0 0 ${el.scaleX} ${el.scaleY + chartScale}" width="${el.scaleX}" height="${el.scaleY + chartScale}" style="border:2px solid var(--text, #000);">
                   ${el.hor}
