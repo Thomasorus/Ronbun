@@ -14,7 +14,12 @@
     "node": true,
 
     // Allow ES6.
-    "esversion": 6,
+    "esversion": 10,
+
+    "parserOptions":
+    {
+        "ecmaVersion": 2019
+    }
 
     /*
      * ENFORCING OPTIONS
