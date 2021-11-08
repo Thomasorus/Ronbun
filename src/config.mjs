@@ -1,15 +1,15 @@
 export const config = {
-  buildDir: './www',
-  buildAssetsDir: './www/assets',
-  buildMediaDir: './www/media',
+    buildDir: './www',
+    buildAssetsDir: './www/assets',
+    buildMediaDir: './www/media',
 
-  srcAssetsDir: './assets',
+    srcAssetsDir: './assets',
 
-  htmlTemplate: './assets/main.html',
-  rssTemplate: './assets/rss.xml',
-  itemTemplate: './assets/item.xml',
+    htmlTemplate: './assets/main.html',
+    rssTemplate: './assets/rss.xml',
+    itemTemplate: './assets/item.xml',
 
-  contentSplitter: '====',
-  content: "./data/content/content.kaku",
-  time: "./data/content/time.kaku"
+    contentSplitter: '====',
+    content: "./data/content/content.kaku",
+    time: "./data/content/time.kaku"
 }

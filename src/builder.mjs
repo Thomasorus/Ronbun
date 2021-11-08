@@ -5,9 +5,7 @@ import {
 } from './config.mjs'
 import textParser from './kaku.mjs'
 import timeParser from './time.mjs'
-import {
-    threadId
-} from 'worker_threads'
+
 
 utils.mkDir(config.buildDir)
 utils.mkDir(config.buildAssetsDir)
