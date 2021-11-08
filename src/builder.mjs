@@ -1,3 +1,4 @@
+"use strict";
 import * as fs from 'fs'
 import * as utils from './utils.mjs'
 import {
@@ -65,11 +66,7 @@ const activities = time.reduce((r, a) => {
 }, Object.create(null))
 
 
-const oldProjects = Object.keys(projects).length
-const oldActivities = Object.keys(activities).length
-
 //Find matching ids between text entries and project/activities
-
 for (let textkey in text) {
     const txt = text[textkey]
     for (let projkey in projects) {
@@ -169,13 +166,11 @@ const orphanActivities = remainingActivities.length
 const allEntries = Object.keys(all).length
 
 const timeText = await timeParser(utils.readFile(config.time))
-const sitemapArr = await utils.toTree(all)
+const sitemapArr = awgitait utils.toTree(all)
 const finalTree = await utils.setMainCategories(sitemapArr, null)
 
 const rssArray = []
 const rssItemTemplate = utils.readFile(config.itemTemplate)
-
-generateHtml(finalTree)
 
 function generateHtml(arr) {
     Object.entries(arr).forEach(([key, value]) => {
@@ -234,6 +229,8 @@ function generateHtml(arr) {
         }
     })
 }
+
+generateHtml(finalTree)
 
 // Generate RSS
 const rssString = rssArray.join('\n')
