@@ -5,17 +5,7 @@ import {
 
 
 export function mkDir(dir) {
-  if (fs.existsSync(dir)) {
-    fs.rmdirSync(dir, {
-      recursive: true
-    }, (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log(`${dir} is deleted!`);
-    })
-    fs.mkdirSync(dir)
-  } else {
+  if (!fs.existsSync(dir)) {
     console.log(`+ Creating ${dir} directory`)
     fs.mkdirSync(dir)
   }
@@ -93,8 +83,6 @@ export async function moveAssets(sourceDir, destinationDir) {
             throw err
           }
         })
-      } else {
-        console.log(` Skipping ${file.name}`)
       }
     }
   }
@@ -108,50 +96,12 @@ export async function gitDate(folder, file) {
   } else {
     return new Date()
   }
-
-}
-
-export async function toTree(arr) {
-  var tree = [],
-    mappedArr = {},
-    arrElem,
-    mappedElem;
-
-  // First map the nodes of the array to an object -> create a hash table.
-  for (var i = 0, len = arr.length; i < len; i++) {
-    arrElem = arr[i];
-    if (arrElem.isPrivate !== "true") {
-      //Give key from titleSlug or timeSlug
-      if (arrElem.titleSlug !== undefined) {
-        mappedArr[arrElem.titleSlug] = arrElem
-        mappedArr[arrElem.titleSlug]['children'] = [];
-      } else {
-        mappedArr[arrElem.timeSlug] = arrElem
-        mappedArr[arrElem.timeSlug]['children'] = [];
-      }
-    }
-  }
-
-  for (var id in mappedArr) {
-    if (mappedArr.hasOwnProperty(id)) {
-      mappedElem = mappedArr[id];
-      // If the element is not at the root level, add it to its parent array of children.
-      if (mappedElem.categorySlug) {
-        mappedArr[mappedElem['categorySlug']]['children'].push(mappedElem);
-      }
-      // If the element is at the root level, add it to first level elements array.
-      else {
-        tree.push(mappedElem);
-      }
-    }
-  }
-  return tree
 }
 
 export function createRecursiveList(tree) {
-  let html = '<ul role="sitemap">'
+  let html = '<ul>'
   tree.forEach(function (el) {
-    if (el.titleSlug) {
+    if (el.slug && el.priv === "false") {
       let list = createRecursiveItem(el)
       html += list
     }
@@ -162,7 +112,7 @@ export function createRecursiveList(tree) {
 
 function createRecursiveItem(elem) {
   let html = "<li>"
-  html += `<a href="${elem.titleSlug}.html">${elem.title}</a>`
+  html += `<a href="${elem.slug}.html">${elem.name}</a>`
   if (elem.children.length > 0) {
     html += createRecursiveList(elem.children)
   }
@@ -174,14 +124,14 @@ export async function setMainCategories(arr, category) {
   for (var i = 0; i < arr.length; i++) {
     const el = arr[i]
 
-    if (el.categorySlug === undefined) {
-      category = el.titleSlug
-      el.mainCategory = el.titleSlug
-    } else if (el.categorySlug === "home") {
-      category = el.titleSlug
-      el.mainCategory = el.titleSlug
+    if (el.hostslug === "") {
+      category = el.slug
+      el.category = el.slug
+    } else if (el.hostslug === "home") {
+      category = el.slug
+      el.category = el.slug
     } else {
-      el.mainCategory = category
+      el.category = category
     }
     if (el.children.length > 0) {
       await setMainCategories(el.children, category)
@@ -197,24 +147,86 @@ export async function parseXml(xmlTerm, xmlText) {
 }
 
 
+export function typeOf(obj) {
+  if (obj === null) {
+    return 'null';
+  }
+  if (obj !== Object(obj)) {
+    return typeof obj;
+  }
+  var result = {}.toString
+    .call(obj)
+    .slice(8, -1)
+    .toLowerCase();
 
-export function merge(obj1, obj2) {
-  var args = [].slice.call(arguments);
-  var arg;
-  var i = args.length;
-  while (((arg = args[i - 1]), i--)) {
-    if (!arg || (typeof arg != 'object' && typeof arg != 'function')) {
-      throw new Error('expected object, got ' + arg);
+  // strip function adornments (e.g. "AsyncFunction")
+  return result.indexOf('function') > -1 ? 'function' : result;
+}
+
+
+export async function toTree(list) {
+  var map = {},
+    node, roots = [],
+    i;
+
+  for (i = 0; i < list.length; i += 1) {
+    map[list[i].id] = i; // initialize the map
+    list[i].children = []; // initialize the children
+  }
+
+  for (i = 0; i < list.length; i += 1) {
+    node = list[i];
+    // console.log(node)
+    if (node.hostId !== "") {
+      list[map[node.hostId]].children.push(node);
+    } else {
+      roots.push(node);
     }
   }
-  var result = args[0];
-  var extenders = args.slice(1);
-  var len = extenders.length;
-  for (var i = 0; i < len; i++) {
-    var extender = extenders[i];
-    for (var key in extender) {
-      result[key] = extender[key];
-    }
-  }
-  return result;
+  return roots;
+}
+
+export function createTimeSection(el) {
+  let content = `
+          <section role="complementary">
+            <details>
+              <summary class="time-row">
+                  <span class="time-row__title">Statistics for: ${el.name} (click to see more)</span>
+                  <span class="time-row__second"> Time spent
+                  <span aria-hidden="true">→</span>
+                      <time>${el.total} hours</time>
+                  </span>
+              </summary>
+              <dl class="time-row-more">
+                  <dt>
+                      Time spent
+                      <span aria-hidden="true">→</span>
+                  </dt>
+                  <dd>${el.total} hours total</dd>
+                  <dt>
+                      Started
+                      <span aria-hidden="true">→</span>
+                  </dt>
+                  <dd>Week ${el.first}</dd>
+                  <dt>
+                      Last update
+                      <span aria-hidden="true">→</span>
+                  </dt>
+                  <dd>Week ${el.last}</dd>
+              </dl>
+              <table>
+                <caption>All times entries for this page</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Year</th> 
+                        <th scope="col">Week</th>
+                        <th scope="col">Hours</th> 
+                    </tr>
+                </thead>
+              <tbody>`
+  el.entries.forEach(ent => {
+    content += `<tr scope="row"><td>${ent.year}</td><td>${ent.week}</td><td>${ent.hours}</td></tr>`
+  })
+  content += `</tbody></table></details></section>`
+  return content
 }

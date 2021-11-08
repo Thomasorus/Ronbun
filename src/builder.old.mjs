@@ -263,15 +263,15 @@ async function generate(config) {
   //Checking for differences between xml and new content
   for (let i = 0; i < allEntries.length; i++) {
     const el = allEntries[i];
-    
-    if(el.type === "content") {
+
+    if (el.type === "content") {
       for (let i = 0; i < feedArray.length; i++) {
         const feedEl = feedArray[i];
 
         const guidRegex = RegExp(`<guid isPermaLink="false">${el.titleSlug}</guid>`, 'g');
         const match = guidRegex.test(feedEl)
-        
-        if(match) {
+
+        if (match) {
           const date = await utils.parseXml("pubDate", feedEl)
 
           const content = await utils.parseXml("description", feedEl)
@@ -283,7 +283,7 @@ async function generate(config) {
           const lol1 = trimedParsedText.length
           const lol2 = trimedContent.length
 
-          if(trimedContent === trimedParsedText) {
+          if (trimedContent === trimedParsedText) {
             el.date = date
           } else {
             const today = new Date;
@@ -291,11 +291,11 @@ async function generate(config) {
           }
         }
       }
-      if(el.date === undefined) {
+      if (el.date === undefined) {
         const today = new Date;
         el.date = today.toUTCString()
       }
-    } else if(el.date === undefined) {
+    } else if (el.date === undefined) {
       const today = new Date;
       el.date = today.toUTCString()
     }
@@ -418,7 +418,7 @@ async function generate(config) {
 
   }
 
-  
+
 
   // Generate RSS
   const itemsString = rssArray.join('\n')

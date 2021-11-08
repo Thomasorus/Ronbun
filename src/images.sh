@@ -49,7 +49,6 @@ function resize () {
     fi
 
     # create smaller sizes for responsive image selection
-    echo $file
   	for size in "${SIZES[@]}"
   	do
       # define output path and file
@@ -61,6 +60,7 @@ function resize () {
         width=$(identify -format "%w" "$file")> /dev/null
 
         # if [[ $width -ge $size ]]; then
+          echo $file
           echo -n "| ${size} "
 
           convert $file -resize $size -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off $output
@@ -69,7 +69,6 @@ function resize () {
 
         # else echo -n "| ----- "
   		  # fi
-      else echo -n "| ----- "
       fi
     done
     # Finally also strip the original image of it's EXIF data
@@ -83,9 +82,7 @@ function resize () {
       convert $file -resize $MAXWIDTH -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -posterize 136 -quality 82 -define webp:lossless=true -define webp:auto-filter=true $outputwebp
       
       echo -n "| ${MAXWIDTH} "
-    else echo -n "| ----- "
     fi
-    echo -en "|\n"
   done
 }
 

@@ -389,7 +389,6 @@ async function generateTime(textContent) {
       projectsLegend +
       '</div>'
   }
-  console.log('Time tracker data processed')
   return graph
 }
 

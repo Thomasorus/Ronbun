@@ -5,9 +5,16 @@ import {
 } from './config.mjs'
 import textParser from './kaku.mjs'
 import timeParser from './time.mjs'
+import {
+    threadId
+} from 'worker_threads'
+
+utils.mkDir(config.buildDir)
+utils.mkDir(config.buildAssetsDir)
+utils.mkDir(config.buildMediaDir)
+utils.moveAssets(config.srcAssetsDir, config.buildAssetsDir)
 
 const htmlTemplate = utils.readFile(config.htmlTemplate)
-
 
 const text = utils.readFile(config.content)
     .split('====')
@@ -20,18 +27,17 @@ const text = utils.readFile(config.content)
 
         x = {
             name: name[1].trim(),
+            id: name[1].trim().toLowerCase().replace(/ /g, '_'),
             slug: name[1].trim().toLowerCase().replace(/ /g, '-'),
             host: host[1].trim(),
+            hostId: host[1].trim().toLowerCase().replace(/ /g, '_'),
+            hostslug: host[1].trim().toLowerCase().replace(/ /g, '-'),
             bref: bref[1].trim(),
             priv: priv[1].trim(),
             body: textParser(body[1].trim())
         }
         return x
     })
-    .reduce((r, a) => {
-        r[a.slug] = [...r[a.slug] || [], a];
-        return r;
-    }, {});
 
 const time = utils.readFile(config.time)
     .split('\n')
@@ -40,121 +46,214 @@ const time = utils.readFile(config.time)
         year: x[0],
         week: x[1],
         activity: x[2].replace(/_/g, ' '),
-        activityslug: x[2].toLowerCase().replace(/_/g, '-'),
+        activityId: x[2].toLowerCase(),
         name: x[3].replace(/_/g, ' '),
-        slug: x[3].toLowerCase().replace(/_/g, '-'),
-        time: x[4]
+        id: x[3].toLowerCase(),
+        hours: x[4],
     })
 
-const projects = time.reduce((r, a) => {
-    r[a.slug] = [...r[a.slug] || [], a];
+// Grouping  time entries by project and activity
+
+let projects = time.reduce((r, a) => {
+    r[a.id] = r[a.id] || [];
+    r[a.id].push(a);
     return r;
-}, {});
+}, Object.create(null))
 
 const activities = time.reduce((r, a) => {
-    r[a.activityslug] = [...r[a.activityslug] || [], a];
+    r[a.activityId] = r[a.activityId] || [];
+    r[a.activityId].push(a);
     return r;
-}, {});
+}, Object.create(null))
 
 
-//Grouping text entries and projects
-for (const projkey in projects) {
-    const proj = projects[projkey]
-    for (const textkey in text) {
-        const txt = text[textkey]
-        if (textkey === projkey) {
-            txt.entries = []
-            // txt.entries = txt.entries.push[proj]
-            proj.entries.map(x => txt.entries.push(x))
-            txt.first = `week ${proj.entries[0].week} of ${proj.entries[0].year}`
-            txt.last = `week ${proj.entries[proj.entries.length - 1].week} of ${proj.entries[proj.entries.length - 1].year}`
-            txt.total = 0
-            proj.entries.map(x => txt.total += parseInt(x.time))
-            delete projects[projkey]
-        } else if (proj.entries.length === 0) {
-            proj.entries = []
-            proj.map(x => {
-                proj.entries.push(x)
-            })
-            proj.splice(0, Object.keys(proj).length)
-            proj.name = proj.entries[0].name
-            proj.slug = proj.entries[0].slug
-            proj.host = 'Time'
+const oldProjects = Object.keys(projects).length
+const oldActivities = Object.keys(activities).length
+
+//Find matching ids between text entries and project/activities
+
+for (let textkey in text) {
+    const txt = text[textkey]
+    for (let projkey in projects) {
+        const proj = projects[projkey]
+        if (proj[0]) {
+            if (txt.id === proj[0].id) {
+                txt.entries = []
+                proj.map(x => txt.entries.push(x))
+                txt.first = `week ${proj[0].week} of ${proj[0].year}`
+                txt.last = `week ${proj[proj.length - 1].week} of ${proj[proj.length - 1].year}`
+                txt.total = 0
+                proj.map(x => txt.total += parseInt(x.hours))
+                delete projects[projkey]
+            }
         }
     }
 }
 
-//Grouping text entries and activities
-for (const actkey in activities) {
-    let act = activities[actkey]
-    for (const textkey in text) {
-        const txt = text[textkey]
-        if (textkey === actkey) {
-            txt.entries = []
-            // txt.entries = txt.entries.push[act]
-            act.map(x => txt.entries.push(x))
-            txt.first = `week ${act[1].week} of ${act[1].year}`
-            txt.last = `week ${act[act.length - 1].week} of ${act[act.length - 1].year}`
-            txt.total = 0
-            act.map(x => txt.total += parseInt(x.time))
-            delete activities[actkey]
-        } else if (act.entries.length === 0) {
-            act.entries = []
-            act.map(x => {
-                act.entries.push(x)
-            })
-            act.splice(0, Object.keys(act).length)
-            act.name = act.entries[0].activity
-            act.slug = act.entries[0].activityslug
-            act.host = 'Time'
+for (const textkey in text) {
+    const txt = text[textkey]
+    for (const actkey in activities) {
+        let act = activities[actkey]
+        if (act[0]) {
+            if (txt.id === act[0].activityId) {
+                txt.entries = []
+                act.map(x => txt.entries.push(x))
+                txt.first = `week ${act[0].week} of ${act[0].year}`
+                txt.last = `week ${act[act.length - 1].week} of ${act[act.length - 1].year}`
+                txt.total = 0
+                act.map(x => txt.total += parseInt(x.hours))
+                delete activities[actkey]
+            }
         }
     }
 }
+
+const remainingProjects = []
+for (const i in projects) {
+    let el = projects[i]
+    let project = []
+    project.entries = []
+    el.map(x => {
+        project.entries.push(x)
+    })
+    project.name = el[0].name
+    project.slug = el[0].name.toLowerCase().replace(/ /g, '-')
+    project.id = el[0].id
+    project.host = 'Stubs'
+    project.hostId = 'stubs'
+    project.hostslug = 'stubs'
+    project.first = `Week ${el[0].week} of ${el[0].year}`
+    project.last = `Week ${el[el.length - 1].week} of ${el[el.length - 1].year}`
+    project.total = 0
+    project.priv = "false"
+    el.map(x => project.total += parseInt(x.hours))
+    remainingProjects.push(project)
+}
+
+const remainingActivities = []
+for (const i in activities) {
+    let el = activities[i]
+    let activity = []
+    activity.entries = []
+    el.map(x => {
+        activity.entries.push(x)
+    })
+    activity.name = el[0].activity
+    activity.slug = el[0].activity.toLowerCase().replace(/ /g, '-')
+    activity.id = el[0].activity.toLowerCase().replace(/ /g, '_')
+    activity.host = 'Stubs'
+    activity.hostId = 'stubs'
+    activity.hostslug = 'stubs'
+    activity.first = `Week ${el[0].week} of ${el[0].year}`
+    activity.last = `Week ${el[el.length - 1].week} of ${el[el.length - 1].year}`
+    activity.total = 0
+    activity.priv = "false"
+    el.map(x => activity.total += parseInt(x.hours))
+    remainingActivities.push(activity)
+}
+
+const all = []
+
+Object.entries(remainingProjects).forEach(([key, array]) => {
+    all.push(array)
+})
+Object.entries(remainingActivities).forEach(([key, array]) => {
+    all.push(array)
+})
+Object.entries(text).forEach(([key, array]) => {
+    all.push(array)
+})
 
 const timeEntries = Object.keys(time).length
 const pageEntries = Object.keys(text).length
-const orphanProjects = Object.keys(projects).length
-const orphanActivities = Object.keys(activities).length
+const orphanProjects = remainingProjects.length
+const orphanActivities = remainingActivities.length
+const allEntries = Object.keys(all).length
+
+const timeText = await timeParser(utils.readFile(config.time))
+const sitemapArr = await utils.toTree(all)
+const finalTree = await utils.setMainCategories(sitemapArr, null)
+
+const rssArray = []
+const rssItemTemplate = utils.readFile(config.itemTemplate)
+
+generateHtml(finalTree)
+
+function generateHtml(arr) {
+    Object.entries(arr).forEach(([key, value]) => {
+        const el = value[0] === undefined ? value : value[0]
+
+        let page = htmlTemplate
+
+        if (el.slug === "time") {
+            el.body += timeText
+            page = page.replace('<article>', "<article class='full'>")
+        }
+        if (el.host) {
+            el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.hostslug}.html">${el.host}</a></i></nav>`
+        }
+        if (el.slug === "sitemap") {
+            el.body += utils.createRecursiveList(sitemapArr)
+            el.body += `<dl>
+                            <dt>Time Entries</dt>
+                            <dd>${timeEntries}</dd>
+                            <dt>Text Entries</dt>
+                            <dd>${pageEntries}</dd>
+                            <dt>Orphan projects</dt>
+                            <dd>${orphanProjects}</dd>
+                            <dt>Orphan activities</dt>
+                            <dd>${orphanActivities}</dd>
+                            <dt>Pages built</dt>
+                            <dd>${allEntries}</dd>
+                        </dl>`
+        }
+        if (el.priv === 'false') {
+            let rss = rssItemTemplate
+            rss = rss.replace(/{{TITLE}}/g, el.name + " - Thomasorus")
+            rss = rss.replace(/{{GUID}}/g, el.slug)
+            rss = rss.replace(/{{CONTENT}}/g, el.body)
+            rssArray.push(rss)
+        }
 
 
-let all = Object.assign({}, text, projects, activities)
+
+        if (el.entries) {
+            el.timeSection = utils.createTimeSection(el)
+        }
 
 
-// Generate pages
-utils.mkDir(config.buildDir)
-Object.entries(all).forEach(([key, value]) => {
-    const el = value[0] === undefined ? value : value[0]
+        if (!el.body) {
+            el.body = `<h1>${el.name}</h1><p>This page was generated by the time tracker and has no proper content.</p>`
+        }
 
+        page = page.replace(/pageTitle/g, el.name ? `${el.name} - Thomasorus` : "Thomasorus")
+        page = page.replace(/metaDescription/g, el.bref ? el.bref : "")
+        page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "")
+        page = page.replace(/timeSection/g, el.timeSection != undefined ? el.timeSection : "")
+        page = page.replace(/pageBody/g, el.body != undefined ? el.body : "")
+        page = page.replace(/colorCat/g, el.category ? el.category : "")
+        utils.createFile(`${config.buildDir}/${el.slug}.html`, page)
 
-    let page = htmlTemplate
+        if (el.children.length > 0) {
+            generateHtml(el.children)
+        }
+    })
+}
 
-    if (el.slug === "time") {
-        page = page.replace('<article>', "<article class='full'>")
+// Generate RSS
+const rssString = rssArray.join('\n')
+const event = new Date()
+const rssTemplate = utils.readFile(config.rssTemplate)
+const rssFile = rssTemplate.replace(/{{CONTENT}}/, rssString).replace(/{{DATE}}/, event.toUTCString())
+fs.writeFileSync(`${config.buildDir}/feed.xml`, rssFile, (err) => {
+    if (err) {
+        console.log(err)
+        throw err
     }
-
-    // if (el.titleSlug === "sitemap") {
-    //     el.parsedText += utils.createRecursiveList(tree)
-    // }
-
-    page = page.replace(/pageTitle/g, `${el.name} - Thomasorus`)
-    page = page.replace(/metaDescription/g, el.bref)
-    // page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "")
-    // page = page.replace(/timeSection/g, el.timeSection ? el.timeSection : "")
-    page = page.replace(/pageBody/g, el.body ? el.body : "")
-    // page = page.replace(/colorCat/g, el.mainCategory ? el.mainCategory : "")
-
-    utils.createFile(`${config.buildDir}/${el.slug}.html`, page)
 })
 
 console.log("Time Entries: " + timeEntries)
-console.log("Page Entries: " + pageEntries)
+console.log("Text Entries: " + pageEntries)
 console.log("Orphan projects: " + orphanProjects)
 console.log("Orphan activities: " + orphanActivities)
-console.log(Object.keys(all).length)
-
-
-// utils.createFile('data.json', JSON.stringify(all))
-
-// console.log(
-//     content
-// )
+console.log("Pages built: " + allEntries)
