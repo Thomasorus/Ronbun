@@ -553,7 +553,7 @@ h3,
 h4,
 h5,
 h6 {
-    display: inline-block;
+    display: block;
     font-family: "Editorial New Regular", serif;
     font-weight: 400;
 }

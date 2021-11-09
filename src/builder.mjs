@@ -166,7 +166,7 @@ const orphanActivities = remainingActivities.length
 const allEntries = Object.keys(all).length
 
 const timeText = await timeParser(utils.readFile(config.time))
-const sitemapArr = awgitait utils.toTree(all)
+const sitemapArr = await utils.toTree(all)
 const finalTree = await utils.setMainCategories(sitemapArr, null)
 
 const rssArray = []
