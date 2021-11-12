@@ -175,7 +175,6 @@ const rssItemTemplate = utils.readFile(config.itemTemplate)
 function generateHtml(arr) {
     Object.entries(arr).forEach(([key, value]) => {
         const el = value[0] === undefined ? value : value[0]
-
         let page = htmlTemplate
 
         if (el.slug === "time") {
@@ -202,9 +201,12 @@ function generateHtml(arr) {
         }
         if (el.priv === 'false' && el.body) {
             let rss = rssItemTemplate
+            let rssDate = utils.checkDate(el, config.feed)
             rss = rss.replace(/{{TITLE}}/g, el.name + " - Thomasorus")
             rss = rss.replace(/{{GUID}}/g, el.slug)
+            rss = rss.replace(/{{DATE}}/g, rssDate)
             rss = rss.replace(/{{CONTENT}}/g, el.body)
+
             rssArray.push(rss)
         }
 

@@ -1,8 +1,10 @@
 <item>
-  <title>{{TITLE}}</title>
-  <link>https://thomasorus.com/{{GUID}}.html</link>
-  <guid isPermaLink="false">{{GUID}}</guid>
-  <description>
-<![CDATA[{{CONTENT}}]]>
-  </description>
+    <title>{{TITLE}}</title>
+    <link>https://thomasorus.com/{{GUID}}.html</link>
+    <guid isPermaLink="false">{{GUID}}</guid>
+    <pubDate>{{DATE}}</pubDate>
+    <dc:creator>Thomasorus</dc:creator>
+    <description>
+        <![CDATA[{{CONTENT}}]]>
+    </description>
 </item>

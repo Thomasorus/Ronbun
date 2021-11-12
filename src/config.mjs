@@ -11,5 +11,6 @@ export const config = {
 
     contentSplitter: '====',
     content: "./data/content/content.kaku",
-    time: "./data/content/time.kaku"
+    time: "./data/content/time.kaku",
+    feed: "./www/feed.xml"
 }
