@@ -200,7 +200,7 @@ function generateHtml(arr) {
                             <dd>${allEntries}</dd>
                         </dl>`
         }
-        if (el.priv === 'false') {
+        if (el.priv === 'false' && el.body) {
             let rss = rssItemTemplate
             rss = rss.replace(/{{TITLE}}/g, el.name + " - Thomasorus")
             rss = rss.replace(/{{GUID}}/g, el.slug)
