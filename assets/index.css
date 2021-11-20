@@ -1333,3 +1333,103 @@ nav[role="breadcrumb"] {
 .flow>*+* {
     margin-top: var(--margin-s);
 }
+
+@-webkit-keyframes anim1__4 {
+    0% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+
+    33% {
+        transform: rotate(4deg);
+        transform: skew(-4deg);
+    }
+
+    66% {
+        transform: rotate(-4deg);
+        transform: skew(4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+}
+
+@keyframes anim1__4 {
+    0% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+
+    33% {
+        transform: rotate(4deg);
+        transform: skew(-4deg);
+    }
+
+    66% {
+        transform: rotate(-4deg);
+        transform: skew(4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+}
+
+.anim1__4 {
+    -webkit-animation: anim1__4 10s ease-in-out infinite;
+    animation: anim1__4 10s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
+@-webkit-keyframes anim1__3 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(60px, 60px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes anim1__3 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(60px, 60px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.anim1__3 {
+    -webkit-animation: anim1__3 10s ease-out infinite;
+    animation: anim1__3 10s ease-out infinite;
+    transform-origin: 70% 70%;
+}
+
+/*@keyframes anim1__5 {
+    to {
+        transform: rotate(0);
+    }
+
+    from {
+        transform: rotate(360deg);
+    }
+}
+
+.anim1__5 {
+    animation: anim1__5 20s infinite;
+    transform-origin: 50% 50%;
+
+}*/

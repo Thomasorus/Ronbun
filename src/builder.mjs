@@ -181,7 +181,7 @@ function generateHtml(arr) {
             el.body += timeText
             page = page.replace('<article>', "<article class='full'>")
         }
-        if (el.host) {
+        if (el.host && el.host !== el.name.toLowerCase()) {
             el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.hostslug}.html">${el.host}</a></i></nav>`
         }
         if (el.slug === "sitemap") {
