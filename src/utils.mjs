@@ -322,11 +322,10 @@ export function checkDate(page, feed) {
             if (contentTest) {
                 let existingDate = /<pubDate>(.*)<\/pubDate>/.exec(el)
                 if (existingDate === null || existingDate[1] === 'undefined') {
-                    console.log("is undefined")
+                    console.log("Date is undefined, creating new entry in RSS")
                     let event = new Date()
                     date = event.toUTCString()
                 } else {
-                    console.log("exists")
                     date = existingDate[1]
 
                 }

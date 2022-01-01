@@ -246,6 +246,7 @@ fs.writeFileSync(`${config.buildDir}/feed.xml`, rssFile, (err) => {
     }
 })
 
+console.log("")
 console.log("Time Entries: " + timeEntries)
 console.log("Text Entries: " + pageEntries)
 console.log("Orphan projects: " + orphanProjects)
