@@ -1,1 +1,1 @@
-cd www && git add --all && git commit -m "*" && git push origin master && cd ../data && git add --all && git commit -m "*" && git push origin master && cd .. && git add --all && git commit -m "*" && git push origin master && sshprod && /root/thomasorus_pull.sh && exit
+cd www && git add --all && git commit -m "*" && git push origin master && cd ../data && git add --all && git commit -m "*" && git push origin master && cd .. && git add --all && git commit -m "*" && git push origin master && ssh root@51.178.233.2 && /root/thomasorus_pull.sh && exit
