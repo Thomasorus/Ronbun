@@ -2158,7 +2158,6 @@ nav[role="breadcrumb"] {
     margin-top: 2px;
     border:2px solid var(--text);
     z-index: 1;
-    display: none;
 }
 .accessibility-menu__sub {
     display: flex;
