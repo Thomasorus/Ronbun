@@ -1623,11 +1623,15 @@ figure > video + figcaption {
     border-bottom-right-radius: var(--radius-sm);
     box-shadow: var(--background-dark) 0 0 0 2px;
 }
+picture {
+    display: block;
+}
 picture img,
 picture video {
     display: block;
     box-shadow: var(--background-dark) 0 0 0 2px;
 }
+picture img,
 figure img,
 figure video {
     max-width: 100%;
