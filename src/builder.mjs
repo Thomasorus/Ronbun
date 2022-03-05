@@ -1,9 +1,7 @@
 "use strict";
 import * as fs from 'fs'
 import * as utils from './utils.mjs'
-import {
-    config
-} from './config.mjs'
+import { config } from './config.mjs'
 import textParser from './kaku.mjs'
 import timeParser from './time.mjs'
 
