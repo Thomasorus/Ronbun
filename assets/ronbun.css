@@ -27,12 +27,10 @@
     width: 1px;
 }
 
-
 .time-graph-container {
     box-sizing: border-box;
     font-size: calc(var(--base-font-size) + 1em);
 }
-
 
 .time-graph {
     width: 100%;
@@ -60,13 +58,11 @@
     top: 0;
     left: 0;
     line-height: 1;
-
 }
 
 .time-graph ul {
     list-style: none;
 }
-
 
 .time-graph__week {
     width: 100%;
@@ -93,7 +89,7 @@
     display: none;
 }
 
-.time-graph__activity:hover>.time-graph__tooltip {
+.time-graph__activity:hover > .time-graph__tooltip {
     margin-top: 15px;
     margin-left: 50%;
     background-color: var(--background);
@@ -109,8 +105,6 @@
     line-height: 1;
     min-width: 10px;
 }
-
-
 
 .time-graph__legend-list {
     margin: 10px auto 20px auto;
@@ -158,7 +152,6 @@
     margin-right: 4px;
 }
 
-
 /* Code examples for html tips*/
 .code-example {
     background: var(--background);
@@ -200,8 +193,8 @@
     background: white;
 }
 
-.svg-demo>*,
-.pattern-demo>* {
+.svg-demo > *,
+.pattern-demo > * {
     margin-bottom: var(--s0);
 }
 
@@ -217,7 +210,6 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-
 .home-grid > * {
     position: relative;
     display: flex;
@@ -226,7 +218,6 @@
     align-items: center;
     padding: var(--margin-s);
 }
-
 
 .home-grid h2 {
     font-size: calc(100% * 1rem);
@@ -246,4 +237,50 @@
 
 .absolute-link:hover {
     background: none;
+}
+
+.form-demo {
+    all: revert;
+    background: white;
+    max-width: 60ch;
+    margin-top: var(--margin-s);
+    box-sizing: border-box;
+}
+.form-demo * {
+    all: revert;
+    box-sizing: border-box;
+}
+
+.form-demo,
+.form-demo fieldset {
+    width: 100%;
+}
+
+.form-demo-2 * {
+    display: block;
+}
+
+.form-demo-2 > * + *,
+.form-demo-2 fieldset > * + * {
+    margin-top: 20px;
+}
+
+.form-demo-3 label ~ input,
+.form-demo-3 input ~ span {
+    margin-top: 0;
+}
+
+.form-demo-4 [type="checkbox"],
+.form-demo-4 [type="radio"] {
+    display: inline;
+}
+.form-demo-4 [type="checkbox"] ~ label,
+.form-demo-4 [type="radio"] ~ label {
+    display: inline;
+}
+
+.form-demo-5 input,
+.form-demo-5 button,
+.form-demo-5 select {
+    all: unset;
 }

@@ -58,7 +58,10 @@ function parser(text) {
         }) // links
         .replace(/\(quote:(.*)\)/gim, function (char, item) {
           return parseQuote(item);
-        }); // blockquote
+        })
+        .replace(/^\[(.)\](.*)$/gm, function (char, item, item2) {
+          return parseTodo(item, item2);
+        });
 
       const htmlRegex = new RegExp("^<(.*)>", "gim");
       const htmlTest = htmlRegex.test(tempText);
@@ -92,6 +95,7 @@ function parser(text) {
   }
 
   const cleanedText = parsedText
+    .replace(/<\/ul>\n<ul>/g, "")
     .replace(/<\/ul>\n\n\n<ul>/g, "")
     .replace(/<\/ol>\n\n\n<ol>/g, "")
     .replace(/<\/dl>\n\n\n<dl>/g, "")
@@ -210,6 +214,27 @@ function parseQuote(quoteContent) {
 
   const html = `<figure><blockquote ${cite}>${quote}</blockquote>${figcaption}</figure>`;
   return html;
+}
+
+function parseTodo(state, text) {
+  let stateText;
+  switch (state) {
+    case " ":
+      stateText = "Opened task";
+      break;
+    case "@":
+      stateText = "Ongoing task";
+      break;
+    case "~":
+      stateText = "Paused or abandonned task";
+      break;
+    case "x":
+      stateText = "Completed task";
+      break;
+  }
+
+  let string = `<ul><li><code aria-hidden="true">[${state}]</code><span class="visually-hidden">${stateText}</span> ${text}</li></ul>`;
+  return string;
 }
 
 function toKebab(text) {
