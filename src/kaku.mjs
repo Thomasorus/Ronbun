@@ -1,12 +1,21 @@
 function parser(text) {
-  const blocks = text.split(/\n\n/g);
+  console.log("-------------------------------------------\n");
+  let isCode = false;
+  let codeState = 0;
+  const blocks = text.split(/\n/g);
   let parsedText = "";
   for (let i = 0; i < blocks.length; i++) {
     const el = blocks[i];
-    const codeRegex = new RegExp("^```\n(.+)\n```", "sgim");
-    const codeTest = codeRegex.test(el);
+    const codeSymbol = /```/.test(el);
+    if (codeSymbol && !isCode) {
+      isCode = true;
+    } else if (!codeSymbol && isCode) {
+      codeState = 1;
+    } else if (codeSymbol && isCode) {
+      codeState = 2;
+    }
 
-    if (!codeTest) {
+    if (!isCode) {
       let tempText = el
         .replace(/^(#) (.*$)/gim, function (char, item, item2) {
           return parseTitles(item, item2);
@@ -66,6 +75,8 @@ function parser(text) {
       const htmlRegex = new RegExp("^<(.*)>", "gim");
       const htmlTest = htmlRegex.test(tempText);
 
+      console.log(htmlTest ? tempText : "");
+
       if (!htmlTest) {
         tempText = `<p>${tempText.trim()}</p>\n\n`;
       }
@@ -73,32 +84,28 @@ function parser(text) {
       if (tempText) {
         parsedText += tempText;
       }
-    } else if (codeTest) {
-      const splitCode = el.trim().split("\n");
-      splitCode.shift();
-      splitCode.pop();
-      const cleanedCode = [];
-      splitCode.forEach((el) => {
-        if (el.includes("<")) {
-          cleanedCode.push(el.replace(/</g, "<span><</span>"));
-        } else {
-          cleanedCode.push(el);
-        }
-      });
-      const tempText = `<pre><code>${cleanedCode.join(
-        "\n"
-      )}\n</code></pre>\n\n`;
-      if (tempText) {
-        parsedText += tempText;
+    } else if (isCode) {
+      if (codeState === 0) {
+        parsedText += "<pre><code>";
+      }
+      if (codeState === 1) {
+        el.includes("<")
+          ? (parsedText += `${el.replace(/</g, "<span><</span>")}\n`)
+          : (parsedText += `${el}\n`);
+      }
+      if (codeState === 2) {
+        parsedText += "</code></pre>";
+        isCode = false;
+        codeState = 0;
       }
     }
   }
 
   const cleanedText = parsedText
-    .replace(/<\/ul>\n<ul>/g, "")
-    .replace(/<\/ul>\n\n\n<ul>/g, "")
-    .replace(/<\/ol>\n\n\n<ol>/g, "")
-    .replace(/<\/dl>\n\n\n<dl>/g, "")
+    .replace(/<\/ul>\n\n<ul>/g, "")
+    .replace(/<\/ul>\n\n<ul>/g, "")
+    .replace(/<\/ol>\n\n<ol>/g, "")
+    .replace(/<\/dl>\n\n<dl>/g, "")
     .replace(/<p>[\s\S\n]<\/p>/gim, "")
     .replace(/<p><\/p>/g, "")
     .replace(/<\/li><li>/g, "</li>\n<li>")
