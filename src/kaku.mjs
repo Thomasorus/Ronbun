@@ -196,6 +196,8 @@ function parseQuote(quoteContent) {
   const link = linkData ? linkData[1].trim() : false;
   const cite = link ? `cite="${link}"` : "";
 
+  console.log();
+
   let figcaption = "";
   if (author && !source && !link) {
     figcaption = `<figcaption>— ${author}</figcaption>`;
