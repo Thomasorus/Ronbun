@@ -95,6 +95,7 @@ function parser(text) {
   }
 
   const cleanedText = parsedText
+    .replace(/<\/ul>\n<ul>/g, "")
     .replace(/<\/ul>\n\n\n<ul>/g, "")
     .replace(/<\/ol>\n\n\n<ol>/g, "")
     .replace(/<\/dl>\n\n\n<dl>/g, "")
