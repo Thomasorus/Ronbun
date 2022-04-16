@@ -241,13 +241,17 @@
 
 .form-demo {
     all: revert;
-    background: revert;
-    color: revert;
+    background: white;
+    color: black;
     max-width: 60ch;
     margin-top: var(--margin-s);
     box-sizing: border-box;
     border: 1px solid currentColor;
     padding: 5px;
+}
+
+.form-demo input {
+    background: white;
 }
 .form-demo * {
     all: revert;
