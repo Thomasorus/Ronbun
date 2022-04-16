@@ -241,46 +241,80 @@
 
 .form-demo {
     all: revert;
-    background: white;
+    background: revert;
+    color: revert;
     max-width: 60ch;
     margin-top: var(--margin-s);
     box-sizing: border-box;
+    border: 1px solid currentColor;
+    padding: 5px;
 }
 .form-demo * {
     all: revert;
     box-sizing: border-box;
 }
 
-.form-demo,
+.form-demo form,
 .form-demo fieldset {
     width: 100%;
 }
 
-.form-demo-2 * {
+.form-demo-block form * {
     display: block;
 }
 
-.form-demo-2 > * + *,
-.form-demo-2 fieldset > * + * {
-    margin-top: 20px;
+.form-demo-spacing form > * + *,
+.form-demo-spacing fieldset > * + * {
+    margin-top: 1em !important;
 }
 
-.form-demo-3 label ~ input,
-.form-demo-3 input ~ span {
-    margin-top: 0;
+.form-demo-reduced label ~ span,
+.form-demo-reduced label ~ input,
+.form-demo-reduced label ~ select {
+    margin-top: 0.25em !important;
 }
 
-.form-demo-4 [type="checkbox"],
-.form-demo-4 [type="radio"] {
+.form-demo-text label ~ span {
+    color: #555;
+    font-style: italic;
+}
+
+.form-demo-err input + span,
+.form-demo-err input + span {
+    color: red !important;
+    display: none;
+}
+
+.form-demo-err-block [aria-invalid] + span {
+    display: block !important;
+}
+
+.form-demo-size [data-size] {
+    width: 100%;
+}
+
+.form-demo-size [data-size="30"] {
+    max-width: 30ch;
+}
+
+.form-demo-size [data-size="10"] {
+    max-width: 10ch;
+}
+
+.form-demo-checkbox form [type="checkbox"] {
     display: inline;
 }
-.form-demo-4 [type="checkbox"] ~ label,
-.form-demo-4 [type="radio"] ~ label {
+
+.form-demo-checkbox form [type="checkbox"] ~ label {
     display: inline;
 }
 
-.form-demo-5 input,
-.form-demo-5 button,
-.form-demo-5 select {
+.form-demo-button button,
+.form-demo-button [type="button"],
+.form-demo-button [type="submit"],
+.form-demo-button [type="reset"] {
     all: unset;
+    font-size: 1em;
+    border: 1px solid currentColor;
+    padding: 10px;
 }
