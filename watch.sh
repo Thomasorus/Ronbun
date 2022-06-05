@@ -1,1 +1,1 @@
-find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2- | grep -v "www/" | entr -r ./build.sh
+while sleep 0.1; do ls data/*/*.* | entr -d ./build.sh; done
