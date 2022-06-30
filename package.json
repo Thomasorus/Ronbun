@@ -1,0 +1,41 @@
+{
+  "name": "ronbun",
+  "version": "1.0.0",
+  "description": "Ronbun (paper) is my static site generator. It's built with nodejs and uses [Kaku](https://thomasorus.com/kaku.html) as a markup language and [imagemagick](https://imagemagick.org/index.php) on the server to process images. It also process time tracking and presents it as graphics.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "dev": "run-s clean eleventy:dev --print-label",
+    "clean": "del-cli dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "not IE 11"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thomasorus/Ronbun.git"
+  },
+  "keywords": [],
+  "author": "Thomasorus",
+  "license": "ANTI-CAPITALIST SOFTWARE LICENSE",
+  "bugs": {
+    "url": "https://github.com/Thomasorus/Ronbun/issues"
+  },
+  "homepage": "https://github.com/Thomasorus/Ronbun#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-canary.11",
+    "@11ty/eleventy-img": "^2.0.1",
+    "@11ty/eleventy-plugin-vite": "1.0.0-canary.1",
+    "clean-css": "^5.3.0",
+    "npm-run-all": "^4.1.5",
+    "patch-package": "^6.4.7",
+    "rollup": "^2.75.7",
+    "rollup-plugin-critical": "^1.0.8",
+    "terser": "^5.14.1",
+    "vite": "^2.9.12"
+  }
+}

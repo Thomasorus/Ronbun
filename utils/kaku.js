@@ -1,113 +1,115 @@
-function parser(text) {
-  const blocks = text.split(/\n\n/g);
-  let parsedText = "";
-  for (let i = 0; i < blocks.length; i++) {
-    const el = blocks[i];
-    const codeRegex = new RegExp("^```\n(.+)\n```", "sgim");
-    const codeTest = codeRegex.test(el);
+module.exports = {
+  parser: function parser(text) {
+    const blocks = text.split(/\n\n/g);
+    let parsedText = "";
+    for (let i = 0; i < blocks.length; i++) {
+      const el = blocks[i];
+      const codeRegex = new RegExp("^```\n(.+)\n```", "sgim");
+      const codeTest = codeRegex.test(el);
 
-    if (!codeTest) {
-      let tempText = el
-        .replace(/^(#) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h1 tag
-        .replace(/^(##) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h2 tag
-        .replace(/^(###) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h3 tag
-        .replace(/^(####) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h4 tag
-        .replace(/^(#####) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h5 tag
-        .replace(/^(######) (.*$)/gim, function (char, item, item2) {
-          return parseTitles(item, item2);
-        }) // h6 tag
-        .replace(/\`(.*?)\`/gim, function (char, item) {
-          if (item.includes("<")) {
-            return `<code>${item.replace(/</g, "<span><</span>")}</code>`;
-          } else {
-            return `<code>${item}</code>`;
-          }
-        }) // strong text
-        .replace(/^----$/gim, "<hr>") // hr tag
-        .replace(
-          /(^|\(|\s)_(.*?)_(\s|\.|\,|\?|\!|\n|\)|\b)/gim,
-          "$1<em>$2</em>$3"
-        ) // em text
-        .replace(/\*(.*?)\*/gim, "<strong>$1</strong>") // strong text
-        .replace(/\~(.*?)\~/gim, "<del>$1</del>") // strike text
-        .replace(/^- (.*$)/gim, "<ul><li>$1</li></ul>\n\n") // strike text
-        .replace(/^\+ (.*$)/gim, "<ol><li>$1</li></ol>\n\n") // strike text
-        .replace(/^\? (.*) : (.*$)/gim, "<dl><dt>$1</dt><dd>$2</dd></dl>\n\n") // strike text
-        .replace(/\(link:(.*?)\)/gim, function (char, item) {
-          return parseLinks(item);
-        }) // links
-        .replace(/\(image:(.*?)\)/gim, function (char, item) {
-          return parseImage(item);
-        }) // image
-        .replace(/\(video:(.*?)\)/gim, function (char, item) {
-          return parseVideo(item);
-        }) // links
-        .replace(/\(audio:(.*?)\)/gim, function (char, item) {
-          const mp3 = item.trim();
-          return `<audio controls src="${mp3}" type="audio/mpeg" preload="metadata"></audio>`;
-        }) // links
-        .replace(/\(quote:(.*)\)/gim, function (char, item) {
-          return parseQuote(item);
-        })
-        .replace(/^\[(.)\](.*)$/gm, function (char, item, item2) {
-          return parseTodo(item, item2);
-        });
+      if (!codeTest) {
+        let tempText = el
+          .replace(/^(#) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h1 tag
+          .replace(/^(##) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h2 tag
+          .replace(/^(###) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h3 tag
+          .replace(/^(####) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h4 tag
+          .replace(/^(#####) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h5 tag
+          .replace(/^(######) (.*$)/gim, function (char, item, item2) {
+            return parseTitles(item, item2);
+          }) // h6 tag
+          .replace(/\`(.*?)\`/gim, function (char, item) {
+            if (item.includes("<")) {
+              return `<code>${item.replace(/</g, "<span><</span>")}</code>`;
+            } else {
+              return `<code>${item}</code>`;
+            }
+          }) // strong text
+          .replace(/^----$/gim, "<hr>") // hr tag
+          .replace(
+            /(^|\(|\s)_(.*?)_(\s|\.|\,|\?|\!|\n|\)|\b)/gim,
+            "$1<em>$2</em>$3"
+          ) // em text
+          .replace(/\*(.*?)\*/gim, "<strong>$1</strong>") // strong text
+          .replace(/\~(.*?)\~/gim, "<del>$1</del>") // strike text
+          .replace(/^- (.*$)/gim, "<ul><li>$1</li></ul>\n\n") // strike text
+          .replace(/^\+ (.*$)/gim, "<ol><li>$1</li></ol>\n\n") // strike text
+          .replace(/^\? (.*) : (.*$)/gim, "<dl><dt>$1</dt><dd>$2</dd></dl>\n\n") // strike text
+          .replace(/\(link:(.*?)\)/gim, function (char, item) {
+            return parseLinks(item);
+          }) // links
+          .replace(/\(image:(.*?)\)/gim, function (char, item) {
+            return parseImage(item);
+          }) // image
+          .replace(/\(video:(.*?)\)/gim, function (char, item) {
+            return parseVideo(item);
+          }) // links
+          .replace(/\(audio:(.*?)\)/gim, function (char, item) {
+            const mp3 = item.trim();
+            return `<audio controls src="${mp3}" type="audio/mpeg" preload="metadata"></audio>`;
+          }) // links
+          .replace(/\(quote:(.*)\)/gim, function (char, item) {
+            return parseQuote(item);
+          })
+          .replace(/^\[(.)\](.*)$/gm, function (char, item, item2) {
+            return parseTodo(item, item2);
+          });
 
-      const htmlRegex = new RegExp("^<(.*)>", "gim");
-      const htmlTest = htmlRegex.test(tempText);
+        const htmlRegex = new RegExp("^<(.*)>", "gim");
+        const htmlTest = htmlRegex.test(tempText);
 
-      if (!htmlTest) {
-        tempText = `<p>${tempText.trim()}</p>\n\n`;
-      }
-
-      if (tempText) {
-        parsedText += tempText;
-      }
-    } else if (codeTest) {
-      const splitCode = el.trim().split("\n");
-      splitCode.shift();
-      splitCode.pop();
-      const cleanedCode = [];
-      splitCode.forEach((el) => {
-        if (el.includes("<")) {
-          cleanedCode.push(el.replace(/</g, "<span><</span>"));
-        } else {
-          cleanedCode.push(el);
+        if (!htmlTest) {
+          tempText = `<p>${tempText.trim()}</p>\n\n`;
         }
-      });
-      const tempText = `<pre><code>${cleanedCode.join(
-        "\n"
-      )}\n</code></pre>\n\n`;
-      if (tempText) {
-        parsedText += tempText;
+
+        if (tempText) {
+          parsedText += tempText;
+        }
+      } else if (codeTest) {
+        const splitCode = el.trim().split("\n");
+        splitCode.shift();
+        splitCode.pop();
+        const cleanedCode = [];
+        splitCode.forEach((el) => {
+          if (el.includes("<")) {
+            cleanedCode.push(el.replace(/</g, "<span><</span>"));
+          } else {
+            cleanedCode.push(el);
+          }
+        });
+        const tempText = `<pre><code>${cleanedCode.join(
+          "\n"
+        )}\n</code></pre>\n\n`;
+        if (tempText) {
+          parsedText += tempText;
+        }
       }
     }
-  }
 
-  const cleanedText = parsedText
-    .replace(/<\/ul>\n<ul>/g, "")
-    .replace(/<\/ul>\n\n\n<ul>/g, "")
-    .replace(/<\/ol>\n\n\n<ol>/g, "")
-    .replace(/<\/dl>\n\n\n<dl>/g, "")
-    .replace(/<p>[\s\S\n]<\/p>/gim, "")
-    .replace(/<p><\/p>/g, "")
-    .replace(/<\/li><li>/g, "</li>\n<li>")
-    .replace(/<em><\/em>/g, "__")
-    .replace(/<strong><\/strong>/g, "**")
-    .replace(/<del><\/del>/g, "~~");
+    const cleanedText = parsedText
+      .replace(/<\/ul>\n<ul>/g, "")
+      .replace(/<\/ul>\n\n\n<ul>/g, "")
+      .replace(/<\/ol>\n\n\n<ol>/g, "")
+      .replace(/<\/dl>\n\n\n<dl>/g, "")
+      .replace(/<p>[\s\S\n]<\/p>/gim, "")
+      .replace(/<p><\/p>/g, "")
+      .replace(/<\/li><li>/g, "</li>\n<li>")
+      .replace(/<em><\/em>/g, "__")
+      .replace(/<strong><\/strong>/g, "**")
+      .replace(/<del><\/del>/g, "~~");
 
-  return cleanedText;
-}
+    return cleanedText;
+  },
+};
 
 function parseTitles(character, titleContent) {
   const lvl = character.length;
@@ -248,4 +250,3 @@ function toKebab(text) {
       .join("-");
   return toKebabCase;
 }
-export { parser as default };
