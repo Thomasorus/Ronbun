@@ -2,5 +2,5 @@
 	path = www
 	url = git@gitlab.com:Thomasorus/thomasorus.com-build.git
 [submodule "data"]
-	path = src/_data/
+	path = src/_data
 	url = git@gitlab.com:Thomasorus/thomasorus.com-content.git
