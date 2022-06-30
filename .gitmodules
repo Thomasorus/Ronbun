@@ -1,3 +1,6 @@
 [submodule "www"]
 	path = www
 	url = git@gitlab.com:Thomasorus/thomasorus.com-build.git
+[submodule "src/_data"]
+	path = src/_data
+	url = git@gitlab.com:Thomasorus/thomasorus.com-content.git
