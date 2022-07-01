@@ -29,7 +29,7 @@ module.exports = {
           }) // h6 tag
           .replace(/\`(.*?)\`/gim, function (char, item) {
             if (item.includes("<")) {
-              return `<code>${item.replace(/</g, "<span><</span>")}</code>`;
+              return `<code>${item.replace(/</g, "<span>&lt;</span>")}</code>`;
             } else {
               return `<code>${item}</code>`;
             }
@@ -81,7 +81,7 @@ module.exports = {
         const cleanedCode = [];
         splitCode.forEach((el) => {
           if (el.includes("<")) {
-            cleanedCode.push(el.replace(/</g, "<span><</span>"));
+            cleanedCode.push(el.replace(/</g, "<span>&lt;</span>"));
           } else {
             cleanedCode.push(el);
           }
