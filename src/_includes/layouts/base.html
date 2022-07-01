@@ -1,16 +1,21 @@
+{% set index %} {% include "index.css" %} {% endset %} {% set ronbun %} {%
+include "ronbun.css" %} {% endset %} {% set js %} {% include "index.js" %} {%
+endset %}
 <!DOCTYPE html>
 <html lang="en" theme="color">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ item.title }}</title>
-    <link rel="stylesheet" href="/assets/index.css" />
-    <link rel="stylesheet" href="/assets/ronbun.css" />
+    {% include "layouts/head.html" %}
+    <style>
+      {{ index | cssmin | safe }}
+      {{ ronbun | cssmin | safe }}
+    </style>
   </head>
   <body class="{{ item.category }}">
     {% include "layouts/header.html" %}
     <main>{% block item %}{% endblock %}</main>
     {% include "layouts/footer.html" %}
+    <script>{{js | jsmin | safe}}</script>
   </body>
 </html>

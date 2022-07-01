@@ -1,3 +1,7 @@
-{% extends "layouts/base.html" %} {% block item %}
+{% extends "layouts/base.html" %} 
+{% block item %}
 <article>{{ item.body | safe }}</article>
+{% if item.children.length > 0 and true in item.menu %}
+    {% include "layouts/children.html" %}
+{% endif %}
 {% endblock %}

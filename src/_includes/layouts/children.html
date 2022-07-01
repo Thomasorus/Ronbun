@@ -1,0 +1,8 @@
+<nav aria-label="Subpages">
+    <dl>   
+        {%- for i in item.children %}
+        <dt><a href="{{i.slug}}" >{{i.name}}</a></dt>
+        <dd>{{i.bref}}</dd>
+        {%- endfor %}
+    </dl>
+</nav>
