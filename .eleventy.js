@@ -1,4 +1,7 @@
 const { parser } = require("./utils/kaku.js");
+const CleanCSS = require("clean-css");
+const { minify } = require("terser");
+const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addDataExtension("kaku", (contents) => {
@@ -31,6 +34,27 @@ module.exports = function (eleventyConfig) {
 		return flattened;
 	});
 
+	eleventyConfig.addFilter("cssmin", function (code) {
+		return new CleanCSS({}).minify(code).styles;
+	});
+
+	eleventyConfig.addNunjucksAsyncFilter(
+		"jsmin",
+		async function (code, callback) {
+			try {
+				const minified = await minify(code);
+				callback(null, minified.code);
+			} catch (err) {
+				console.error("Terser error: ", err);
+				// Fail gracefully.
+				callback(null, code);
+			}
+		}
+	);
+
+
+	eleventyConfig.addTransform("htmlmin", htmlMinTransform);
+
 	eleventyConfig.addPassthroughCopy("src/assets");
 
 	return {
@@ -48,7 +72,6 @@ module.exports = function (eleventyConfig) {
 };
 
 function setMainCategories(arr, category) {
-	console.log(category);
 	for (var i = 0; i < arr.length; i++) {
 		const el = arr[i];
 
