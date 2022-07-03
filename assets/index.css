@@ -199,7 +199,7 @@ select {
   font-display: swap;
   font-style: normal;
   font-named-instance: "Regular";
-  src: url("03d67f11d4c6bcdd.woff2?v=3.18") format("woff2");
+  src: url("03d67f11d4c6bcdd-subset.woff2?v=3.18") format("woff2");
 }
 @font-face {
   font-family: "Inter var";
@@ -207,11 +207,11 @@ select {
   font-display: swap;
   font-style: italic;
   font-named-instance: "Italic";
-  src: url("5c2ff0c81a369e4f.woff2?v=3.18") format("woff2");
+  src: url("5c2ff0c81a369e4f-subset.woff2?v=3.18") format("woff2");
 }
 @font-face {
   font-family: "Editorial New Regular";
-  src: url("d58d53cb25ead483.woff2") format("woff2");
+  src: url("d58d53cb25ead483-subset.woff2") format("woff2");
   font-style: Regular;
   font-display: swap;
 }
@@ -223,7 +223,7 @@ select {
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("11a97c41a08ca9c5.woff2") format("woff2");
+  src: url("11a97c41a08ca9c5-subset.woff2") format("woff2");
   font-style: Light;
   font-display: swap;
 }
