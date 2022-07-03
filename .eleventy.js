@@ -1,6 +1,7 @@
 const { parser } = require("./utils/kaku.js");
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
+const Image = require("@11ty/eleventy-img");
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 
 module.exports = function (eleventyConfig) {
@@ -54,8 +55,17 @@ module.exports = function (eleventyConfig) {
 
 
 	eleventyConfig.addTransform("htmlmin", htmlMinTransform);
-
 	eleventyConfig.addPassthroughCopy("src/assets");
+
+
+	(async () => {
+		let url = "./src/_data/media"
+		let stats = await Image(url, {
+		widths: [300]
+		});
+	
+		console.log( stats );
+	})();
 
 	return {
 		templateFormats: ["md", "njk", "html", "liquid"],
