@@ -143,15 +143,15 @@ function parseImage(imgContent) {
       : "";
   const alt = altData ? `alt="${altData[1].trim()}"` : "";
   const figcaption = figcaptionData
-    ? `<figcaption>${figcaptionData[1].trim()}</figcaption>`
-    : "";
+    ? `<figcaption>${figcaptionData[1].trim()} | <small><a href="${link}${extension}">Full size</a></small></figcaption>`
+    : `<figcaption><a href="${link}${extension}">Full size</a></figcaption>`;
 
   // Uncomment this for picture + srcset
   const html = `${
     figcaption ? "<figure>" : ""
-  }<picture><source type="image/webp" srcset="${link}-240.webp 300w, ${link}-680.webp 600w, ${link}-900.webp 900w, ${link}.webp 1200w" /><img loading="lazy" ${
+  }<picture><source type="image/webp" srcset="${link}-240.webp 240w, ${link}-480.webp 480w, ${link}-600.webp 600w, ${link}-720.webp 720w" /><img loading="lazy" ${
     alt ? ` ${alt}` : ""
-  } srcset="${link}-240${extension} 300w, ${link}-680${extension} 600w, ${link}-900${extension} 900w, ${link}${extension} 1200w" src="${link}${extension}"></picture>${figcaption} ${
+  } srcset="${link}-240${extension} 240w, ${link}-480${extension} 480w, ${link}-600${extension} 600w, ${link}-720${extension} 720w" src="${link}${extension}"></picture>${figcaption} ${
     figcaption ? "</figure>" : ""
   }`;
   return html;

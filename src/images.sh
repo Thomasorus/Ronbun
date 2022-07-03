@@ -14,7 +14,7 @@ SRC="data/media"
 # path where the images will be stored
 DST="www/media"
 # sizes to convert to
-SIZES=( 240 680 900 )
+SIZES=( 240 480 600 720 )
 MAXWIDTH=1200
 
 echo "GO"

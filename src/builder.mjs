@@ -195,7 +195,7 @@ function generateHtml(arr) {
             page = page.replace("<article>", "<article class='full'>");
         }
         if (el.host && el.host !== el.name.toLowerCase()) {
-            el.hostNav = `<nav role="breadcrumb"><i>Back to <a href="${el.hostslug}.html">${el.host}</a></i></nav>`;
+            el.hostNav = `<nav aria-label="Breadcrumb" class="breadcrumb"><i>Back to <a href="${el.hostslug}.html">${el.host}</a></i></nav>`;
         }
         if (el.slug === "sitemap") {
             el.body += utils.createRecursiveList(sitemapArr);
@@ -250,6 +250,7 @@ function generateHtml(arr) {
             el.name ? `${el.name} - Thomasorus` : "Thomasorus"
         );
         page = page.replace(/metaDescription/g, el.bref ? el.bref : "");
+        page = page.replace(/ogSlugUrl/g, el.slug ? `${el.slug}.html` : "");
         page = page.replace(/breadCrumb/g, el.hostNav ? el.hostNav : "");
         page = page.replace(
             /timeSection/g,
