@@ -144,7 +144,7 @@ function parseImage(imgContent) {
   const alt = altData ? `alt="${altData[1].trim()}"` : "";
   const figcaption = figcaptionData
     ? `<figcaption>${figcaptionData[1].trim()} | <small><a href="${link}${extension}">Full size</a></small></figcaption>`
-    : `<figcaption><a href="${link}${extension}">Full size</a></figcaption>`;
+    : `<figcaption><small><a href="${link}${extension}">Full size</a></small></figcaption>`;
 
   // Uncomment this for picture + srcset
   const html = `${
