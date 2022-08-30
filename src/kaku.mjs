@@ -8,25 +8,25 @@ function parser(text) {
 
     if (!codeTest) {
       let tempText = el
-        .replace(/^(#) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(#) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h1 tag
-        .replace(/^(##) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(##) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h2 tag
-        .replace(/^(###) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(###) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h3 tag
-        .replace(/^(####) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(####) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h4 tag
-        .replace(/^(#####) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(#####) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h5 tag
-        .replace(/^(######) (.*$)/gim, function (char, item, item2) {
+        .replace(/^(######) (.*$)/gim, function(char, item, item2) {
           return parseTitles(item, item2);
         }) // h6 tag
-        .replace(/\`(.*?)\`/gim, function (char, item) {
+        .replace(/\`(.*?)\`/gim, function(char, item) {
           if (item.includes("<")) {
             return `<code>${item.replace(/</g, "<span><</span>")}</code>`;
           } else {
@@ -43,23 +43,27 @@ function parser(text) {
         .replace(/^- (.*$)/gim, "<ul><li>$1</li></ul>\n\n") // strike text
         .replace(/^\+ (.*$)/gim, "<ol><li>$1</li></ol>\n\n") // strike text
         .replace(/^\? (.*) : (.*$)/gim, "<dl><dt>$1</dt><dd>$2</dd></dl>\n\n") // strike text
-        .replace(/\(link:(.*?)\)/gim, function (char, item) {
+        .replace(/\{(.*?)\}/gim, "<aside><p>Side note</p>$1</aside>")
+        .replace(/\(link:(.*?)\)/gim, function(char, item) {
           return parseLinks(item);
         }) // links
-        .replace(/\(image:(.*?)\)/gim, function (char, item) {
+        .replace(/\(image:(.*?)\)/gim, function(char, item) {
           return parseImage(item);
         }) // image
-        .replace(/\(video:(.*?)\)/gim, function (char, item) {
+        .replace(/\(video:(.*?)\)/gim, function(char, item) {
           return parseVideo(item);
         }) // links
-        .replace(/\(audio:(.*?)\)/gim, function (char, item) {
+        .replace(/\(audio:(.*?)\)/gim, function(char, item) {
           const mp3 = item.trim();
           return `<audio controls src="${mp3}" type="audio/mpeg" preload="metadata"></audio>`;
         }) // links
-        .replace(/\(quote:(.*)\)/gim, function (char, item) {
+        .replace(/\(quote:(.*)\)/gim, function(char, item) {
           return parseQuote(item);
         })
-        .replace(/^\[(.)\](.*)$/gm, function (char, item, item2) {
+        .replace(/\(details:(.*)\)/gim, function(char, item) {
+          return parseSummary(item);
+        })
+        .replace(/^\[(.)\](.*)$/gm, function(char, item, item2) {
           return parseTodo(item, item2);
         });
 
@@ -147,13 +151,10 @@ function parseImage(imgContent) {
     : `<figcaption><small><a href="${link}${extension}">Full size</a></small></figcaption>`;
 
   // Uncomment this for picture + srcset
-  const html = `${
-    figcaption ? "<figure>" : ""
-  }<picture><source type="image/webp" srcset="${link}-240.webp 240w, ${link}-480.webp 480w, ${link}-600.webp 600w, ${link}-720.webp 720w" /><img loading="lazy" ${
-    alt ? ` ${alt}` : ""
-  } srcset="${link}-240${extension} 240w, ${link}-480${extension} 480w, ${link}-600${extension} 600w, ${link}-720${extension} 720w" src="${link}${extension}"></picture>${figcaption} ${
-    figcaption ? "</figure>" : ""
-  }`;
+  const html = `${figcaption ? "<figure>" : ""
+    }<picture><source type="image/webp" srcset="${link}-240.webp 240w, ${link}-480.webp 480w, ${link}-600.webp 600w, ${link}-720.webp 720w" /><img loading="lazy" ${alt ? ` ${alt}` : ""
+    } srcset="${link}-240${extension} 240w, ${link}-480${extension} 480w, ${link}-600${extension} 600w, ${link}-720${extension} 720w" src="${link}${extension}"></picture>${figcaption} ${figcaption ? "</figure>" : ""
+    }`;
   return html;
 
   // if (figcaption) {
@@ -178,11 +179,9 @@ function parseVideo(videoContent) {
   const figcaption = figcaptionData
     ? `<figcaption>${figcaptionData[1].trim()}</figcaption>`
     : "";
-  const html = `${
-    figcaptionData ? "<figure>" : ""
-  }<video ${controls} preload="metadata" ${link} ${source}></video>${figcaption}${
-    figcaptionData ? "</figure>" : ""
-  }`;
+  const html = `${figcaptionData ? "<figure>" : ""
+    }<video ${controls} preload="metadata" ${link} ${source}></video>${figcaption}${figcaptionData ? "</figure>" : ""
+    }`;
   return html;
 }
 
@@ -235,6 +234,13 @@ function parseTodo(state, text) {
 
   let string = `<ul><li><code aria-hidden="true">[${state}]</code><span class="visually-hidden">${stateText}</span> ${text}</li></ul>`;
   return string;
+}
+
+function parseSummary(text) {
+  const detailsData = /^(.+?(?=summary|$))/.exec(text);
+  const summaryData = /summary:(.+?(?=$))/.exec(text);
+  let string = `<details><summary>${summaryData[1].trim()}</summary>${detailsData[1].trim()}</details>`
+  return string
 }
 
 function toKebab(text) {
