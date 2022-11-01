@@ -60,7 +60,7 @@ function parser(text) {
         .replace(/\(quote:(.*)\)/gim, function(char, item) {
           return parseQuote(item);
         })
-        .replace(/\(details:(.*)\)/gim, function(char, item) {
+        .replace(/\(details:(.*)\)/gims, function(char, item) {
           return parseSummary(item);
         })
         .replace(/^\[(.)\](.*)$/gm, function(char, item, item2) {
@@ -239,7 +239,7 @@ function parseTodo(state, text) {
 function parseSummary(text) {
   const detailsData = /^(.+?(?=summary|$))/.exec(text);
   const summaryData = /summary:(.+?(?=$))/.exec(text);
-  let string = `<details><summary>${summaryData[1].trim()}</summary>${detailsData[1].trim()}</details>`
+  let string = `<details><summary>${summaryData[1].trim()}</summary>${detailsData[1]}</details>`
   return string
 }
 
