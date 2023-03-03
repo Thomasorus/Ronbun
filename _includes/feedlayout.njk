@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Thomasorus}</title>
+    <title>Thomasorus</title>
     <subtitle>The personal wiki of Thomasorus</subtitle>
-    <link href="{{ url | url(true) }}" rel="self"/>
-    <link href="{{ "/" | url(true) }}"/>
+    <link href="https://thomasorus.com/feed.xml" rel="self"/>
+    <link href="https://thomasorus.com/"/>
     <updated>{{ buildDate | date("ATOM") }}</updated>
-    <id>{{ "/" | url(true) }}</id>
+    <id>https://thomasorus.com{{ url }}</id>
     <author>
         <name>Thomasorus</name>
         <email>contact@thomasorus.com</email>
