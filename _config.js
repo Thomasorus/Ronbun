@@ -12,7 +12,9 @@ import date from "lume/plugins/date.ts";
 
 import {contentLoader} from "./loaders/contentLoader.mjs";
 
-const site = lume();
+const site = lume({
+  emptyDest: false,
+});
 
 site.copy("/assets/index.js", "index.js");
 site.copy("/assets/fonts/subsetted", '/fonts');

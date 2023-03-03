@@ -1,3 +1,5 @@
 .DS_Store
-/logs
-/www/files/
+_data
+img
+_site
+_cache
