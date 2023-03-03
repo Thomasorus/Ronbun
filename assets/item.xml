@@ -1,9 +1,0 @@
-<item>
-    <title>{{TITLE}}</title>
-    <link>https://thomasorus.com/{{GUID}}.html</link>
-    <guid isPermaLink="false">{{GUID}}</guid>
-    <pubDate>{{DATE}}</pubDate>
-    <description>
-        <![CDATA[{{CONTENT}}]]>
-    </description>
-</item>
