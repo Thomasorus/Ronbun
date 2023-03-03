@@ -20,7 +20,7 @@ layout: feedlayout.njk
     <entry>
         <title>{{ page.name }} - Thomasorus</title>
         <link href="{{ page.slug | url(true) }}.html"/>
-        <updated>{{ page.date  }}</updated>
+        <updated>{{ page.date  | date('ATOM') }}</updated>
         <id>{{ page.slug }}</id>
         <content type="html">{{ page.content }}</content>
     </entry>
