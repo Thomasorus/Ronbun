@@ -1,0 +1,104 @@
+:root {
+    /* padding y for input */
+    /* 3 is min, 5 is max */
+    --padding-input-y: calc(((3 / 16) * 1rem) + (5 - 3) * var(--fluid-bp));
+
+     /* padding x for input */
+    /* 9 is min, 17 is max */
+     --padding-input-x: calc(((9 / 16) * 1rem) + (17 - 9) * var(--fluid-bp));
+}
+
+/* Base styles */
+
+input {
+    display: block;
+    color: var(--text);
+    border: none;
+    border-radius: var(--radius-sm);
+    min-height: 42px;
+    padding: 3px 9px;
+    padding: var(--padding-input-y) var(--padding-input-x);
+    width:1ch;
+    background: lightgrey;
+    outline: transparent;
+
+}
+
+[theme="color"] input {
+    background-color: var(--accent);
+}
+
+[theme="dark"] input {
+    background-color: var(--grey-darker);
+}
+
+[theme="light"] input {
+    background-color: var(--white);
+}
+
+
+/* Focus styles */
+
+input:focus {
+    box-shadow: var(--border) 0 0 0 2px;
+}
+
+[theme="light"] input:focus {
+    box-shadow: var(--text) 0 0 0 2px;
+}
+
+[theme="dark"] input:focus {
+    box-shadow: var(--text) 0 0 0 2px;
+}
+
+
+/* Error styles */
+
+input[aria-invalid="true"] {
+    background-color: var(--border);
+}
+
+[theme="dark"] input[aria-invalid="true"] {
+    background-color: var(--grey-dark);
+    color:  var(--background);
+}
+
+[theme="light"] input[aria-invalid="true"]:focus {
+    box-shadow: var(--text) 0 0 0 2px;
+}
+
+[theme="dark"] input[aria-invalid="true"]:focus {
+    box-shadow: var(--text) 0 0 0 2px;
+}
+
+[theme="color"] input[aria-invalid="true"]:focus {
+    box-shadow: var(--background) 0 0 0 2px;
+}
+
+
+/* Width modifiers */
+
+input[data-size="30"] {
+    max-width:32.2ch;
+    width:100%;
+}
+
+input[data-size="20"] {
+    max-width:22.2ch;
+    width:100%;
+}
+
+input[data-size="10"] {
+    max-width:12.2ch;
+    width:100%;
+}
+
+input[data-size="4"] {
+    max-width:6.2ch;
+    width:100%;
+}
+
+input[data-size="2"] {
+    max-width:4.2ch;
+    width:100%;
+}

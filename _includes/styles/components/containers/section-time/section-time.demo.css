@@ -1,0 +1,90 @@
+section[role="complementary"] {
+    background-color: white;
+    background-color: var(--accent);
+    width: 100%;
+    padding: 0.5em var(--margin-l);
+    min-width: 100%;
+    z-index: 2;
+}
+
+section[role="complementary"] details {
+    min-width: 100%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: var(--margin-l);
+    cursor: pointer;
+    justify-items:end;
+}
+
+
+section[role="complementary"] summary::-webkit-details-marker {
+    display:none;
+}
+
+.time-row {
+    min-width: 100%;
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:0.6em;
+}
+
+section[role="complementary"] details > *+* {
+    margin-top: 20px;
+    margin-top: var(--margin-l);
+}
+
+.time-row__title {
+    font-family: "Editorial New Regular", serif;
+}
+
+details[open] .time-row__second {
+    display: none;
+}
+
+dl.time-row-more {
+    min-width: 100%;
+    display:grid;
+    grid-template-columns: auto 1fr;
+    text-align: left;
+    justify-items: start;
+    gap:0.6em;
+    background-color: var(--accent);
+    border-left: 5px solid var(--text);
+}
+
+.time-row-more dt,
+.time-row-more dd {
+    margin:0;
+    padding:0;
+}
+
+.time-row-more dt {
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+}
+
+.time-row-more dt span {
+    margin-left: var(--margin-s);
+
+}
+
+@media screen and (max-width:640px) {
+    section[role="complementary"] {
+        position: static;
+    }
+
+    .time-row {
+        grid-template-columns: 1fr;
+    }
+
+    .time-row {
+        justify-items:start;
+    }
+
+}
+
+[theme="dark"] section[role="complementary"]  {
+    color:var(--background);
+}

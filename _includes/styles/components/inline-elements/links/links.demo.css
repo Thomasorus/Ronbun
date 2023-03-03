@@ -1,0 +1,41 @@
+a {
+    color: black;
+    color:var(--text);
+    padding:5px 10px;
+    margin:-5px -10px;
+    transition: 0.25s;
+}
+
+[theme="dark"] a {
+    color:var(--accent);
+}
+
+article a {
+    padding:0;
+    margin:0;
+}
+
+a:hover,
+a[target="_blank"]:hover,
+a[target="_blank"]:hover:after  {
+    color: white;
+    color:var(--background);
+    background: black;
+    background:var(--text);
+    transition: 0.25s;
+}
+
+a:active {
+    color:var(--background);
+    background:var(--accent);
+    transition: 0.25s;
+}
+
+a[target="_blank"] {
+    position: relative;
+}
+
+a[href^="http"]:where(:not([href*="thomasorus.com/"]))::after {
+    content: "\2197";
+    font-size: 0.8em;
+}

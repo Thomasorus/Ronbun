@@ -1,0 +1,318 @@
+:root {
+    --ratio: 1.5;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+}
+
+/*svg{  fill:var(--text);c } */
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.time-graph-container {
+    box-sizing: border-box;
+    font-size: calc(var(--base-font-size) + 1em);
+}
+
+.time-graph {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, calc(var(--base-font-size) * 1.2));
+    grid-gap: 0.15em;
+    border-collapse: collapse;
+    font-variant-numeric: oldstyle-nums;
+    justify-content: center;
+}
+
+.time-graph__text {
+    align-self: flex-end;
+    margin: var(--s0) 0;
+}
+
+.time-graph__hours {
+    background: var(--background);
+    color: var(--text);
+    padding: 1px 3px 0 1px;
+    letter-spacing: -2px;
+    font-family: monospace;
+    font-size: 0.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1;
+}
+
+.time-graph ul {
+    list-style: none;
+}
+
+.time-graph__week {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    letter-spacing: -2px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+.time-graph__activity {
+    margin: 1.5px;
+    padding: 0 !important;
+    box-shadow: 0 0 0 1px var(--text);
+    position: relative;
+    line-height: 0;
+    width: 100%;
+}
+
+.time-graph__tooltip {
+    display: none;
+}
+
+.time-graph__activity:hover>.time-graph__tooltip {
+    margin-top: 15px;
+    margin-left: 50%;
+    background-color: var(--background);
+    display: block;
+    padding: 5px;
+    position: absolute;
+    top: 20%;
+    border: 1px solid var(--text);
+    z-index: 1;
+    font-size: 0.6rem;
+    font-family: sans-serif;
+    letter-spacing: normal;
+    line-height: 1;
+    min-width: 10px;
+}
+
+.time-graph__legend-list {
+    margin: 10px auto 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0;
+    font-family: 1rem;
+    max-width: 100%;
+}
+
+.time-graph__legend {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 5px 10px;
+}
+
+.time-graph__legend-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 0.7rem;
+    font-family: monospace;
+}
+
+.time-graph__value {
+    margin-left: 2px;
+}
+
+.time-graph__definition {
+    padding-top: 2px;
+    margin-left: 5px;
+    /* white-space:nowrap;*/
+    letter-spacing: -1px;
+}
+
+.time-graph__pattern {
+    height: 1.4em;
+    width: 1.4em;
+    border: 1px solid var(--text);
+    display: inline-block;
+    margin-right: 4px;
+}
+
+/* Code examples for html tips*/
+.code-example {
+    background: var(--background);
+    border: 1px solid var(--text);
+    min-height: var(--s5);
+}
+
+.code-example-value {
+    display: inline;
+    background: var(--background);
+    color: var(--text);
+    padding: 1px 5px 0 5px;
+    font-family: monospace;
+}
+
+.code-example-children {
+    height: var(--s2);
+    width: var(--s2);
+    border: 1px solid var(--text);
+}
+
+.code-example-children-grid {
+    border: 1px solid var(--text);
+}
+
+.code-example-grid-star {
+    display: grid;
+    grid-template-areas: "lefttop . righttop" ". center . " "leftbottom . rightbottom";
+}
+
+.pattern-demo {
+    width: 100%;
+    height: 100px;
+    border: 1px solid var(--text);
+    background: white;
+}
+
+.svg-demo>*,
+.pattern-demo>* {
+    margin-bottom: var(--s0);
+}
+
+.svg-demo svg {
+    width: 100%;
+    height: 100px;
+    border: 1px solid var(--text);
+}
+
+.home-grid {
+    display: grid;
+    grid-gap: var(--margin-s);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.home-grid>* {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--margin-s);
+}
+
+.home-grid h2 {
+    font-size: calc(100% * 1rem);
+}
+
+.home-grid svg {
+    width: 100%;
+    max-width: 300px;
+}
+
+.absolute-link {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.absolute-link:hover {
+    background: none;
+}
+
+.form-demo {
+    all: revert;
+    background: white;
+    color: black;
+    max-width: 60ch;
+    margin-top: var(--margin-s);
+    box-sizing: border-box;
+    border: 1px solid currentColor;
+    padding: 5px;
+}
+
+.form-demo input {
+    background: white;
+}
+
+.form-demo * {
+    all: revert;
+    box-sizing: border-box;
+}
+
+.form-demo form,
+.form-demo fieldset {
+    width: 100%;
+}
+
+.form-demo-block form * {
+    display: block;
+}
+
+.form-demo-spacing form>*+*,
+.form-demo-spacing fieldset>*+* {
+    margin-top: 1em !important;
+}
+
+.form-demo-reduced label~span,
+.form-demo-reduced label~input,
+.form-demo-reduced label~select {
+    margin-top: 0.25em !important;
+}
+
+.form-demo-text label~span {
+    color: #555;
+    font-style: italic;
+}
+
+.form-demo-err input+span,
+.form-demo-err input+span {
+    color: red !important;
+    display: none;
+}
+
+.form-demo-err-block [aria-invalid]+span {
+    display: block !important;
+}
+
+.form-demo-size [data-size] {
+    width: 100%;
+}
+
+.form-demo-size [data-size="30"] {
+    max-width: 30ch;
+}
+
+.form-demo-size [data-size="10"] {
+    max-width: 10ch;
+}
+
+.form-demo-checkbox form [type="checkbox"] {
+    display: inline;
+}
+
+.form-demo-checkbox form [type="checkbox"]~label {
+    display: inline;
+}
+
+.form-demo-button button,
+.form-demo-button [type="button"],
+.form-demo-button [type="submit"],
+.form-demo-button [type="reset"] {
+    all: unset;
+    font-size: 1em;
+    border: 1px solid currentColor;
+    padding: 10px;
+}

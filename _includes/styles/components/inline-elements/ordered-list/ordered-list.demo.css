@@ -1,0 +1,20 @@
+ol {
+    padding-left:2em;
+}
+
+ol:not([role="list"]) li {
+    padding-left: 1em;
+}
+
+ol li::marker{
+    font-size: var(--base-font-size);
+    font-weight: 500;
+}
+ol li::marker{
+    color:var(--border);
+}
+
+ol[role="list"] {
+    padding:0;
+    margin:0;
+}

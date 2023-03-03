@@ -1,0 +1,6 @@
+code {
+    font-family: "IBM Plex Mono", monospace;
+    color: black;
+    color:var(--text);
+    font-size: calc(1em - 0.1em);
+}

@@ -1,0 +1,6 @@
+legend {
+    font-size: var(--base-font-size);
+    font-weight: 700;
+    display: block;
+    line-height: var(--base-line-height);
+}

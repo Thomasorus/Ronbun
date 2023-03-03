@@ -1,0 +1,41 @@
+:root {
+    /* Figcaption spacing, min 11, max 16 */
+    --figcaption-spacing: calc(((11 / 16) * 1rem) + (16 - 11) * var(--fluid-bp));
+}
+
+figure > picture + figcaption,
+figure > video + figcaption {
+    background-color: black;
+    background-color: var(--background-dark);
+    padding: 11px;
+    padding: var(--figcaption-spacing);
+    min-width:100%;
+    border-bottom-left-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+    box-shadow: var(--background-dark) 0 0 0 2px;
+}
+
+
+picture {
+    display: block;
+}
+
+picture img,
+picture video {
+    display: block;
+    box-shadow: var(--background-dark) 0 0 0 2px;
+}
+
+picture img,
+figure img,
+figure video {
+    max-width: 100%;
+    width: 100%;
+    border-bottom: none;
+}
+
+figure video {
+    width: 100%;
+    box-shadow: var(--background-dark) 0 0 0 2px;
+    display: block;
+}

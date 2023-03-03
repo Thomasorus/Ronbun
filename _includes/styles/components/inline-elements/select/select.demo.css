@@ -1,0 +1,67 @@
+:root {
+    /* padding y for select */
+    /* 3 is min, 5 is max */
+    --padding-select-y: calc(((3 / 16) * 1rem) + (5 - 3) * var(--fluid-bp));
+
+     /* padding x for select */
+    /* 9 is min, 17 is max */
+     --padding-select-x: calc(((9 / 16) * 1rem) + (17 - 9) * var(--fluid-bp));
+}
+
+select {
+    display: block;
+    color: var(--text);
+    background-color: var(--grey);
+    border: none;
+    border-radius: var(--radius-sm);
+    height: 42px;
+    padding: 9px;
+    padding: var(--padding-select-y) var(--padding-select-x);
+    outline: transparent;
+    width:4ch;
+}
+
+option {
+    height: 42px;
+}
+
+select[data-size="30"] {
+    width:30ch;
+}
+
+select[data-size="20"] {
+    width:20ch;
+}
+
+select[data-size="10"] {
+    width:10ch;
+}
+
+select[data-size="5"] {
+    width:5ch;
+}
+
+
+select[data-size="4"] {
+    width:4ch;
+}
+
+
+
+[theme="dark"] select {
+    background-color: var(--grey-pitchblack);
+}
+
+/* Focus styles */
+
+[theme="color"] select:focus {
+    box-shadow: var(--grey-pitchblack) 0 0 0 2px;
+}
+
+[theme="light"] select:focus {
+    box-shadow: var(--grey-dark) 0 0 0 2px;
+}
+
+[theme="dark"] select:focus {
+    box-shadow: var(--grey-darker) 0 0 0 2px;
+}

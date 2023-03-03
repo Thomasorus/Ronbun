@@ -1,0 +1,79 @@
+@media (prefers-reduced-motion: no-preference) {
+  .glitch-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .glitch-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left:0;
+    background: var(--background);
+    overflow: hidden;
+    animation: glitch-2 5s infinite linear;
+  }
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left:0;
+    background: var(--background);
+    overflow: hidden;
+    animation: glitch 5s infinite linear;
+  }
+  .glitch-text:hover::after,
+  .glitch-text:hover::before{
+    color: var(--background);
+    background: var(--text);
+  }
+}
+
+@keyframes glitch {
+  0%, 89% {
+    top:0;
+    clip-path: inset(0 0 0 0);
+  }
+  90% {
+    top:-2px;
+    clip-path: inset(2% 0 10% 0);
+  }
+  91% {
+    top:-2px;
+    clip-path: inset(21% 0 15% 0);
+  }
+  92% {
+    top:-2px;
+    clip-path: inset(44% 0 54% 0);
+  }
+  93% {
+    top:-2px;
+    clip-path: inset(70% 0 14% 0);
+  }
+  94%, 100% {
+    top:0;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 90% {
+    left:0;
+    clip-path: inset(0 0 0 0);
+  }
+  91% {
+    left:-2px;
+    clip-path: inset(63% 0 6% 0);
+  }
+  92% {
+    left:-2px;
+    clip-path: inset(23% 0 20% 0);
+  }
+  93% {
+    left:-2px;
+    clip-path: inset(36% 0 48% 0);
+  }
+  94%, 100% {
+    left:0;
+    clip-path: inset(0 0 0 0);
+  }
+}

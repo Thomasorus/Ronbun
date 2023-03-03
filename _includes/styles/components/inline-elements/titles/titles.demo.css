@@ -1,0 +1,106 @@
+:root {
+    --title-scale-6: clamp(0.90rem, 0.79rem + 0.58vw, 1.31rem);
+    --title-scale-5: clamp(1.09rem, 0.93rem + 0.79vw, 1.64rem);
+    --title-scale-4: clamp(1.30rem, 1.19rem + 0.55vw, 1.69rem);
+    --title-scale-3: clamp(1.56rem, 1.37rem + 0.98vw, 2.25rem);
+    --title-scale-2: clamp(1.88rem, 1.55rem + 1.61vw, 3.00rem);
+    --title-scale-1: clamp(2.25rem, 1.75rem + 2.50vw, 4.00rem);
+
+    --title-line-height-6: clamp(1.16rem, 1.05rem + 0.51vw, 1.52rem);
+    --title-line-height-5: clamp(1.39rem, 1.24rem + 0.73vw, 1.89rem);
+    --title-line-height-4: clamp(1.66rem, 1.46rem + 1.01vw, 2.37rem);
+    --title-line-height-3: clamp(2.00rem, 1.72rem + 1.38vw, 2.96rem);
+    --title-line-height-2: clamp(2.40rem, 2.02rem + 1.86vw, 3.70rem);
+    --title-line-height-1: clamp(2.88rem, 2.38rem + 2.50vw, 4.63rem);
+
+    /* TITLES MARGINS VARS */
+    /* Minimum size for H1 is 70, maximum is 100 */
+    /* Multiply the max by the scale of 0.25 to get subsequent sizes : 100 > 0.75. > 0.5 > 0.25 > 0.125 > 0.0625 */
+    --title-margin-6: calc(((4.375 / 16) * 1rem) + (6.25 - 4.375) * var(--fluid-bp));
+    --title-margin-5: calc(((8.75 / 16) * 1rem) + (12.5 - 8.75) * var(--fluid-bp));
+    --title-margin-4: calc(((17.5 / 16) * 1rem) + (25 - 17.5) * var(--fluid-bp));
+    --title-margin-3: calc(((25 / 16) * 1rem) + (50 - 25) * var(--fluid-bp));
+    --title-margin-2: calc(((52.5 / 16) * 1rem) + (75 - 52.5) * var(--fluid-bp));
+    --title-margin-1: calc(((70 / 16) * 1rem) + (100 - 70) * var(--fluid-bp));
+}
+
+h6 {
+    font-size: 0.9rem;
+    font-size: var(--title-scale-6);
+    line-height: 1.16rem;
+    line-height: var(--title-line-height-6);
+    margin: 4.37px 0!important;
+    margin: var(--title-margin-6) 0 !important;
+    max-width: 30ch;
+}
+
+h5 {
+    font-size: 1.09rem;
+    font-size: var(--title-scale-5);
+    line-height: 1.39rem;
+    line-height: var(--title-line-height-5);
+    margin: 8.75px 0!important;
+    margin: var(--title-margin-5) 0 !important;
+    max-width: 30ch;
+}
+
+h4 {
+    font-size: 1.30rem;
+    font-size: var(--title-scale-4);
+    line-height: 1.66rem;
+    line-height: var(--title-line-height-4);
+    margin: 17.5px 0!important;
+    margin: var(--title-margin-4) 0 !important;
+    max-width: 30ch;
+}
+
+h3 {
+    font-size: 1.56rem;
+    font-size: var(--title-scale-3);
+    line-height: 2.00rem;
+    line-height: var(--title-line-height-3);
+    margin: 25px 0!important;
+    margin: var(--title-margin-3) 0 !important;
+    max-width: 30ch;
+}
+
+h2 {
+    font-size: 1.88rem;
+    font-size: var(--title-scale-2);
+    line-height: 2.40rem;
+    line-height: var(--title-line-height-2);
+    margin: 52.5px 0!important;
+    margin: var(--title-margin-2) 0 !important;
+    max-width: 30ch;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-size: var(--title-scale-1);
+    line-height: 2.88rem;
+    line-height: var(--title-line-height-1);
+    margin: 70px 0!important;
+    margin: var(--title-margin-1) 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    display: block;
+    font-family: "Editorial New Regular", serif;
+    font-weight: 400;
+}
+
+
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a,
+h6:hover a {
+    z-index: 0 !important;
+    background: transparent;
+}

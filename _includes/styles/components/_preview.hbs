@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Preview Layout</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{{ path '/index.css' }}">
+</head>
+
+<body>
+	<main style="margin:0;">
+		<article>
+			<div theme="color">
+				<div class="portfolio">
+					{{{ yield }}}
+				</div>
+				<div class="projects">
+					{{{ yield }}}
+				</div>
+				<div class="journal">
+					{{{ yield }}}
+				</div>
+
+				<div class="knowledge">
+					{{{ yield }}}
+				</div>
+				<div class="about">
+					{{{ yield }}}
+				</div>
+			</div>
+
+			<div theme="light">
+					{{{ yield }}}
+			</div>
+
+			<div theme="dark">
+					{{{ yield }}}
+			</div>
+		</article>
+	</main>
+
+	<script src="{{ path '/js/index.js' }}"></script>
+</body>
+
+</html>

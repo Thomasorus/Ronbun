@@ -1,0 +1,12 @@
+{% if feed == "true"%}
+    <hr>
+   <div>
+        {% if created != 'false' %}
+        <small><strong>Initially published: </strong>{{ created | date('HUMAN_DATE')}}</small><br>
+    {%endif%}
+    {% if date %}
+        <small><strong>Generated: </strong>{{ date | date('HUMAN_DATE')}}</small>
+    {%endif%}
+
+    </div>
+{%endif%}

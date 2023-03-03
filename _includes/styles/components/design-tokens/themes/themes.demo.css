@@ -1,0 +1,91 @@
+:root {
+    --text: var(--black);
+    --background: var(--white);
+    --accent:  var(--grey);
+    --background-dark: var(--grey-pitchblack);
+    --border: var(--grey-dark);
+}
+
+
+[theme="light"] {
+    --text: var(--black);
+    --background: var(--white);
+    --accent: var(--grey);
+    --background-dark: var(--grey);
+    --border: var(--grey-dark);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+[theme="dark"]{
+    --text: var(--white);
+    --background: var(--black);
+    --accent:  var(--grey);
+    --background-dark: var(--grey-pitchblack);
+    --border: var(--grey-darker);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+
+[theme="color"] .portfolio {
+    --text: var(--black);
+    --background: var(--red);
+    --accent:  var(--white);
+    --background-dark: var(--red-dark);
+    --border: var(--red-darker);
+    background-color: var(--background);
+   color: var(--text);
+}
+
+[theme="color"] .projects {
+    --text: var(--black);
+    --background: var(--teal);
+    --accent:  var(--white);
+    --background-dark: var(--teal-dark);
+    --border: var(--teal-darker);
+    background-color: var(--background);
+       color: var(--text);
+}
+
+[theme="color"] .journal {
+    --text: var(--black);
+    --background: var(--yellow);
+    --accent:  var(--white);
+    --background-dark: var(--yellow-dark);
+    --border: var(--yellow-darker);
+    background-color: var(--background);
+       color: var(--text);
+}
+
+[theme="color"] .knowledge {
+    --text: var(--black);
+    --background: var(--blue);
+    --accent:  var(--white);
+    --background-dark: var(--blue-dark);
+    --border: var(--blue-darker);
+    background-color: var(--background);
+       color: var(--text);
+}
+
+[theme="color"] .about {
+    --text: var(--black);
+    --background: var(--pink);
+    --accent:  var(--white);
+    --background-dark: var(--pink-dark);
+    --border: var(--pink-darker);
+    background-color: var(--background);
+       color: var(--text);
+}
+[theme="color"] .home, 
+[theme="color"] .stubs, 
+[theme="color"] .sitemap {
+    --text: var(--black);
+    --background: var(--grey);
+    --accent:  var(--white);
+    --background-dark: var(--grey-dark);
+    --border: var(--grey-darker);
+     background-color: var(--background);
+    color: var(--text);
+}
+

@@ -1,0 +1,31 @@
+{% if (menu == "true") and (children.length > 0) %}
+    <dl>
+        {%if name != "Journal" %}
+            {% for child in children %}
+                {% if child.priv == "false" %}
+                    <dt>
+                        <a href="{{ child.slug }}.html">
+                            {{ child.name }}
+                        </a>
+                    </dt>
+                    <dd>
+                        {{child.bref}}
+                    </dd>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for child in children.reverse() %}
+                {% if child.priv == "false" %}
+                    <dt>
+                        <a href="{{ child.slug }}.html">
+                            {{ child.name }}
+                        </a>
+                    </dt>
+                    <dd>
+                        {{child.bref}}
+                    </dd>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </dl>
+{% endif %}

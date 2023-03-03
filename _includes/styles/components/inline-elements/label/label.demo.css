@@ -1,0 +1,16 @@
+label {
+    color: var(--text);
+    font-size: var(--base-font-size);
+    font-weight: 700;
+    display: block;
+    line-height: var(--base-line-height);
+}
+
+label .required {
+    font-weight: 400;
+    font-style: italic;
+}
+
+label[data-fake] {
+    font-weight: 400;
+}

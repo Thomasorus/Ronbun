@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Thomasorus}</title>
+    <subtitle>The personal wiki of Thomasorus</subtitle>
+    <link href="{{ url | url(true) }}" rel="self"/>
+    <link href="{{ "/" | url(true) }}"/>
+    <updated>{{ buildDate | date("ATOM") }}</updated>
+    <id>{{ "/" | url(true) }}</id>
+    <author>
+        <name>Thomasorus</name>
+        <email>contact@thomasorus.com</email>
+    </author>
+
+    {{content | safe}}
+</feed>

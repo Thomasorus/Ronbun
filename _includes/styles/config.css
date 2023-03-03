@@ -1,0 +1,9 @@
+/* Design tokens */
+@import "./components/design-tokens/colors/colors.demo.css";
+@import "./components/design-tokens/spacings/spacings.demo.css";
+@import "./components/design-tokens/themes/themes.demo.css";
+@import "./components/design-tokens/fonts/fonts.demo.css";
+@import "./components/design-tokens/border-radius/border-radius.demo.css";
+@import "./components/design-tokens/logo/logo.demo.css";
+@import "./components/design-tokens/animations/animations.demo.css";
+@import "./components/design-tokens/icons/icons.demo.css";

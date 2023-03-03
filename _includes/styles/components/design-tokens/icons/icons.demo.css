@@ -1,0 +1,451 @@
+@media (prefers-reduced-motion: no-preference) {
+
+  @keyframes projects-icon__1 {
+      0% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+      89% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+      90% {
+          transform: rotate(4deg);
+          transform: skew(-4deg);
+      }
+      91% {
+          transform: rotate(-4deg);
+          transform: skew(4deg);
+      }
+      100% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+  }
+
+  .projects-icon__1 {
+      animation: projects-icon__1 8s  linear infinite;
+      transform-origin: 40% 30%;
+  }
+
+  @keyframes projects-icon__2 {
+      0% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+
+      89% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+
+      90% {
+          transform: rotate(4deg);
+          transform: skew(-4deg);
+      }
+
+      91% {
+          transform: rotate(-4deg);
+          transform: skew(4deg);
+      }
+
+      100% {
+          transform: rotate(0deg);
+          transform: skew(0deg);
+      }
+  }
+
+  .projects-icon__2 {
+      animation: projects-icon__2 7s  linear infinite;
+      transform-origin: 40% 30%;
+  }
+
+
+  @keyframes projects-icon__3 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    90% {
+        transform: translate(60px, 60px);
+    }
+
+    92% {
+        transform: translate(-10px, -10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+  }
+
+  .projects-icon__3 {
+    animation: projects-icon__3 5s ease-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  @keyframes projects-icon__4 {
+    0% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+
+    89% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+
+    90% {
+        transform: rotate(4deg);
+        transform: skew(-4deg);
+    }
+
+    91% {
+        transform: rotate(-4deg);
+        transform: skew(4deg);
+    }
+
+    92% {
+        transform: rotate(4deg);
+        transform: skew(-4deg);
+    }
+
+    93% {
+        transform: rotate(-4deg);
+        transform: skew(4deg);
+    }
+
+    94% {
+        transform: rotate(4deg);
+        transform: skew(-4deg);
+    }
+
+
+    100% {
+        transform: rotate(0deg);
+        transform: skew(0deg);
+    }
+  }
+
+  .projects-icon__4 {
+    animation: projects-icon__4 5s  linear infinite;
+    transform-origin: 70% 70%;
+  }
+
+
+
+  .knowledge-icon__1 {
+    animation: knowledge-icon__1 8s linear infinite;
+    position: relative;
+  }
+
+  @keyframes knowledge-icon__1 {
+      0%,20% {
+        transform: translate(0, 0);
+      }
+      21%, 22% {
+          transform: translate(0, 10px);
+      }
+      23%, 50% {
+          transform: translate(0, 10px);
+      }
+      51%, 52% {
+          transform: translate(10px, 10px);
+      }
+      53%, 75% {
+          transform: translate(10px, 10px);
+      }
+      76%, 77% {
+          transform: translate(10px, 0);
+      }
+      78%, 98% {
+          transform: translate(10px, 0);
+      }
+      99%, 100% {
+          transform: translate(0, 0);
+      }
+  }
+
+  .knowledge-icon__2 {
+    animation: knowledge-icon__2 12s linear infinite;
+    position: relative;
+  }
+
+  @keyframes knowledge-icon__2 {
+      0%,20% {
+        transform: translate(0, 0);
+      }
+      21%, 22% {
+          transform: translate(-10px, 0);
+      }
+      23%, 50% {
+          transform: translate(-10px, 0);
+      }
+      51%, 52% {
+          transform: translate(-10px, -10px);
+      }
+      53%, 75% {
+          transform: translate(-10px, -10px);
+      }
+      76%, 77% {
+        transform: translate(0, -10px);
+      }
+      78%, 98% {
+        transform: translate(0, -10px);
+      }
+      99%, 100% {
+          transform: translate(0, 0);
+      }
+  }
+
+  .knowledge-icon__3 {
+    animation: knowledge-icon__3 12s backwards infinite;
+    position: relative;
+    transform-origin: 50%;
+  }
+
+  @keyframes knowledge-icon__3 {
+    0%, 49% {
+      transform: rotate(0deg);
+    }
+    50%, 51%{
+      transform: rotate(4deg);
+    }
+    52%, 78% {
+       transform: rotate(4deg);
+     }
+    79%, 80% {
+      transform: rotate(0deg);
+    }
+    81%, 100% {
+        transform: rotate(0deg);
+    }
+  }
+
+  .knowledge-icon__4 {
+    animation: knowledge-icon__4 12s infinite;
+    position: relative;
+    transform-origin: 50%;
+  }
+
+  @keyframes knowledge-icon__4 {
+    0%, 49% {
+      transform: rotate(0deg);
+    }
+    51% {
+      transform: rotate(12deg);
+    }
+    78%{
+      transform: rotate(4deg);
+    }
+    100%{
+      transform: rotate(0deg);
+    }
+
+  }
+
+  .portfolio-icon__1 {
+    animation: portfolio-icon__1 6s linear infinite;
+    transform-origin: 40%;
+  }
+
+  @keyframes portfolio-icon__1 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      35% {
+        transform: rotate(0deg);
+      }
+
+      40% {
+        transform: rotate(20deg);
+      }
+
+      60% {
+        transform: rotate(20deg);
+      }
+
+      65% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+  }
+
+  .portfolio-icon__2 {
+    animation: portfolio-icon__2 6s linear infinite;
+    transform-origin: 50%;
+  }
+
+  @keyframes portfolio-icon__2 {
+      0% {
+        transform: scale(1);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.02);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+
+      55% {
+        transform: scale(1.02);
+      }
+
+      60% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+  }
+
+  .journal-icon__1 {
+    animation: journal-icon__1 8s linear infinite;
+    transform-origin: 100%;
+  }
+
+  @keyframes journal-icon__1 {
+    0% {
+      transform: translate(0);
+    }
+
+    30% {
+      transform: translate(0);
+    }
+    31% {
+      transform: translate(20px, 50px) rotate(12deg);
+    }
+
+    40% {
+      transform: translate(20px, 50px) rotate(12deg);
+    }
+    41% {
+      transform: translate(30px, 120px) rotate(26deg);
+    }
+
+    50% {
+      transform: translate(30px, 120px) rotate(26deg);
+    }
+    51% {
+      transform: translate(15px, 215px) rotate(46deg);
+    }
+
+    98% {
+      transform: translate(15px, 215px) rotate(46deg);
+    }
+    99% {
+      transform: translate(30px, 25px) rotate(12deg);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  .journal-icon__2 {
+    animation: journal-icon__2 8s linear infinite;
+  }
+
+  @keyframes journal-icon__2 {
+    0% {
+      transform: translate(0);
+    }
+
+    97% {
+      transform: translate(0);
+    }
+    98% {
+      transform: skew(4deg, 4deg);
+      transform-origin: 100%;
+    }
+    99% {
+      transform: skew(-4deg, -4deg);
+      transform-origin: 100%;
+
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  .about-icon__1 {
+    animation: about-icon__1 8s linear infinite;
+  }
+
+  @keyframes about-icon__1 {
+    0% {
+      transform: translate(0, 5px);
+    }
+
+    12.5% {
+      transform: translate(-15px, 0);
+    }
+
+    25% {
+      transform: translate(0px, 5px);
+    }
+
+    37.5% {
+      transform: translate(15px, 0px);
+    }
+
+    45% {
+      transform: translate(0, -18px);
+    }
+
+    65% {
+      transform: translate(0, -18px);
+    }
+
+    75% {
+      transform: translate(0, 5px);
+    }
+
+    87.5% {
+      transform: translate(15px, 0px);
+    }
+
+    100% {
+      transform: translate(0, 5px);
+    }
+  }
+
+  .about-icon__2 {
+    animation: about-icon__2 4s linear infinite;
+  }
+
+  @keyframes about-icon__2 {
+    0% {
+      transform: translate(0);
+    }
+
+    25% {
+      transform: translate(-40px);
+    }
+
+    50% {
+      transform: translate(0px);
+    }
+
+    75% {
+      transform: translate(40px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+
+  }
+}
+
+

@@ -1,0 +1,78 @@
+:root {
+    /* GLOBAL SCALES */
+    --fluid-min-width: 320;
+    --fluid-max-width: 1440;
+
+    /* FLUID SCALES */
+    --fluid-screen: 100vw;
+    --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+
+    /* Base font size, min: 16px, max: 18px */
+    --base-font-size: calc(((16 / 16) * 1rem) + (18 - 16) * var(--fluid-bp));
+
+    /* Base line height, min: 24, max: 30*/
+    --base-line-height: calc(((24 / 16) * 1rem) + (30 - 24) * var(--fluid-bp));
+}
+
+* {
+    scrollbar-color: var(--background) var(--text);
+}
+
+* {
+    max-width: 60ch;
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+article,
+footer,
+input,
+svg,
+label {
+    max-width: none;
+}
+
+/*
+figure,
+figcaption, */
+img {
+    max-width: 100%;
+}
+
+
+body {
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+}
+
+main {
+    margin: var(--margin-l);
+}
+
+main > *+* {
+    margin-top: var(--margin-s);
+}
+
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+footer {
+    margin: var(--margin-l);
+}

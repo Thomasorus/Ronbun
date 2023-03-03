@@ -1,0 +1,54 @@
+{% if total %}
+    <section role="complementary">
+        <details>
+            <summary class="time-row">
+                <span class="time-row__title">Statistics for: {{ name }}</span>
+                <span class="time-row__second"> Time spent
+                  <span aria-hidden="true">→</span>
+                    <time>{{total}} hours</time>
+                </span>
+            </summary>
+            <dl class="time-row-more">
+                <dt>
+                      Time spent
+                      <span aria-hidden="true">→</span>
+                </dt>
+                <dd>{{ total }} hours total</dd>
+                <dt>
+                      Started
+                      <span aria-hidden="true">→</span>
+                </dt>
+                <dd>{{ first }}</dd>
+                <dt>
+                      Last update
+                      <span aria-hidden="true">→</span>
+                </dt>
+                <dd>{{ last }}</dd>
+            </dl>
+
+            {{timeGraph | safe}}
+
+            <table>
+                <caption>All times entries for this page</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">Week</th>
+                        <th scope="col">Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ent in entries %}
+                        <tr scope="row">
+                            <td>{{ent.year}}</td>
+                            <td>{{ent.week}}</td>
+                            <td>{{ent.hours}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </details>
+    </section>
+</details>
+</section>
+{% endif %}

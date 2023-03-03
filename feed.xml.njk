@@ -1,0 +1,39 @@
+---
+layout: feedlayout.njk
+---
+
+{# {%- for post in allContent %}
+    {% if post.priv == "false" and post.content != null %}
+        <entry>
+            <title>{{ post.name }} - Thomasorus</title>
+            <link href="{{ post.slug | url(true) }}.html"/>
+            <updated>{{ post.date  }}</updated>
+            <id>{{ post.slug }}</id>
+            <content type="html">{{ post.content }}</content>
+        </entry>
+    {% endif %}
+{%- endfor %} #}
+
+{% macro sitemap(page) %}
+        {% if page.priv == "false" and page.feed == "true" and page.content != null %}
+
+    <entry>
+        <title>{{ page.name }} - Thomasorus</title>
+        <link href="{{ page.slug | url(true) }}.html"/>
+        <updated>{{ page.date  }}</updated>
+        <id>{{ page.slug }}</id>
+        <content type="html">{{ page.content }}</content>
+    </entry>
+            {% endif %}
+
+    {% if page.children %}
+            {% for page in page.children %}
+                {{ sitemap(page) }}
+            {% endfor %}
+
+    {% endif %}
+{% endmacro %}
+
+{%- for page in allContent %}
+    {{ sitemap(page) }}
+{%- endfor %}

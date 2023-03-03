@@ -1,0 +1,16 @@
+article aside {
+  border-left: 5px solid var(--border);
+  background-color: var(--background-dark);
+  padding:var(--margin-s);
+}
+
+article aside  p:first-child{
+  font-size: 1.30rem;
+  font-size: var(--title-scale-6);
+  line-height: 1.66rem;
+  line-height: var(--title-line-height-4);
+}
+
+article aside > *+* {
+  margin-top: var(--margin-s);
+}

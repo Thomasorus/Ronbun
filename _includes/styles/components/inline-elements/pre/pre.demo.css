@@ -1,0 +1,29 @@
+:root {
+    /* spacing y for input, 27 is min, 35 is max */
+    --spacing-pre-y: calc(((27 / 16) * 1rem) + (35 - 27) * var(--fluid-bp));
+
+    /* spacing x for input,  15 is min, 42 is max */
+    --spacing-pre-x: calc(((15 / 16) * 1rem) + (42 - 15) * var(--fluid-bp));
+}
+
+pre {
+    background-color: lightgrey;
+    background-color: var(--background-dark);
+    color: black;
+    color: var(--text);
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    scrollbar-color: var(--accent) var(--background-dark);
+    padding: 27px 15px 54px 15px;
+    padding: var(--spacing-pre-y) var(--spacing-pre-x);
+    margin: 0;
+    line-height: 1;
+}
+
+[theme="light"] pre {
+    scrollbar-color: var(--background) var(--accent);
+}
+
+pre code {
+    font-size: 0.85em;
+}

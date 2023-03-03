@@ -1,0 +1,125 @@
+button {
+    min-height: 44px;
+    min-width: 120px;
+    max-width: 20ch;
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: black;
+    background-color: var(--text);
+    border:none;
+    border-radius: var(--radius-sm);
+    line-height: 1.5;
+    font-weight: 700;
+    padding:5px 19px;
+    color: white;
+    color:var(--accent);
+    transition: 0.25s;
+}
+
+button:hover {
+    color:var(--text);
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: var(--background);
+    cursor: pointer;
+}
+
+button:active {
+    color:var(--text);
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+button svg {
+    fill:var(--text);
+    margin-top: 4px;
+}
+
+[theme="light"] button {
+    color:var(--background);
+    box-shadow:var(--text) 0 0 0 2px;
+    border:none;
+}
+
+
+[theme="light"] button:hover {
+    color:var(--text);
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: var(--background);
+    cursor: pointer;
+}
+
+[theme="light"] button:active {
+    color:var(--text);
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+[theme="dark"] button {
+    color:var(--background);
+    box-shadow:var(--text) 0 0 0 2px;
+    border:none;
+}
+
+[theme="dark"] button:hover {
+    color:var(--text);
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: var(--background);
+    cursor: pointer;
+}
+
+[theme="dark"] button:active {
+    color:var(--background);
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+button[data-secondary] {
+    box-shadow:var(--text) 0 0 0 2px;
+    background-color: var(--background);
+    color:var(--text);
+}
+
+button[data-small] {
+    min-height: 24px;
+    min-width:unset;
+    padding:3px 10px;
+    font-weight: 400;
+}
+
+button[data-naked] {
+    outline: none;
+    border: none;
+    background:transparent;
+    box-shadow:none;
+    color:unset;
+    min-height: 24px;
+    min-width: 24px;
+    padding:0;
+    margin:0;
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button[data-naked]:hover {
+    outline: none;
+    border: none;
+    background:transparent;
+    box-shadow:none;
+    color:unset;
+    min-height: 24px;
+    min-width: 24px;
+    padding:0;
+    margin:0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+button:focus-visible {
+    background-color: var(--focus);
+    color: var(--accent);
+    box-shadow:var(--text) 0 0 0 2px;
+    fill:var(--background);
+}

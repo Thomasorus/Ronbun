@@ -1,0 +1,13 @@
+:root {
+    /* Main margin for containers, min: 20px, max: 64px */
+    --margin-l: calc(((20 / 16) * 1rem) + (64 - 20) * var(--fluid-bp));
+  
+    /* Main margin for other things, min: 25, max: 30 */
+    --margin-s: calc(((25 / 16) * 1rem) + (30 - 25) * var(--fluid-bp));    
+  }
+  
+  @media screen and (min-width: 1440px) {
+    :root {
+      --fluid-screen: calc(var(--fluid-max-width) * 1px);
+    }
+  }

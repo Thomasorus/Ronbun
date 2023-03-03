@@ -1,0 +1,42 @@
+
+:root {
+
+    /* Blockqupote padding x : min 15, max 42 */
+    --blockquote-padding-x: calc(((15 / 16) * 1rem) + (42 - 15) * var(--fluid-bp));
+
+    /* Blockqupote padding y : min 23, max 36 */
+    --blockquote-padding-y: calc(((23 / 16) * 1rem) + (36 - 23) * var(--fluid-bp));
+
+}
+
+blockquote {
+    color: var(--text);
+    padding:  15px 23px;
+    padding:var(--blockquote-padding-y) var(--blockquote-padding-x);
+}
+blockquote + figcaption {
+    color: var(--text);
+    padding:  0 15px 23px 23px;
+    padding: 0 var(--blockquote-padding-y) var(--blockquote-padding-x) var(--blockquote-padding-x);
+}
+
+
+[theme="color"] blockquote,
+[theme="color"] blockquote + figcaption {
+    background-color:var(--accent);
+    border-left: 5px solid black;
+    border-left: 5px solid var(--text);
+}
+
+[theme="light"] blockquote,
+[theme="light"] blockquote + figcaption {
+    background-color:var(--grey);
+    border-left: 5px solid var(--border);
+}
+
+[theme="dark"] blockquote,
+[theme="dark"] blockquote + figcaption {
+    background-color:var(--background-dark);
+    border-left: 5px solid var(--border);
+}
+

@@ -1,0 +1,55 @@
+:root {
+     /* padding for form */
+    /* 30 is min, 50 is max */
+     --padding-form: calc(((30 / 16) * 1rem) + (50 - 30) * var(--fluid-bp));
+
+    /* Margin for input */
+    /* 30 is min, 50 is max */
+    --margin-input: calc(((30 / 16) * 1rem) + (50 - 30) * var(--fluid-bp));
+
+    /* Margin for label */
+    /* 5 is min, 10 is max */
+    --margin-label: calc(((5 / 16) * 1rem) + (10 - 5) * var(--fluid-bp));
+}
+
+form {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background-color: var(--background-dark);
+    padding: 30px;
+    padding:var(--padding-form);
+}
+
+form .error, form .hint {
+    color: var(--grey-pitchblack);
+}
+
+form .hint {
+    color: var(--text);
+    font-style: italic;
+}
+
+form .error {
+    color: var(--text);
+    font-weight: 600;
+}
+
+
+form > *+* {
+    margin-top:  30px;
+    margin-top: var(--margin-input);
+}
+
+form label {
+    margin-top: 5px;
+    margin-bottom: var(--margin-label);
+}
+
+form .grouped {
+    display: flex;
+}
+
+form .grouped > * {
+    margin-right: 30px;
+    margin-right: var(--margin-l);
+}

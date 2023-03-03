@@ -1,0 +1,21 @@
+dl {
+    background-color: var(--background-dark);
+    border-left: 5px solid black;
+    border-left: 5px solid var(--border);
+    padding: 25px;
+    padding: var(--margin-s);
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    padding-left: 25px;
+    padding-left: var(--margin-s);
+}
+
+dl > dt + dd {
+    margin-bottom: 12.5px;
+    margin-bottom: calc(var(--margin-s) / 2);
+}

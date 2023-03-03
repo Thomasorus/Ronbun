@@ -1,0 +1,64 @@
+<form action="
+">
+    <div>
+        <label for="name">Name</label>
+        <input data-size="30" id="name" autocomplete="name" type="text">
+
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input data-size="30" type="email" id="email" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false"
+            inputmode="email">
+
+    </div>
+
+    <div>
+        <label for="website">website</label>
+        <input data-size="30" type="url" id="website" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false"
+            inputmode="url">
+
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input data-size="30" type="password" id="password" autocapitalize="none" autocorrect="off" spellcheck="false">
+
+    </div>
+    <div>
+        <label for="long-number">Long Number</label>
+        <input data-size="10"type="text" id="long-number" pattern="[0-9]*" maxlength="10" inputmode="numeric">
+    </div>
+    <div>
+        <label for="short-number">Short Number</label>
+        <input data-size="10" type="number" id="short-number" value="0" pattern="[0-9]*">
+    </div>
+    <div>
+        <label for="complete-date">Complete date</label>
+        <div class="hint" id="complete-date-info">For example 30/05/2021</div>
+        <input data-size="20" type="text" id="complete-date" <input type="text" class="input-width-10" id="arrival-date"
+            name="arrival-date" aria-describedby="complete-date-info">
+    </div>
+
+    <div>
+        <fieldset role="group" aria-describedby="birthday-info">
+            <legend>Multiple inputs for a single birthday</legend>
+            <div class="hint" id="birthday-info">For example 20 07 1972</div>
+            <div class="grouped">
+                <div>
+                <label data-fake="true" for="bday-day">Day</label>
+                <input data-size="2" type="text" id="bday-day" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric" min="0"
+                max="31">
+            </div>
+            <div>
+                <label data-fake="true" for="bday-month">Month</label>
+            <input data-size="2" type="text" id="bday-month" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric" min="1"
+                max="12">
+            </div>
+            <div>
+                <label data-fake="true" for="bday-year">Year</label>
+            <input data-size="4" type="text" id="bday-year" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric" min="1900" max="2050">
+            </div>
+            </div>
+        </fieldset>
+    </div>
+
+</form>

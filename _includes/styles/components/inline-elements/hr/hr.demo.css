@@ -1,0 +1,6 @@
+hr {
+    color: var(--text);
+    border: 1px solid var(--text);
+    margin: 45px 0!important;
+    margin: var(--title-margin-2) 0!important;
+}
