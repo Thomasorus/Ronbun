@@ -1,9 +1,16 @@
 export default function* ({ allContent }) {
   for (const node of dfs(allContent[0])) {
+  //   if(node.created) {
+
+  //   console.log(node.name)
+  //   console.log(node.created)
+  //   console.log(node.date)
+  //   console.log("")
+  // }
     yield {
       layout: "layout.njk",
+      created: node.created,
       date: node.date,
-      updated: node.updated,
       url: `/${node.slug}.html`,
       ...node,
     };
