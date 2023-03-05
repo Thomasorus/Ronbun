@@ -10,6 +10,7 @@ import postcss from "lume/plugins/postcss.ts";
 import terser from "lume/plugins/terser.ts";
 import date from "lume/plugins/date.ts";
 
+import { unescapeHtml } from "https://deno.land/x/escape/mod.ts";
 import {contentLoader} from "./loaders/contentLoader.mjs";
 
 const site = lume({
@@ -20,12 +21,14 @@ site.copy("/assets/index.js", "index.js");
 site.copy("/assets/fonts/subsetted", '/fonts');
 
 const fileResponse = await fetch("https://thomasorus.com/feed.xml");
-if (fileResponse.body) {
-  const file = await Deno.open("./_data/live_feed.xml", { write: true, create: true });
-  await fileResponse.body.pipeTo(file.writable);
+if (fileResponse.ok) {
+  const textData = await fileResponse.text();
+  const unescape = unescapeHtml(textData);
+  await Deno.writeTextFile("./_data/live_feed.xml", unescape);  //
 }
 
 site.data("allContent", await contentLoader());
+site.data("buildDate", Date.now());
 
 site.addEventListener("beforeUpdate", async (event) => {
   site.data("allContent", await contentLoader());

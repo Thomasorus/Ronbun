@@ -240,6 +240,7 @@
     "https://deno.land/x/deno_dom@v0.1.36-alpha/src/dom/utils-types.ts": "96db30e3e4a75b194201bb9fa30988215da7f91b380fca6a5143e51ece2a8436",
     "https://deno.land/x/deno_dom@v0.1.36-alpha/src/dom/utils.ts": "ecd889ba74f3ce282620d8ca1d4d5e0365e6cc86101d2352f3bbf936ae496e2c",
     "https://deno.land/x/deno_dom@v0.1.36-alpha/src/parser.ts": "b65eb7e673fa7ca611de871de109655f0aa9fa35ddc1de73df1a5fc2baafc332",
+    "https://deno.land/x/escape@1.4.2/mod.ts": "6a30f506583e5d3bcc5f3cd2d42fba43af618833dc0f7754b374b6f7b21aaf68",
     "https://deno.land/x/events@v1.0.0/mod.ts": "3e2655ffa5e86a6ee01022f964b7fdc6152c007106c47b02958e766c6614dbaf",
     "https://deno.land/x/imagemagick_deno@0.0.14/mod.ts": "6b58c767d2308488597c3660e7ff399ede244198d7903900fa43a49cf93c7796",
     "https://deno.land/x/imagemagick_deno@0.0.14/src/alpha-option.ts": "749a9f3309e491ec09a1d6bc50ce95d9733887d9f57c6863c4ff1c7e9610227b",
@@ -413,6 +414,12 @@
     "https://deno.land/x/nunjucks@3.2.3-2/src/tests.js": "0f68a51c0be20e82eb033c913bb10bca1fc7eb4fcc603943515aac4608e88999",
     "https://deno.land/x/nunjucks@3.2.3-2/src/transformer.js": "401e3b1588ea2933883cc43cc329077f5b1a3a5da391f9dfc0a2a63a1a89660c",
     "https://deno.land/x/nunjucks@3.2.3-2/src/waterfall.js": "4d8878b3ebcf0a1b4bf9e7575e2f30bc6467cb8ee3717b80754c945cde661b9e",
+    "https://deno.land/x/xmlparser@v0.2.0/mod.ts": "a6b6fd140e716c0e3dcf888a0628ce229e246a73fd833123a08cc19710c7117d",
+    "https://deno.land/x/xmlparser@v0.2.0/parser.ts": "d6801f1b64c11fbdff3dac98f10a9e4c58236a77ce654e3255b681ac4a79526d",
+    "https://deno.land/x/xmlparser@v0.2.0/regexp.ts": "34befbf3bb58cbad457d8dc58ac94b38dd513b37265630f948293d9e91f513ce",
+    "https://deno.land/x/xmlparser@v0.2.0/unescape.ts": "329b3160167cbc902b2d8a0472858a7a23e7d4aea1b79ced5eb4153969f1c001",
+    "https://deno.land/x/xmlparser@v0.2.0/utils.ts": "0cb452cb0d552b02977bcb99611dce7c37c853646872d46f27c41482d1009bc6",
+    "https://deno.land/x/xmlparser@v0.2.0/xml.ts": "576e5a57b20948cc8d9d55e6e1ff57af9e1964f597799bd169780a8e4104d358",
     "https://wilsonl.in/minify-html/deno/0.10.3/index.js": "c8124516a6369ef9293473143d462b1592cf19aa25b110abd27d3cbb40124030"
   },
   "npm": {

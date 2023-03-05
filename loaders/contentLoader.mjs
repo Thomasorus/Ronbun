@@ -173,7 +173,7 @@ export async function contentLoader() {
   const allEntries = Object.keys(all).length;
 
   const feed_raw = await Deno.readTextFile("./_data/live_feed.xml");
-
+  let feedSplit = feed_raw.split("</author>").pop().split("</entry>")
   all.forEach((x) => {
     if (x.name === "Time") {
       x.content += timeText;
@@ -196,7 +196,7 @@ export async function contentLoader() {
     if (x.entries) {
       x.timeGraph = createGraph(x.entries.reverse());
     }
-    x.date = checkDate(x, feed_raw.split("</item>\n<item>"));
+    x.date = checkDate(x, feedSplit);
   });
   const sitemapArr = toTree(all);
   const finalTree = setMainCategories(sitemapArr, null);
@@ -204,32 +204,26 @@ export async function contentLoader() {
   return finalTree
 }
 
+
 function checkDate(page, feedText) {
   let date;
+  // console.log(page.date)
   feedText.forEach((el) => {
-    const titleP = `<title>(${page.name}) - Thomasorus<\/title>`;
+    const titleP = `<title>(${page.name}) - Thomasorus</title>`;
     const re = new RegExp(titleP, "");
     const rssTest = re.test(el);
+    // console.log(rssTest)
     if (rssTest) {
-      const elcontent = el.split("<![CDATA[").pop().split("]]>").shift()
-        .replace(
-          /(\s|\r\n|\r|\n)/g,
-          "",
-        ).trim();
+      const regex = /<content type="html">(.*?)<\/content>/s
+      const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").trim();
       const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").trim();
       const contentTest = elcontent === pagecontent ? true : false;
       if (contentTest) {
-        const existingDate = /<pubDate>(.*)<\/pubDate>/.exec(el);
-        if (existingDate === null || existingDate[1] === "undefined") {
-            console.log(page.name + " is undefined -> creating new entry in RSS");
-          date = new Date();
-        } else {
-          date = Date.parse(existingDate[1]);
-        }
-      } else {
-        console.log(page.name + " was updated -> new date");
-        date = new Date();
+        date = /<updated>(.*)<\/updated>/.exec(el)[1];
       }
+      if (!contentTest) {
+          date = new Date();
+      } 
     }
   });
   return date;
