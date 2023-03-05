@@ -1,1 +1,1 @@
-cd www && git add --all && git commit -m "*" && git push origin master && cd ../data && git add --all && git commit -m "*" && git push origin master && cd .. && git add --all && git commit -m "*" && git push origin master && ssh root@51.178.233.2
+cd _site && git add --all && git commit -m "*" && git push origin master && cd ../_data && git add --all && git commit -m "*" && git push origin master && cd ../img && git add --all && git commit -m "*" && git push origin master && cd .. && git add --all && git commit -m "*" && git push origin masterg
