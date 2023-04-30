@@ -4,7 +4,7 @@ layout: feedlayout.njk
 {% macro sitemap(page) %}
 {% if page.priv == "false" and page.feed == "true" and page.content != null %}
     <entry>
-        <title>{{ page.name }} - Thomasorus</title>
+        <title>{{ page.name }}</title>
         <link href="https://thomasorus.com/{{ page.slug }}.html"/>
         <updated>{{ page.date  | date('ATOM') }}</updated>
         <id>{{ page.slug }}</id>
