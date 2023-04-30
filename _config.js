@@ -15,6 +15,7 @@ import {contentLoader} from "./loaders/contentLoader.mjs";
 const site = lume({ emptyDest: false });
 
 site.copy("/assets/index.js", "index.js");
+site.copy("/assets/rss.js", "rss.js");
 site.copy("/assets/fonts/subsetted", '/fonts');
 
 const fileResponse = await fetch("https://thomasorus.com/feed.xml");

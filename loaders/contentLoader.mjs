@@ -1,6 +1,7 @@
 import textParser from "./kaku.mjs";
 import timeParser from "./time.mjs";
 import createGraph from "./graph.mjs";
+import parseFeeds from './feeds.mjs'
 
 function parseKaku(raw) {
   const text = raw
@@ -174,7 +175,11 @@ export async function contentLoader() {
 
   const feed_raw = await Deno.readTextFile("./_data/live_feed.xml");
   let feedSplit = feed_raw.split("</author>").pop().split("</entry>")
-  all.forEach((x) => {
+
+  all.forEach(async (x) => {
+    if(x.name === "Feeds") {
+      x.content += await parseFeeds()
+    }
     if (x.name === "Time") {
       x.content += timeText;
     }
