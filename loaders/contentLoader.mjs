@@ -216,7 +216,7 @@ export async function contentLoader() {
 function checkDate(page, feedText) {
   let date = undefined
   feedText.forEach((el) => {
-    const titleP = `<title>(${page.name}) - Thomasorus</title>`;
+    const titleP = `<title>(${page.name})</title>`;
     const re = new RegExp(titleP, "");
     const rssTest = re.test(el);
     const currentDate = /<updated>(.*)<\/updated>/.exec(el)
