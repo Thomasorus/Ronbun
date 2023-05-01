@@ -17,6 +17,8 @@ const site = lume({ emptyDest: false });
 site.copy("/assets/index.js", "index.js");
 site.copy("/assets/rss.js", "rss.js");
 site.copy("/assets/fonts/subsetted", '/fonts');
+site.copy(['.mp4']);
+
 
 const fileResponse = await fetch("https://thomasorus.com/feed.xml");
 if (fileResponse.ok) {
