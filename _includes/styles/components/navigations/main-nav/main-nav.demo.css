@@ -13,6 +13,10 @@
     padding: 0;
 }
 
+.nav--main ul li {
+    padding-left:0;
+}
+
 .nav--main a {
     text-decoration:none;
     font-size: 18px;
