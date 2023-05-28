@@ -43,7 +43,12 @@ site.use(terser({
 }));
 site.use(date());
 site.use(imagick());
-site.use(minify_html());
+site.use(minify_html({options:{
+  keep_spaces_between_attributes: true,
+  ensure_spec_compliant_unquoted_attribute_values: true,
+  do_not_minify_doctype: true,
+  keep_closing_tags: true
+}}));
 site.use(slugify_urls());
 site.use(source_maps());
 site.use(postcss());
