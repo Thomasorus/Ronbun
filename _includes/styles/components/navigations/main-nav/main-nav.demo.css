@@ -8,6 +8,9 @@
     justify-content:flex-end;
     align-items: center;
     gap: 5px 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav--main a {
