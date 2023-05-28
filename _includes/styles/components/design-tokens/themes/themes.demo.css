@@ -28,6 +28,7 @@
 }
 
 
+[theme="color"].portfolio,
 [theme="color"] .portfolio {
     --text: var(--black);
     --background: var(--red);
@@ -38,6 +39,7 @@
    color: var(--text);
 }
 
+[theme="color"].projects,
 [theme="color"] .projects {
     --text: var(--black);
     --background: var(--teal);
@@ -48,6 +50,7 @@
        color: var(--text);
 }
 
+[theme="color"].journal,
 [theme="color"] .journal {
     --text: var(--black);
     --background: var(--yellow);
@@ -58,6 +61,7 @@
        color: var(--text);
 }
 
+[theme="color"].knowledge,
 [theme="color"] .knowledge {
     --text: var(--black);
     --background: var(--blue);
@@ -68,6 +72,7 @@
        color: var(--text);
 }
 
+[theme="color"].about,
 [theme="color"] .about {
     --text: var(--black);
     --background: var(--pink);
@@ -77,9 +82,12 @@
     background-color: var(--background);
        color: var(--text);
 }
+[theme="color"].home,
 [theme="color"] .home, 
+[theme="color"].stubs, 
 [theme="color"] .stubs, 
-[theme="color"] .sitemap {
+[theme="color"] .sitemap,
+[theme="color"].sitemap {
     --text: var(--black);
     --background: var(--grey);
     --accent:  var(--white);

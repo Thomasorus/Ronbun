@@ -81,19 +81,19 @@
 
    function changeFont(el) {
        const font = el.dataset.font;
-       let html = document.querySelector("html")
+       let body = document.querySelector("body")
        if (font === "inter") {
-           html.setAttribute('font-style', "")
+        body.setAttribute('font-style', "")
            localStorage.setItem("sorus-style", null);
        } else {
-           html.setAttribute('font-style', font)
+        body.setAttribute('font-style', font)
            localStorage.setItem("sorus-style", font);
        }
    }
 
    function changeFontSize(el) {
        const action = el.dataset.resize;
-       let root = document.querySelector("html"),
+       let root = document.querySelector("body"),
            style = window
                .getComputedStyle(root, null)
                .getPropertyValue('font-size'),
@@ -110,41 +110,41 @@
    }
 
    function changeColors(el) {
-       const html = document.querySelector("html")
-       const currentTheme = html.getAttribute('theme')
+       const body = document.querySelector("body")
+       const currentTheme = body.getAttribute('theme')
        const newTheme = el.getAttribute("id")
-       html.setAttribute("theme", newTheme)
+       body.setAttribute("theme", newTheme)
        localStorage.setItem("sorus-theme", newTheme);
    }
 
    function changeAnimations(el) {
        const anim = el.dataset.anim;
-       let html = document.querySelector("html")
-       html.setAttribute('anim', anim)
+       let body = document.querySelector("body")
+       body.setAttribute('anim', anim)
        localStorage.setItem("sorus-anim", anim);
    }
 
    function setThemeFromLocalStorage() {
-       const html = document.querySelector("html")
+       const body = document.querySelector("body")
 
        const theme = localStorage.getItem("sorus-theme");
        theme
-           ? html.setAttribute('theme', theme)
+           ? body.setAttribute('theme', theme)
            : ''
 
        const anim = localStorage.getItem("sorus-anim");
        anim
-           ? html.setAttribute('anim', anim)
+           ? body.setAttribute('anim', anim)
            : ''
 
        const size = localStorage.getItem("sorus-size");
        size
-           ? html.style.fontSize = size
+           ? body.style.fontSize = size
            : ''
 
        const style = localStorage.getItem("sorus-style");
        style
-           ? html.setAttribute('font-style', style)
+           ? body.setAttribute('font-style', style)
            : ''
    }(function () {
        document.addEventListener("DOMContentLoaded", function () {
