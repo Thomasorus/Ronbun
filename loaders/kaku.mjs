@@ -152,8 +152,8 @@ function parseImage(imgContent) {
 
   // Uncomment this for picture + srcset
   const html = `${figcaption ? "<figure>" : ""
-    }<picture><source type="image/webp" srcset="${link}-400.webp 860w, ${link}-700.webp 1440w" sizes="(max-width: 430px) 400px, 700px" /><img loading="lazy" ${alt ? ` ${alt}` : ""
-    } srcset="${link}-400${extension} 860w, ${link}-700${extension} 1440w" src="${link}${extension}" sizes="(max-width: 430px) 400px, 700px"></picture>${figcaption} ${figcaption ? "</figure>" : ""
+    }<picture><source type="image/webp" srcset="${link}-400.webp 660w, ${link}-700.webp 1440w" sizes="(max-width: 630px) 400px, 700px" /><img loading="lazy" ${alt ? ` ${alt}` : ""
+    } srcset="${link}-400${extension} 660w, ${link}-700${extension} 1440w" src="${link}${extension}" sizes="(max-width: 630px) 400px, 700px"></picture>${figcaption} ${figcaption ? "</figure>" : ""
     }`;
   return html;
 
