@@ -247,8 +247,8 @@ function setMainCategories(arr, category) {
     } else {
       el.category = category;
     }
-    if (el.children.length > 0) {
-      setMainCategories(el.children, category);
+    if (el.childPages.length > 0) {
+      setMainCategories(el.childPages, category);
     }
   }
   return arr;
@@ -261,7 +261,7 @@ function toTree(list) {
 
   for (i = 0; i < list.length; i += 1) {
     map[list[i].id] = i; // initialize the map
-    list[i].children = []; // initialize the children
+    list[i].childPages = []; // initialize the children
   }
 
   for (i = 0; i < list.length; i += 1) {
@@ -270,7 +270,7 @@ function toTree(list) {
       node.hostId = "";
     }
     if (node.hostId !== "") {
-      list[map[node.hostId]].children.push(node);
+      list[map[node.hostId]].childPages.push(node);
     } else {
       roots.push(node);
     }
@@ -293,8 +293,8 @@ function createRecursiveList(tree) {
 function createRecursiveItem(elem) {
   let html = "<li>";
   html += `<a href="${elem.slug}.html">${elem.name}</a>`;
-  if (elem.children.length > 0) {
-    html += createRecursiveList(elem.children);
+  if (elem.childPages.length > 0) {
+    html += createRecursiveList(elem.childPages);
   }
   html += "</li>";
   return html;

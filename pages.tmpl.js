@@ -12,8 +12,8 @@ export default function* ({ allContent }) {
 
 function* dfs(node) {
   yield node
-  if (Array.isArray(node.children)) {
-    for (const child of node.children) {
+  if (Array.isArray(node.childPages)) {
+    for (const child of node.childPages) {
       yield* dfs(child);
     }
   }

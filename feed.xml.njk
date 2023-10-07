@@ -11,8 +11,8 @@ layout: feedlayout.njk
         <content type="html">{{ page.content }}</content>
     </entry>
 {% endif %}
-{% if page.children %}
-{% for page in page.children %}
+{% if page.childPages %}
+{% for page in page.childPages %}
     {{ sitemap(page) }}
 {% endfor %}
 {% endif %}

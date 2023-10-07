@@ -1,7 +1,7 @@
-{% if (menu == "true") and (children.length > 0) %}
+{% if (menu == "true") and (childPages.length > 0) %}
     <dl>
         {%if name != "Journal" %}
-            {% for child in children %}
+            {% for child in childPages %}
                 {% if child.priv == "false" %}
                     <dt>
                         <a href="{{ child.slug }}.html">
@@ -14,7 +14,7 @@
                 {% endif %}
             {% endfor %}
         {% else %}
-            {% for child in children.reverse() %}
+            {% for child in childPages|sort(false, true, 'date') %}
                 {% if child.priv == "false" %}
                     <dt>
                         <a href="{{ child.slug }}.html">
