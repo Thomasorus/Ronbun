@@ -14,7 +14,7 @@
                 {% endif %}
             {% endfor %}
         {% else %}
-            {% for child in childPages|sort(false, true, 'date') %}
+            {% for child in childPages|sort(false, true, 'date')|reverse %}
                 {% if child.priv == "false" %}
                     <dt>
                         <a href="{{ child.slug }}.html">
