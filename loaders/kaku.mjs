@@ -138,7 +138,7 @@ function parseImage(imgContent) {
     /^.+?(?=figcaption|(.jpg)|(.jpeg)|(.png)|alt:|figcaption|$)/.exec(
       imgContent
     );
-  const altData = /[ alt\:](.+?(?=figcaption|$))/.exec(imgContent);
+  const altData = /alt:(.+?(?=figcaption|$))/.exec(imgContent);
   const figcaptionData = /figcaption:(.+?(?=alt:|$))/.exec(imgContent);
   const link = linkData ? linkData[0].trim() : "";
   const extension =
