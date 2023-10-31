@@ -6,7 +6,7 @@ layout: feedlayout.njk
     <entry>
         <title>{{ page.name }}</title>
         <link href="https://thomasorus.com/{{ page.slug }}.html"/>
-        <updated>{{ page.date  | date('ATOM') }}</updated>
+        <updated>{{ page.generated  | date('ATOM') }}</updated>
         <id>{{ page.slug }}</id>
         <content type="html">{{ page.content }}</content>
     </entry>

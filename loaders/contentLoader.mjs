@@ -202,13 +202,12 @@ export async function contentLoader() {
       x.timeGraph = createGraph(x.entries.reverse());
     }
     if(x.priv === "false") {
-      x.date = checkDate(x, feedSplit);
-      x.date === undefined ? x.date = Date.now() : x.date   
+      x.generated = checkDate(x, feedSplit);
+      x.generated === undefined ? x.generated = Date.now() : x.generated   
     }
   });
   const sitemapArr = toTree(all);
   const finalTree = setMainCategories(sitemapArr, null);
-
   return finalTree
 }
 
@@ -228,6 +227,7 @@ function checkDate(page, feedText) {
       if (contentTest) {
         date = currentDate[1]
       } else {
+        console.log(page.name)
           date = Date.now()
       } 
     } 

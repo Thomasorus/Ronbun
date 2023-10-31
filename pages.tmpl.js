@@ -3,7 +3,7 @@ export default function* ({ allContent }) {
     yield {
       layout: "layout.njk",
       created: node.created,
-      date: node.date,
+      date: node.generated,
       url: `/${node.slug}.html`,
       ...node,
     };
