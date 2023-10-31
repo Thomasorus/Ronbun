@@ -222,12 +222,11 @@ function checkDate(page, feedText) {
     if (rssTest) {
       const regex = /<content type="html">(.*?)<\/content>/s
       const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").trim();
-      const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").trim();
+      const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").replaceAll("\\", "&#92;").trim();
       const contentTest = elcontent === pagecontent ? true : false;
       if (contentTest) {
         date = currentDate[1]
       } else {
-        console.log(page.name)
           date = Date.now()
       } 
     } 
