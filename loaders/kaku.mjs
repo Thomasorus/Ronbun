@@ -54,8 +54,7 @@ function parser(text) {
           return parseVideo(item);
         }) // links
         .replace(/\(audio:(.*?)\)/gim, function (char, item) {
-          const mp3 = item.trim();
-          return `<audio controls src="${mp3}" type="audio/mpeg" preload="metadata"></audio>`;
+          return parseAudio(item);
         }) // links
         .replace(/\(quote:(.*)\)/gim, function (char, item) {
           return parseQuote(item);
@@ -181,6 +180,19 @@ function parseVideo(videoContent) {
     : "";
   const html = `${figcaptionData ? "<figure>" : ""
     }<video ${controls} preload="metadata" ${link} ${source}></video>${figcaption}${figcaptionData ? "</figure>" : ""
+    }`;
+  return html;
+}
+
+function parseAudio(audioContent) {
+  const audioData = /^(.+?(?=figcaption|$))/.exec(audioContent);
+  const figcaptionData = /figcaption:(.+?(?=autoplay|$))/.exec(audioContent);
+  const link = audioData ? `src="${audioData[1].trim()}"` : "";
+  const figcaption = figcaptionData
+    ? `<figcaption>${figcaptionData[1].trim()}</figcaption>`
+    : "";
+  const html = `${figcaptionData ? "<figure>" : ""
+    }<audio controls ${link} type="audio/mpeg" preload="metadata"></audio>${figcaption}${figcaptionData ? "</figure>" : ""
     }`;
   return html;
 }

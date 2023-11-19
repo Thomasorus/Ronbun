@@ -1,0 +1,30 @@
+:root {
+	/* Figcaption spacing, min 11, max 16 */
+	--figcaption-spacing: calc(((11 / 16) * 1rem) + (16 - 11) * var(--fluid-bp));
+}
+
+
+audio,
+audio::-webkit-media-controls-panel {
+	border-top-left-radius: var(--radius-sm);
+	border-top-right-radius: var(--radius-sm);
+	background-color: var(--background);
+}
+
+figure>audio+figcaption {
+	background-color: black;
+	background-color: var(--background-dark);
+	padding: 11px;
+	padding: var(--figcaption-spacing);
+	border-bottom-left-radius: var(--radius-sm);
+	border-bottom-right-radius: var(--radius-sm);
+	box-shadow: var(--background-dark) 0 0 0 2px;
+}
+
+
+figure audio {
+	width: 100%;
+	box-shadow: var(--background-dark) 0 0 0 2px;
+	display: block;
+
+}

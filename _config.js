@@ -10,14 +10,14 @@ import terser from "lume/plugins/terser.ts";
 import date from "lume/plugins/date.ts";
 
 import { unescapeHtml } from "https://deno.land/x/escape/mod.ts";
-import {contentLoader} from "./loaders/contentLoader.mjs";
+import { contentLoader } from "./loaders/contentLoader.mjs";
 
 const site = lume({ emptyDest: false });
 
 site.copy("/assets/index.js", "index.js");
 site.copy("/assets/rss.js", "rss.js");
 site.copy("/assets/fonts/subsetted", '/fonts');
-site.copy(['.mp4']);
+site.copy(['.mp4', '.mp3']);
 
 
 const fileResponse = await fetch("https://thomasorus.com/feed.xml");
@@ -43,12 +43,14 @@ site.use(terser({
 }));
 site.use(date());
 site.use(imagick());
-site.use(minify_html({options:{
-  keep_spaces_between_attributes: true,
-  ensure_spec_compliant_unquoted_attribute_values: true,
-  do_not_minify_doctype: true,
-  keep_closing_tags: true
-}}));
+site.use(minify_html({
+  options: {
+    keep_spaces_between_attributes: true,
+    ensure_spec_compliant_unquoted_attribute_values: true,
+    do_not_minify_doctype: true,
+    keep_closing_tags: true
+  }
+}));
 site.use(slugify_urls());
 site.use(source_maps());
 site.use(postcss());
