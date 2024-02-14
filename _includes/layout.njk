@@ -35,9 +35,9 @@
             </a>
             {% include "nav.njk" %}
         </header>
-        {%if name != "Portfolio" %}
+        {# {%if name != "Portfolio" %} #}
             {% include "breadcrumb.njk" %}
-        {% endif %}
+        {# {% endif %} #}
         <main>
             {%if name != "Portfolio" %}
                 <article {{ "class='full'" if name == "Time" else "" }}>
