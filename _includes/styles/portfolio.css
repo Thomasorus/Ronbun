@@ -118,11 +118,19 @@
     background-color: var(--background-dark);
 }
 
+[theme="dark"] .portfolio-wrapper__tasks {
+    --accent: var(--grey-pitchblack);
+    --text: var(--white);
+
+    & a {
+        color:var(--text);
+    }
+}
 .portfolio-wrapper__tasks {
     display: flex;
     flex-direction: column;
     gap: var(--margin-l);
-
+    
     & h3 {
         margin-top: 0 !important;
     }
@@ -132,6 +140,7 @@
         margin-right: auto;
         max-width: 1440px;
         background-color: var(--accent);
+        color: var(--text);
         padding: var(--margin-l);
         width: 100%;
     }
@@ -140,6 +149,15 @@
         max-height: 60vh;
         width: 100%;
         object-fit: contain;
+    }
+}
+
+[theme="dark"] .portfolio-wrapper__projects {
+    --accent: var(--grey-pitchblack);
+    --text: var(--white);
+
+    & a {
+        color:var(--text);
     }
 }
 

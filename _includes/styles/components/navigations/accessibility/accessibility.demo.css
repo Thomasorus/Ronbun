@@ -1,8 +1,14 @@
 .accessibility-menu {
     display:flex;
-    flex-direction: column;
-    gap: 5px 15px;
+    flex-direction: row;
+    gap: var(--margin-s);
+    font-size: 14px;
+}
 
+.accessibility-menu__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 15px;
 }
 
 .accessibility-menu__sub {

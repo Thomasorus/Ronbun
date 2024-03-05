@@ -1,4 +1,4 @@
-<footer>
+<footer class="flow">
     <nav aria-label="Contact links" class="nav--secondary">
         <ul>
             <li>
@@ -24,53 +24,32 @@
             </li>
         </ul>
     </nav>
-    <details class="accessibility-menu">
-        <summary>
-            configure
-        </summary>
-        <p>You need JavaScript to use those features. </p>
         <div class="accessibility-menu">
-            <div>
-                <p>Change colors:</p>
+            <div class="accessibility-menu__container">
+                <span>Design:</span>
                 <div class="accessibility-menu__sub">
                     <button data-small="true" data-secondary="true"   class="color-button" aria-label="Use the colored theme" title="Use the colored theme"
                            onclick="changeColors(this)" id="color">
-                        <svg viewBox="0 0 2600 2760.837" xmlns="http://www.w3.org/2000/svg" height="32">
-                            <path
-                                       d="M2380.5 842.5Q2295 1004 2262 1063l-73 130q-36 65-70 131t-64 135q11 24 11 48-4 55-55 120.5T1901 1855l-37 101q-5 13-21.5 56.5T1777 2079l1 10q-2 127-73 237.5t-187.5 173T1279 2562q-112 0-192-33.5t-80-90.5q0-28 16.5-44.5t58.5-16.5q33 0 43.5-26.5T1136 2240v-51q0-160 69.5-254.5T1386 1805q3-38 49-68.5t58-40.5q-9 2-18 3l-20 2q-56 3-107 3-123 0-188.5 22.5T1019 1820l-64 61q-83 80-165.5 114.5T625 2030q-131 0-245.5-70t-180-214.5T134 1418q0-296 170-554t461.5-412T1358 298q211 0 380 71t273.5 221T2123 915l139-204 27-43q26-40 57-67t66-27q18 0 36 14t18 45q0 48-85.5 209.5zM1336 1602l24 1q106 0 161.5-13t103.5-35q13-19 77-129t141-110q45-51 84-109l76-115q11-38 15.5-74.5t4.5-73.5q0-129-57.5-232.5t-129.5-167T1636.5 441 1366 401q-281 0-550.5 141.5T391 918t-155 500q0 219 105 364t284 145q79 0 141.5-33T926 1765.5t182.5-129.5 227.5-34zm200-276q-87 78-196 78-78 0-132.5-57t-54.5-128q0-97 83.5-172.5T1419 971q87 0 145.5 48.5T1623 1144q0 104-87 182zm-75.5-72.5Q1522 1204 1522 1144q0-31-28-50.5t-75-19.5q-52 0-108 46t-56 99q0 33 26 58.5t59 25.5q59 0 120.5-49.5zM781 812.5q33 27.5 33 70.5 0 51-47.5 96T664 1024q-44 0-70-30.5T568 920q0-51 43-93t100-42q37 0 70 27.5zM623 1694q-32 36-83 36-53 0-89.5-46T414 1578q0-56 31.5-89t80.5-33q55 0 92 43.5t37 101.5q0 57-32 93zm3.5-377.5Q589 1362 537 1362q-47 0-80.5-33t-33.5-84q0-55 39-98t93-43q44 0 76.5 33.5T664 1218q0 53-37.5 98.5zM1093 587q28 32 28 76 0 52-46.5 85T966 781q-40 0-69.5-28T867 687q0-48 49-90t106-42q43 0 71 32zm355 1309q-73 11-129 60t-56 110q0 16 8 31t33 15l30-1q16 0 24 12l11 28q6 17 18.5 24t38.5 7h27q20 0 34 6t14 31q0 8-1 14t-1 12q0 16 18.5 23t41.5 7q33 0 56-11.5t42.5-66T1677 2089q0-14-2-27t-5-25l-65-52q-42-32-87-52t-70-37zm300 75q11-19 18-41l15-44-8-9q-34-34-95.5-73.5T1579 1759l-43 31-20 15q-9 7-9 9 26 15 58 27.5t103.5 63 79.5 66.5zm161-518.5q-54-33.5-66-33.5-28 14-70.5 95T1645 1694q2 0 2 1t2 1q47 20 90.5 49.5t72.5 58.5l47-112q44-103 74-136.5t30-48.5q0-21-54-54.5z"/>
-                        </svg>
+                        color
                     </button>
                     <button data-small="true" data-secondary="true"   class="color-button" aria-label="Use the light theme" title="Use the light theme"
                                onclick="changeColors(this)" id="light">
-                        <svg viewBox="0 0 2600 2760.837" xmlns="http://www.w3.org/2000/svg" height="32">
-                            <path
-                                       d="M1642.5 1715.5Q1499 1859 1300 1859t-342-142.5T815 1373q0-200 142.5-342.5T1300 888t343 143.5 143 341.5q0 199-143.5 342.5zm-142-540.5q-82.5-84-200.5-84-117 0-199.5 83t-82.5 199q0 117 82.5 200t199.5 83q118 0 200.5-84t82.5-199q0-114-82.5-198zM1415 712q0 20-14 34t-34 14h-134q-20 0-33.5-14t-13.5-34V405q0-20 13.5-33.5T1233 358h134q20 0 34 13.5t14 33.5v307zM913 826q13 13 13 33 0 9-3 18t-10 16l-94 94q-14 14-34 14-19 0-33-14L534 770q-14-14-14-33 0-20 14-34l95-94q14-14 34-14 19 0 33 14zm-274 435q20 0 33.5 13.5T686 1308v133q0 20-13.5 34t-33.5 14H331q-20 0-33.5-14t-13.5-34v-133q0-20 13.5-33.5T331 1261h308zm112 501q14-14 34-14 18 0 34 14l94 95q13 13 13 33t-13 33l-217 217q-14 14-33 14-21 0-34-14l-95-94q-14-14-14-33 0-20 14-34zm435 274q0-20 13.5-33.5t33.5-13.5h134q20 0 34 13.5t14 33.5v307q0 20-14 34t-34 14h-134q-20 0-33.5-14t-13.5-34v-307zm502-113q-8-7-11-16t-3-17q0-19 14-33l94-95q14-14 34-14 19 0 33 14l217 217q14 14 14 33 0 20-14 34l-94 94q-14 14-34 14-19 0-33-14zm274-434q-20 0-33.5-14t-13.5-34v-133q0-20 13.5-33.5t33.5-13.5h308q19 0 33 13.5t14 33.5v133q0 20-14 34t-33 14h-308zm-113-502q-14 14-33 14-21 0-34-14l-94-94q-15-15-15-34t14-33l218-217q14-14 33-14 18 0 34 14l94 94q14 14 14 33 0 20-14 34z"/>
-                        </svg>
+                        light
                     </button>
                     <button data-small="true" data-secondary="true"   data-secondary="true" class="color-button" aria-label="Use the dark theme" title="Use the dark theme"
                                onclick="changeColors(this)" id="dark">
 
-                        <svg viewBox="0 0 2600 2760.837" xmlns="http://www.w3.org/2000/svg" height="32">
-                            <path
-                                       d="M1925.5 2105Q1632 2392 1233 2392q-197 0-380.5-75.5t-327.5-223T381 1870q0-49 35.5-83.5T499 1752q39 0 82.5 28.5T725 1842t220 33q206 0 380.5-103.5T1598 1495t98-370q0-127-37-233t-67-147-30-85q0-49 35-83.5t82-34.5q74 0 227 143t233 327 80 381q0 425-293.5 712zM1679 660q68 106 101.5 225t33.5 241q0 230-113.5 429.5T1383 1874t-438 119q-117 0-230-30.5T499 1870q118 189 315 296.5t419 107.5q232 0 435-117.5t318-318.5 115-431q0-229-112.5-428T1679 660z"/>
-                        </svg>
+                        dark
                     </button>
                 </div>
             </div>
-            <div>
+            <div class="accessibility-menu__container">
                 <p>Animations:</p>
                 <div class="accessibility-menu__sub">
                     <button data-small="true" data-secondary="true" data-anim="true" aria-label="Enable animations" onclick="changeAnimations(this)" >Enable</button>
                     <button data-small="true" data-secondary="true" data-anim="false"  aria-label="Disable animations" onclick="changeAnimations(this)" >Disable</button>
                 </div>
             </div>
-            <div>
-                <p>Change text size:</p>
-                <div class="accessibility-menu__sub">
-                    <button data-small="true" data-secondary="true"  aria-label="Enlarge text size" onclick="changeFontSize(this)" data-resize="+">Larger</button>
-                    <button data-small="true" data-secondary="true"  aria-label="Reduce text size" onclick="changeFontSize(this)" data-resize="-">Smaller</button>
-                </div>
-            </div>
         </div>
-    </details>
+   
 </footer>
