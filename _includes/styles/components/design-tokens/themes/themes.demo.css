@@ -1,9 +1,10 @@
 :root {
     --text: var(--black);
     --background: var(--white);
-    --accent:  var(--grey);
+    --accent: var(--grey);
     --background-dark: var(--grey-pitchblack);
     --border: var(--grey-dark);
+    --picker: var(--grey);
 }
 
 
@@ -17,10 +18,10 @@
     color: var(--text);
 }
 
-[theme="dark"]{
+[theme="dark"] {
     --text: var(--white);
     --background: var(--black);
-    --accent:  var(--grey);
+    --accent: var(--grey);
     --background-dark: var(--grey-pitchblack);
     --border: var(--grey-darker);
     background-color: var(--background);
@@ -28,72 +29,111 @@
 }
 
 
+[theme="dark"].projects,
+[theme="light"].projects {
+    --picker: var(--teal);
+}
+
+[theme="dark"].knowledge,
+[theme="light"].knowledge {
+    --picker: var(--blue);
+}
+
+[theme="dark"].portfolio,
+[theme="light"].portfolio {
+    --picker: var(--red);
+}
+
+[theme="dark"].journal,
+[theme="light"].journal {
+    --picker: var(--yellow);
+}
+
+[theme="dark"].about,
+[theme="light"].about {
+    --picker: var(--pink);
+}
+
+[theme="dark"].portfolio,
+[theme="dark"] .portfolio,
+[theme="light"].portfolio,
+[theme="light"] .portfolio {
+    --picker: var(--red);
+}
+
+
 [theme="color"].portfolio,
 [theme="color"] .portfolio {
     --text: var(--black);
     --background: var(--red);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--red-dark);
     --border: var(--red-darker);
+    --picker: var(--red);
     background-color: var(--background);
-   color: var(--text);
+    color: var(--text);
 }
 
 [theme="color"].projects,
 [theme="color"] .projects {
     --text: var(--black);
     --background: var(--teal);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--teal-dark);
     --border: var(--teal-darker);
+    --picker: var(--teal);
     background-color: var(--background);
-       color: var(--text);
+    color: var(--text);
 }
 
 [theme="color"].journal,
 [theme="color"] .journal {
     --text: var(--black);
     --background: var(--yellow);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--yellow-dark);
     --border: var(--yellow-darker);
+    --picker: var(--yellow);
     background-color: var(--background);
-       color: var(--text);
+    color: var(--text);
 }
 
 [theme="color"].knowledge,
 [theme="color"] .knowledge {
     --text: var(--black);
     --background: var(--blue);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--blue-dark);
     --border: var(--blue-darker);
+    --picker: var(--blue);
     background-color: var(--background);
-       color: var(--text);
+    color: var(--text);
 }
 
 [theme="color"].about,
 [theme="color"] .about {
     --text: var(--black);
     --background: var(--pink);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--pink-dark);
     --border: var(--pink-darker);
+    --picker: var(--pink);
     background-color: var(--background);
-       color: var(--text);
+    color: var(--text);
 }
+
 [theme="color"].home,
-[theme="color"] .home, 
-[theme="color"].stubs, 
-[theme="color"] .stubs, 
+[theme="color"] .home,
+[theme="color"].stubs,
+[theme="color"] .stubs,
 [theme="color"] .sitemap,
 [theme="color"].sitemap {
     --text: var(--black);
     --background: var(--grey);
-    --accent:  var(--white);
+    --accent: var(--white);
     --background-dark: var(--grey-dark);
     --border: var(--grey-darker);
-     background-color: var(--background);
+    --picker: var(--grey);
+    background-color: var(--background);
     color: var(--text);
 }
-

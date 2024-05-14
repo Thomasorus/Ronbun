@@ -1,0 +1,39 @@
+input[type="radio"] {
+    all: unset;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--background);
+    margin: 0;
+    font: inherit;
+    color: var(--text);
+    border: 0.15em solid var(--text);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    aspect-ratio: 1/1;
+}
+
+input[type="radio"]:checked {
+    border: 0.15em solid var(--text);
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--background);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+    box-shadow: none;
+}
+
+input[type="radio"]:focus {
+    outline: max(1px, 0.15em) solid var(--text);
+    outline-offset: max(1px, 0.10em);
+    box-shadow: none;
+}

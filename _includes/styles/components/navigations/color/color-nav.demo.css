@@ -1,0 +1,46 @@
+.color-nav {
+    display: flex;
+    gap: 0.4rem;
+}
+
+@keyframes colors {
+    0% {
+        background-color: var(--teal);
+    }
+
+    20% {
+        background-color: var(--blue);
+    }
+
+    40% {
+        background-color: var(--red);
+    }
+
+    60% {
+        background-color: var(--yellow);
+    }
+
+    80% {
+        background-color: var(--pink);
+    }
+
+    100% {
+        background-color: var(--teal);
+    }
+}
+
+.home .color-nav input[type="radio"][value="color"] {
+    animation: colors 5s infinite linear;
+}
+
+.color-nav input[type="radio"][value="color"] {
+    background-color: var(--picker);
+}
+
+.color-nav input[type="radio"][value="light"] {
+    background-color: var(--white);
+}
+
+.color-nav input[type="radio"][value="dark"] {
+    background-color: var(--black);
+}
