@@ -36,6 +36,7 @@ a[target="_blank"] {
 }
 
 a[href^="http"]:where(:not([href*="thomasorus.com/"]))::after {
-    content: "\2197";
-    font-size: 0.8em;
+    content: "↗";
+    font-size: 1.2em;
+    font-family: monospace;
 }
