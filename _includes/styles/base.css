@@ -36,6 +36,10 @@ label {
     max-width: none;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 /*
 figure,
 figcaption, */
