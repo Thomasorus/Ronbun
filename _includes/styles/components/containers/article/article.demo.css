@@ -1,4 +1,14 @@
-article > *+* {
+article>*+* {
     margin-top: 25px;
     margin-top: var(--margin-s);
+}
+
+article .subpage-listing {
+    margin-top: var(--title-margin-2);
+    max-width: 60ch;
+}
+
+article .subpage-listing h2 {
+    border-top: 2px solid var(--text);
+    padding-top: var(--title-margin-2);
 }

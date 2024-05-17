@@ -1,31 +1,31 @@
 {% if (menu == "true") and (childPages.length > 0) %}
-    <dl>
-        {%if name != "Journal" %}
-            {% for child in childPages %}
-                {% if child.priv == "false" %}
-                    <dt>
-                        <a href="{{ child.slug }}.html">
-                            {{ child.name }}
-                        </a>
-                    </dt>
-                    <dd>
-                        {{child.bref}}
-                    </dd>
+    <div class="subpage-listing">
+    {%if name != "Journal" %}
+        {% for child in childPages %}
+            {% if child.priv == "false" %}
+                <h2>{{ child.name }}</h2>
+                <p>{{ child.bref }} — <a href="{{ child.slug }}.html">Read more</a></p>
+                {% if (menu == "true") and (child.childPages.length > 0) %}
+                    <h3>Subpages</h3>
+                    <dl>
+                        {% for subchild in child.childPages %}
+                            {% if subchild.priv == "false" %}
+                                <dt><a href="{{ subchild.slug }}.html">{{ subchild.name }}</a></dt>
+                                <dd> {{ subchild.bref }}</dd>
+                            {% endif %}
+                        {% endfor %}
+                    </dl>
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for child in childPages|sort(false, true, 'date')|reverse %}
-                {% if child.priv == "false" %}
-                    <dt>
-                        <a href="{{ child.slug }}.html">
-                            {{ child.name }}
-                        </a>
-                    </dt>
-                    <dd>
-                        {{child.bref}}
-                    </dd>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </dl>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% for child in childPages|sort(false, true, 'date')|reverse %}
+            {% if child.priv == "false" %}
+                <h2> {{ child.name }}</h2>
+                <p>{{child.bref}} — <a href="{{ child.slug }}.html">Read more</a></p>
+            {% endif %}
+        {% endfor %}
+
+    {% endif %}
+    </div>
 {% endif %}
