@@ -7,7 +7,7 @@ dl {
 }
 
 dt {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 dd {
@@ -15,7 +15,7 @@ dd {
     padding-left: var(--margin-s);
 }
 
-dl > dt + dd {
-    margin-bottom: 12.5px;
-    margin-bottom: calc(var(--margin-s) / 2);
+dl>dd+dt {
+    margin-top: 12.5px;
+    margin-top: calc(var(--margin-l) / 2);
 }
