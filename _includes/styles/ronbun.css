@@ -190,8 +190,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     place-items: end;
-    gap: var(--margin-s);
+    gap: 10px;
     max-width: 60ch;
+}
+
+.svg-demo div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .svg-demo svg {
