@@ -186,13 +186,17 @@
     background: white;
 }
 
-.svg-demo>*,
-.pattern-demo>* {
-    margin-bottom: var(--s0);
+.svg-demo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    place-items: end;
+    gap: var(--margin-s);
+    max-width: 60ch;
 }
 
 .svg-demo svg {
-    width: 100%;
+    display: block;
+    width: 200px;
     height: 100px;
     border: 1px solid var(--text);
 }
