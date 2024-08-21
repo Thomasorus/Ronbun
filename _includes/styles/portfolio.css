@@ -71,9 +71,9 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-        filter: grayscale(1) contrast(1);
+/*        filter: grayscale(1) contrast(1);
         mix-blend-mode: lighten;
-    }
+*/    }
 }
 
 [theme="dark"] .portfolio-wrapper__headgrid--image {
@@ -130,7 +130,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--margin-l);
-    
+
     & h3 {
         margin-top: 0 !important;
     }
