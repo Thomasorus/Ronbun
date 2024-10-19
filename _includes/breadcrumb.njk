@@ -1,6 +1,13 @@
-{% if host and (host !== name.toLowerCase()) %}
+{% if mypage.host and (mypage.host !== mypage.name.toLowerCase()) %}
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
-    <i>Back to <a href="{{hostslug}}.html">{{host}}</a>
+    <i>Back to <ol>
+    {% for crumb in mypage.breadcrumb %}
+        <li><a href="{{crumb[0]}}.html">{{crumb[1]}}</a>
+    </li>
+
+    {% endfor %}
+    <ol>
     </i>
 </nav>
 {% endif %}

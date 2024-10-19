@@ -4,7 +4,7 @@
     <subtitle>The personal wiki of Thomasorus</subtitle>
     <link href="https://thomasorus.com/feed.xml" rel="self"/>
     <link href="https://thomasorus.com/"/>
-    <updated>{{ buildDate | date("ATOM") }}</updated>
+    <updated>{{ now | dateToRfc3339 }}</updated>
     <id>https://thomasorus.com{{ url }}</id>
     <author>
         <name>Thomasorus</name>

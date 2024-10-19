@@ -1,7 +1,7 @@
-{% if (menu == "true") and (childPages.length > 0) %}
+{% if (mypage.menu == "true") and (mypage.childPages.length > 0) %}
     <div class="subpage-listing">
-    {%if name != "Journal" %}
-        {% for child in childPages %}
+    {%if mypage.name != "Journal" %}
+        {% for child in mypage.childPages %}
             {% if child.priv == "false" %}
                 <h2>{{ child.name }}</h2>
                 <p>{{ child.bref }} — <a href="{{ child.slug }}.html">Read more</a></p>
@@ -19,7 +19,7 @@
             {% endif %}
         {% endfor %}
     {% else %}
-        {% for child in childPages|sort(false, true, 'date')|reverse %}
+        {% for child in mypage.childPages|sort(false, true, 'date')|reverse %}
             {% if child.priv == "false" %}
                 <h2> {{ child.name }}</h2>
                 <p>{{child.bref}} — <a href="{{ child.slug }}.html">Read more</a></p>

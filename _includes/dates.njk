@@ -1,11 +1,11 @@
-{% if feed == "true"%}
+{% if (mypage.feed == "true") %}
     <hr>
    <div>
-        {% if created != 'false' %}
-        <small><strong>Initially published: </strong>{{ created | date('HUMAN_DATE')}}</small><br>
+        {% if (mypage.created != "false") %}
+        <small><strong>Initially published: </strong>{{ mypage.created | date }}</small><br>
     {%endif%}
-    {% if generated %}
-        <small><strong>Generated: </strong>{{ generated | date('HUMAN_DATE')}}</small>
+    {% if mypage.generated %}
+        <small><strong>Generated: </strong>{{ mypage.generated | date }}</small>
     {%endif%}
     </div>
 {%endif%}
