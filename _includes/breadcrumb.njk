@@ -1,13 +1,15 @@
 {% if mypage.host and (mypage.host !== mypage.name.toLowerCase()) %}
 
 <nav aria-label="Breadcrumb" class="breadcrumb">
-    <i>Back to <ol>
+    <i>
+    <span>Back to&nbsp;</span>    
+    <ol>
     {% for crumb in mypage.breadcrumb %}
         <li><a href="{{crumb[0]}}.html">{{crumb[1]}}</a>
     </li>
 
     {% endfor %}
-    <ol>
+    </ol>
     </i>
 </nav>
 {% endif %}

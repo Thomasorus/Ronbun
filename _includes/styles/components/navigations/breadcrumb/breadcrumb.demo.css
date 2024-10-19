@@ -16,6 +16,8 @@
     margin:0;
 }
 
+
+
 .breadcrumb ol li {
     display: inline-flex;
     gap: calc(1ch - 5px);
@@ -27,6 +29,16 @@
     content: "›";
     display: block;
     position: relative;
+}
+
+@media (max-width:550px) {
+    .breadcrumb ol li {
+        display: none;
+    }
+    .breadcrumb ol li:first-child,
+    .breadcrumb ol li:last-child {
+        display: inline-flex;
+    }
 }
 
 
