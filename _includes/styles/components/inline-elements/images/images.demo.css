@@ -30,7 +30,8 @@ picture img,
 figure img,
 figure video {
     max-width: 100%;
-    width: 100%;
+    width: auto;
+    height: auto;
     border-bottom: none;
 }
 

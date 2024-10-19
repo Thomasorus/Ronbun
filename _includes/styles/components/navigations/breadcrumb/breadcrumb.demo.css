@@ -8,6 +8,27 @@
     display: inline;
 }
 
+.breadcrumb ol {
+    list-style-type: none;
+    display: inline-flex;
+    padding:0;
+    gap: calc(1ch - 5px);
+    margin:0;
+}
+
+.breadcrumb ol li {
+    display: inline-flex;
+    gap: calc(1ch - 5px);
+    margin:0;
+    padding:0;
+}
+
+.breadcrumb ol li+li:before {
+    content: "›";
+    display: block;
+    position: relative;
+}
+
 
 [theme="dark"] .breadcrumb {
     color:var(--accent);

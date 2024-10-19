@@ -19,6 +19,11 @@
     ol {
         max-width: unset;
     }
+
+    img {
+        box-shadow: none;
+
+    }
 }
 
 .portfolio-wrapper_subheader {
@@ -69,6 +74,10 @@
     background-color: var(--red);
     transform: translateY(-50%);
     z-index: -1;
+
+    picture {
+          height: 100%;
+    }
 
     & img {
         height: 100%;
