@@ -1,0 +1,23 @@
+---
+layout: feedlayout.njk
+permalink: "feed.xml"
+---
+{% macro sitemap(page) %}
+{% if page.priv == "false" and page.feed == "true" and page.content != null %}
+<entry>
+    <title>{{ page.name }}</title>
+    <link href="https://thomasorus.com/{{ page.slug }}.html"/>
+    <updated>{{ page.generated }}</updated>
+    <id>{{ page.slug }}</id>
+    <content type="html">{{ page.content }}</content>
+</entry>
+{% endif %}
+{% if page.childPages %}
+{% for page in page.childPages %}
+{{ sitemap(page) }}
+{% endfor %}
+{% endif %}
+{% endmacro %}
+{%- for page in ronbunData %}
+    {{ sitemap(page) }}
+{%- endfor %}
