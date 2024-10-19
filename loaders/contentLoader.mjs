@@ -243,7 +243,8 @@ function checkDate(page, feedText) {
       if (contentTest) {
         date = currentDate[1]
       } else {
-          date = Date.now()
+        let newDate = new Date()
+          date = newDate.toISOString()
       }
     }
   });
