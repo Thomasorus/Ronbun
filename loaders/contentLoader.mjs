@@ -1,7 +1,19 @@
 import textParser from "./kaku.mjs";
 import timeParser from "./time.mjs";
 import createGraph from "./graph.mjs";
-import parseFeeds from './feeds.mjs'
+import * as fs from 'fs';
+import he from "he";
+
+async function getOldFeed() {
+  if (!fs.existsSync("./_data/live_feed.xml")) {
+    const res = await fetch("https://thomasorus.com/feed.xml");
+    if (res.ok) {
+      const textData = await res.text()
+      const unescaped = he.unescape(textData);
+      fs.writeFileSync("./_data/live_feed.xml", unescaped);  //
+    }
+  }
+}
 
 function parseKaku(raw) {
   const text = raw
@@ -35,17 +47,19 @@ function parseKaku(raw) {
   return text;
 }
 
-export async function contentLoader() {
+export default async function () {
   const text = [];
-  for await (const file of Deno.readDir(`./_data`)) {
-    if (file.isFile && file.name.substr(file.name.length - 4) === "kaku") {
-      const raw_content = await Deno.readTextFile(`./_data/${file.name}`);
+  for await (const file of fs.readdirSync(`./_data`)) {
+    if (file && file.slice(-4) === "kaku") {
+      const raw_content = fs.readFileSync(`./_data/${file}`, 'utf8')
       const content = parseKaku(raw_content);
       text.push(...content);
     }
   }
 
-  const raw_time = await Deno.readTextFile("./_data/time.txt");
+  await getOldFeed()
+
+  const raw_time = fs.readFileSync("./_data/time.txt", 'utf8');
   const time = raw_time
     .split("\n")
     .map((x) => x.split(" "))
@@ -164,7 +178,7 @@ export async function contentLoader() {
     remainingActivities.push(activity);
   }
 
-  
+
   const all = [...remainingProjects, ...remainingActivities, ...text];
   const timeText = await timeParser(raw_time);
   const timeEntries = Object.keys(time).length;
@@ -173,13 +187,13 @@ export async function contentLoader() {
   const orphanActivities = remainingActivities.length;
   const allEntries = Object.keys(all).length;
 
-  const feed_raw = await Deno.readTextFile("./_data/live_feed.xml");
+  const feed_raw =  fs.readFileSync("./_data/live_feed.xml", 'utf8');
   let feedSplit = feed_raw.split("</author>").pop().split("</entry>")
 
   all.forEach(async (x) => {
-    if(x.name === "Feeds") {
-      x.content += await parseFeeds()
-    }
+    // if(x.name === "Feeds") {
+    //   x.content += await parseFeeds()
+    // }
     if (x.name === "Time") {
       x.content += timeText;
     }
@@ -203,12 +217,14 @@ export async function contentLoader() {
     }
     if(x.priv === "false") {
       x.generated = checkDate(x, feedSplit);
-      x.generated === undefined ? x.generated = Date.now() : x.generated   
+      const now = new Date()
+      x.generated === undefined ? x.generated = now.toISOString() : x.generated
     }
   });
   const sitemapArr = toTree(all);
   const finalTree = setMainCategories(sitemapArr, null);
-  return finalTree
+  const finalTree2 = createBreadcrumb(finalTree, [])
+  return finalTree2
 }
 
 
@@ -228,8 +244,8 @@ function checkDate(page, feedText) {
         date = currentDate[1]
       } else {
           date = Date.now()
-      } 
-    } 
+      }
+    }
   });
   return date;
 }
@@ -251,6 +267,19 @@ function setMainCategories(arr, category) {
     }
   }
   return arr;
+}
+
+function createBreadcrumb(arr, breadcrumb) {
+  for (let i = 0; i < arr.length; i++) {
+    const el = arr[i];
+    breadcrumb.push([el.slug, el.name])
+    if (el.childPages.length > 0) {
+      createBreadcrumb(el.childPages, breadcrumb);
+    }
+    breadcrumb.pop()
+    el.breadcrumb = [...breadcrumb]
+  }
+  return arr
 }
 
 function toTree(list) {
