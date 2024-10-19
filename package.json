@@ -1,0 +1,24 @@
+{
+  "name": "ronbun2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
+    "dev": "npx @11ty/eleventy --serve  --quiet",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2",
+    "@11tyrocks/eleventy-plugin-lightningcss": "^1.4.0",
+    "he": "^1.2.0",
+    "lightningcss": "^1.27.0"
+  },
+  "type": "module"
+}
