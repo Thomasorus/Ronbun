@@ -2,10 +2,10 @@
     <hr>
    <div>
         {% if (mypage.created != "false") %}
-        <small><strong>Initially published: </strong>{{ mypage.created | date }}</small><br>
+        <small><strong>Initially published: </strong>{{ mypage.created | genDates  }}</small><br>
     {%endif%}
     {% if mypage.generated %}
-        <small><strong>Generated: </strong>{{ mypage.generated | date }}</small>
+        <small><strong>Modified and/or rebuilt: </strong>{{ mypage.generated | genDates }}</small>
     {%endif%}
     </div>
 {%endif%}
