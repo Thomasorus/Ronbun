@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import lightningCSS from "@11tyrocks/eleventy-plugin-lightningcss";
-import pluginRss from "@11ty/eleventy-plugin-rss";
 import htmlmin from "html-minifier-terser";
 
 export default async function (eleventyConfig) {
@@ -12,11 +11,11 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "assets/*.png": "assets/" });
   eleventyConfig.addPassthroughCopy({ "img/": "img/" });
 
-  eleventyConfig.addFilter("date", (dateObj) => {
-    return DateTime.fromISO(dateObj).toLocaleString(DateTime.DATE_MED);
+  eleventyConfig.addFilter("genDates", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY);
   });
 
-  eleventyConfig.addFilter("dateToRfc3339", pluginRss.dateToRfc3339);
+  eleventyConfig.addFilter("dateToRfc3339", dateToRfc3339);
 
   eleventyConfig.addPlugin(lightningCSS);
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
@@ -37,11 +36,22 @@ export default async function (eleventyConfig) {
         removeComments: true,
         collapseWhitespace: true,
         continueOnParseError: true,
-        removeAttributeQuotes: true,
+        removeAttributeQuotes: false,
         minifyCSS: true,
       });
     }
 
     return content;
   });
+}
+
+
+function dateToRfc3339(dateObj) {
+  let s = dateObj.toISOString();
+
+  // remove milliseconds
+  let split = s.split(".");
+  split.pop();
+
+  return split.join("") + "Z";
 }
