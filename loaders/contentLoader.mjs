@@ -5,14 +5,12 @@ import * as fs from 'fs';
 import he from "he";
 
 async function getOldFeed() {
-  if (!fs.existsSync("./_data/live_feed.xml")) {
     const res = await fetch("https://thomasorus.com/feed.xml");
     if (res.ok) {
       const textData = await res.text()
       const unescaped = he.unescape(textData);
       fs.writeFileSync("./_data/live_feed.xml", unescaped);  //
     }
-  }
 }
 
 function parseKaku(raw) {
@@ -237,7 +235,7 @@ function checkDate(page, feedText) {
     const currentDate = /<updated>(.*)<\/updated>/.exec(el)
     if (rssTest) {
       const regex = /<content type="html">(.*?)<\/content>/s
-      const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").trim();
+      const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").replaceAll("\\", "&#92;").trim();
       const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").replaceAll("\\", "&#92;").trim();
       const contentTest = elcontent === pagecontent ? true : false;
       if (contentTest && currentDate[1]) {
