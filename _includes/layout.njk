@@ -55,7 +55,10 @@
         </main>
         {% include "timesection.njk" %}
         {% include "footer.njk" %}
-        {% include "patterns.njk" %}
+
+        {% if mypage.name == "Time" or mypage.name == "Moyo"%}
+            {% include "patterns.njk" %}
+        {%endif%}
 
         <script src="/index.js" inline></script>
 
