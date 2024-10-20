@@ -22,6 +22,7 @@ export default async function (eleventyConfig) {
     extensions: "html",
     formats: ["avif", "webp", "jpg"],
     widths: [700],
+    urlPath: "/img/",
     defaultAttributes: {
       loading: "lazy",
       decoding: "async",
