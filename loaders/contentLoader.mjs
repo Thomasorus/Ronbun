@@ -39,7 +39,7 @@ function parseKaku(raw) {
         priv: priv[1].trim(),
         menu: menu[1].trim(),
         feed: feed[1].trim(),
-        created: date[1].trim(),
+        created: new Date(date[1].trim()),
         content: textParser(content[1].trim()),
       };
       return x;
@@ -218,7 +218,7 @@ export default async function () {
     if(x.priv === "false") {
       x.generated = checkDate(x, feedSplit);
       const now = new Date()
-      x.generated === undefined ? x.generated = now.toISOString() : x.generated
+      x.generated === undefined ? x.generated = now : x.generated
     }
   });
   const sitemapArr = toTree(all);
@@ -240,11 +240,10 @@ function checkDate(page, feedText) {
       const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").trim();
       const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").replaceAll("\\", "&#92;").trim();
       const contentTest = elcontent === pagecontent ? true : false;
-      if (contentTest) {
-        date = currentDate[1]
+      if (contentTest && currentDate[1]) {
+        date = new Date(currentDate[1])
       } else {
-        let newDate = new Date()
-          date = newDate.toISOString()
+        date = new Date()
       }
     }
   });
