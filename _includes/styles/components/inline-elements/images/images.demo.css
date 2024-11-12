@@ -33,6 +33,7 @@ figure video {
     width: auto;
     height: auto;
     border-bottom: none;
+      min-width: 100%;
 }
 
 figure video {
