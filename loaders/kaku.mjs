@@ -43,7 +43,7 @@ function parser(text) {
         .replace(/^- (.*$)/gim, "<ul><li>$1</li></ul>\n\n") // strike text
         .replace(/^\+ (.*$)/gim, "<ol><li>$1</li></ol>\n\n") // strike text
         .replace(/^\? (.*) : (.*$)/gim, "<dl><dt>$1</dt><dd>$2</dd></dl>\n\n") // strike text
-        .replace(/\{(.*?)\}/gim, "<aside><p>Side note</p>$1</aside>")
+        .replace(/^\{(.*?)\}/gim, "<aside><p>Side note</p>$1</aside>")
         .replace(/\(link:(.*?)\)/gim, function (char, item) {
           return parseLinks(item);
         }) // links
