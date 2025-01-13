@@ -17,5 +17,5 @@ dd {
 
 dl>dd+dt {
     margin-top: 12.5px;
-    margin-top: calc(var(--margin-l) / 2);
+    margin-top: calc(var(--margin-s) / 2);
 }
