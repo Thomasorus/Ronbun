@@ -5,12 +5,12 @@ import * as fs from 'fs';
 import he from "he";
 
 async function getOldFeed() {
-    const res = await fetch("https://thomasorus.com/feed.xml");
-    if (res.ok) {
-      const textData = await res.text()
-      const unescaped = he.unescape(textData);
-      fs.writeFileSync("./_data/live_feed.xml", unescaped);  //
-    }
+  const res = await fetch("https://thomasorus.com/feed.xml");
+  if (res.ok) {
+    const textData = await res.text()
+    const unescaped = he.unescape(textData);
+    fs.writeFileSync("./_data/live_feed.xml", unescaped);  //
+  }
 }
 
 function parseKaku(raw) {
@@ -24,7 +24,7 @@ function parseKaku(raw) {
       const menu = x.match(/MENU:((?:\\[\s\S]|[^\\])+?)\n/);
       const feed = x.match(/FEED:((?:\\[\s\S]|[^\\])+?)\n/);
       const date = x.match(/DATE:((?:\\[\s\S]|[^\\])+?)\n/);
-      const content = x.match(/BODY:((?:\\[\s\S]|[^\\])+?)$/);
+      const rawText = x.match(/BODY:((?:\\[\s\S]|[^\\])+?)$/);
 
       x = {
         name: name[1].trim(),
@@ -38,7 +38,8 @@ function parseKaku(raw) {
         menu: menu[1].trim(),
         feed: feed[1].trim(),
         created: new Date(date[1].trim()),
-        content: textParser(content[1].trim()),
+        rawText: rawText[1].trim(),
+        content: textParser(rawText[1].trim()),
       };
       return x;
     });
@@ -95,9 +96,8 @@ export default async function () {
           txt.entries = [];
           proj.map((x) => txt.entries.push(x));
           txt.first = `week ${proj[0].week} of ${proj[0].year}`;
-          txt.last = `week ${proj[proj.length - 1].week} of ${
-            proj[proj.length - 1].year
-          }`;
+          txt.last = `week ${proj[proj.length - 1].week} of ${proj[proj.length - 1].year
+            }`;
           txt.total = 0;
           proj.map((x) => (txt.total += parseInt(x.hours)));
           delete projects[projkey];
@@ -115,9 +115,8 @@ export default async function () {
           txt.entries = [];
           act.map((x) => txt.entries.push(x));
           txt.first = `week ${act[0].week} of ${act[0].year}`;
-          txt.last = `week ${act[act.length - 1].week} of ${
-            act[act.length - 1].year
-          }`;
+          txt.last = `week ${act[act.length - 1].week} of ${act[act.length - 1].year
+            }`;
           txt.total = 0;
           act.map((x) => (txt.total += parseInt(x.hours)));
           delete activities[actkey];
@@ -129,7 +128,7 @@ export default async function () {
   const remainingProjects = [];
   for (const i in projects) {
     const el = projects[i];
-    const project = [];
+    const project = {};
     project.entries = [];
     el.map((x) => {
       project.entries.push(x);
@@ -142,9 +141,8 @@ export default async function () {
     project.hostId = "stubs";
     project.hostslug = "stubs";
     project.first = `Week ${el[0].week} of ${el[0].year}`;
-    project.last = `Week ${el[el.length - 1].week} of ${
-      el[el.length - 1].year
-    }`;
+    project.last = `Week ${el[el.length - 1].week} of ${el[el.length - 1].year
+      }`;
     project.total = 0;
     project.priv = "false";
     el.map((x) => (project.total += parseInt(x.hours)));
@@ -154,7 +152,7 @@ export default async function () {
   const remainingActivities = [];
   for (const i in activities) {
     const el = activities[i];
-    const activity = [];
+    const activity = {};
     activity.entries = [];
     el.map((x) => {
       activity.entries.push(x);
@@ -167,15 +165,13 @@ export default async function () {
     activity.hostId = "stubs";
     activity.hostslug = "stubs";
     activity.first = `Week ${el[0].week} of ${el[0].year}`;
-    activity.last = `Week ${el[el.length - 1].week} of ${
-      el[el.length - 1].year
-    }`;
+    activity.last = `Week ${el[el.length - 1].week} of ${el[el.length - 1].year
+      }`;
     activity.total = 0;
     activity.priv = "false";
     el.map((x) => (activity.total += parseInt(x.hours)));
     remainingActivities.push(activity);
   }
-
 
   const all = [...remainingProjects, ...remainingActivities, ...text];
   const timeText = await timeParser(raw_time);
@@ -185,12 +181,12 @@ export default async function () {
   const orphanActivities = remainingActivities.length;
   const allEntries = Object.keys(all).length;
 
-  const feed_raw =  fs.readFileSync("./_data/live_feed.xml", 'utf8');
+  const feed_raw = fs.readFileSync("./_data/live_feed.xml", 'utf8');
   let feedSplit = feed_raw.split("</author>").pop().split("</entry>")
 
   all.forEach(async (x) => {
     // if(x.name === "Feeds") {
-    //   x.content += await parseFeeds()
+    // x.content += await parseFeeds()
     // }
     if (x.name === "Time") {
       x.content += timeText;
@@ -213,7 +209,7 @@ export default async function () {
     if (x.entries) {
       x.timeGraph = createGraph(x.entries.reverse());
     }
-    if(x.priv === "false") {
+    if (x.priv === "false") {
       x.generated = checkDate(x, feedSplit);
       const now = new Date()
       x.generated === undefined ? x.generated = now : x.generated
@@ -222,9 +218,9 @@ export default async function () {
   const sitemapArr = toTree(all);
   const finalTree = setMainCategories(sitemapArr, null);
   const finalTree2 = createBreadcrumb(finalTree, [])
+  // fs.writeFileSync("export.json", JSON.stringify(finalTree2, null, ' '))
   return finalTree2
 }
-
 
 function checkDate(page, feedText) {
   let date = undefined
@@ -235,7 +231,7 @@ function checkDate(page, feedText) {
     const currentDate = /<updated>(.*)<\/updated>/.exec(el)
     if (rssTest) {
       const regex = /<content type="html">(.*?)<\/content>/s
-      const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g,"").replaceAll("\\", "&#92;").trim();
+      const elcontent = el.match(regex)[1].replace(/(\s|\r\n|\r|\n)/g, "").replaceAll("\\", "&#92;").trim();
       const pagecontent = page.content.replace(/(\s|\r\n|\r|\n)/g, "").replaceAll("\\", "&#92;").trim();
       const contentTest = elcontent === pagecontent ? true : false;
       if (contentTest && currentDate[1]) {
