@@ -4,6 +4,8 @@ import lightningCSS from "@11tyrocks/eleventy-plugin-lightningcss";
 import htmlmin from "html-minifier-terser";
 
 export default async function (eleventyConfig) {
+  eleventyConfig.addWatchTarget("./_data/*.kaku");
+  eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.addPassthroughCopy({ "assets/fonts/subsetted": "fonts" });
   eleventyConfig.addPassthroughCopy({ "assets/index.js": "index.js" });
   eleventyConfig.addPassthroughCopy({ "assets/*.svg": "assets/" });
